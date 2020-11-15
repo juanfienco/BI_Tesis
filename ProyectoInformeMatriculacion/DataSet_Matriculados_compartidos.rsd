@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSourceCuboMatricula</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="DimPeriodoperiodo">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimCarrerafacultad">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimDescuentodescuento">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimTipomatriculaarancel">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimAlumnoSexo">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText> SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimAlumnoSexo, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimTipomatriculaarancel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimDescuentodescuento, CONSTRAINED).Count = 1, STRTOSET(@DimDescuentodescuento, CONSTRAINED), [Dim Descuento].[descuento].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Periodo</DimensionName>
+                    <HierarchyName>periodo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
+                    <LevelName>periodo</LevelName>
+                    <UniqueName>[Dim Periodo].[periodo].[periodo]</UniqueName>
+                  </ID>
+                  <ItemCaption>periodo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tipomatricula</DimensionName>
+                    <HierarchyName>arancel</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tipomatricula].[arancel]</HierarchyUniqueName>
+                    <LevelName>arancel</LevelName>
+                    <UniqueName>[Dim Tipomatricula].[arancel].[arancel]</UniqueName>
+                  </ID>
+                  <ItemCaption>arancel</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Facu</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Facu]</HierarchyUniqueName>
+                    <LevelName>Facultad</LevelName>
+                    <UniqueName>[Dim Carrera].[Facu].[Facultad]</UniqueName>
+                  </ID>
+                  <ItemCaption>Facultad</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Facu</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Facu]</HierarchyUniqueName>
+                    <LevelName>Carrera</LevelName>
+                    <UniqueName>[Dim Carrera].[Facu].[Carrera]</UniqueName>
+                  </ID>
+                  <ItemCaption>Carrera</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Sexo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                    <LevelName>Sexo</LevelName>
+                    <UniqueName>[Dim Alumno].[Sexo].[Sexo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Sexo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Registro</DimensionName>
+                    <HierarchyName>Fecha</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Registro].[Fecha]</HierarchyUniqueName>
+                    <LevelName>Fecha</LevelName>
+                    <UniqueName>[Id Tiempo Registro].[Fecha].[Fecha]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fecha</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Registro</DimensionName>
+                    <HierarchyName>Año</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Registro].[Año]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Id Tiempo Registro].[Año].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Registro</DimensionName>
+                    <HierarchyName>Nombre Mes</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Registro].[Nombre Mes]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Id Tiempo Registro].[Nombre Mes].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Registro</DimensionName>
+                    <HierarchyName>Dia</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Registro].[Dia]</HierarchyUniqueName>
+                    <LevelName>Dia</LevelName>
+                    <UniqueName>[Id Tiempo Registro].[Dia].[Dia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Dia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Finalizo</DimensionName>
+                    <HierarchyName>Fecha</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Finalizo].[Fecha]</HierarchyUniqueName>
+                    <LevelName>Fecha</LevelName>
+                    <UniqueName>[Id Tiempo Finalizo].[Fecha].[Fecha]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fecha</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Finalizo</DimensionName>
+                    <HierarchyName>Año</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Finalizo].[Año]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Id Tiempo Finalizo].[Año].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Finalizo</DimensionName>
+                    <HierarchyName>Nombre Mes</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Finalizo].[Nombre Mes]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Finalizo</DimensionName>
+                    <HierarchyName>Dia</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Finalizo].[Dia]</HierarchyUniqueName>
+                    <LevelName>Dia</LevelName>
+                    <UniqueName>[Id Tiempo Finalizo].[Dia].[Dia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Dia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Pago</DimensionName>
+                    <HierarchyName>Fecha</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Pago].[Fecha]</HierarchyUniqueName>
+                    <LevelName>Fecha</LevelName>
+                    <UniqueName>[Id Tiempo Pago].[Fecha].[Fecha]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fecha</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Pago</DimensionName>
+                    <HierarchyName>Año</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Pago].[Año]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Id Tiempo Pago].[Año].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Pago</DimensionName>
+                    <HierarchyName>Nombre Mes</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Pago].[Nombre Mes]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Id Tiempo Pago].[Nombre Mes].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Id Tiempo Pago</DimensionName>
+                    <HierarchyName>Dia</HierarchyName>
+                    <HierarchyUniqueName>[Id Tiempo Pago].[Dia]</HierarchyUniqueName>
+                    <LevelName>Dia</LevelName>
+                    <UniqueName>[Id Tiempo Pago].[Dia].[Dia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Dia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>cant_registrados</MeasureName>
+                    <UniqueName>[Measures].[cant_registrados]</UniqueName>
+                  </ID>
+                  <ItemCaption>cant_registrados</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>cant_finalizados</MeasureName>
+                    <UniqueName>[Measures].[cant_finalizados]</UniqueName>
+                  </ID>
+                  <ItemCaption>cant_finalizados</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>cant_pagados</MeasureName>
+                    <UniqueName>[Measures].[cant_pagados]</UniqueName>
+                  </ID>
+                  <ItemCaption>cant_pagados</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>cant_retirados</MeasureName>
+                    <UniqueName>[Measures].[cant_retirados]</UniqueName>
+                  </ID>
+                  <ItemCaption>cant_retirados</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>total_recaudado</MeasureName>
+                    <UniqueName>[Measures].[total_recaudado]</UniqueName>
+                  </ID>
+                  <ItemCaption>total_recaudado</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>cubo_matriculacion</From>
+            <Filter>
+              <FilterItems>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members />
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Carrera].[facultad]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members />
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Descuento].[descuento]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members />
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Tipomatricula].[arancel]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members />
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members />
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+              </FilterItems>
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties>
+              <IncludeMemberValue>true</IncludeMemberValue>
+            </QueryProperties>
+          </QuerySpecification>
+          <Query>
+            <Statement> SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimAlumnoSexo, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimTipomatriculaarancel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimDescuentodescuento, CONSTRAINED).Count = 1, STRTOSET(@DimDescuentodescuento, CONSTRAINED), [Dim Descuento].[descuento].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>DimPeriodoperiodo</Name>
+                <DefaultValues />
+                <Caption>periodo</Caption>
+                <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[periodo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[periodo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[periodo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[periodo].ALLMEMBERS ON ROWS FROM [cubo_matriculacion]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimCarrerafacultad</Name>
+                <DefaultValues />
+                <Caption>facultad</Caption>
+                <HierarchyUniqueName>[Dim Carrera].[facultad]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimPeriodoperiodo</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimDescuentodescuento</Name>
+                <DefaultValues />
+                <Caption>descuento</Caption>
+                <HierarchyUniqueName>[Dim Descuento].[descuento]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Descuento].[descuento].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Descuento].[descuento].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Descuento].[descuento].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Descuento].[descuento].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Descuento].[descuento].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Descuento].[descuento].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Descuento].[descuento].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Descuento].[descuento].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimPeriodoperiodo</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimCarrerafacultad</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimTipomatriculaarancel</Name>
+                <DefaultValues />
+                <Caption>arancel</Caption>
+                <HierarchyUniqueName>[Dim Tipomatricula].[arancel]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Tipomatricula].[arancel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])))</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Tipomatricula].[arancel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Tipomatricula].[arancel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])))</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimPeriodoperiodo</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimCarrerafacultad</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimDescuentodescuento</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimAlumnoSexo</Name>
+                <DefaultValues />
+                <Caption>Sexo</Caption>
+                <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimTipomatriculaarancel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimTipomatriculaarancel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimDescuentodescuento, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimPeriodoperiodo</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimCarrerafacultad</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimDescuentodescuento</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimTipomatriculaarancel</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="periodo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Periodo].[periodo].[periodo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Facultad">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Facu].[Facultad]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Carrera">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Facu].[Carrera]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Sexo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="arancel">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tipomatricula].[arancel].[arancel]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fecha">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Registro].[Fecha].[Fecha]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Registro].[Año].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Registro].[Nombre Mes].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Dia">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Registro].[Dia].[Dia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fecha2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Finalizo].[Fecha].[Fecha]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Finalizo].[Año].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Dia2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Finalizo].[Dia].[Dia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fecha3">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Pago].[Fecha].[Fecha]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año3">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Pago].[Año].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes3">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Pago].[Nombre Mes].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Dia3">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Pago].[Dia].[Dia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="cant_registrados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_registrados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="cant_finalizados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_finalizados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="cant_pagados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_pagados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="cant_retirados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_retirados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="total_recaudado">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[total_recaudado]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

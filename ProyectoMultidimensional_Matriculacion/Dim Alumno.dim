@@ -1,0 +1,285 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="6bdfd080-ec8e-4e66-a001-911f037e9460" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Alumno</ID>
+  <Name>Dim Alumno</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1832" scrolltop="-3150" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7567" y="13150" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_alumno" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3810" height="8386" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000e20e0000c2200000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Dim_alumno" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1832</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3150</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="7124b69c-e2b5-447a-840a-3c919891bb25">
+    <DataSourceViewID>vista_dw_sga</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="9594cde2-6a7e-4ffe-ae9a-1bc38533bbb7">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="c74dab80-8b6d-414b-ac23-7125b86f1e78">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <Usage>Key</Usage>
+      <EstimatedCount>85205</EstimatedCount>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d8cafe0d-488a-4c4e-b503-de6369a25e7b">
+          <DataType>Double</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="00882167-0b6a-4401-9e6d-1678915ff9ce">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="b60c2bb0-ab5c-444b-970c-fbdae4347ac2">
+          <AttributeID>Estudiante</AttributeID>
+          <Name>Estudiante</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9622934d-90de-41d5-ab6c-a271a12fdf2b">
+          <AttributeID>Sexo</AttributeID>
+          <Name>Sexo</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1d0aaee6-7d38-41ec-b9bb-6cbb82fdec3e">
+          <AttributeID>Nacionalidad</AttributeID>
+          <Name>Nacionalidad</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5f7e92f8-9163-4e92-ae7d-ff371029936e">
+          <AttributeID>Lugar Nacimiento</AttributeID>
+          <Name>Lugar Nacimiento</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="242954ce-8d8b-4fb8-a41f-d943c4d5df56">
+          <AttributeID>Provincia Nacimiento</AttributeID>
+          <Name>Provincia Nacimiento</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="547acc72-ca1f-45cc-b295-20846aa71ba9">
+          <AttributeID>Canton Nacimiento</AttributeID>
+          <Name>Canton Nacimiento</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="81053389-e446-419b-9cee-50fc00b9fc14">
+          <AttributeID>Provincia Domicilio</AttributeID>
+          <Name>Provincia Domicilio</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="755243a2-a94e-4cec-8b39-edbe1f230f51">
+          <AttributeID>Canton Domicilio</AttributeID>
+          <Name>Canton Domicilio</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="77e8ee36-49b4-48b9-be09-784822ee368c">
+          <AttributeID>Tipo Alumno</AttributeID>
+          <Name>Tipo Alumno</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fa92e426-8ab2-482d-a6fc-64c84c8f61d5">
+      <ID>Estudiante</ID>
+      <Name>Estudiante</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b601ce09-bc34-435a-b058-1b128244a756">
+          <DataType>WChar</DataType>
+          <DataSize>300</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7cd89d5a-a2bf-45be-9b78-a0a26e4c638e">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>estudiante</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="df534abf-1883-441a-a3da-385f8d87067e">
+      <ID>Sexo</ID>
+      <Name>Sexo</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6d9d850f-e85a-4845-8e0e-14507465daf6">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="154d71d7-45e3-41bb-87be-54708a446228">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>sexo</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1233ff03-232b-4ca2-9668-e9c396d1c835">
+      <ID>Nacionalidad</ID>
+      <Name>Nacionalidad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b3b8a00e-75ca-40fe-a1b0-eefef4572115">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="42279751-4017-407a-bb9d-d6584c7e7d98">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>nacionalidad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="42412482-ec3a-493c-9e93-6ffab6223767">
+      <ID>Lugar Nacimiento</ID>
+      <Name>Lugar Nacimiento</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f261f9ed-5451-4352-bb6e-0f4120e40960">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="78b210d8-24f5-4aef-af91-645e37d7ac74">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>lugar_nacimiento</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a4d0f7dc-7903-44b0-a14d-2ec70e211f63">
+      <ID>Provincia Nacimiento</ID>
+      <Name>Provincia Nacimiento</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="03c74d1b-59cc-4abd-9e28-c802e9d64455">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="10e342c1-d551-4945-8580-9fa92efe56bd">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>provincia_nacimiento</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3b58423c-7b10-4627-8f95-a33fc734e0a5">
+      <ID>Canton Nacimiento</ID>
+      <Name>Canton Nacimiento</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="45f1840a-3bc5-40e7-bab2-806a00047612">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="338459bc-7141-452a-9c67-0ca14aaee78f">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>canton_nacimiento</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c249d526-2e06-48f9-9452-bf19fda14ae6">
+      <ID>Provincia Domicilio</ID>
+      <Name>Provincia Domicilio</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="04274f61-16c2-4712-a9d2-864947149ab3">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e5d1b915-ab25-47e3-bb11-c8db6e3f397f">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>provincia_domicilio</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="eb924842-0775-4fdd-b930-6955c9d3bd8a">
+      <ID>Canton Domicilio</ID>
+      <Name>Canton Domicilio</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="362fd1b1-f2a1-4133-8dbc-bc039f4e08e5">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b910a1cc-4342-49e4-9856-aed9ca0b5395">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>canton_domicilio</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="25e62aa2-a33a-475b-987d-c3c16b6a775c">
+      <ID>Tipo Alumno</ID>
+      <Name>Tipo Alumno</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a372b461-b1d6-4d31-9034-15e00d023af4">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4d365e23-6f7d-48c4-91d1-488d6589ccbd">
+            <TableID>dbo_Dim_alumno</TableID>
+            <ColumnID>tipo_alumno</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

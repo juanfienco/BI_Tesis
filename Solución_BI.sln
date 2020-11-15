@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Exportar_datos_Postgres_a_SQLServer", "IS Base migración\Exportar_datos_Postgres_a_SQLServer.dtproj", "{48B7731A-7404-48E2-98A7-710577DA8DEE}"
+EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Matriculacion", "ProyectoMultidimensional_Matriculacion\ProyectoMultidimensional_Matriculacion.dwproj", "{AAF029CC-0349-4879-AFD1-CF2A12A3878C}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeMatriculacion", "ProyectoInformeMatriculacion\ProyectoInformeMatriculacion.rptproj", "{E96222DF-D2F5-498C-A021-19E706718BD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		DebugLocal|x86 = DebugLocal|x86
+		Development|x86 = Development|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Debug|x86.ActiveCfg = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Debug|x86.Build.0 = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.DebugLocal|x86.ActiveCfg = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.DebugLocal|x86.Build.0 = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Development|x86.ActiveCfg = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Development|x86.Build.0 = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Release|x86.ActiveCfg = Development
+		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Release|x86.Build.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Debug|x86.ActiveCfg = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Debug|x86.Build.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Debug|x86.Deploy.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.DebugLocal|x86.ActiveCfg = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.DebugLocal|x86.Build.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.DebugLocal|x86.Deploy.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Development|x86.ActiveCfg = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Development|x86.Build.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Development|x86.Deploy.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Release|x86.ActiveCfg = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Release|x86.Build.0 = Development
+		{AAF029CC-0349-4879-AFD1-CF2A12A3878C}.Release|x86.Deploy.0 = Development
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Debug|x86.ActiveCfg = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Debug|x86.Build.0 = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Debug|x86.Deploy.0 = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.DebugLocal|x86.Build.0 = DebugLocal
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Development|x86.ActiveCfg = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Development|x86.Build.0 = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Development|x86.Deploy.0 = Debug
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Release|x86.ActiveCfg = Release
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Release|x86.Build.0 = Release
+		{E96222DF-D2F5-498C-A021-19E706718BD1}.Release|x86.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {531B0E5F-0EB7-44CC-9896-738C80422829}
+	EndGlobalSection
+EndGlobal
