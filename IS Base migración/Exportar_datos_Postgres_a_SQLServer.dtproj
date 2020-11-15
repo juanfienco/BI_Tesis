@@ -12,11 +12,11 @@
   <DataSourceViews />
   <DeploymentModelSpecificContent>
     <Manifest>
-      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+      <SSIS:Project SSIS:ProtectionLevel="DontSaveSensitive" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{6ce66052-57e3-4d45-ac37-43f95f3cc201}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">Exportar_datos_Postgres_a_SQLServer</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
@@ -26,7 +26,6 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC-UUAIQ4K</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAunZvYv+Uak2WiebuMupqKwAAAAACAAAAAAAQZgAAAAEAACAAAABlRARBO1s9XD8jOCkTesem1ABAuV4rM8puaxdI5qFp9wAAAAAOgAAAAAIAACAAAAAltJmVvZaWZYk4bmXaPM/Zhz6ZCzUBaV1EWkKRA+4JWJAAAABK7QXT+1Apw9wYYjaMZbNBMOo+akrsz6TBq5J+dYoc/FVRCQ37R8Xdkeyh0rIO/2/iLqzHJzQxMsnArhkbOfH/WkN1/ibpj92uzKGJIUvAU58L0dQr3tl8qRsGhsPzrb4peJHG+UvPR7S66Yvpd2yAWep4EVT0WwwQV6TotCOc3KYnW/yYJDRCCaz8La+7vE5AAAAAUAQOHN5C5khp9vTPv3TQikpHmSrTby8GrysUtpciE0kH6KmflmJYQFl+0wgvmqlqROcvnf+aEJ08Owdv9ZTt0A==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -64,7 +63,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=prueba;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-{189E1D30-5AE6-444C-BCAA-A57FB78F30A5}localhost.xolatnew_2.linked_server_login;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;User ID=sa;Initial Catalog=master;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-{189E1D30-5AE6-444C-BCAA-A57FB78F30A5}localhost.xolatnew_2.linked_server_login;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -94,7 +93,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">prueba</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">master</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -165,14 +164,14 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">471</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">476</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE82560C-D8F8-4771-B387-C804A51FE8AA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4AEAC13D-6ABA-4035-89D1-AEC08C383C1A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="CM.Administrador de conexiones con Excel.ConnectByProxy">
@@ -733,14 +732,14 @@
                 <SSIS:Property SSIS:Name="Name">ETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">152</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">172</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7E8595CF-9C81-4DCF-B8A7-18F69A806536}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{22A2876C-FECF-429F-B94B-EFD419CEED17}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="AnioInicial">

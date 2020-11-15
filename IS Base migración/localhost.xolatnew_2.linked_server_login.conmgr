@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=master;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-{189E1D30-5AE6-444C-BCAA-A57FB78F30A5}localhost.xolatnew_2.linked_server_login;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAunZvYv+Uak2WiebuMupqKwAAAAACAAAAAAAQZgAAAAEAACAAAABegi0d2WBcndf1nKlyxkIguoqXojV2D2hzmoIhkJ5l/gAAAAAOgAAAAAIAACAAAAAcS/HNO5lo/hHnbScj/gRr2j+RzKsmLzydbQGQ49U8/IAAAADOYncCn0tsuCnxBa6363RADzfXviwqXreKBIGE7IQk8t5V5dLxSlnvERRa1rd8zNW9Hr7KEJ0XEP1CzRVWBWNoGQlXiUPBXl910zxXHFcRmHSgr4dxxd6H8gI/oWrhv1DB9E4ZSv9RYeHhRGieLhHswXnRX/2rGoI6KjGZ/d8JfUAAAAAHPFFdS8iOvHGlpYB3timj5BmEy26E2y2iVBRKFyxILuyJaiJV2R36+OzM9q+1EiKHZtQbtX1h37/5i5BvvLYZ</DTS:Password>
+        Sensitive="1"></DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
