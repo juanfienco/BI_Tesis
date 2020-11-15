@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="172"
-  DTS:VersionGUID="{22A2876C-FECF-429F-B94B-EFD419CEED17}">
+  DTS:VersionBuild="176"
+  DTS:VersionGUID="{E62400B7-EE35-467B-BD44-5376A153E1E4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,7 +24,11 @@
       DTS:ObjectName="LocalHost.bd_migracion_sga.sga_login">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=bd_migracion_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;" />
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=bd_migracion_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -34,7 +38,11 @@
       DTS:ObjectName="LocalHost.DW_sga.sa">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=DW_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;" />
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=DW_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -862,55 +870,6 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[estudiante]"
                       lineageId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[sexo_completo]"
-                      cachedDataType="wstr"
-                      cachedLength="9"
-                      cachedName="sexo_completo"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
-                      lineageId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de columna derivada].Columns[sexo_completo]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[tipo_alumno]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="tipo_alumno"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de nacionalidad2]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de nacionalidad2"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de nacionalidad2]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de provincia_nacimiento2]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de provincia_nacimiento2"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento2]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de canton_nacimiento2]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de canton_nacimiento2"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento2]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de provincia_domicilio2]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de provincia_domicilio2"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio2]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de domicilio_canton2]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de domicilio_canton2"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de domicilio_canton2]" />
-                    <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de lugar_nacimiento2]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -941,40 +900,10 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="50"
                       name="lugar_nacimiento" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[genero]"
                       dataType="wstr"
                       length="20"
-                      name="sexo" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
-                      dataType="wstr"
-                      length="50"
-                      name="nacionalidad" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
-                      dataType="wstr"
-                      length="50"
-                      name="provincia_nacimiento" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
-                      dataType="wstr"
-                      length="50"
-                      name="canton_nacimiento" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
-                      dataType="wstr"
-                      length="50"
-                      name="provincia_domicilio" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
-                      dataType="wstr"
-                      length="50"
-                      name="canton_domicilio" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      dataType="wstr"
-                      length="50"
-                      name="tipo_alumno" />
+                      name="genero" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3531,11 +3460,11 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               </outputs>
             </component>
             <component
-              refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula"
+              refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Destino de OLE DB"
-              name="dim_tipo_matricula"
+              name="Dim_tipomatricula"
               usesDispositions="true"
               version="4">
               <properties>
@@ -3546,7 +3475,7 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[Dim_tipomatricula]</property>
+                  name="OpenRowset">[Dim_tipomatricula]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -3588,7 +3517,7 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               </properties>
               <connections>
                 <connection
-                  refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Connections[OleDbConnection]"
+                  refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -3596,62 +3525,58 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               </connections>
               <inputs>
                 <input
-                  refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB]"
+                  refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].Columns[idtipoarancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[idtipoarancel]"
                       cachedDataType="i4"
                       cachedName="idtipoarancel"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
                       lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].Columns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[descripcion_arancel]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="descripcion_arancel"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
                       lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
                       dataType="i4"
                       name="idtipoarancel" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
                       dataType="wstr"
                       length="100"
                       name="descripcion_arancel" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
-                      dataType="i4"
-                      name="id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Outputs[Salida de error de destino de OLE DB]"
+                  refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Outputs[Salida de error de destino de OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB]">
+                  synchronousInputId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3663,7 +3588,7 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
           <paths>
             <path
               refId="Package\Cargar Dim_Tipomatricula.Paths[Salida de origen de OLE DB]"
-              endId="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula.Inputs[Entrada de destino de OLE DB]"
+              endId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -4507,38 +4432,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_carrera]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_carrera]" />
                     <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[devuelto]"
-                      cachedDataType="numeric"
-                      cachedName="devuelto"
-                      cachedPrecision="7"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[devuelto]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[devuelto]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[fechapago]"
-                      cachedDataType="dbDate"
-                      cachedName="fechapago"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_pago]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[fechapago]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[max_fecha_reg]"
-                      cachedDataType="dbDate"
-                      cachedName="max_fecha_reg"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_registro]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[max_fecha_reg]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[finalizo]"
-                      cachedDataType="dbDate"
-                      cachedName="finalizo"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_finalizo]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[finalizo]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tipomatricula]"
-                      cachedDataType="i4"
-                      cachedName="id_tipomatricula"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tipomatricula]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tipomatricula]" />
-                    <inputColumn
                       refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[valor_pagado_antes]"
                       cachedDataType="numeric"
                       cachedName="valor_pagado_antes"
@@ -4554,42 +4447,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       cachedName="retirado"
                       externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[retirado]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[retirado]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="Copia de tipo"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_matricula]"
-                      lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo_alumno_matricula]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Copia de tipo_alumno_matricula"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno_matricula]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_registro]"
-                      cachedDataType="numeric"
-                      cachedName="id_tiempo_registro"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_registro]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_registro]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_finalizado]"
-                      cachedDataType="numeric"
-                      cachedName="id_tiempo_finalizado"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_finalizo]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_finalizado]" />
-                    <inputColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_pagado]"
-                      cachedDataType="numeric"
-                      cachedName="id_tiempo_pagado"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_pago]"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_pagado]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4645,56 +4502,31 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[retirado]"
-                      dataType="i4"
-                      name="retirado" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tipomatricula]"
-                      dataType="i4"
-                      name="id_tipomatricula" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_registro]"
-                      dataType="dbDate"
-                      name="fecha_registro" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_finalizo]"
-                      dataType="dbDate"
-                      name="fecha_finalizo" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_pago]"
-                      dataType="dbDate"
-                      name="fecha_pago" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="tipo_alumno" />
+                      length="5"
+                      name="retirado" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_matricula]"
-                      dataType="wstr"
-                      length="200"
-                      name="tipo_matricula" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[devuelto]"
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo]"
                       dataType="numeric"
-                      name="devuelto"
+                      name="id_tiempo"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_nuevo_calculado]"
+                      dataType="numeric"
+                      name="valor_nuevo_calculado"
                       precision="7"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_registro]"
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_fin_banco]"
                       dataType="numeric"
-                      name="id_tiempo_registro"
-                      precision="19" />
+                      name="valor_fin_banco"
+                      precision="7"
+                      scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_finalizo]"
-                      dataType="numeric"
-                      name="id_tiempo_finalizo"
-                      precision="19" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_pago]"
-                      dataType="numeric"
-                      name="id_tiempo_pago"
-                      precision="19" />
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[porcentaje_creditos]"
+                      dataType="r8"
+                      name="porcentaje_creditos" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5314,7 +5146,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_alumno">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\Cargar Dim_alumno\Dim_alumno"
@@ -5378,9 +5210,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5402,9 +5232,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5426,9 +5254,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5450,9 +5276,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5474,9 +5298,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5498,9 +5320,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5522,9 +5342,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5546,9 +5364,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5570,9 +5386,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5594,9 +5408,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5927,10 +5739,10 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_Tipomatricula">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="169,42"
-          Id="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula"
+          Size="164,42"
+          Id="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula"
           TopLeft="174,162" />
         <NodeLayout
           Size="179,42"
@@ -5938,7 +5750,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           TopLeft="166,63" />
         <EdgeLayout
           Id="Package\Cargar Dim_Tipomatricula.Paths[Salida de origen de OLE DB]"
-          TopLeft="257,105">
+          TopLeft="255.75,105">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5955,9 +5767,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5972,7 +5782,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_Tipomatricula\dim_tipo_matricula">
+    design-time-name="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5990,6 +5800,10 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="166,42"
+          Id="Package\Cargar Matriculacion\Fact_Matriculacion"
+          TopLeft="291,245" />
+        <NodeLayout
           Size="213,42"
           Id="Package\Cargar Matriculacion\Cargar Hechos Matriculacion"
           TopLeft="272,52" />
@@ -5997,10 +5811,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Size="175,42"
           Id="Package\Cargar Matriculacion\Conversión de datos"
           TopLeft="289,149" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Cargar Matriculacion\Fact_Matriculacion"
-          TopLeft="291,245" />
         <EdgeLayout
           Id="Package\Cargar Matriculacion.Paths[Salida de origen de OLE DB]"
           TopLeft="377.5,94">
