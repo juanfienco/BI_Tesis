@@ -12,40 +12,10 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="176"
-  DTS:VersionGUID="{E62400B7-EE35-467B-BD44-5376A153E1E4}">
+  DTS:VersionBuild="183"
+  DTS:VersionGUID="{754FD433-216C-41A4-9F5D-1AFA6BADA2C4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-      DTS:ObjectName="LocalHost.bd_migracion_sga.sga_login">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=bd_migracion_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}"
-      DTS:ObjectName="LocalHost.DW_sga.sa">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=DW_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -303,8 +273,8 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_alumno\cargar dat_alumno.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -842,8 +812,8 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_alumno\Dim_alumno.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1558,8 +1528,8 @@ where idestructura &gt;= 2200000045 and idestructura &lt;= 2200000080</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Carrera\Cargar dim_carrera.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1895,8 +1865,8 @@ where idestructura &gt;= 2200000045 and idestructura &lt;= 2200000080</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Carrera\Dim_carrera.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2076,8 +2046,8 @@ order by 1</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_descuentos\Cargar descuento.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2193,8 +2163,8 @@ order by 1</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_descuentos\Dim_descuento.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2335,8 +2305,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_periodo\cargar_periodos_academicos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2620,8 +2590,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_periodo\Dim_periodo.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2785,8 +2755,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_tiempo\Cargar tiempo.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3121,8 +3091,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_tiempo\Dim_tiempo.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3383,8 +3353,8 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3518,8 +3488,8 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3724,8 +3694,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
               <connections>
                 <connection
                   refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -4358,8 +4328,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
               <connections>
                 <connection
                   refId="Package\Cargar Matriculacion\Fact_Matriculacion.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -5148,6 +5118,10 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="172,42"
+          Id="Package\Cargar Dim_alumno\lugar de nacimiento"
+          TopLeft="477,106.666666666667" />
+        <NodeLayout
           Size="138,42"
           Id="Package\Cargar Dim_alumno\Dim_alumno"
           TopLeft="281.666666666667,429" />
@@ -5160,125 +5134,33 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Id="Package\Cargar Dim_alumno\canton nacimiento"
           TopLeft="27,181" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Cargar Dim_alumno\nacionalidad"
-          TopLeft="495,181" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Cargar Dim_alumno\genero descripcion completa"
-          TopLeft="30,107" />
+          Size="166,42"
+          Id="Package\Cargar Dim_alumno\provincia domicilio"
+          TopLeft="32,265" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dim_alumno\nombres completos"
           TopLeft="277,108" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Cargar Dim_alumno\provincia domicilio"
-          TopLeft="32,265" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Cargar Dim_alumno\cargar dat_alumno"
-          TopLeft="48,21" />
+          Size="138,42"
+          Id="Package\Cargar Dim_alumno\nacionalidad"
+          TopLeft="495,181" />
         <NodeLayout
           Size="176,42"
           Id="Package\Cargar Dim_alumno\provincia nacimiento"
           TopLeft="267,264" />
         <NodeLayout
+          Size="214,42"
+          Id="Package\Cargar Dim_alumno\genero descripcion completa"
+          TopLeft="30,107" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Cargar Dim_alumno\cargar dat_alumno"
+          TopLeft="48,21" />
+        <NodeLayout
           Size="175,42"
           Id="Package\Cargar Dim_alumno\Conversión de datos"
           TopLeft="265,338" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Cargar Dim_alumno\lugar de nacimiento"
-          TopLeft="477,106.666666666667" />
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada4]"
-          TopLeft="282,201">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-90,0"
-              Start="0,0"
-              End="-82.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-82.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada3]"
-          TopLeft="495,201">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-58,0"
-              Start="0,0"
-              End="-50.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-50.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada2]"
-          TopLeft="563.5,148.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.333333333333"
-              Start="0,0"
-              End="0,24.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada1]"
-          TopLeft="448,128.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29,0"
-              Start="0,0"
-              End="21.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="21.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada]"
           TopLeft="244,128.5">
@@ -5403,6 +5285,94 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada4]"
+          TopLeft="282,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90,0"
+              Start="0,0"
+              End="-82.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-82.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada3]"
+          TopLeft="495,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-58,0"
+              Start="0,0"
+              End="-50.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-50.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada2]"
+          TopLeft="563.5,148.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.333333333333"
+              Start="0,0"
+              End="0,24.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada1]"
+          TopLeft="448,128.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29,0"
+              Start="0,0"
+              End="21.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
