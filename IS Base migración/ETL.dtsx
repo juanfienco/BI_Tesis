@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="189"
-  DTS:VersionGUID="{7C10D832-AE3D-4936-8709-7BA02E1DB8C6}">
+  DTS:VersionBuild="192"
+  DTS:VersionGUID="{1650E84E-BB87-429A-9747-53876E19F287}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -3804,8 +3804,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[devuelto]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[devuelto]"
                       name="devuelto"
-                      precision="7"
-                      scale="2"
+                      precision="28"
+                      scale="6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_periodo]"
@@ -3962,8 +3962,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[devuelto]"
                       dataType="numeric"
                       name="devuelto"
-                      precision="7"
-                      scale="2" />
+                      precision="28"
+                      scale="6" />
                     <externalMetadataColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[id_periodo]"
                       dataType="numeric"
@@ -4137,8 +4137,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       dataType="numeric"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[devuelto]"
                       name="devuelto"
-                      precision="7"
-                      scale="2" />
+                      precision="28"
+                      scale="6" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[retirado]"
                       codePage="1252"
@@ -4201,10 +4201,11 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      length="200"
+                      length="100"
                       lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo]"
                       name="Copia de tipo"
                       truncationRowDisposition="FailComponent">
@@ -4222,11 +4223,10 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno_matricula]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      length="50"
+                      length="200"
                       lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno_matricula]"
                       name="Copia de tipo_alumno_matricula"
                       truncationRowDisposition="FailComponent">
@@ -4417,6 +4417,74 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       cachedName="retirado"
                       externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[retirado]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[retirado]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_registro]"
+                      cachedDataType="numeric"
+                      cachedName="id_tiempo_registro"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_registro]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_registro]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_finalizado]"
+                      cachedDataType="numeric"
+                      cachedName="id_tiempo_finalizado"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_finalizo]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_finalizado]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tiempo_pagado]"
+                      cachedDataType="numeric"
+                      cachedName="id_tiempo_pagado"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_pago]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_pagado]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[id_tipomatricula]"
+                      cachedDataType="i4"
+                      cachedName="id_tipomatricula"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tipomatricula]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tipomatricula]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[max_fecha_reg]"
+                      cachedDataType="dbDate"
+                      cachedName="max_fecha_reg"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_registro]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[max_fecha_reg]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Copia de tipo"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo_alumno_matricula]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Copia de tipo_alumno_matricula"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_matricula]"
+                      lineageId="Package\Cargar Matriculacion\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno_matricula]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[devuelto]"
+                      cachedDataType="numeric"
+                      cachedName="devuelto"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[devuelto]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[devuelto]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[fechapago]"
+                      cachedDataType="dbDate"
+                      cachedName="fechapago"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_pago]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[fechapago]" />
+                    <inputColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].Columns[finalizo]"
+                      cachedDataType="dbDate"
+                      cachedName="finalizo"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_finalizo]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[finalizo]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4472,31 +4540,56 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[retirado]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
+                      dataType="i4"
                       name="retirado" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo]"
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_registro]"
                       dataType="numeric"
-                      name="id_tiempo"
+                      name="id_tiempo_registro"
                       precision="19" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_nuevo_calculado]"
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_finalizo]"
                       dataType="numeric"
-                      name="valor_nuevo_calculado"
+                      name="id_tiempo_finalizo"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tiempo_pago]"
+                      dataType="numeric"
+                      name="id_tiempo_pago"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_tipomatricula]"
+                      dataType="i4"
+                      name="id_tipomatricula" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_registro]"
+                      dataType="dbDate"
+                      name="fecha_registro" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_finalizo]"
+                      dataType="dbDate"
+                      name="fecha_finalizo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_pago]"
+                      dataType="dbDate"
+                      name="fecha_pago" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="tipo_alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_matricula]"
+                      dataType="wstr"
+                      length="200"
+                      name="tipo_matricula" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[devuelto]"
+                      dataType="numeric"
+                      name="devuelto"
                       precision="7"
                       scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[valor_fin_banco]"
-                      dataType="numeric"
-                      name="valor_fin_banco"
-                      precision="7"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Matriculacion\Fact_Matriculacion.Inputs[Entrada de destino de OLE DB].ExternalColumns[porcentaje_creditos]"
-                      dataType="r8"
-                      name="porcentaje_creditos" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
