@@ -5,10 +5,6 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=.;User ID=sga_login;Initial Catalog=bd_migracion_sga;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;Initial File Name=;Server SPN=;Authentication=;Access Token=;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1"></DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectionString="Data Source=.;Initial Catalog=bd_migracion_sga;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{5970592B-754C-4570-95AA-09ACD1C6A9E4}LocalHost.bd_migracion_sga.sga_login;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
