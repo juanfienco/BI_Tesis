@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="192"
-  DTS:VersionGUID="{1650E84E-BB87-429A-9747-53876E19F287}">
+  DTS:VersionBuild="224"
+  DTS:VersionGUID="{8AF41DE3-0A80-4926-BDC6-87E2D11035B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -589,6 +589,12 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedLength="4000"
                       cachedName="provincia_nacimiento2"
                       lineageId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de columna derivada].Columns[provincia_nacimiento2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="tipo_alumno"
+                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -726,6 +732,27 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                           name="FastParse">false</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
+                      name="Copia de tipo_alumno"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -812,8 +839,8 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_alumno\Dim_alumno.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -846,6 +873,55 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedName="Copia de lugar_nacimiento2"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[lugar_nacimiento]"
                       lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de lugar_nacimiento2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="sexo"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
+                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de nacionalidad2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de nacionalidad2"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de nacionalidad2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[provincia_nacimiento2]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="provincia_nacimiento2"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de columna derivada].Columns[provincia_nacimiento2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de canton_nacimiento2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de canton_nacimiento2"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de provincia_domicilio2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de provincia_domicilio2"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio2]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Copia de tipo_alumno"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de domicilio_canton2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de domicilio_canton2"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de domicilio_canton2]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -870,10 +946,40 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="50"
                       name="lugar_nacimiento" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[genero]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
                       dataType="wstr"
                       length="20"
-                      name="genero" />
+                      name="sexo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="nacionalidad" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="provincia_nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
+                      dataType="wstr"
+                      length="50"
+                      name="canton_nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
+                      dataType="wstr"
+                      length="50"
+                      name="provincia_domicilio" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
+                      dataType="wstr"
+                      length="50"
+                      name="canton_domicilio" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo_alumno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1865,8 +1971,8 @@ where idestructura &gt;= 2200000045 and idestructura &lt;= 2200000080</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Carrera\Dim_carrera.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2120,7 +2226,7 @@ order by 1</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[Dim_descuento]</property>
+                  name="OpenRowset">[dbo].[Dim_descuento]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2163,8 +2269,8 @@ order by 1</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_descuentos\Dim_descuento.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2590,8 +2696,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_periodo\Dim_periodo.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2755,8 +2861,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_tiempo\Cargar tiempo.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3070,7 +3176,7 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
                   dataType="System.Int32"
                   description="Especifica el modo utilizado para obtener acceso a la base de datos."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
@@ -3091,8 +3197,8 @@ group by  pg.idperiodogeneral, pg.descripcion</property>
               <connections>
                 <connection
                   refId="Package\Cargar Dim_tiempo\Dim_tiempo.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3445,7 +3551,7 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[Dim_tipomatricula]</property>
+                  name="OpenRowset">[dbo].[Dim_tipomatricula]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -3467,7 +3573,7 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                   dataType="System.Int32"
                   description="Especifica el modo utilizado para obtener acceso a la base de datos."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
@@ -3488,8 +3594,8 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
               <connections>
                 <connection
                   refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3526,6 +3632,10 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                       dataType="wstr"
                       length="100"
                       name="descripcion_arancel" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4285,7 +4395,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[Fact_Matriculacion]</property>
+                  name="OpenRowset">[dbo].[Fact_Matriculacion]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -4328,8 +4438,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
               <connections>
                 <connection
                   refId="Package\Cargar Matriculacion\Fact_Matriculacion.Connections[OleDbConnection]"
-                  connectionManagerID="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.sa]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -4638,7 +4748,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       DTS:refId="Package\Crear y limpiar DW"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{B2DB2B5F-1AB6-4BF8-99FC-EE8CADAB7CC1}"
+      DTS:DTSID="{bb2a7b03-f85b-4536-bcec-ecd8bdc5cda7}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Crear y limpiar DW"
@@ -4647,8 +4757,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{2fe34c07-e2ff-4946-aea6-f9fa5dcde4eb}"
-          SQLTask:SqlStatementSource="--USE [DW_sga]&#xA;--GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_alumno') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_alumno];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_alumno](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;&#x9;[estudiante] [nvarchar](300) NOT NULL,&#xA;&#x9;&#x9;[sexo] [nvarchar](20) NOT NULL,&#xA;&#x9;&#x9;[nacionalidad] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[canton_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[provincia_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[canton_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[tipo_alumno] [nvarchar](50) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_arancel') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_arancel];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_arancel](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idarancel] [numeric](19, 0) NOT NULL,&#xA;&#x9;&#x9;[descripcion_tipoarancel] [nvarchar](250) NOT NULL,&#xA;&#x9;&#x9;[descripcion_valorcalculado] [nvarchar](6) NOT NULL,&#xA;&#x9;&#x9;[porcentaje_arancel] [nvarchar](6) NOT NULL,&#xA;&#x9;&#x9;[periodo_grupo] [nvarchar](250) NOT NULL,&#xA;&#x9;&#x9;[campo_detallado] [nvarchar](250) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_arancel] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_carrera') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_carrera];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_carrera](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idcarrera] [numeric](19, 0) NOT NULL,&#xA;&#x9;&#x9;[descripcion_carrera] [nvarchar](250) NOT NULL,&#xA;&#x9;&#x9;[descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA;&#x9;&#x9;[descripcion_facultad] [nvarchar](250) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_descuento') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_descuento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_descuento](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[descuento] [nvarchar](100) NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_descuento] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_materia') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_materia];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_materia](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idmateria] [numeric](19, 0) NOT NULL,&#xA;&#x9;&#x9;[materia] [nvarchar](250) NOT NULL,&#xA;&#x9;&#x9;[tipo_materia] [nvarchar](80) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_materia] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_periodo') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_periodo];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_periodo](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA;&#x9;&#x9;[periodo_descripcion] [nvarchar](50) NOT NULL,&#xA;&#x9;&#x9;[periodos_individuales] [nvarchar](200) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_tiempo') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_tiempo];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_tiempo](&#xA;&#x9;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[Fecha] [date] NOT NULL,&#xA;&#x9;&#x9;[Año] [smallint] NOT NULL,&#xA;&#x9;&#x9;[Mes] [tinyint] NOT NULL,&#xA;&#x9;&#x9;[Dia] [tinyint] NOT NULL,&#xA;&#x9;&#x9;[DiaDelAño] [smallint] NOT NULL,&#xA;&#x9;&#x9;[SemanaDelAño] [tinyint] NOT NULL,&#xA;&#x9;&#x9;[Trimestre] [tinyint] NOT NULL,&#xA;&#x9;&#x9;[Semestre] [tinyint] NOT NULL,&#xA;&#x9;&#x9;[NombreMes] [varchar](10) NOT NULL,&#xA;&#x9;&#x9;[NombreMesCorto] [varchar](3) NOT NULL,&#xA;&#x9;&#x9;[NombreDia] [varchar](10) NOT NULL,&#xA;&#x9;&#x9;[NombreDiaCorto] [varchar](3) NOT NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Dim_tipomatricula') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Dim_tipomatricula];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Dim_tipomatricula](&#xA;&#x9;&#x9;[id] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idtipoarancel] [int] NULL,&#xA;&#x9;&#x9;[descripcion_arancel] [nvarchar](100) NULL,&#xA;&#x9; CONSTRAINT [PK_Dim_tipomatricula] PRIMARY KEY CLUSTERED &#xA;&#x9;(&#xA;&#x9;&#x9;[id] ASC&#xA;&#x9;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'Fact_Matriculacion') and type =(N'U'))&#xA;&#x9;delete from [dbo].[Fact_Matriculacion];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[Fact_Matriculacion](&#xA;&#x9;&#x9;[id_tiempo_registro] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_tiempo_finalizo] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_tiempo_pago] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_periodo] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_alumno] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_carrera] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[id_tipomatricula] [int] NULL,&#xA;&#x9;&#x9;[id_descuento] [numeric](19, 0) NULL,&#xA;&#x9;&#x9;[valor_total_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[descuento_valor] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[valor_neto_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[valor_pagado] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[valor_pagado_antes] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[fecha_registro] [date] NULL,&#xA;&#x9;&#x9;[fecha_finalizo] [date] NULL,&#xA;&#x9;&#x9;[fecha_pago] [date] NULL,&#xA;&#x9;&#x9;[tipo_alumno] [varchar](100) NULL,&#xA;&#x9;&#x9;[tipo_matricula] [nvarchar](200) NULL,&#xA;&#x9;&#x9;[devuelto] [numeric](7, 2) NULL,&#xA;&#x9;&#x9;[retirado] [int] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno] FOREIGN KEY([id_alumno])&#xA;&#x9;REFERENCES [dbo].[Dim_alumno] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera] FOREIGN KEY([id_carrera])&#xA;&#x9;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento] FOREIGN KEY([id_descuento])&#xA;&#x9;REFERENCES [dbo].[Dim_descuento] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo] FOREIGN KEY([id_periodo])&#xA;&#x9;REFERENCES [dbo].[Dim_periodo] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo] FOREIGN KEY([id_tiempo_registro])&#xA;&#x9;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1] FOREIGN KEY([id_tiempo_finalizo])&#xA;&#x9;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2] FOREIGN KEY([id_tiempo_pago])&#xA;&#x9;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2]&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula] FOREIGN KEY([id_tipomatricula])&#xA;&#x9;REFERENCES [dbo].[Dim_tipomatricula] ([id])&#xA;&#x9;GO&#xA;&#xA;&#x9;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula]&#xA;&#x9;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
+          SQLTask:SqlStatementSource="delete from Fact_matriculacion;&#xA;delete from Dim_alumno;&#xA;delete from Dim_periodo;&#xA;delete from Dim_carrera;&#xA;delete from Dim_descuento;&#xA;delete from Dim_materia;&#xA;delete from Dim_arancel;&#xA;delete from Dim_tiempo;&#xA;delete from Dim_tipomatricula;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -4656,7 +4766,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
-      DTS:DTSID="{0B985FDD-E93A-4619-B57D-A631C59AAB59}"
+      DTS:DTSID="{0CAC3E1F-5CEC-4CBD-9C10-D78F892ADCB3}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
@@ -4664,19 +4774,19 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B72F32DA-6DA5-48E4-848C-A5409E3E394B}"
+      DTS:DTSID="{A41D702C-5C14-42D5-A13B-AEA22B9C4CF2}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
-      DTS:To="Package\Cargar Dim_tiempo" />
+      DTS:To="Package\Cargar Dim_periodo" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 12]"
+      DTS:refId="Package.PrecedenceConstraints[Restricción 10]"
       DTS:CreationName=""
-      DTS:DTSID="{97E41F63-8F85-4FD6-BFB7-979F09B971A5}"
+      DTS:DTSID="{988E30AC-517A-4732-9FFE-34294CD63C46}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 12"
-      DTS:To="Package\Cargar Dim_descuentos" />
+      DTS:ObjectName="Restricción 10"
+      DTS:To="Package\Cargar Dim_Tipomatricula" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 13]"
       DTS:CreationName=""
@@ -4688,27 +4798,27 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
-      DTS:DTSID="{6390A345-2B76-4094-9CD9-B895889D3157}"
+      DTS:DTSID="{969D2558-278B-49FB-9E46-4CB854A4DFFC}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
-      DTS:To="Package\Cargar Dim_periodo" />
+      DTS:To="Package\Cargar Dim_Carrera" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
       DTS:CreationName=""
-      DTS:DTSID="{61B5F33B-FEAC-4D26-A802-4EFCA01B65B5}"
+      DTS:DTSID="{4C366B6D-ABC6-47CA-A397-FB143E5FA8FF}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
-      DTS:To="Package\Cargar Dim_Carrera" />
+      DTS:To="Package\Cargar Dim_descuentos" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
       DTS:CreationName=""
-      DTS:DTSID="{B12F2068-4D97-4235-B075-0ACE575656F9}"
+      DTS:DTSID="{96908FED-8BAF-4A84-B53D-4FE5965A7D87}"
       DTS:From="Package\Crear y limpiar DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 4"
-      DTS:To="Package\Cargar Dim_Tipomatricula" />
+      DTS:To="Package\Cargar Dim_tiempo" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 5]"
       DTS:CreationName=""
@@ -4769,7 +4879,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_Carrera"
-          TopLeft="393,160" />
+          TopLeft="392,158" />
         <NodeLayout
           Size="191,42"
           Id="Package\Cargar Dim_descuentos"
@@ -4790,112 +4900,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Size="175,42"
           Id="Package\Cargar Matriculacion"
           TopLeft="516,311" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Crear y limpiar DW"
-          TopLeft="501,14" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="527.857142857143,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-422.357142857143,106"
-              Start="0,0"
-              End="-422.357142857143,98.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.680412371134" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.680412371134"
-                    Point2="0,25.680412371134"
-                    Point3="-4,25.680412371134" />
-                  <mssgle:LineSegment
-                    End="-418.357142857143,25.680412371134" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-418.357142857143,25.680412371134"
-                    Point2="-422.357142857143,25.680412371134"
-                    Point3="-422.357142857143,29.680412371134" />
-                  <mssgle:LineSegment
-                    End="-422.357142857143,98.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="619.285714285714,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="254.714285714286,103"
-              Start="0,0"
-              End="254.714285714286,95.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.2948717948718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.2948717948718"
-                    Point2="0,38.2948717948718"
-                    Point3="4,38.2948717948718" />
-                  <mssgle:LineSegment
-                    End="250.714285714286,38.2948717948718" />
-                  <mssgle:CubicBezierSegment
-                    Point1="250.714285714286,38.2948717948718"
-                    Point2="254.714285714286,38.2948717948718"
-                    Point3="254.714285714286,42.2948717948718" />
-                  <mssgle:LineSegment
-                    End="254.714285714286,95.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 12]"
-          TopLeft="596.428571428571,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.0714285714286,103"
-              Start="0,0"
-              End="83.0714285714286,95.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.7408759124088" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43.7408759124088"
-                    Point2="0,47.7408759124088"
-                    Point3="4,47.7408759124088" />
-                  <mssgle:LineSegment
-                    End="79.0714285714286,47.7408759124088" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.0714285714286,47.7408759124088"
-                    Point2="83.0714285714286,47.7408759124088"
-                    Point3="83.0714285714286,51.7408759124088" />
-                  <mssgle:LineSegment
-                    End="83.0714285714286,95.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 13]"
           TopLeft="679.5,201">
@@ -4922,108 +4926,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                     Point3="-64.0714285714286,63.0232150678931" />
                   <mssgle:LineSegment
                     End="-64.0714285714286,102.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="550.714285714286,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-263.214285714286,102"
-              Start="0,0"
-              End="-263.214285714286,94.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.9230769230769" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.9230769230769"
-                    Point2="0,37.9230769230769"
-                    Point3="-4,37.9230769230769" />
-                  <mssgle:LineSegment
-                    End="-259.214285714286,37.9230769230769" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-259.214285714286,37.9230769230769"
-                    Point2="-263.214285714286,37.9230769230769"
-                    Point3="-263.214285714286,41.9230769230769" />
-                  <mssgle:LineSegment
-                    End="-263.214285714286,94.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="573.571428571429,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-94.0714285714286,104"
-              Start="0,0"
-              End="-94.0714285714286,96.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.2043795620438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.2043795620438"
-                    Point2="0,48.2043795620438"
-                    Point3="-4,48.2043795620438" />
-                  <mssgle:LineSegment
-                    End="-90.0714285714286,48.2043795620438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-90.0714285714286,48.2043795620438"
-                    Point2="-94.0714285714286,48.2043795620438"
-                    Point3="-94.0714285714286,52.2043795620438" />
-                  <mssgle:LineSegment
-                    End="-94.0714285714286,96.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="642.142857142857,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="435.857142857143,106"
-              Start="0,0"
-              End="435.857142857143,98.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.680412371134" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.680412371134"
-                    Point2="0,25.680412371134"
-                    Point3="4,25.680412371134" />
-                  <mssgle:LineSegment
-                    End="431.857142857143,25.680412371134" />
-                  <mssgle:CubicBezierSegment
-                    Point1="431.857142857143,25.680412371134"
-                    Point2="435.857142857143,25.680412371134"
-                    Point3="435.857142857143,29.680412371134" />
-                  <mssgle:LineSegment
-                    End="435.857142857143,98.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5136,30 +5038,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 8]"
-          TopLeft="479.5,202">
+          TopLeft="478.5,200">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112.071428571429,109"
+              EndConnector="113.071428571429,111"
               Start="0,0"
-              End="112.071428571429,101.5">
+              End="113.071428571429,103.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.4866403854577" />
+                    End="0,55.5597897503285" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,54.4866403854577"
-                    Point2="0,58.4866403854577"
-                    Point3="4,58.4866403854577" />
+                    Point1="0,55.5597897503285"
+                    Point2="0,59.5597897503285"
+                    Point3="4,59.5597897503285" />
                   <mssgle:LineSegment
-                    End="108.071428571429,58.4866403854577" />
+                    End="109.071428571429,59.5597897503285" />
                   <mssgle:CubicBezierSegment
-                    Point1="108.071428571429,58.4866403854577"
-                    Point2="112.071428571429,58.4866403854577"
-                    Point3="112.071428571429,62.4866403854577" />
+                    Point1="109.071428571429,59.5597897503285"
+                    Point2="113.071428571429,59.5597897503285"
+                    Point3="113.071428571429,63.5597897503285" />
                   <mssgle:LineSegment
-                    End="112.071428571429,101.5" />
+                    End="113.071428571429,103.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5202,6 +5104,214 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Crear y limpiar DW"
+          TopLeft="532,22" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="558.857142857143,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-453.357142857143,98"
+              Start="0,0"
+              End="-453.357142857143,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7422680412371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7422680412371"
+                    Point2="0,23.7422680412371"
+                    Point3="-4,23.7422680412371" />
+                  <mssgle:LineSegment
+                    End="-449.357142857143,23.7422680412371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-449.357142857143,23.7422680412371"
+                    Point2="-453.357142857143,23.7422680412371"
+                    Point3="-453.357142857143,27.7422680412371" />
+                  <mssgle:LineSegment
+                    End="-453.357142857143,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="581.714285714286,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-294.214285714286,94"
+              Start="0,0"
+              End="-294.214285714286,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9487179487179" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9487179487179"
+                    Point2="0,34.9487179487179"
+                    Point3="-4,34.9487179487179" />
+                  <mssgle:LineSegment
+                    End="-290.214285714286,34.9487179487179" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-290.214285714286,34.9487179487179"
+                    Point2="-294.214285714286,34.9487179487179"
+                    Point3="-294.214285714286,38.9487179487179" />
+                  <mssgle:LineSegment
+                    End="-294.214285714286,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="604.571428571429,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-126.071428571429,94"
+              Start="0,0"
+              End="-126.071428571429,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5693430656934" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5693430656934"
+                    Point2="0,43.5693430656934"
+                    Point3="-4,43.5693430656934" />
+                  <mssgle:LineSegment
+                    End="-122.071428571429,43.5693430656934" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.071428571429,43.5693430656934"
+                    Point2="-126.071428571429,43.5693430656934"
+                    Point3="-126.071428571429,47.5693430656934" />
+                  <mssgle:LineSegment
+                    End="-126.071428571429,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="627.428571428571,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.0714285714286,95"
+              Start="0,0"
+              End="52.0714285714286,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.0328467153285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.0328467153285"
+                    Point2="0,44.0328467153285"
+                    Point3="4,44.0328467153285" />
+                  <mssgle:LineSegment
+                    End="48.0714285714286,44.0328467153285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.0714285714286,44.0328467153285"
+                    Point2="52.0714285714286,44.0328467153285"
+                    Point3="52.0714285714286,48.0328467153285" />
+                  <mssgle:LineSegment
+                    End="52.0714285714286,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="650.285714285714,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="223.714285714286,95"
+              Start="0,0"
+              End="223.714285714286,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.3205128205128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.3205128205128"
+                    Point2="0,35.3205128205128"
+                    Point3="4,35.3205128205128" />
+                  <mssgle:LineSegment
+                    End="219.714285714286,35.3205128205128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="219.714285714286,35.3205128205128"
+                    Point2="223.714285714286,35.3205128205128"
+                    Point3="223.714285714286,39.3205128205128" />
+                  <mssgle:LineSegment
+                    End="223.714285714286,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 10]"
+          TopLeft="673.142857142857,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="404.857142857143,98"
+              Start="0,0"
+              End="404.857142857143,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7422680412371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7422680412371"
+                    Point2="0,23.7422680412371"
+                    Point3="4,23.7422680412371" />
+                  <mssgle:LineSegment
+                    End="400.857142857143,23.7422680412371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="400.857142857143,23.7422680412371"
+                    Point2="404.857142857143,23.7422680412371"
+                    Point3="404.857142857143,27.7422680412371" />
+                  <mssgle:LineSegment
+                    End="404.857142857143,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5209,11 +5319,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_alumno">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Cargar Dim_alumno\lugar de nacimiento"
-          TopLeft="477,106.666666666667" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="138,42"
           Id="Package\Cargar Dim_alumno\Dim_alumno"
@@ -5227,177 +5333,37 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Id="Package\Cargar Dim_alumno\canton nacimiento"
           TopLeft="27,181" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Cargar Dim_alumno\provincia domicilio"
-          TopLeft="32,265" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Cargar Dim_alumno\nombres completos"
-          TopLeft="277,108" />
-        <NodeLayout
           Size="138,42"
           Id="Package\Cargar Dim_alumno\nacionalidad"
           TopLeft="495,181" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Cargar Dim_alumno\provincia nacimiento"
-          TopLeft="267,264" />
         <NodeLayout
           Size="214,42"
           Id="Package\Cargar Dim_alumno\genero descripcion completa"
           TopLeft="30,107" />
         <NodeLayout
+          Size="171,42"
+          Id="Package\Cargar Dim_alumno\nombres completos"
+          TopLeft="277,108" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Cargar Dim_alumno\provincia domicilio"
+          TopLeft="32,265" />
+        <NodeLayout
           Size="168,42"
           Id="Package\Cargar Dim_alumno\cargar dat_alumno"
           TopLeft="48,21" />
         <NodeLayout
+          Size="176,42"
+          Id="Package\Cargar Dim_alumno\provincia nacimiento"
+          TopLeft="267,264" />
+        <NodeLayout
           Size="175,42"
           Id="Package\Cargar Dim_alumno\Conversión de datos"
           TopLeft="265,338" />
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada]"
-          TopLeft="244,128.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33,0"
-              Start="0,0"
-              End="25.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="25.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="134.5,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de conversión de datos]"
-          TopLeft="351.583333333333,380">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada7]"
-          TopLeft="353.75,306">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada6]"
-          TopLeft="198,285.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,0"
-              Start="0,0"
-              End="61.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="61.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada5]"
-          TopLeft="112.25,223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Cargar Dim_alumno\lugar de nacimiento"
+          TopLeft="477,106.666666666667" />
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada4]"
           TopLeft="282,201">
@@ -5417,9 +5383,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5441,9 +5405,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5465,9 +5427,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5489,9 +5449,139 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada]"
+          TopLeft="244,128.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33,0"
+              Start="0,0"
+              End="25.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
+          TopLeft="134.5,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de conversión de datos]"
+          TopLeft="351.583333333333,380">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada7]"
+          TopLeft="353.75,306">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada6]"
+          TopLeft="198,285.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,0"
+              Start="0,0"
+              End="61.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada5]"
+          TopLeft="112.25,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5522,7 +5612,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_Carrera">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="137,42"
           Id="Package\Cargar Dim_Carrera\Dim_carrera"
@@ -5554,9 +5644,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5578,9 +5666,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5611,7 +5697,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_descuentos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Cargar Dim_descuentos\Dim_descuento"
@@ -5639,9 +5725,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5672,7 +5756,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_periodo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Dim_periodo\Conversión de datos"
@@ -5704,9 +5788,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5728,9 +5810,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5761,7 +5841,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="136,42"
           Id="Package\Cargar Dim_tiempo\Dim_tiempo"
@@ -5789,9 +5869,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5822,7 +5900,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     design-time-name="Package\Cargar Dim_Tipomatricula">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="164,42"
           Id="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula"
@@ -5850,9 +5928,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5897,28 +5973,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Id="Package\Cargar Matriculacion\Conversión de datos"
           TopLeft="289,149" />
         <EdgeLayout
-          Id="Package\Cargar Matriculacion.Paths[Salida de conversión de datos]"
-          TopLeft="375.25,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54"
-              Start="0,0"
-              End="0,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Cargar Matriculacion.Paths[Salida de origen de OLE DB]"
           TopLeft="377.5,94">
           <EdgeLayout.Curve>
@@ -5932,6 +5986,28 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculacion.Paths[Salida de conversión de datos]"
+          TopLeft="375.25,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
