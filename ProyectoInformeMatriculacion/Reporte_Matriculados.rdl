@@ -13,12 +13,6 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSourceCuboMatricula</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="[DimPeriodoperiodo]">
-            <Value>=Parameters!DimPeriodoperiodo.Value</Value>
-            <rd:UserDefined>true</rd:UserDefined>
-          </QueryParameter>
-        </QueryParameters>
         <CommandText> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( -{ [Dim Tipomatricula].[arancel].&amp;[92], [Dim Tipomatricula].[arancel].&amp;[93], [Dim Tipomatricula].[arancel].&amp;[94], [Dim Tipomatricula].[arancel].&amp;[99] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
@@ -1421,6 +1415,8 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -1780,6 +1776,8 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -2139,6 +2137,8 @@
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
