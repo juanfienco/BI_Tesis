@@ -145,6 +145,15 @@
                 <TextRuns>
                   <TextRun>
                     <Value>4. Reporte de descuentos realizados a estudiantes</Value>
+                    <ActionInfo>
+                      <Actions>
+                        <Action>
+                          <Drillthrough>
+                            <ReportName>Reporte_descuentos</ReportName>
+                          </Drillthrough>
+                        </Action>
+                      </Actions>
+                    </ActionInfo>
                     <Style />
                   </TextRun>
                 </TextRuns>
