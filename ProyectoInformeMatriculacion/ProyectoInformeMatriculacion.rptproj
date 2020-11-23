@@ -57,8 +57,8 @@
   <ItemGroup>
     <Report Include="Menu_Matriculación.rdl" />
     <Report Include="Report1.rdl" />
-    <Report Include="Report2.rdl" />
     <Report Include="Report3.rdl" />
+    <Report Include="Reporte_descuentos.rdl" />
     <Report Include="Reporte_Matriculados.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

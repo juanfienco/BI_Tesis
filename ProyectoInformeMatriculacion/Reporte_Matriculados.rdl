@@ -10,7 +10,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="DataSet_estudiantes_matriculados">
       <Query>
         <DataSourceName>DataSourceCuboMatricula</DataSourceName>
         <CommandText> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( -{ [Dim Tipomatricula].[arancel].&amp;[92], [Dim Tipomatricula].[arancel].&amp;[93], [Dim Tipomatricula].[arancel].&amp;[94], [Dim Tipomatricula].[arancel].&amp;[99] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
@@ -1370,7 +1370,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet1</DataSetName>
+            <DataSetName>DataSet_estudiantes_matriculados</DataSetName>
             <Top>2.35013in</Top>
             <Height>1.5in</Height>
             <Width>7.65716in</Width>
@@ -1726,7 +1726,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DataSet1</DataSetName>
+            <DataSetName>DataSet_estudiantes_matriculados</DataSetName>
             <Top>0.06944in</Top>
             <Left>2.75252in</Left>
             <Height>2in</Height>
@@ -2087,7 +2087,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DataSet1</DataSetName>
+            <DataSetName>DataSet_estudiantes_matriculados</DataSetName>
             <Top>0.06944in</Top>
             <Left>5.43396in</Left>
             <Height>2in</Height>
@@ -2136,7 +2136,9 @@
                         <Y>=Sum(Fields!cant_pagados.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style />
+                        <Style>
+                          <Format>0;(0)</Format>
+                        </Style>
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
@@ -2448,7 +2450,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DataSet1</DataSetName>
+            <DataSetName>DataSet_estudiantes_matriculados</DataSetName>
             <Top>0.06944in</Top>
             <Left>0.14458in</Left>
             <Height>2in</Height>
