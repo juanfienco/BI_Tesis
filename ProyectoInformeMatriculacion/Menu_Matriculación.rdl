@@ -60,7 +60,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>1. Reporte de estudiantes matriculados por periodo académico</Value>
+                    <Value>1. Reporte de estudiantes matriculados</Value>
                     <ActionInfo>
                       <Actions>
                         <Action>
@@ -77,10 +77,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>1.63724cm</Top>
+            <Top>2.27224cm</Top>
             <Left>7.59037cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.56547cm</Width>
+            <Width>8.32083cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -99,7 +99,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>4. Reporte de estudiantes pendiente de pagos</Value>
+                    <Value>2. Reporte de descuentos realizados a estudiantes</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -107,10 +107,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>4.50645cm</Top>
-            <Left>7.59038cm</Left>
+            <Top>3.22474cm</Top>
+            <Left>7.59037cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.56546cm</Width>
+            <Width>8.32083cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -144,7 +144,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>2. Reporte de descuentos realizados en Matriculas</Value>
+                    <Value>4. Reporte de descuentos realizados a estudiantes</Value>
                     <ActionInfo>
                       <Actions>
                         <Action>
@@ -161,10 +161,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.61648cm</Top>
-            <Left>7.59038cm</Left>
+            <Top>5.13002cm</Top>
+            <Left>7.59037cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.56546cm</Width>
+            <Width>8.32083cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -183,16 +183,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>3. Reporte de valores recaudados por matricula por periodo académico</Value>
-                    <ActionInfo>
-                      <Actions>
-                        <Action>
-                          <Drillthrough>
-                            <ReportName>Reporte_matriculados_recaudado_valores</ReportName>
-                          </Drillthrough>
-                        </Action>
-                      </Actions>
-                    </ActionInfo>
+                    <Value>3. Reporte de estudiantes matriculados</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -200,10 +191,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.54252cm</Top>
+            <Top>4.17752cm</Top>
             <Left>7.59037cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.56547cm</Width>
+            <Width>8.32083cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -253,9 +244,9 @@
             </Style>
           </Textbox>
           <Line Name="Line2">
-            <Top>1.31974cm</Top>
+            <Top>1.64951cm</Top>
             <Left>7.24641cm</Left>
-            <Height>6.5884cm</Height>
+            <Height>4.51238cm</Height>
             <Width>0cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
@@ -264,71 +255,11 @@
               </Border>
             </Style>
           </Line>
-          <Textbox Name="Textbox6">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>5. Reporte de </Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>5.50897cm</Top>
-            <Left>7.59037cm</Left>
-            <Height>0.6cm</Height>
-            <Width>11.56546cm</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>5. Reporte de </Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>6.60562cm</Top>
-            <Left>7.59038cm</Left>
-            <Height>0.6cm</Height>
-            <Width>11.56546cm</Width>
-            <ZIndex>10</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
-        <Height>3.375in</Height>
+        <Height>2.61458in</Height>
         <Style />
       </Body>
-      <Width>7.70834in</Width>
+      <Width>6.44792in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
