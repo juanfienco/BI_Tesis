@@ -8,52 +8,56 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>cubo_matriculacion.cube</Name>
-      <FullPath>cubo_matriculacion.cube</FullPath>
+      <Name>cubo_notas.cube</Name>
+      <FullPath>cubo_notas.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>cubo_matriculacion.partitions</Name>
-          <FullPath>cubo_matriculacion.partitions</FullPath>
+          <Name>cubo_notas.partitions</Name>
+          <FullPath>cubo_notas.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Dim Carrera.dim</Name>
-      <FullPath>Dim Carrera.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Dim Tipomatricula.dim</Name>
-      <FullPath>Dim Tipomatricula.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Dim Descuento.dim</Name>
-      <FullPath>Dim Descuento.dim</FullPath>
+      <Name>Dim Cursos.dim</Name>
+      <FullPath>Dim Cursos.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Dim Alumno.dim</Name>
       <FullPath>Dim Alumno.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Periodo.dim</Name>
-      <FullPath>Dim Periodo.dim</FullPath>
+      <Name>Dim Docente.dim</Name>
+      <FullPath>Dim Docente.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Dim Tiempo.dim</Name>
       <FullPath>Dim Tiempo.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Carrera.dim</Name>
+      <FullPath>Dim Carrera.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Periodo.dim</Name>
+      <FullPath>Dim Periodo.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Pensum.dim</Name>
+      <FullPath>Dim Pensum.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
-      <Name>ds_matriculacion.ds</Name>
-      <FullPath>ds_matriculacion.ds</FullPath>
+      <Name>DW_Sga_notas.ds</Name>
+      <FullPath>DW_Sga_notas.ds</FullPath>
     </ProjectItem>
   </DataSources>
   <DataSourceViews>
     <ProjectItem>
-      <Name>vista_dw_sga.dsv</Name>
-      <FullPath>vista_dw_sga.dsv</FullPath>
+      <Name>vista_notas.dsv</Name>
+      <FullPath>vista_notas.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
   <Configurations>
@@ -62,15 +66,15 @@
       <Options>
         <ConnectionMappings>
           <ConfigurationSetting>
-            <Id>ds_matriculacion</Id>
-            <Name>ds_matriculacion</Name>
+            <Id>DW_Sga_notas</Id>
+            <Name>DW_Sga_notas</Name>
             <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Persist Security Info=True;Password=;User ID=;Initial Catalog=DW_sga</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
           <ConfigurationSetting>
-            <Id>ds_matriculacion</Id>
-            <Name>ds_matriculacion</Name>
+            <Id>DW_Sga_notas</Id>
+            <Name>DW_Sga_notas</Name>
             <Value xsi:type="xsd:int">1</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>
