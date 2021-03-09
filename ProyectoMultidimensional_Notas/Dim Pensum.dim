@@ -1,0 +1,566 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="95ab6886-bef7-4ee2-ab31-59698018cc72" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Pensum</ID>
+  <Name>Dim Pensum</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2017" scrolltop="-3150" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="8255" y="13150" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_pensum" left="-774" top="-1852" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4180" height="11033" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e000054100000192b0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Dim_pensum" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2017</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3150</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-774</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-1852</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="93c2932d-0601-41a1-8809-4b37c7b4a88a">
+    <DataSourceViewID>vista_notas</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="c0e51a02-1560-42e8-822c-be486f0016e4">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="8f57c564-029f-41ad-b616-5d36af264116">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1910db9e-41b2-4ee4-b01f-02037555f401">
+          <DataType>Double</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f78b4faa-7911-4283-b738-0b11121a57ff">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="34c13146-f87f-4115-a4bd-d1d539e50e63">
+          <AttributeID>Idfacultad</AttributeID>
+          <Name>Idfacultad</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6f8003a0-c6ee-430a-86ce-96df941860da">
+          <AttributeID>Idcarrera</AttributeID>
+          <Name>Idcarrera</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a004e0b8-9835-421d-a88a-5828fb1b1825">
+          <AttributeID>Idmateria</AttributeID>
+          <Name>Idmateria</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0f3b29f1-f27a-4c9f-abd5-284606d23087">
+          <AttributeID>Facultad</AttributeID>
+          <Name>Facultad</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a9b05268-2070-47f2-8412-92d22cabc3c1">
+          <AttributeID>Idpensum</AttributeID>
+          <Name>Idpensum</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="140a098b-20e1-4dcf-ba12-29e194fa5581">
+          <AttributeID>Carrera</AttributeID>
+          <Name>Carrera</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7581e966-6abf-4592-a7bf-d794a21fc090">
+          <AttributeID>Eje</AttributeID>
+          <Name>Eje</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8a61636e-8d6f-48df-89b0-d4ddd974de7d">
+          <AttributeID>Creditos</AttributeID>
+          <Name>Creditos</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bf696157-d94e-4e63-9592-e9ff9e2544d3">
+          <AttributeID>Creditos Real</AttributeID>
+          <Name>Creditos Real</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f5fe9716-918a-4e1b-8e5d-98bd3b02ba4b">
+          <AttributeID>Nivel</AttributeID>
+          <Name>Nivel</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3dd401ce-fc8e-45db-8b31-b19974e796b8">
+          <AttributeID>Pensum</AttributeID>
+          <Name>Pensum</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ddecad15-3769-4ec9-8352-d2d82870bb51">
+          <AttributeID>Codmateria</AttributeID>
+          <Name>Codmateria</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="092c0589-e55b-4484-80ad-7e07a0d1f61d">
+          <AttributeID>Materia</AttributeID>
+          <Name>Materia</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ffb7a5b2-91de-487b-a73a-917382b47c30">
+          <AttributeID>Prerequisito Ids</AttributeID>
+          <Name>Prerequisito Ids</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="de408080-60ad-41c2-ad92-9ebdb5be1632">
+          <AttributeID>Prerequisito Desc</AttributeID>
+          <Name>Prerequisito Desc</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7b3cb055-205c-440f-8190-282a69ee2909">
+          <AttributeID>Prerequisito Codmateria</AttributeID>
+          <Name>Prerequisito Codmateria</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="85153133-6d29-4525-92cd-99ea62b3e0f6">
+          <AttributeID>Corequisito Ids</AttributeID>
+          <Name>Corequisito Ids</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="913ad300-0ca9-4d21-9b20-a07932446783">
+          <AttributeID>Corequisito Desc</AttributeID>
+          <Name>Corequisito Desc</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b7a69add-4b18-4179-8d27-35c153d6866d">
+          <AttributeID>Corequisito Codmateria</AttributeID>
+          <Name>Corequisito Codmateria</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bf684917-2e77-4583-a731-3571a724d1bd">
+          <AttributeID>Idenfasis</AttributeID>
+          <Name>Idenfasis</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7169a77f-a379-4295-96a4-1e1a87d1b493">
+          <AttributeID>Enfasis</AttributeID>
+          <Name>Enfasis</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a476a047-67ec-4b33-ba5e-9c4b1e1aff92">
+      <ID>Idfacultad</ID>
+      <Name>Idfacultad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c5db2389-aad5-4d82-9f1a-df9d5d50568c">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1a0ddf78-120f-4734-a87e-f72a2518cb4f">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>idfacultad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="596f62fb-1911-4462-94b3-e5e47315ca9c">
+      <ID>Idcarrera</ID>
+      <Name>Idcarrera</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="55ff0e9b-6c82-4785-8a64-9e1bb3c80ed6">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="04fc34da-5fc7-4f90-8776-60f86d2f3a9b">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>idcarrera</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d4784482-409f-4cc6-9863-542a829bda1c">
+      <ID>Idmateria</ID>
+      <Name>Idmateria</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f3061f93-a281-416a-9c2f-e4686871bf51">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6d96f00c-4886-48e3-876d-bf350dfb5296">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>idmateria</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dbe68a36-9ac5-4d4d-aef8-bc0994aa54b7">
+      <ID>Facultad</ID>
+      <Name>Facultad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9b4d3487-a9c6-4ada-97c4-5f066d6b9056">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="20b13385-5998-4a6b-867d-e20f5126a078">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>facultad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6785eedc-7692-4949-b2a3-7c509540373e">
+      <ID>Idpensum</ID>
+      <Name>Idpensum</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ab97ced8-3f08-4250-815b-7799bf13e598">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2be8bf42-fbd6-453e-be56-42e325ccd33b">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>idpensum</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cbb284ad-0f52-4362-990e-d273aac2ed52">
+      <ID>Carrera</ID>
+      <Name>Carrera</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6e336a0d-f07b-4b14-87ad-79783694626e">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="50ab9912-f9e9-4abb-b42f-9ac37468aca0">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>carrera</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f5a7c04d-07c9-46a5-80a7-5aa2d3b09b0c">
+      <ID>Eje</ID>
+      <Name>Eje</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f1eb6a9b-10c6-4bb4-8447-2acb94f7901f">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cd7bb842-e602-4583-95e7-05a367497cf8">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>eje</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3c23bef0-739e-4c36-b69a-4e02cd68e9ce">
+      <ID>Creditos</ID>
+      <Name>Creditos</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="97cda4ca-c45a-42fb-918d-a57c436c2c2b">
+          <DataType>Single</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d6bb1b64-fcad-484e-8b7a-24af0522182c">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>creditos</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="aa90500a-2f70-4081-bf59-fd65410324c7">
+      <ID>Creditos Real</ID>
+      <Name>Creditos Real</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="074c8492-b0a9-4ff9-aa88-f2876e02ec50">
+          <DataType>Single</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5b6b17ed-ab3d-4139-b169-1e59244b332b">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>creditos_real</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4f69c79c-fa12-4ace-988f-d7a7cdeb82c7">
+      <ID>Nivel</ID>
+      <Name>Nivel</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6bebe245-3214-45b7-8f0d-5e8e8ad333a4">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="eb1afb80-c280-4169-9bba-2dc51cda3293">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>nivel</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2c578316-d39d-4fcd-93e5-f6cf359333d9">
+      <ID>Pensum</ID>
+      <Name>Pensum</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4cb47904-cd57-479a-8855-43e0983b99a6">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ad412893-2529-467c-be20-a87e84237b34">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>pensum</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="03565f31-87e2-4039-bfe5-c9d5dda6dd42">
+      <ID>Codmateria</ID>
+      <Name>Codmateria</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="625ef9b6-cd1a-4b36-ae6a-841c80ab13a1">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b2d0816b-8f76-43c5-b154-6d509d36ed38">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>codmateria</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e548f223-6855-4571-8da2-3fc53dcbda7b">
+      <ID>Materia</ID>
+      <Name>Materia</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6d94d62f-2228-4baa-a998-8eeb86c94905">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f16ad713-985c-4042-9cfb-b98494f1e588">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>materia</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="bf4b9f29-c05f-46c3-9b85-17b9c31c7649">
+      <ID>Prerequisito Ids</ID>
+      <Name>Prerequisito Ids</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="943160d7-942b-4a1f-9c21-09ba05e17b9f">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8ad41ab5-5960-434e-aa3b-51557bb6b25b">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>prerequisito_ids</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e42eb7ee-6234-426b-b846-686c300c559f">
+      <ID>Prerequisito Desc</ID>
+      <Name>Prerequisito Desc</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="61c4084d-66fe-44f8-b6ff-717786b36fd7">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="830a6382-095f-4713-a8ed-bdb7b04654e3">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>prerequisito_desc</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0405025d-1689-4551-b648-e029e9a8b635">
+      <ID>Prerequisito Codmateria</ID>
+      <Name>Prerequisito Codmateria</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b1adc81d-02ef-4282-aab0-a2620703ba4e">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b0f00427-250b-47da-a70d-e8b3e2e1a712">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>prerequisito_codmateria</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8678335b-8211-4d99-86ba-b97e227e3003">
+      <ID>Corequisito Ids</ID>
+      <Name>Corequisito Ids</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="94008676-f3a4-4347-9efe-32b1b384dcc3">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f44fe4df-b214-44bf-be37-7f0ee46d02b3">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>corequisito_ids</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c7ea4663-e01c-43d5-b1c4-41e1b697672e">
+      <ID>Corequisito Desc</ID>
+      <Name>Corequisito Desc</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="521fed05-cd56-474b-94ab-18acc80dbdc8">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="81096db8-0fbd-4717-b797-59da4b0e2636">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>corequisito_desc</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="398c6976-cd87-494d-a7f9-c9ac3aca38a8">
+      <ID>Corequisito Codmateria</ID>
+      <Name>Corequisito Codmateria</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4a596268-e742-4d51-a8d3-d5422972f804">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1dc23cca-6351-46d6-b502-a22b2ae343fb">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>corequisito_codmateria</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2bd76fa6-33fd-4ebc-96c0-42aa13d8b03b">
+      <ID>Idenfasis</ID>
+      <Name>Idenfasis</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="81b89c38-9fb4-4855-8cde-23b51d21e936">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5a194bf7-9036-4f91-97d1-1e43f16f1eb9">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>idenfasis</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7b986167-4ef5-4164-8004-b636e125e19e">
+      <ID>Enfasis</ID>
+      <Name>Enfasis</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4f11b518-4dac-41d4-b3d2-ba136a8f2b3b">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="38cd7b23-1dc2-4c7f-a96d-0828c633a6fb">
+            <TableID>dbo_Dim_pensum</TableID>
+            <ColumnID>enfasis</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="ca8b7852-f215-4244-8971-9402255b9aee">
+      <ID>Jerarquía</ID>
+      <Name>Jerarquía</Name>
+      <Levels>
+        <Level dwd:design-time-name="2c807007-4c50-46f5-abf4-ca6654bb8296">
+          <ID>Facultad</ID>
+          <Name>Facultad</Name>
+          <SourceAttributeID>Facultad</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="ee3738b4-b9fc-4dc2-9c1c-6d3a36b831cd">
+          <ID>Carrera</ID>
+          <Name>Carrera</Name>
+          <SourceAttributeID>Carrera</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="27ddef08-ffce-4cc3-85e3-63378a7b6a13">
+          <ID>Enfasis</ID>
+          <Name>Enfasis</Name>
+          <SourceAttributeID>Enfasis</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="71c1af7f-830d-4d6e-95fc-b4f929654f4c">
+          <ID>Pensum</ID>
+          <Name>Pensum</Name>
+          <SourceAttributeID>Pensum</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
