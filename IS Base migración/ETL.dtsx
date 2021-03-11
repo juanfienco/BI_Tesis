@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="263"
-  DTS:VersionGUID="{02E98857-0CD1-474E-9D36-9482EF264D94}">
+  DTS:VersionBuild="264"
+  DTS:VersionGUID="{6F5C86E7-485F-4D7B-BF7C-80D252BC052F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -42,7 +42,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          engineThreads="100"
+          autoAdjustBufferSize="true"
+          engineThreads="200"
           version="1">
           <components>
             <component
@@ -2162,6 +2163,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          engineThreads="3"
           version="1">
           <components>
             <component
@@ -3190,6 +3192,7 @@ where idestructura &gt;= 2200000045 and idestructura &lt;= 2200000080</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          engineThreads="3"
           version="1">
           <components>
             <component
@@ -3626,6 +3629,7 @@ order by 1</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          engineThreads="3"
           version="1">
           <components>
             <component
@@ -5918,6 +5922,7 @@ where [refTable].[Fecha] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          engineThreads="3"
           version="1">
           <components>
             <component
@@ -8447,7 +8452,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.1051171875,6.34375,52.210234375,9.8125"
+              BoundingBox="-26.19056640625,6.34375,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8471,7 +8476,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="1.6448828125,5,52.210234375,9.8125"
+              BoundingBox="1.55943359375,5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8507,7 +8512,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="3.8948828125,9,52.210234375,9.8125"
+              BoundingBox="3.80943359375,9,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8543,7 +8548,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-18.8551171875,21.5,52.210234375,9.8125"
+              BoundingBox="-18.94056640625,21.5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8567,7 +8572,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-67.3551171875,5,52.210234375,9.8125"
+              BoundingBox="-67.44056640625,5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8591,7 +8596,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-51.3551171875,5,52.210234375,9.8125"
+              BoundingBox="-51.44056640625,5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8615,7 +8620,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.1051171875,7.5104166666665,52.210234375,9.8125"
+              BoundingBox="-26.19056640625,7.5104166666665,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8639,7 +8644,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.3551171875,5,52.210234375,9.8125"
+              BoundingBox="-15.44056640625,5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8663,7 +8668,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-13.3551171875,5,52.210234375,9.8125"
+              BoundingBox="-13.44056640625,5,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8687,7 +8692,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-26.1051171875,13.34375,52.210234375,9.8125"
+              BoundingBox="-26.19056640625,13.34375,52.3811328125,9.8125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
