@@ -271,7 +271,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>5. Reporte de </Value>
+                    <Value>5. Reporte de ...</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -301,7 +301,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>5. Reporte de </Value>
+                    <Value>6. Reporte de ...</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
