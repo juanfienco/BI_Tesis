@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="151"
-  DTS:VersionGUID="{6FF3DE25-0653-43E6-A620-0F4D6CCD3EA6}">
+  DTS:VersionBuild="190"
+  DTS:VersionGUID="{349C678A-610C-4FB1-8ABF-1D7BEE27301D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -42,6 +42,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
+          engineThreads="70"
           version="1">
           <components>
             <component
@@ -2316,7 +2317,7 @@ order by p.idpensumenfasismateriatipo, f.idestructura, c.idcarrera, p.idpensum, 
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          engineThreads="50"
+          engineThreads="100"
           version="1">
           <components>
             <component
@@ -3880,114 +3881,6 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedName="idalumno"
                       cachedPrecision="19"
                       lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[idalumno1]"
-                      cachedDataType="numeric"
-                      cachedName="idalumno"
-                      cachedPrecision="19"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[estudiante]"
-                      cachedDataType="wstr"
-                      cachedLength="300"
-                      cachedName="estudiante"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[sexo]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="sexo"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[sexo1]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="sexo"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[nacionalidad]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="nacionalidad"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[nacionalidad1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="nacionalidad"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[lugar_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="lugar_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[lugar_nacimiento1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="lugar_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_nacimiento1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="provincia_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_nacimiento1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="canton_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_domicilio1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="provincia_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_domicilio1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="canton_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[tipo_alumno]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="tipo_alumno"
-                      lineageId="Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[tipo_alumno1]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="tipo_alumno"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4035,13 +3928,13 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]} != #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]} || #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]} != #{Package\Cargar Dim_alumno\cargar dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}</property>
+                      name="Expression">![ISNULL](#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">[Búsqueda].idalumno != [cargar dat_alumno].idalumno || [Búsqueda].estudiante != estudiante || [Búsqueda].sexo != [cargar dat_alumno].sexo || [Búsqueda].nacionalidad != [cargar dat_alumno].nacionalidad || [Búsqueda].lugar_nacimiento != [cargar dat_alumno].lugar_nacimiento || [Búsqueda].provincia_nacimiento != [cargar dat_alumno].provincia_nacimiento || [Búsqueda].canton_nacimiento != [cargar dat_alumno].canton_nacimiento || [Búsqueda].provincia_domicilio != [cargar dat_alumno].provincia_domicilio || [Búsqueda].canton_domicilio != [cargar dat_alumno].canton_domicilio || [Búsqueda].tipo_alumno != [cargar dat_alumno].tipo_alumno</property>
+                      name="FriendlyExpression">!ISNULL([Búsqueda].idalumno)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -8023,14 +7916,14 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       cachedLength="9"
                       cachedName="sexo_completo"
                       externalMetadataColumnId="Package\Cargar Dim_docente\Actualizar Dim_docente.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_13]"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[sexo_completo]" />
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[sexo_completo]" />
                     <inputColumn
                       refId="Package\Cargar Dim_docente\Actualizar Dim_docente.Inputs[Entrada de comando de OLE DB].Columns[nombre_completo]"
                       cachedDataType="wstr"
                       cachedLength="356"
                       cachedName="nombre_completo"
                       externalMetadataColumnId="Package\Cargar Dim_docente\Actualizar Dim_docente.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_14]"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
                     <inputColumn
                       refId="Package\Cargar Dim_docente\Actualizar Dim_docente.Inputs[Entrada de comando de OLE DB].Columns[idprofesor]"
                       cachedDataType="numeric"
@@ -8271,11 +8164,11 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
               </outputs>
             </component>
             <component
-              refId="Package\Cargar Dim_docente\Búsqueda 1"
+              refId="Package\Cargar Dim_docente\Búsqueda"
               componentClassID="Microsoft.Lookup"
               contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
               description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Búsqueda 1"
+              name="Búsqueda"
               usesDispositions="true"
               version="6">
               <properties>
@@ -8339,7 +8232,7 @@ where [refTable].[idprofesor] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Cargar Dim_docente\Búsqueda 1.Connections[OleDbConnection]"
+                  refId="Package\Cargar Dim_docente\Búsqueda.Connections[OleDbConnection]"
                   connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
@@ -8347,11 +8240,11 @@ where [refTable].[idprofesor] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda]"
+                  refId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda]"
                   name="Entrada de búsqueda">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda].Columns[idprofesor]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda].Columns[idprofesor]"
                       cachedDataType="numeric"
                       cachedName="idprofesor"
                       cachedPrecision="19"
@@ -8373,36 +8266,21 @@ where [refTable].[idprofesor] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
                   errorOrTruncationOperation="Búsqueda"
                   errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id]"
-                      name="id"
-                      precision="19"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">id</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
                       name="nombre"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8411,13 +8289,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[apellidos]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[apellidos]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[apellidos]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[apellidos]"
                       name="apellidos"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8426,13 +8304,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]"
                       name="idprofesor"
                       precision="19"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8441,13 +8319,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="50"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
                       name="identificacion"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8456,13 +8334,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[especializacion]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[especializacion]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[especializacion]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[especializacion]"
                       name="especializacion"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8471,12 +8349,12 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[fecha_nacimiento]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[fecha_nacimiento]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[fecha_nacimiento]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[fecha_nacimiento]"
                       name="fecha_nacimiento"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8485,13 +8363,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[instruccion]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[instruccion]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[instruccion]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[instruccion]"
                       name="instruccion"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8500,13 +8378,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
                       name="categoria"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8515,13 +8393,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[colectivo]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[colectivo]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[colectivo]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[colectivo]"
                       name="colectivo"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8530,13 +8408,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comision]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comision]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comision]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comision]"
                       name="comision"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8545,13 +8423,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_formacion]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_formacion]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_formacion]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_formacion]"
                       name="nivel_formacion"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8560,14 +8438,14 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[dedicacion]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[dedicacion]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[dedicacion]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[dedicacion]"
                       name="dedicacion"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8576,13 +8454,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_civil]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_civil]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="20"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_civil]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_civil]"
                       name="estado_civil"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8591,13 +8469,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]"
                       name="facultad"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8606,14 +8484,14 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cargo]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cargo]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cargo]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cargo]"
                       name="cargo"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8622,13 +8500,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="20"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]"
                       name="sexo_completo"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8637,13 +8515,13 @@ where [refTable].[idprofesor] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_completo]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_completo]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copiar columna"
                       length="255"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_completo]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_completo]"
                       name="nombre_completo"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="IgnoreFailure">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8655,30 +8533,341 @@ where [refTable].[idprofesor] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
                   description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
                   exclusionGroup="1"
                   name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de error de búsqueda]"
+                  refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de error de búsqueda]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de búsqueda"
-                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  synchronousInputId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      refId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim_docente\calculo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="calculo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="sexo"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nombre"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[apellidos]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="apellidos"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[especializacion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="especializacion"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(especializacion,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[instruccion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="instruccion"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(instruccion,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="categoria"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(categoria,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[colectivo]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="colectivo"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(colectivo,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[comision]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="comision"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(comision,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[nivel_formacion]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="nivel_formacion"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(nivel_formacion,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[dedicacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="dedicacion"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(dedicacion,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada].Columns[cargo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="23"
+                      cachedName="cargo"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]},"SD")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(cargo,"SD")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[sexo_completo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="9"
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[sexo_completo]"
+                      name="sexo_completo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "M" ? "MASCULINO" : #{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "F" ? "FEMENINO" : "SD"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">sexo == "M" ? "MASCULINO" : sexo == "F" ? "FEMENINO" : "SD"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[nombre_completo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="356"
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[nombre_completo]"
+                      name="nombre_completo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[UPPER]([TRIM](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]}) + " " + [TRIM](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nombre]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(TRIM(apellidos) + " " + TRIM(nombre))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_docente\calculo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -9233,7 +9422,7 @@ order by 1</property>
                       cachedLength="356"
                       cachedName="nombre_completo"
                       externalMetadataColumnId="Package\Cargar Dim_docente\Dim_docente.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_completo]"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
                     <inputColumn
                       refId="Package\Cargar Dim_docente\Dim_docente.Inputs[Entrada de destino de OLE DB].Columns[dedicacion]"
                       cachedCodepage="1252"
@@ -9438,7 +9627,19 @@ order by 1</property>
                       cachedDataType="numeric"
                       cachedName="idprofesor"
                       cachedPrecision="19"
-                      lineageId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]" />
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\División condicional.Inputs[Entrada de división condicional].Columns[sexo_completo]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="sexo_completo"
+                      lineageId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[sexo_completo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_docente\División condicional.Inputs[Entrada de división condicional].Columns[sexo_completo1]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="sexo_completo"
+                      lineageId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -9452,19 +9653,19 @@ order by 1</property>
                   exclusionGroup="1"
                   name="Nuevos"
                   synchronousInputId="Package\Cargar Dim_docente\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
+                  truncationRowDisposition="IgnoreFailure">
                   <properties>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">[ISNULL](#{Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]})</property>
+                      name="Expression">[ISNULL](#{Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">ISNULL([Búsqueda 1].idprofesor)</property>
+                      name="FriendlyExpression">ISNULL([Búsqueda].idprofesor)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -9474,7 +9675,7 @@ order by 1</property>
                 </output>
                 <output
                   refId="Package\Cargar Dim_docente\División condicional.Outputs[Modificar]"
-                  description="Salida 2 de la transformación División condicional"
+                  description="Salida 3 de la transformación División condicional"
                   errorOrTruncationOperation="Cálculo"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
@@ -9486,17 +9687,45 @@ order by 1</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">![ISNULL](#{Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]})</property>
+                      name="Expression">![ISNULL](#{Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idprofesor]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL([Búsqueda 1].idprofesor)</property>
+                      name="FriendlyExpression">!ISNULL([Búsqueda].idprofesor)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
                       name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_docente\División condicional.Outputs[ModificarNo]"
+                  description="Salida 2 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="ModificarNo"
+                  synchronousInputId="Package\Cargar Dim_docente\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="IgnoreFailure">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">#{Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada].Columns[sexo_completo]} != #{Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo_completo]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">calculo.sexo_completo != [Búsqueda].sexo_completo</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">2</property>
                   </properties>
                   <externalMetadataColumns />
                 </output>
@@ -9538,317 +9767,6 @@ order by 1</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Cargar Dim_docente\genero y nombre descripcion completa"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="genero y nombre descripcion completa"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[sexo]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="sexo"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="nombre"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[apellidos]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="apellidos"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[especializacion]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="especializacion"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(especializacion,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[instruccion]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="instruccion"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(instruccion,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[categoria]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="categoria"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(categoria,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[colectivo]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="colectivo"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(colectivo,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[comision]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="comision"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(comision,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[nivel_formacion]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="nivel_formacion"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(nivel_formacion,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[dedicacion]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="dedicacion"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(dedicacion,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada].Columns[cargo]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="23"
-                      cachedName="cargo"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[REPLACENULL](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]},"SD")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(cargo,"SD")</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[sexo_completo]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      length="9"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[sexo_completo]"
-                      name="sexo_completo"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "M" ? "MASCULINO" : #{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "F" ? "FEMENINO" : "SD"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">sexo == "M" ? "MASCULINO" : sexo == "F" ? "FEMENINO" : "SD"</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[nombre_completo]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      length="356"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada].Columns[nombre_completo]"
-                      name="nombre_completo"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[UPPER]([TRIM](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]}) + " " + [TRIM](#{Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nombre]}))</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">UPPER(TRIM(apellidos) + " " + TRIM(nombre))</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -9863,17 +9781,17 @@ order by 1</property>
               startId="Package\Cargar Dim_docente\División condicional.Outputs[Nuevos]" />
             <path
               refId="Package\Cargar Dim_docente.Paths[Salida de columna derivada]"
-              endId="Package\Cargar Dim_docente\Búsqueda 1.Inputs[Entrada de búsqueda]"
+              endId="Package\Cargar Dim_docente\Búsqueda.Inputs[Entrada de búsqueda]"
               name="Salida de columna derivada"
-              startId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Outputs[Salida de columna derivada]" />
+              startId="Package\Cargar Dim_docente\calculo.Outputs[Salida de columna derivada]" />
             <path
               refId="Package\Cargar Dim_docente.Paths[Salida de entradas coincidentes de búsqueda]"
               endId="Package\Cargar Dim_docente\División condicional.Inputs[Entrada de división condicional]"
               name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\Cargar Dim_docente\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda]" />
+              startId="Package\Cargar Dim_docente\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Cargar Dim_docente.Paths[Salida de origen de OLE DB]"
-              endId="Package\Cargar Dim_docente\genero y nombre descripcion completa.Inputs[Entrada de columna derivada]"
+              endId="Package\Cargar Dim_docente\calculo.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -12940,7 +12858,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="USE [DW_sga1]&#xA;GO&#xA;&#xA;DROP FUNCTION IF EXISTS dbo.SecuenciaFechas;&#xA;GO&#xA;&#x9;CREATE FUNCTION SecuenciaFechas (@Año Char(4), @AñoFin Char(4))&#xA;&#x9;RETURNS @SecuenciaFechas TABLE (&#xA;&#x9;&#x9;Fecha date, &#xA;&#x9;&#x9;Año smallint,&#xA;&#x9;&#x9;Mes tinyint,&#xA;&#x9;&#x9;Dia tinyint,&#xA;&#x9;&#x9;DiaDelAño smallint,&#xA;&#x9;&#x9;SemanaDelAño tinyint, &#xA;&#x9;&#x9;Trimestre tinyint,&#xA;&#x9;&#x9;Semestre tinyint,&#xA;&#x9;&#x9;NombreMes varchar(10),&#xA;&#x9;&#x9;NombreMesCorto char(3),&#xA;&#x9;&#x9;NombreDia varchar(10),&#xA;&#x9;&#x9;NombreDiaCorto char(3)) &#xA;&#x9;AS BEGIN&#xA;&#x9;&#x9;--Declara variables de fecha de inicio y fin de la secuencia&#xA;&#x9;&#x9;DECLARE @FechaDesde DATE = @Año + '0101';&#xA;&#x9;&#x9;DECLARE @FechaHasta DATE = @AñoFin + '1231';&#xA;&#x9;&#x9;--CTE recursivo para generar las fechas&#xA;&#x9;&#x9;WITH SecuenciaFechas(Fecha, Dia) AS &#xA;&#x9;&#x9;(SELECT @FechaDesde, DATEPART(dw,@FechaDesde) as Fecha&#xA;&#x9;&#x9; UNION ALL &#xA;&#x9;&#x9; SELECT DATEADD(DAY, 1, Fecha), DATEPART(dw, DATEADD(DAY, 1, Fecha))&#xA;&#x9;&#x9; FROM SecuenciaFechas &#xA;&#x9;&#x9; WHERE Fecha &lt; @FechaHasta) &#xA;&#x9;&#x9;--Consulta final en base al CTE para obtener la secuencia&#xA;&#x9;&#x9;INSERT INTO @SecuenciaFechas (Fecha,Año,Mes,Dia,DiaDelAño,SemanaDelAño,Trimestre,Semestre,NombreMes,NombreMesCorto,NombreDia,NombreDiaCorto)&#xA;&#x9;&#x9;  SELECT &#xA;&#x9;&#x9;&#x9;  Fecha, &#xA;&#x9;&#x9;&#x9;  YEAR(Fecha) AS año,&#xA;&#x9;&#x9;&#x9;  MONTH(Fecha) AS Mes,&#xA;&#x9;&#x9;&#x9;  DAY(Fecha) AS Dia,&#xA;&#x9;&#x9;&#x9;  DATENAME(dayofyear, Fecha) AS DiaDelAño,&#xA;&#x9;&#x9;&#x9;  DATENAME(week, Fecha) AS SemanaDelAño,&#xA;&#x9;&#x9;&#x9;  DATENAME(quarter, Fecha) AS Trimestre,&#xA;&#x9;&#x9;&#x9;  CAST(ROUND(DATENAME(quarter, Fecha)/2.0,0) AS tinyint) AS Semestre,&#xA;&#x9;&#x9;&#x9;  DATENAME(month, Fecha) AS NombreMes,&#xA;&#x9;&#x9;&#x9;  UPPER(LEFT(DATENAME(month, Fecha),3)) AS NombreMesCorto,&#xA;&#x9;&#x9;&#x9;  DATENAME(WEEKDAY, Fecha) AS NombreDia,&#xA;&#x9;&#x9;&#x9;  UPPER(LEFT(DATENAME(WEEKDAY, Fecha),3)) As NombreDiaCorto&#xA;&#x9;&#x9;&#x9;FROM SecuenciaFechas &#xA;&#x9;&#x9;&#x9;OPTION (MAXRECURSION 0)&#x9;&#xA;&#x9;&#x9;RETURN &#xA;&#x9;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE [DW_sga]&#xA;GO&#xA;&#xA;DROP FUNCTION IF EXISTS dbo.SecuenciaFechas;&#xA;GO&#xA;&#x9;CREATE FUNCTION SecuenciaFechas (@Año Char(4), @AñoFin Char(4))&#xA;&#x9;RETURNS @SecuenciaFechas TABLE (&#xA;&#x9;&#x9;Fecha date, &#xA;&#x9;&#x9;Año smallint,&#xA;&#x9;&#x9;Mes tinyint,&#xA;&#x9;&#x9;Dia tinyint,&#xA;&#x9;&#x9;DiaDelAño smallint,&#xA;&#x9;&#x9;SemanaDelAño tinyint, &#xA;&#x9;&#x9;Trimestre tinyint,&#xA;&#x9;&#x9;Semestre tinyint,&#xA;&#x9;&#x9;NombreMes varchar(10),&#xA;&#x9;&#x9;NombreMesCorto char(3),&#xA;&#x9;&#x9;NombreDia varchar(10),&#xA;&#x9;&#x9;NombreDiaCorto char(3)) &#xA;&#x9;AS BEGIN&#xA;&#x9;&#x9;--Declara variables de fecha de inicio y fin de la secuencia&#xA;&#x9;&#x9;DECLARE @FechaDesde DATE = @Año + '0101';&#xA;&#x9;&#x9;DECLARE @FechaHasta DATE = @AñoFin + '1231';&#xA;&#x9;&#x9;--CTE recursivo para generar las fechas&#xA;&#x9;&#x9;WITH SecuenciaFechas(Fecha, Dia) AS &#xA;&#x9;&#x9;(SELECT @FechaDesde, DATEPART(dw,@FechaDesde) as Fecha&#xA;&#x9;&#x9; UNION ALL &#xA;&#x9;&#x9; SELECT DATEADD(DAY, 1, Fecha), DATEPART(dw, DATEADD(DAY, 1, Fecha))&#xA;&#x9;&#x9; FROM SecuenciaFechas &#xA;&#x9;&#x9; WHERE Fecha &lt; @FechaHasta) &#xA;&#x9;&#x9;--Consulta final en base al CTE para obtener la secuencia&#xA;&#x9;&#x9;INSERT INTO @SecuenciaFechas (Fecha,Año,Mes,Dia,DiaDelAño,SemanaDelAño,Trimestre,Semestre,NombreMes,NombreMesCorto,NombreDia,NombreDiaCorto)&#xA;&#x9;&#x9;  SELECT &#xA;&#x9;&#x9;&#x9;  Fecha, &#xA;&#x9;&#x9;&#x9;  YEAR(Fecha) AS año,&#xA;&#x9;&#x9;&#x9;  MONTH(Fecha) AS Mes,&#xA;&#x9;&#x9;&#x9;  DAY(Fecha) AS Dia,&#xA;&#x9;&#x9;&#x9;  DATENAME(dayofyear, Fecha) AS DiaDelAño,&#xA;&#x9;&#x9;&#x9;  DATENAME(week, Fecha) AS SemanaDelAño,&#xA;&#x9;&#x9;&#x9;  DATENAME(quarter, Fecha) AS Trimestre,&#xA;&#x9;&#x9;&#x9;  CAST(ROUND(DATENAME(quarter, Fecha)/2.0,0) AS tinyint) AS Semestre,&#xA;&#x9;&#x9;&#x9;  DATENAME(month, Fecha) AS NombreMes,&#xA;&#x9;&#x9;&#x9;  UPPER(LEFT(DATENAME(month, Fecha),3)) AS NombreMesCorto,&#xA;&#x9;&#x9;&#x9;  DATENAME(WEEKDAY, Fecha) AS NombreDia,&#xA;&#x9;&#x9;&#x9;  UPPER(LEFT(DATENAME(WEEKDAY, Fecha),3)) As NombreDiaCorto&#xA;&#x9;&#x9;&#x9;FROM SecuenciaFechas &#xA;&#x9;&#x9;&#x9;OPTION (MAXRECURSION 0)&#x9;&#xA;&#x9;&#x9;RETURN &#xA;&#x9;END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -12966,6 +12884,14 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{BF79D899-6257-4613-B733-742AA79D9379}"
+      DTS:From="Package\Cargar Dim_cursos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Cargar Dat_malla" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
       DTS:DTSID="{2B77934E-565A-4A40-95BB-1CD4579C1247}"
@@ -12982,36 +12908,12 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       DTS:ObjectName="Restricción 10"
       DTS:To="Package\Cargar Fact_notas" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 11]"
-      DTS:CreationName=""
-      DTS:DTSID="{11BF84E0-78FA-41B2-B622-606830699C13}"
-      DTS:From="Package\Cargar Dat_malla"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 11"
-      DTS:To="Package\Cargar Fact_notas" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 12]"
       DTS:CreationName=""
-      DTS:DTSID="{0CBC9793-E3E4-47E8-9DDE-15ECA1571A58}"
-      DTS:From="Package\Validación y creación de tablas"
+      DTS:DTSID="{7FC543D2-FEAA-4BAC-A5D5-C99A39C2A68B}"
+      DTS:From="Package\Cargar Dim_docente"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 12"
-      DTS:To="Package\Cargar Dat_malla" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 13]"
-      DTS:CreationName=""
-      DTS:DTSID="{10E8B60B-B628-47B5-AEC4-48380D95E302}"
-      DTS:From="Package\Cargar Dim_cursos"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 13"
-      DTS:To="Package\Cargar Fact_notas" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 14]"
-      DTS:CreationName=""
-      DTS:DTSID="{E47A9E72-7109-43EC-AE36-239EFB72A595}"
-      DTS:From="Package\Validación y creación de tablas"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 14"
       DTS:To="Package\Cargar Dim_cursos" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
@@ -13048,8 +12950,8 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 6]"
       DTS:CreationName=""
-      DTS:DTSID="{B83550CA-B317-481C-B462-AF5B4B654EBC}"
-      DTS:From="Package\Validación y creación de tablas"
+      DTS:DTSID="{5B00D202-131E-4DC4-9412-7558ED4BF5A8}"
+      DTS:From="Package\Cargar Dat_malla"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 6"
       DTS:To="Package\Cargar Dim_alumno" />
@@ -13069,14 +12971,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 8"
       DTS:To="Package\Cargar Fact_notas" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 9]"
-      DTS:CreationName=""
-      DTS:DTSID="{C71B283D-600E-4C6A-BC18-CE4738BD38AE}"
-      DTS:From="Package\Cargar Dim_docente"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 9"
-      DTS:To="Package\Cargar Fact_notas" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -13093,27 +12987,23 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         <NodeLayout
           Size="161,42"
           Id="Package\Cargar Dat_malla"
-          TopLeft="932,304" />
+          TopLeft="609,405" />
         <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_alumno"
-          TopLeft="755,304" />
+          TopLeft="597,494" />
         <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_Carrera"
           TopLeft="396,304" />
         <NodeLayout
-          Size="170,42"
+          Size="170,43"
           Id="Package\Cargar Dim_cursos"
-          TopLeft="1097,304" />
+          TopLeft="608,331" />
         <NodeLayout
-          Size="175,42"
+          Size="182,44"
           Id="Package\Cargar Dim_docente"
-          TopLeft="575,304" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Cargar Fact_notas"
-          TopLeft="576,441" />
+          TopLeft="600,260" />
         <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_periodo"
@@ -13122,112 +13012,22 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="170,42"
           Id="Package\Cargar Dim_tiempo"
           TopLeft="21,302" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 13]"
-          TopLeft="1182,346">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-464.625,95"
-              Start="0,0"
-              End="-464.625,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.8515901060071" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,69.8515901060071"
-                    Point2="0,73.8515901060071"
-                    Point3="-4,73.8515901060071" />
-                  <mssgle:LineSegment
-                    End="-460.625,73.8515901060071" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-460.625,73.8515901060071"
-                    Point2="-464.625,73.8515901060071"
-                    Point3="-464.625,77.8515901060071" />
-                  <mssgle:LineSegment
-                    End="-464.625,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 10]"
-          TopLeft="841.5,346">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-163.375,95"
-              Start="0,0"
-              End="-163.375,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.9122957867584" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49.9122957867584"
-                    Point2="0,53.9122957867584"
-                    Point3="-4,53.9122957867584" />
-                  <mssgle:LineSegment
-                    End="-159.375,53.9122957867584" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-159.375,53.9122957867584"
-                    Point2="-163.375,53.9122957867584"
-                    Point3="-163.375,57.9122957867584" />
-                  <mssgle:LineSegment
-                    End="-163.375,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 11]"
-          TopLeft="1012.5,346">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-314.75,95"
-              Start="0,0"
-              End="-314.75,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.3260437375746" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.3260437375746"
-                    Point2="0,62.3260437375746"
-                    Point3="-4,62.3260437375746" />
-                  <mssgle:LineSegment
-                    End="-310.75,62.3260437375746" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-310.75,62.3260437375746"
-                    Point2="-314.75,62.3260437375746"
-                    Point3="-314.75,66.3260437375746" />
-                  <mssgle:LineSegment
-                    End="-314.75,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Cargar Fact_notas"
+          TopLeft="296,519" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Validación y creación de tablas\creacion tablas dimension"
+          TopLeft="420.5,13" />
         <NodeLayout
           Size="145,42"
           Id="Package\Validación y creación de tablas\crear DW_sga"
           TopLeft="6.5,11" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Validación y creación de tablas\función secuencia_tiempo"
+          TopLeft="184.5,13" />
         <EdgeLayout
           Id="Package\Validación y creación de tablas.PrecedenceConstraints[Restricción 15]"
           TopLeft="151.5,33">
@@ -13250,10 +13050,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\Validación y creación de tablas\función secuencia_tiempo"
-          TopLeft="184.5,13" />
         <EdgeLayout
           Id="Package\Validación y creación de tablas.PrecedenceConstraints[Restricción 2]"
           TopLeft="385.5,34">
@@ -13276,99 +13072,27 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="200,42"
-          Id="Package\Validación y creación de tablas\creacion tablas dimension"
-          TopLeft="420.5,13" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="650,63"
           Size="650,106"
           Id="Package\Validación y creación de tablas"
-          TopLeft="342,93" />
+          TopLeft="57,102" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 9]"
-          TopLeft="660.5,346">
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="691.25,374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,95"
+              EndConnector="0,31"
               Start="0,0"
-              End="0,87.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 8]"
-          TopLeft="482.5,346">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="156.375,95"
-              Start="0,0"
-              End="156.375,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.9122957867584" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49.9122957867584"
-                    Point2="0,53.9122957867584"
-                    Point3="4,53.9122957867584" />
-                  <mssgle:LineSegment
-                    End="152.375,53.9122957867584" />
-                  <mssgle:CubicBezierSegment
-                    Point1="152.375,53.9122957867584"
-                    Point2="156.375,53.9122957867584"
-                    Point3="156.375,57.9122957867584" />
-                  <mssgle:LineSegment
-                    End="156.375,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 7]"
-          TopLeft="305.5,346">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="313.75,95"
-              Start="0,0"
-              End="313.75,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.3260437375746" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.3260437375746"
-                    Point2="0,62.3260437375746"
-                    Point3="4,62.3260437375746" />
-                  <mssgle:LineSegment
-                    End="309.75,62.3260437375746" />
-                  <mssgle:CubicBezierSegment
-                    Point1="309.75,62.3260437375746"
-                    Point2="313.75,62.3260437375746"
-                    Point3="313.75,66.3260437375746" />
-                  <mssgle:LineSegment
-                    End="313.75,87.5" />
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13383,26 +13107,26 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="493.625,97"
+              EndConnector="233.25,175"
               Start="0,0"
-              End="493.625,89.5">
+              End="233.25,167.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,71.4063604240283" />
+                    End="0,110.811133200795" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,71.4063604240283"
-                    Point2="0,75.4063604240283"
-                    Point3="4,75.4063604240283" />
+                    Point1="0,110.811133200795"
+                    Point2="0,114.811133200795"
+                    Point3="4,114.811133200795" />
                   <mssgle:LineSegment
-                    End="489.625,75.4063604240283" />
+                    End="229.25,114.811133200795" />
                   <mssgle:CubicBezierSegment
-                    Point1="489.625,75.4063604240283"
-                    Point2="493.625,75.4063604240283"
-                    Point3="493.625,79.4063604240283" />
+                    Point1="229.25,114.811133200795"
+                    Point2="233.25,114.811133200795"
+                    Point3="233.25,118.811133200795" />
                   <mssgle:LineSegment
-                    End="493.625,89.5" />
+                    End="233.25,167.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13412,155 +13136,31 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="426.25,199">
+          Id="Package.PrecedenceConstraints[Restricción 10]"
+          TopLeft="597,515">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-320.25,103"
+              EndConnector="-136,25"
               Start="0,0"
-              End="-320.25,95.5">
+              End="-128.5,25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.2040317654246" />
+                    End="-64,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.2040317654246"
-                    Point2="0,21.2040317654246"
-                    Point3="-4,21.2040317654246" />
+                    Point1="-64,0"
+                    Point2="-68,0"
+                    Point3="-68,4" />
                   <mssgle:LineSegment
-                    End="-316.25,21.2040317654246" />
+                    End="-68,21" />
                   <mssgle:CubicBezierSegment
-                    Point1="-316.25,21.2040317654246"
-                    Point2="-320.25,21.2040317654246"
-                    Point3="-320.25,25.2040317654246" />
+                    Point1="-68,21"
+                    Point2="-68,25"
+                    Point3="-72,25" />
                   <mssgle:LineSegment
-                    End="-320.25,95.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="506.5,199">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-201,105"
-              Start="0,0"
-              End="-201,97.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.2860061287028" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.2860061287028"
-                    Point2="0,35.2860061287028"
-                    Point3="-4,35.2860061287028" />
-                  <mssgle:LineSegment
-                    End="-197,35.2860061287028" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-197,35.2860061287028"
-                    Point2="-201,35.2860061287028"
-                    Point3="-201,39.2860061287028" />
-                  <mssgle:LineSegment
-                    End="-201,97.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="586.75,199">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-104.25,105"
-              Start="0,0"
-              End="-104.25,97.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.1053093462045" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.1053093462045"
-                    Point2="0,45.1053093462045"
-                    Point3="-4,45.1053093462045" />
-                  <mssgle:LineSegment
-                    End="-100.25,45.1053093462045" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-100.25,45.1053093462045"
-                    Point2="-104.25,45.1053093462045"
-                    Point3="-104.25,49.1053093462045" />
-                  <mssgle:LineSegment
-                    End="-104.25,97.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 5]"
-          TopLeft="664.75,199">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,105"
-              Start="0,0"
-              End="0,97.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,97.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 6]"
-          TopLeft="747.25,199">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="94.25,105"
-              Start="0,0"
-              End="94.25,97.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.1053093462045" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.1053093462045"
-                    Point2="0,45.1053093462045"
-                    Point3="4,45.1053093462045" />
-                  <mssgle:LineSegment
-                    End="90.25,45.1053093462045" />
-                  <mssgle:CubicBezierSegment
-                    Point1="90.25,45.1053093462045"
-                    Point2="94.25,45.1053093462045"
-                    Point3="94.25,49.1053093462045" />
-                  <mssgle:LineSegment
-                    End="94.25,97.5" />
+                    End="-128.5,25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13571,30 +13171,18 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 12]"
-          TopLeft="827.5,199">
+          TopLeft="692,304">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="185,105"
+              EndConnector="0,27"
               Start="0,0"
-              End="185,97.5">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.2860061287028" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.2860061287028"
-                    Point2="0,35.2860061287028"
-                    Point3="4,35.2860061287028" />
-                  <mssgle:LineSegment
-                    End="181,35.2860061287028" />
-                  <mssgle:CubicBezierSegment
-                    Point1="181,35.2860061287028"
-                    Point2="185,35.2860061287028"
-                    Point3="185,39.2860061287028" />
-                  <mssgle:LineSegment
-                    End="185,97.5" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13604,31 +13192,223 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 14]"
-          TopLeft="907.75,199">
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="189.4,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="274.25,105"
+              EndConnector="-83.4,94"
               Start="0,0"
-              End="274.25,97.5">
+              End="-83.4,86.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.6157605375687" />
+                    End="0,23.2094446873634" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.6157605375687"
-                    Point2="0,21.6157605375687"
-                    Point3="4,21.6157605375687" />
+                    Point1="0,23.2094446873634"
+                    Point2="0,27.2094446873634"
+                    Point3="-4,27.2094446873634" />
                   <mssgle:LineSegment
-                    End="270.25,21.6157605375687" />
+                    End="-79.4,27.2094446873634" />
                   <mssgle:CubicBezierSegment
-                    Point1="270.25,21.6157605375687"
-                    Point2="274.25,21.6157605375687"
-                    Point3="274.25,25.6157605375687" />
+                    Point1="-79.4,27.2094446873634"
+                    Point2="-83.4,27.2094446873634"
+                    Point3="-83.4,31.2094446873634" />
                   <mssgle:LineSegment
-                    End="274.25,97.5" />
+                    End="-83.4,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="317.8,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.3,96"
+              Start="0,0"
+              End="-12.3,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.7395015363605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.7395015363605"
+                    Point2="0,42.7395015363605"
+                    Point3="-4,42.7395015363605" />
+                  <mssgle:LineSegment
+                    End="-8.30000000000001,42.7395015363605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.30000000000001,42.7395015363605"
+                    Point2="-12.3,42.7395015363605"
+                    Point3="-12.3,46.7395015363605" />
+                  <mssgle:LineSegment
+                    End="-12.3,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="446.2,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.3,96"
+              Start="0,0"
+              End="36.3,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.7395015363605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.7395015363605"
+                    Point2="0,42.7395015363605"
+                    Point3="4,42.7395015363605" />
+                  <mssgle:LineSegment
+                    End="32.3,42.7395015363605" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.3,42.7395015363605"
+                    Point2="36.3,42.7395015363605"
+                    Point3="36.3,46.7395015363605" />
+                  <mssgle:LineSegment
+                    End="36.3,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 5]"
+          TopLeft="574.6,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.4,52"
+              Start="0,0"
+              End="116.4,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.0520332313074" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.0520332313074"
+                    Point2="0,15.0520332313074"
+                    Point3="4,15.0520332313074" />
+                  <mssgle:LineSegment
+                    End="112.4,15.0520332313074" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112.4,15.0520332313074"
+                    Point2="116.4,15.0520332313074"
+                    Point3="116.4,19.0520332313074" />
+                  <mssgle:LineSegment
+                    End="116.4,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 6]"
+          TopLeft="686.5,447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 7]"
+          TopLeft="305.5,346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73,173"
+              Start="0,0"
+              End="73,165.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.5"
+                    Point2="0,86.5"
+                    Point3="4,86.5" />
+                  <mssgle:LineSegment
+                    End="69,86.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69,86.5"
+                    Point2="73,86.5"
+                    Point3="73,90.5" />
+                  <mssgle:LineSegment
+                    End="73,165.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 8]"
+          TopLeft="482.5,346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.75,173"
+              Start="0,0"
+              End="-64.75,165.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,109.499005964215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,109.499005964215"
+                    Point2="0,113.499005964215"
+                    Point3="-4,113.499005964215" />
+                  <mssgle:LineSegment
+                    End="-60.75,113.499005964215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.75,113.499005964215"
+                    Point2="-64.75,113.499005964215"
+                    Point3="-64.75,117.499005964215" />
+                  <mssgle:LineSegment
+                    End="-64.75,165.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13673,6 +13453,52 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="189,42"
           Id="Package\Cargar Dat_malla\Actualizar Dim_pensum"
           TopLeft="230,435" />
+        <EdgeLayout
+          Id="Package\Cargar Dat_malla.Paths[Salida de origen de OLE DB]"
+          TopLeft="221.75,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dat_malla.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="221,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,20.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Salida de columna derivada]"
           TopLeft="221.25,174">
@@ -13767,52 +13593,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dat_malla.Paths[Salida de origen de OLE DB]"
-          TopLeft="221.75,85">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dat_malla.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="221,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,20.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -13870,45 +13650,45 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Id="Package\Cargar Dim_alumno\Búsqueda"
           TopLeft="528,341" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\Cargar Dim_alumno\cargar dat_alumno"
-          TopLeft="48,21" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Cargar Dim_alumno\nombres completos"
-          TopLeft="277,108" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Cargar Dim_alumno\canton nacimiento"
-          TopLeft="27,181" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Cargar Dim_alumno\nacionalidad"
-          TopLeft="495,181" />
-        <NodeLayout
           Size="176,42"
           Id="Package\Cargar Dim_alumno\provincia nacimiento"
           TopLeft="267,264" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Cargar Dim_alumno\genero descripcion completa"
-          TopLeft="30,107" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Cargar Dim_alumno\canton domicilio"
-          TopLeft="282,179" />
+          Size="168,42"
+          Id="Package\Cargar Dim_alumno\cargar dat_alumno"
+          TopLeft="48,21" />
         <NodeLayout
           Size="172,42"
           Id="Package\Cargar Dim_alumno\lugar de nacimiento"
           TopLeft="477,106.666666666667" />
         <NodeLayout
-          Size="175,42"
-          Id="Package\Cargar Dim_alumno\Conversión de datos"
-          TopLeft="506,267" />
+          Size="138,42"
+          Id="Package\Cargar Dim_alumno\nacionalidad"
+          TopLeft="495,181" />
         <NodeLayout
           Size="166,42"
           Id="Package\Cargar Dim_alumno\provincia domicilio"
           TopLeft="41,256" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Cargar Dim_alumno\canton nacimiento"
+          TopLeft="27,181" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Cargar Dim_alumno\genero descripcion completa"
+          TopLeft="30,107" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargar Dim_alumno\nombres completos"
+          TopLeft="277,108" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Cargar Dim_alumno\canton domicilio"
+          TopLeft="282,179" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Cargar Dim_alumno\Conversión de datos"
+          TopLeft="506,267" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dim_alumno\División condicional"
@@ -13921,6 +13701,54 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="187,42"
           Id="Package\Cargar Dim_alumno\Actualizar Dim_alumno"
           TopLeft="606,522" />
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
+          TopLeft="134.5,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_alumno.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="589,383">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,11.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Salida de conversión de datos]"
           TopLeft="592,309">
@@ -14230,54 +14058,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="21.8629752604167,27.305909617613,41.1073828125,9.7978515625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="134.5,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="589,383">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,11.15234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14766,10 +14546,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="134,42"
-          Id="Package\Cargar Dim_docente\Búsqueda 1"
-          TopLeft="257,185" />
-        <NodeLayout
           Size="141,42"
           Id="Package\Cargar Dim_docente\Dim_docente"
           TopLeft="102.666666666667,359" />
@@ -14778,44 +14554,46 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Id="Package\Cargar Dim_docente\División condicional"
           TopLeft="236,271" />
         <NodeLayout
-          Size="262,42"
-          Id="Package\Cargar Dim_docente\genero y nombre descripcion completa"
-          TopLeft="191,116" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Cargar Dim_docente\Actualizar Dim_docente"
-          TopLeft="359,364" />
+          Size="125,42"
+          Id="Package\Cargar Dim_docente\Búsqueda"
+          TopLeft="257,185" />
         <NodeLayout
           Size="170,42"
           Id="Package\Cargar Dim_docente\cargar dat_docente"
           TopLeft="235,50" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Cargar Dim_docente\Actualizar Dim_docente"
+          TopLeft="369,363" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Cargar Dim_docente\calculo"
+          TopLeft="264,118" />
         <EdgeLayout
           Id="Package\Cargar Dim_docente.Paths[Salida de origen de OLE DB]"
-          TopLeft="321,92">
+          TopLeft="319.75,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,16.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_docente.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="322.75,227">
+          TopLeft="320.5,227">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14839,26 +14617,24 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_docente.Paths[Salida de columna derivada]"
-          TopLeft="323,158">
+          TopLeft="319.5,160">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27"
+              EndConnector="0,25"
               Start="0,0"
-              End="0,19.5">
+              End="0,17.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.5" />
+                    End="0,17.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14903,62 +14679,39 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="105.333333333333,51"
+              EndConnector="115.333333333333,50"
               Start="0,0"
-              End="105.333333333333,43.5">
+              End="115.333333333333,42.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.683661645423" />
+                    End="0,16.2780996523754" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.683661645423"
-                    Point2="0,20.683661645423"
-                    Point3="4,20.683661645423" />
+                    Point1="0,16.2780996523754"
+                    Point2="0,20.2780996523754"
+                    Point3="4,20.2780996523754" />
                   <mssgle:LineSegment
-                    End="101.333333333333,20.683661645423" />
+                    End="111.333333333333,20.2780996523754" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.333333333333,20.683661645423"
-                    Point2="105.333333333333,20.683661645423"
-                    Point3="105.333333333333,24.683661645423" />
+                    Point1="111.333333333333,20.2780996523754"
+                    Point2="115.333333333333,20.2780996523754"
+                    Point3="115.333333333333,24.2780996523754" />
                   <mssgle:LineSegment
-                    End="105.333333333333,43.5" />
+                    End="115.333333333333,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="32.1129752604167,25.683661645423,41.1073828125,9.7978515625"
+              BoundingBox="37.1129752604167,25.2780996523754,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_docente\Búsqueda 1">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_docente]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Cargar Dim_docente\Dim_docente">
     <Properties>
@@ -14969,6 +14722,29 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_docente\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_docente]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -15231,7 +15007,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15368,39 +15146,41 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     design-time-name="Package\Cargar Fact_notas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="130,42"
           Id="Package\Cargar Fact_notas\Fact_notas"
-          TopLeft="198,223" />
+          TopLeft="198,203" />
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Fact_notas\Conversión de datos"
-          TopLeft="174,139" />
+          TopLeft="174,135" />
         <NodeLayout
           Size="139,42"
           Id="Package\Cargar Fact_notas\Cargar notas"
           TopLeft="194,66" />
         <EdgeLayout
           Id="Package\Cargar Fact_notas.Paths[Salida de conversión de datos]"
-          TopLeft="262.25,181">
+          TopLeft="262.25,177">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,34.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15409,20 +15189,22 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31"
+              EndConnector="0,27"
               Start="0,0"
-              End="0,23.5">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

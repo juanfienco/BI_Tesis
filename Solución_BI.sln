@@ -9,6 +9,8 @@ Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_No
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Matriculacion", "ProyectoMultidimensional_Matriculacion\ProyectoMultidimensional_Matriculacion.dwproj", "{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeMatriculacion", "ProyectoInformeMatriculacion\ProyectoInformeMatriculacion.rptproj", "{D512B42F-090A-4091-AE88-2621A191F31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -49,6 +51,18 @@ Global
 		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.ActiveCfg = Development
 		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.Build.0 = Development
 		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.Deploy.0 = Development
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.ActiveCfg = Debug
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.Build.0 = Debug
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.Deploy.0 = Debug
+		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.Build.0 = DebugLocal
+		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.Deploy.0 = DebugLocal
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.ActiveCfg = 
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.Build.0 = 
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.Deploy.0 = 
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.ActiveCfg = Release
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.Build.0 = Release
+		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

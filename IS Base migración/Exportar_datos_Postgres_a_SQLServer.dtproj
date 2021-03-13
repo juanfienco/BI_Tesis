@@ -32,6 +32,7 @@
           <SSIS:Package SSIS:Name="MigraciónBase.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ETL.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ETL_notas.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Migracion seg_graduados.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.xolatnew_2.linked_server_login.conmgr" />
@@ -1001,10 +1002,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">154</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{8B09042A-A494-4267-B3B5-42A644D707BE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EE010E7C-7D3F-43AA-8E3D-829846FD700B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1114,6 +1115,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Migracion seg_graduados.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{1AB75B03-2B62-4322-8BA3-6E52E99D102D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D32C371A-5D2D-43D9-B855-08B621CA2637}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
