@@ -12,12 +12,499 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{152425EF-EC14-4B7F-BA7D-C91CFEDA1810}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{93839D10-5375-4372-AFAE-49720A684035}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\carrera"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{596F82F0-0F48-424C-81F0-2A0654257E77}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="carrera"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\carrera\cargar carrera"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="cargar carrera"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from openquery(POSTGRES_GRADUADOS,'select * from carrera order by 1');
+
+/*
+select * from openquery(POSTGRES_GRADUADOS,'select * from carrera order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from ciudad order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from direccion_carrera order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from disponibilidad order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from empresa order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from encuesta order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from enlace order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from enlace_rol order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from especialidad order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from estado_estudio order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from estado_postulacion order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from estudio order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from experiencia_laboral order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from facultad order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from grupo_preguntas order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from idioma order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from institucion order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from nivel_conocimiento order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from oferta order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from oferta_favorita order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from oferta_titulo order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from opcion order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from pais order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from postulacion order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from pregunta order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from provincia order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from respuesta order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from respuesta_encuesta order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from rol order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from salario order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from tipo_estudio order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from titulo order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from usuario order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from usuario_especialidad order by 1');
+
+select * from openquery(POSTGRES_GRADUADOS,'select * from usuarios_idiomas order by 1');
+
+
+CREATE TABLE [grad_carrera] (
+    [id] bigint,
+    [facultad_id] int,
+    [institucion_id] bigint,
+    [titulo_id] bigint
+)
+*/</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\carrera\cargar carrera.Connections[OleDbConnection]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[created_at]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[created_at]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[created_at]"
+                      name="created_at"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[updated_at]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[updated_at]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[updated_at]"
+                      name="updated_at"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[deleted_at]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[deleted_at]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[deleted_at]"
+                      name="deleted_at"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[facultad_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[facultad_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[facultad_id]"
+                      name="facultad_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[institucion_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[institucion_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[institucion_id]"
+                      name="institucion_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[titulo_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[titulo_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[titulo_id]"
+                      name="titulo_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp2"
+                      name="created_at"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp2"
+                      name="updated_at"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp2"
+                      name="deleted_at"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[facultad_id]"
+                      dataType="i4"
+                      name="facultad_id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[institucion_id]"
+                      dataType="i8"
+                      name="institucion_id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].ExternalColumns[titulo_id]"
+                      dataType="i8"
+                      name="titulo_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[created_at]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[created_at]"
+                      name="created_at"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[updated_at]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[updated_at]"
+                      name="updated_at"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[deleted_at]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[deleted_at]"
+                      name="deleted_at"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[facultad_id]"
+                      dataType="i4"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[facultad_id]"
+                      name="facultad_id" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      dataType="i8"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[institucion_id]"
+                      dataType="i8"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[institucion_id]"
+                      name="institucion_id" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[titulo_id]"
+                      dataType="i8"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[titulo_id]"
+                      name="titulo_id" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\carrera\carrera"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="carrera"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[grad_carrera]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\carrera\carrera.Connections[OleDbConnection]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].Columns[facultad_id]"
+                      cachedDataType="i4"
+                      cachedName="facultad_id"
+                      externalMetadataColumnId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[facultad_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[facultad_id]" />
+                    <inputColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].Columns[id]"
+                      cachedDataType="i8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[id]" />
+                    <inputColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].Columns[institucion_id]"
+                      cachedDataType="i8"
+                      cachedName="institucion_id"
+                      externalMetadataColumnId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[institucion_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[institucion_id]" />
+                    <inputColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].Columns[titulo_id]"
+                      cachedDataType="i8"
+                      cachedName="titulo_id"
+                      externalMetadataColumnId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[titulo_id]"
+                      lineageId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB].Columns[titulo_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[facultad_id]"
+                      dataType="i4"
+                      name="facultad_id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[institucion_id]"
+                      dataType="i8"
+                      name="institucion_id" />
+                    <externalMetadataColumn
+                      refId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB].ExternalColumns[titulo_id]"
+                      dataType="i8"
+                      name="titulo_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\carrera\carrera.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\carrera\carrera.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\carrera\carrera.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\carrera\carrera.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\carrera\carrera.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\carrera.Paths[Salida de origen de OLE DB]"
+              endId="Package\carrera\carrera.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\carrera\cargar carrera.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ciudad"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{01154375-6B9A-4F17-87AD-887F5C0210C2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ciudad"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -25,5 +512,85 @@
 <Objects
   Version="8">
   <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="112,42"
+          Id="Package\carrera"
+          TopLeft="57,56" />
+        <NodeLayout
+          Size="110,42"
+          Id="Package\ciudad"
+          TopLeft="59,131" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\carrera">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\carrera\cargar carrera"
+          TopLeft="56,45" />
+        <NodeLayout
+          Size="112,42"
+          Id="Package\carrera\carrera"
+          TopLeft="75,154" />
+        <EdgeLayout
+          Id="Package\carrera.Paths[Salida de origen de OLE DB]"
+          TopLeft="129.75,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\carrera\cargar carrera">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\carrera\carrera">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
