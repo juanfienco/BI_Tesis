@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="251"
-  DTS:VersionGUID="{92A3AFBE-ACBF-4D0D-9C70-AAF9D73712C7}">
+  DTS:VersionBuild="259"
+  DTS:VersionGUID="{7159AEB1-A2E5-471E-88B4-CD5C0B54FE3D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1055,8 +1055,8 @@ string_agg(convert(nvarchar, m2.codmateria), ',') as prerequisito_codmateria,
 string_agg(convert(nvarchar, cr.idmateriaco),',') as corequisito_ids,
 string_agg(convert(nvarchar, m3.descripcion), ',') as corequisito_desc,
 string_agg(convert(nvarchar, m3.codmateria), ',') as corequisito_codmateria,
-max(p.creditos) as creditos, 
-max(p.credito_real) as creditos_real,
+isnull(max(p.creditos),0) as creditos, 
+isnull(max(p.credito_real), 0) as creditos_real,
 max(na.descripcion) as nivel
 FROM
 dat_pensum_materia_enfasis_tipomateria p
@@ -2175,6 +2175,122 @@ order by p.idpensumenfasismateriatipo, f.idestructura, c.idcarrera, p.idpensum, 
                       cachedName="id_materias_pensum"
                       cachedPrecision="19"
                       lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id_materias_pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[facultad]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="facultad"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[facultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="carrera"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[carrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[codmateria]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="codmateria"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[codmateria]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[eje]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="eje"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[eje]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[creditos]"
+                      cachedDataType="r4"
+                      cachedName="creditos"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[creditos]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[creditos_real]"
+                      cachedDataType="r4"
+                      cachedName="creditos_real"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[creditos_real]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[nivel]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="nivel"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[nivel]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[pensum]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="pensum"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[materia]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="materia"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[materia]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[enfasis]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="enfasis"
+                      lineageId="Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[enfasis]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[facultad1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="facultad"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[carrera1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="carrera"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[carrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[eje1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="eje"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[eje]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[creditos1]"
+                      cachedDataType="r4"
+                      cachedName="creditos"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[creditos]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[creditos_real1]"
+                      cachedDataType="r4"
+                      cachedName="creditos_real"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[creditos_real]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[nivel1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nivel"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[pensum1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pensum"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[codmateria1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="codmateria"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[codmateria]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[materia1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="materia"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[materia]" />
+                    <inputColumn
+                      refId="Package\Cargar Dat_malla\División condicional.Inputs[Entrada de división condicional].Columns[enfasis1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="enfasis"
+                      lineageId="Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[enfasis]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2222,13 +2338,13 @@ order by p.idpensumenfasismateriatipo, f.idestructura, c.idcarrera, p.idpensum, 
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">![ISNULL](#{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id_materias_pensum]})</property>
+                      name="Expression">(#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[enfasis]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[enfasis]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[codmateria]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[codmateria]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[nivel]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[creditos_real]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[creditos_real]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[creditos]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[creditos]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[eje]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[eje]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[materia]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[materia]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[pensum]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[pensum]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[carrera]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[carrera]}) || (#{Package\Cargar Dat_malla\cargar materias_pensum.Outputs[Salida de origen de OLE DB].Columns[facultad]} != #{Package\Cargar Dat_malla\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL([Búsqueda].id_materias_pensum)</property>
+                      name="FriendlyExpression">([cargar materias_pensum].enfasis != [Búsqueda].enfasis) || ([cargar materias_pensum].codmateria != [Búsqueda].codmateria) || ([cargar materias_pensum].nivel != [Búsqueda].nivel) || ([cargar materias_pensum].creditos_real != [Búsqueda].creditos_real) || ([cargar materias_pensum].creditos != [Búsqueda].creditos) || ([cargar materias_pensum].eje != [Búsqueda].eje) || ([cargar materias_pensum].materia != [Búsqueda].materia) || ([cargar materias_pensum].pensum != [Búsqueda].pensum) || ([cargar materias_pensum].carrera != [Búsqueda].carrera) || ([cargar materias_pensum].facultad != [Búsqueda].facultad)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -13783,168 +13899,152 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         <NodeLayout
           Size="141,42"
           Id="Package\Cargar Dat_malla\Dim_pensum"
-          TopLeft="17,432" />
+          TopLeft="17,300" />
         <NodeLayout
           Size="125,42"
           Id="Package\Cargar Dat_malla\Búsqueda"
-          TopLeft="156,230" />
+          TopLeft="158,162" />
         <NodeLayout
           Size="195,42"
           Id="Package\Cargar Dat_malla\cargar materias_pensum"
-          TopLeft="122,43" />
+          TopLeft="120,24" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dat_malla\División condicional"
-          TopLeft="138,332" />
+          TopLeft="134,238" />
         <NodeLayout
           Size="164,42"
           Id="Package\Cargar Dat_malla\Columna derivada"
-          TopLeft="142,132" />
+          TopLeft="137,94" />
         <NodeLayout
           Size="189,42"
           Id="Package\Cargar Dat_malla\Actualizar Dim_pensum"
-          TopLeft="230,435" />
+          TopLeft="257,297" />
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Salida de origen de OLE DB]"
-          TopLeft="221.75,85">
+          TopLeft="218.25,66">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="0,28"
               Start="0,0"
-              End="0,39.5">
+              End="0,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="221,272">
+          TopLeft="220,204">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,52.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,20.15234375,199.638046875,12.1953125"
+              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Salida de columna derivada]"
-          TopLeft="221.25,174">
+          TopLeft="219.75,136">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,48.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Nuevos]"
-          TopLeft="223.5,374">
+          TopLeft="134,259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-136,58"
+              EndConnector="-46.5,41"
               Start="0,0"
-              End="-136,50.5">
+              End="-46.5,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25" />
+                    End="-42.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="-4,29" />
+                    Point1="-42.5,0"
+                    Point2="-46.5,0"
+                    Point3="-46.5,4" />
                   <mssgle:LineSegment
-                    End="-132,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-132,29"
-                    Point2="-136,29"
-                    Point3="-136,33" />
-                  <mssgle:LineSegment
-                    End="-136,50.5" />
+                    End="-46.5,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-84.727578125,34,33.45515625,9.421875"
+              BoundingBox="-63.227578125,-15.421875,33.45515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dat_malla.Paths[Modificar]"
-          TopLeft="250.666666666667,374">
+          TopLeft="305,259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="73.8333333333333,61"
+              EndConnector="46.5,38"
               Start="0,0"
-              End="73.8333333333333,53.5">
+              End="46.5,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.739281575898" />
+                    End="42.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.739281575898"
-                    Point2="0,24.739281575898"
-                    Point3="4,24.739281575898" />
+                    Point1="42.5,0"
+                    Point2="46.5,0"
+                    Point3="46.5,4" />
                   <mssgle:LineSegment
-                    End="69.8333333333333,24.739281575898" />
-                  <mssgle:CubicBezierSegment
-                    Point1="69.8333333333333,24.739281575898"
-                    Point2="73.8333333333333,24.739281575898"
-                    Point3="73.8333333333333,28.739281575898" />
-                  <mssgle:LineSegment
-                    End="73.8333333333333,53.5" />
+                    End="46.5,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="16.3629752604167,29.739281575898,41.1073828125,9.7978515625"
+              BoundingBox="25.94630859375,-15.7978515625,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14717,78 +14817,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Id="Package\Cargar Dim_cursos\Actualizar Dim_cursos"
           TopLeft="308,329" />
         <EdgeLayout
-          Id="Package\Cargar Dim_cursos.Paths[Salida de origen de OLE DB]"
-          TopLeft="294,49">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.54947265625,8.0234375,57.0989453125,11.453125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_cursos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="291,195">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-133.45740234375,12.15234375,266.9148046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_cursos.Paths[Salida de conversión de datos]"
-          TopLeft="290,126">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.54947265625,4.0234375,57.0989453125,11.453125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Nuevo]"
           TopLeft="265.333333333333,281">
           <EdgeLayout.Curve>
@@ -14860,6 +14888,78 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_cursos.Paths[Salida de origen de OLE DB]"
+          TopLeft="294,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.54947265625,8.0234375,57.0989453125,11.453125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_cursos.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="291,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-133.45740234375,12.15234375,266.9148046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_cursos.Paths[Salida de conversión de datos]"
+          TopLeft="290,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.54947265625,4.0234375,57.0989453125,11.453125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -14882,7 +14982,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14892,7 +14992,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14913,17 +15013,21 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="170,42"
+          Id="Package\Cargar Dim_docente\cargar dat_docente"
+          TopLeft="235,49" />
+        <NodeLayout
           Size="111,42"
           Id="Package\Cargar Dim_docente\calculo"
           TopLeft="264,118" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\Cargar Dim_docente\Dim_docente"
-          TopLeft="102.666666666667,359" />
-        <NodeLayout
           Size="125,42"
           Id="Package\Cargar Dim_docente\Búsqueda"
           TopLeft="257,185" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Cargar Dim_docente\Dim_docente"
+          TopLeft="102.666666666667,359" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dim_docente\División condicional"
@@ -14932,10 +15036,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="190,42"
           Id="Package\Cargar Dim_docente\Actualizar Dim_docente"
           TopLeft="369,363" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Cargar Dim_docente\cargar dat_docente"
-          TopLeft="235,49" />
         <EdgeLayout
           Id="Package\Cargar Dim_docente.Paths[Salida de origen de OLE DB]"
           TopLeft="319.75,91">
@@ -14955,7 +15055,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15001,7 +15103,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15080,15 +15184,10 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_docente\Dim_docente">
+    design-time-name="Package\Cargar Dim_docente\cargar dat_docente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -15098,7 +15197,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -15116,10 +15215,15 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_docente\cargar dat_docente">
+    design-time-name="Package\Cargar Dim_docente\Dim_docente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
