@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="235"
-  DTS:VersionGUID="{87A3DC35-ADB1-4CB6-B0B2-91C1D3087F2F}">
+  DTS:VersionBuild="251"
+  DTS:VersionGUID="{92A3AFBE-ACBF-4D0D-9C70-AAF9D73712C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -6753,46 +6753,45 @@ max(d3.idestructura) as idfacultad,
 max(d5.idcarrera) as idcarrera,
 (select max(c2.idpensum) from dat_pensum c2 where c2.idcarrera = d5.idcarrera ) as idpensum,
 max(d4.idmateria) as idmateria,
-(select string_agg(s3.idprofesor,', ') within group (order by s3.apellidos, s3.nombre) from dat_curso s1
+isnull((select string_agg(s3.idprofesor,', ') within group (order by s3.apellidos, s3.nombre) from dat_curso s1
 	inner join dat_curso_dat_profesor s2 on s1.idcurso= s2.idcurso
 	inner join dat_profesor s3 on s2.idprofesor = s3.idprofesor
-	where s1.idcurso = d1.idcurso) as iddocentes,
+	where s1.idcurso = d1.idcurso),0) as iddocentes,
 max(d3.denominacion) AS facultad, 
 max(d5.descripcion) as carrera,
 (select max(c2.descripcion) from dat_pensum c2 where c2.idcarrera = d5.idcarrera ) as pensum,
-(select distinct string_agg(concat(s5.descripcion , '--' , s6.descripcion) ,', ') from dat_pensum_materia_enfasis_tipomateria s2  --distinct 
+isnull((select distinct string_agg(concat(s5.descripcion , '--' , s6.descripcion) ,', ') from dat_pensum_materia_enfasis_tipomateria s2  --distinct 
 	inner join dat_area s4 on s2.idarea=s4.idarea
 	inner join nom_area_general s5 on s4.idareageneral = s5.idareageneral
 	inner join dat_enfasis s6 on s2.idenfasis = s6.idenfasis
 	where s2.idpensum = (select max(c2.idpensum) from dat_pensum c2 where c2.idcarrera = d5.idcarrera
 	and  c2.idcarrera = d5.idcarrera) and s2.idmateria = d4.idmateria and s6.idenfasis in (select distinct(g1.idenfasis) from dat_enfasis g1 
-    where g1.idcarrera = d5.idcarrera)) as nivel_itinerario,
+    where g1.idcarrera = d5.idcarrera)),'SD') as nivel_itinerario,
 max(d4.descripcion) as asignatura,
-max(char(64 + d1.par_curs)) as paralelo,
+isnull(max(char(64 + d1.par_curs)),'-') as paralelo,
 max(case when d1.plan_contingencia=1 then 'Si' else 'No' End) as plan_contingencia,
 max(d1.cupo) as cupo,
 (select count(distinct(c1.idalumno)) from dat_alumno_mate_deta c1
 	where c1.idcurso=d1.idcurso) as total_estudiantes_registrados,
-(select string_agg(concat(s3.apellidos ,' ',s3.nombre),', ') within group (order by s3.apellidos, s3.nombre) from dat_curso s1
+isnull((select string_agg(concat(s3.apellidos ,' ',s3.nombre),', ') within group (order by s3.apellidos, s3.nombre) from dat_curso s1
 	inner join dat_curso_dat_profesor s2 on s1.idcurso= s2.idcurso
 	inner join dat_profesor s3 on s2.idprofesor = s3.idprofesor
-	where s1.idcurso = d1.idcurso) as docente,
-(select sum(DATEDIFF(MINUTE,f4.hora_inicio,f4.hora_fin)) from dat_curso f1 
+	where s1.idcurso = d1.idcurso),'SD') as docente,
+isnull((select sum(DATEDIFF(MINUTE,f4.hora_inicio,f4.hora_fin)) from dat_curso f1 
 inner join dat_curso_dat_profesor f2 on f1.idcurso = f2.idcurso
 inner join dat_horario f3 on f1.idhorario=f3.idhorario
 inner join dat_horario_detallado f4 on f3.idhorario=f4.idhorario
 inner join dat_curso_dat_aula f5 on f2.idcurso=f5.idcurso
-inner join dat_curso_dat_profesor_dat_aula_dat_horariodetallado f6 on f5.idcurso=f6.idcurso and f2.idprofesor = f6.idprofesor and f4.idhorario_detallado=f6.idhorariodetallado and f5.idaula=f6.idaula	where f1.idcurso = d1.idcurso) as horas,
+inner join dat_curso_dat_profesor_dat_aula_dat_horariodetallado f6 on f5.idcurso=f6.idcurso and f2.idprofesor = f6.idprofesor and f4.idhorario_detallado=f6.idhorariodetallado and f5.idaula=f6.idaula	where f1.idcurso = d1.idcurso),0) as horas,
 max(d1.estado) as estado_curso, 
-max(d7.detalle) as horario,
-max(d2.descripcion) as periodo_academico
-from dat_curso d1		
+isnull(max(d7.detalle),'SD') as horario,
+isnull(max(d2.descripcion),'SD') as periodo_academico
+from dat_curso d1
 inner join dat_periododocente d2 on d1.idperiododocente=d2.idperiododocente
 inner join dat_facultad d3 on d1.idfacultad=d3.idestructura
 inner join dat_materia d4 on d1.idmateria = d4.idmateria
 inner join dat_carrera d5 on d1.idcarrera = d5.idcarrera
 inner join dat_horario d7 on d1.idhorario = d7.idhorario
-/*where d2.idperiodogeneral in (60) and d1.idcurso=1127101*/
 group by d3.idestructura,d5.idcarrera, d1.idcurso, d1.par_curs,d7.idhorario,d4.idmateria, d2.descripcion
 order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                 <property
@@ -6838,7 +6837,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].ExternalColumns[cupo]"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[cupo]"
                       name="cupo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[plan_contingencia]"
                       codePage="1252"
@@ -6849,7 +6848,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="2"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[plan_contingencia]"
                       name="plan_contingencia"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[facultad]"
                       dataType="wstr"
@@ -6859,7 +6858,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="255"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[facultad]"
                       name="facultad"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[carrera]"
                       dataType="wstr"
@@ -6869,7 +6868,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[carrera]"
                       name="carrera"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idpensum]"
                       dataType="numeric"
@@ -6879,7 +6878,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idpensum]"
                       name="idpensum"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[pensum]"
                       dataType="wstr"
@@ -6889,7 +6888,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[pensum]"
                       name="pensum"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[nivel_itinerario]"
                       dataType="wstr"
@@ -6899,7 +6898,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[nivel_itinerario]"
                       name="nivel_itinerario"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[asignatura]"
                       dataType="wstr"
@@ -6909,7 +6908,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[asignatura]"
                       name="asignatura"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[paralelo]"
                       codePage="1252"
@@ -6920,7 +6919,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="1"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[paralelo]"
                       name="paralelo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[total_estudiantes_registrados]"
                       dataType="i4"
@@ -6929,7 +6928,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].ExternalColumns[total_estudiantes_registrados]"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[total_estudiantes_registrados]"
                       name="total_estudiantes_registrados"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[docente]"
                       dataType="wstr"
@@ -6939,7 +6938,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[docente]"
                       name="docente"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horas]"
                       dataType="i4"
@@ -6948,7 +6947,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].ExternalColumns[horas]"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horas]"
                       name="horas"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[estado_curso]"
                       codePage="1252"
@@ -6959,7 +6958,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="5"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[estado_curso]"
                       name="estado_curso"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horario]"
                       dataType="wstr"
@@ -6969,7 +6968,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horario]"
                       name="horario"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[periodo_academico]"
                       dataType="wstr"
@@ -6979,7 +6978,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[periodo_academico]"
                       name="periodo_academico"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcurso]"
                       dataType="numeric"
@@ -6989,7 +6988,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcurso]"
                       name="idcurso"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idfacultad]"
                       dataType="numeric"
@@ -6999,7 +6998,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idfacultad]"
                       name="idfacultad"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcarrera]"
                       dataType="numeric"
@@ -7009,7 +7008,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcarrera]"
                       name="idcarrera"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idmateria]"
                       dataType="numeric"
@@ -7019,7 +7018,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idmateria]"
                       name="idmateria"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idperiodo]"
                       dataType="numeric"
@@ -7029,7 +7028,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idperiodo]"
                       name="idperiodo"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[iddocentes]"
                       dataType="wstr"
@@ -7039,7 +7038,7 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[iddocentes]"
                       name="iddocentes"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7477,136 +7476,136 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[cupo]"
-                      cachedDataType="i4"
-                      cachedName="cupo"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cupo]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cupo]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[facultad]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="facultad"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[facultad]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[carrera]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="carrera"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[carrera]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[carrera]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idpensum]"
-                      cachedDataType="numeric"
-                      cachedName="idpensum"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idpensum]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idpensum]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[pensum]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="pensum"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[pensum]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[pensum]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[nivel_itinerario]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="nivel_itinerario"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[nivel_itinerario]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_itinerario]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[asignatura]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="asignatura"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[asignatura]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[asignatura]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[total_estudiantes_registrados]"
-                      cachedDataType="i4"
-                      cachedName="total_estudiantes_registrados"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_estudiantes_registrados]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[total_estudiantes_registrados]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[docente]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="docente"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[docente]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[docente]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[horas]"
-                      cachedDataType="i4"
-                      cachedName="horas"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horas]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[estado_curso]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="estado_curso"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[estado_curso]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_curso]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[horario]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="horario"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[horario]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horario]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[periodo_academico]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="periodo_academico"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo_academico]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[periodo_academico]" />
-                    <inputColumn
                       refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idcurso]"
                       cachedDataType="numeric"
                       cachedName="idcurso"
                       cachedPrecision="19"
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idcurso]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idcurso]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idfacultad]"
-                      cachedDataType="numeric"
-                      cachedName="idfacultad"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idfacultad]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idfacultad]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idcarrera]"
-                      cachedDataType="numeric"
-                      cachedName="idcarrera"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idcarrera]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idcarrera]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idmateria]"
-                      cachedDataType="numeric"
-                      cachedName="idmateria"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idmateria]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idmateria]" />
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcurso]" />
                     <inputColumn
                       refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idperiodo]"
                       cachedDataType="numeric"
                       cachedName="idperiodo"
                       cachedPrecision="19"
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idperiodo]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idperiodo]" />
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idperiodo]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[Copia de plan_contingencia]"
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idcarrera]"
+                      cachedDataType="numeric"
+                      cachedName="idcarrera"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idcarrera]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idcarrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idmateria]"
+                      cachedDataType="numeric"
+                      cachedName="idmateria"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idmateria]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idmateria]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idpensum]"
+                      cachedDataType="numeric"
+                      cachedName="idpensum"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idpensum]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idpensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[periodo_academico]"
                       cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="periodo_academico"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo_academico]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[periodo_academico]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[facultad]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="facultad"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[facultad]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[facultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="carrera"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[carrera]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[carrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[asignatura]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="asignatura"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[asignatura]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[asignatura]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[cupo]"
+                      cachedDataType="i4"
+                      cachedName="cupo"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cupo]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[cupo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[pensum]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="pensum"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[pensum]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[docente]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="docente"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[docente]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[docente]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[iddocentes]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="iddocentes"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[iddocentes]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[iddocentes]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[estado_curso]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="5"
-                      cachedName="Copia de plan_contingencia"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[plan_contingencia]"
-                      lineageId="Package\Cargar Dim_cursos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de plan_contingencia]" />
+                      cachedName="estado_curso"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[estado_curso]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[estado_curso]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[total_estudiantes_registrados]"
+                      cachedDataType="i4"
+                      cachedName="total_estudiantes_registrados"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[total_estudiantes_registrados]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[total_estudiantes_registrados]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[horas]"
+                      cachedDataType="i4"
+                      cachedName="horas"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horas]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[idfacultad]"
+                      cachedDataType="numeric"
+                      cachedName="idfacultad"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[idfacultad]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[idfacultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[horario]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="horario"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[horario]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horario]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[nivel_itinerario]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="nivel_itinerario"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[nivel_itinerario]"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[nivel_itinerario]" />
                     <inputColumn
                       refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[Copia de paralelo]"
                       cachedDataType="wstr"
@@ -7615,12 +7614,12 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[paralelo]"
                       lineageId="Package\Cargar Dim_cursos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de paralelo]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[iddocentes]"
+                      refId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].Columns[Copia de plan_contingencia]"
                       cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="iddocentes"
-                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[iddocentes]"
-                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[iddocentes]" />
+                      cachedLength="5"
+                      cachedName="Copia de plan_contingencia"
+                      externalMetadataColumnId="Package\Cargar Dim_cursos\Dim_cursos.Inputs[Entrada de destino de OLE DB].ExternalColumns[plan_contingencia]"
+                      lineageId="Package\Cargar Dim_cursos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de plan_contingencia]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7779,6 +7778,172 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       cachedName="idcurso"
                       cachedPrecision="19"
                       lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idcurso]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[cupo]"
+                      cachedDataType="i4"
+                      cachedName="cupo"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[cupo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[plan_contingencia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="plan_contingencia"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[plan_contingencia]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[facultad]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="facultad"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[facultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="carrera"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[carrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[pensum]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="pensum"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[asignatura]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="asignatura"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[asignatura]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[paralelo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="paralelo"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[paralelo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[total_estudiantes_registrados]"
+                      cachedDataType="i4"
+                      cachedName="total_estudiantes_registrados"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[total_estudiantes_registrados]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[docente]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="docente"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[docente]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[horas]"
+                      cachedDataType="i4"
+                      cachedName="horas"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horas]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[estado_curso]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="estado_curso"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[estado_curso]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[horario]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="horario"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horario]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[periodo_academico]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="periodo_academico"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[periodo_academico]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[periodo_academico1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="periodo_academico"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[periodo_academico]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[facultad1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="facultad"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[carrera1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="carrera"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[carrera]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[asignatura1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="asignatura"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[asignatura]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[pensum1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="pensum"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[pensum]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[docente1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="docente"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[docente]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[horario1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="horario"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horario]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[horas1]"
+                      cachedDataType="i4"
+                      cachedName="horas"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horas]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[paralelo1]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="paralelo"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paralelo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[cupo1]"
+                      cachedDataType="i4"
+                      cachedName="cupo"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cupo]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[plan_contingencia1]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="plan_contingencia"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[plan_contingencia]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[total_estudiantes_registrados1]"
+                      cachedDataType="i4"
+                      cachedName="total_estudiantes_registrados"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[total_estudiantes_registrados]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[estado_curso1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="estado_curso"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_curso]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[nivel_itinerario]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="nivel_itinerario"
+                      lineageId="Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[nivel_itinerario]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_cursos\División condicional.Inputs[Entrada de división condicional].Columns[nivel_itinerario1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nivel_itinerario"
+                      lineageId="Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_itinerario]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7826,13 +7991,13 @@ order by facultad, carrera, nivel_itinerario, asignatura,paralelo</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">![ISNULL](#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idcurso]})</property>
+                      name="Expression">(#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[cupo]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[cupo]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[plan_contingencia]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[plan_contingencia]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nivel_itinerario]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[nivel_itinerario]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[periodo_academico]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[periodo_academico]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horario]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horario]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[horas]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[horas]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estado_curso]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[estado_curso]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[docente]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[docente]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[total_estudiantes_registrados]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[total_estudiantes_registrados]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[paralelo]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[paralelo]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[asignatura]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[asignatura]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[pensum]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[pensum]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[carrera]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[carrera]}) || (#{Package\Cargar Dim_cursos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[facultad]} != #{Package\Cargar Dim_cursos\Cargar cursos aperturados.Outputs[Salida de origen de OLE DB].Columns[facultad]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL([Búsqueda].idcurso)</property>
+                      name="FriendlyExpression">([Búsqueda].cupo != [Cargar cursos aperturados].cupo) || ([Búsqueda].plan_contingencia != [Cargar cursos aperturados].plan_contingencia) || ([Búsqueda].nivel_itinerario != [Cargar cursos aperturados].nivel_itinerario) || ([Búsqueda].periodo_academico != [Cargar cursos aperturados].periodo_academico) || ([Búsqueda].horario != [Cargar cursos aperturados].horario) || ([Búsqueda].horas != [Cargar cursos aperturados].horas) || ([Búsqueda].estado_curso != [Cargar cursos aperturados].estado_curso) || ([Búsqueda].docente != [Cargar cursos aperturados].docente) || ([Búsqueda].total_estudiantes_registrados != [Cargar cursos aperturados].total_estudiantes_registrados) || ([Búsqueda].paralelo != [Cargar cursos aperturados].paralelo) || ([Búsqueda].asignatura != [Cargar cursos aperturados].asignatura) || ([Búsqueda].pensum != [Cargar cursos aperturados].pensum) || ([Búsqueda].carrera != [Cargar cursos aperturados].carrera) || ([Búsqueda].facultad != [Cargar cursos aperturados].facultad)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -9103,7 +9268,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="100"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nombre]"
                       name="nombre"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]"
                       dataType="wstr"
@@ -9113,7 +9278,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="255"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[apellidos]"
                       name="apellidos"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]"
                       dataType="wstr"
@@ -9123,7 +9288,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="11"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[sexo]"
                       name="sexo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[idprofesor]"
                       dataType="numeric"
@@ -9133,7 +9298,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[idprofesor]"
                       name="idprofesor"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[identificacion]"
                       dataType="wstr"
@@ -9143,7 +9308,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="255"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[identificacion]"
                       name="identificacion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]"
                       dataType="wstr"
@@ -9153,7 +9318,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="255"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[especializacion]"
                       name="especializacion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]"
                       dataType="wstr"
@@ -9163,7 +9328,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="255"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[instruccion]"
                       name="instruccion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]"
                       dataType="wstr"
@@ -9173,7 +9338,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="200"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[categoria]"
                       name="categoria"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]"
                       dataType="wstr"
@@ -9183,7 +9348,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="4000"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[colectivo]"
                       name="colectivo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]"
                       dataType="wstr"
@@ -9193,7 +9358,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="4000"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[comision]"
                       name="comision"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]"
                       dataType="wstr"
@@ -9203,7 +9368,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="4000"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[nivel_formacion]"
                       name="nivel_formacion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]"
                       codePage="1252"
@@ -9214,7 +9379,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="15"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[dedicacion]"
                       name="dedicacion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[estado_civil]"
                       dataType="wstr"
@@ -9224,7 +9389,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="4000"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[estado_civil]"
                       name="estado_civil"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]"
                       codePage="1252"
@@ -9235,7 +9400,7 @@ select 0 as idprofesor, 'SD', 'SD', 'SD', 'NO REGISTRA', 'NO REGISTRA', 'NO REGI
                       length="23"
                       lineageId="Package\Cargar Dim_docente\cargar dat_docente.Outputs[Salida de origen de OLE DB].Columns[cargo]"
                       name="cargo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -14530,30 +14695,30 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Dim_cursos\Conversión de datos"
-          TopLeft="215,140" />
+          TopLeft="203,84" />
         <NodeLayout
           Size="133,42"
           Id="Package\Cargar Dim_cursos\Dim_cursos"
-          TopLeft="54,391" />
+          TopLeft="118,325" />
         <NodeLayout
           Size="125,42"
           Id="Package\Cargar Dim_cursos\Búsqueda"
-          TopLeft="239,209" />
+          TopLeft="227,153" />
         <NodeLayout
           Size="203,42"
           Id="Package\Cargar Dim_cursos\Cargar cursos aperturados"
-          TopLeft="208,63" />
+          TopLeft="196,7" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dim_cursos\División condicional"
-          TopLeft="219,295" />
+          TopLeft="207,239" />
         <NodeLayout
-          Size="182,42"
+          Size="194,44"
           Id="Package\Cargar Dim_cursos\Actualizar Dim_cursos"
-          TopLeft="375,393" />
+          TopLeft="308,329" />
         <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Salida de origen de OLE DB]"
-          TopLeft="306,105">
+          TopLeft="294,49">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14571,13 +14736,13 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-28.54947265625,8.0234375,57.0989453125,11.453125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="303,251">
+          TopLeft="291,195">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14595,13 +14760,13 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,12.15234375,199.638046875,12.1953125"
+              BoundingBox="-133.45740234375,12.15234375,266.9148046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Salida de conversión de datos]"
-          TopLeft="302,182">
+          TopLeft="290,126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14619,79 +14784,79 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-28.54947265625,4.0234375,57.0989453125,11.453125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Nuevo]"
-          TopLeft="277.333333333333,337">
+          TopLeft="265.333333333333,281">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-156.833333333333,54"
+              EndConnector="-80.8333333333333,44"
               Start="0,0"
-              End="-156.833333333333,46.5">
+              End="-80.8333333333333,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.9003476245655" />
+                    End="0,13.8447276940904" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.9003476245655"
-                    Point2="0,21.9003476245655"
-                    Point3="-4,21.9003476245655" />
+                    Point1="0,13.8447276940904"
+                    Point2="0,17.8447276940904"
+                    Point3="-4,17.8447276940904" />
                   <mssgle:LineSegment
-                    End="-152.833333333333,21.9003476245655" />
+                    End="-76.8333333333333,17.8447276940904" />
                   <mssgle:CubicBezierSegment
-                    Point1="-152.833333333333,21.9003476245655"
-                    Point2="-156.833333333333,21.9003476245655"
-                    Point3="-156.833333333333,25.9003476245655" />
+                    Point1="-76.8333333333333,17.8447276940904"
+                    Point2="-80.8333333333333,17.8447276940904"
+                    Point3="-80.8333333333333,21.8447276940904" />
                   <mssgle:LineSegment
-                    End="-156.833333333333,46.5" />
+                    End="-80.8333333333333,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-92.8686979166665,26.9003476245655,28.9040625,9.421875"
+              BoundingBox="-73.1684049479167,22.8447276940904,65.5034765625,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_cursos.Paths[Modificar]"
-          TopLeft="331.666666666667,337">
+          TopLeft="319.666666666667,281">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="134.333333333333,56"
+              EndConnector="85.3333333333334,48"
               Start="0,0"
-              End="134.333333333333,48.5">
+              End="85.3333333333334,40.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.7114716106605" />
+                    End="0,15.4669756662804" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.7114716106605"
-                    Point2="0,22.7114716106605"
-                    Point3="4,22.7114716106605" />
+                    Point1="0,15.4669756662804"
+                    Point2="0,19.4669756662804"
+                    Point3="4,19.4669756662804" />
                   <mssgle:LineSegment
-                    End="130.333333333333,22.7114716106605" />
+                    End="81.3333333333334,19.4669756662804" />
                   <mssgle:CubicBezierSegment
-                    Point1="130.333333333333,22.7114716106605"
-                    Point2="134.333333333333,22.7114716106605"
-                    Point3="134.333333333333,26.7114716106605" />
+                    Point1="81.3333333333334,19.4669756662804"
+                    Point2="85.3333333333334,19.4669756662804"
+                    Point3="85.3333333333334,23.4669756662804" />
                   <mssgle:LineSegment
-                    End="134.333333333333,48.5" />
+                    End="85.3333333333334,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="46.6129752604167,27.7114716106605,41.1073828125,9.7978515625"
+              BoundingBox="3.92992838541669,24.4669756662804,77.4734765625,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -14717,7 +14882,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14727,7 +14892,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14907,7 +15072,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="29.2443229166667,24.8725376593279,58.8446875,16"
+              BoundingBox="38.1129752604167,24.8725376593279,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
