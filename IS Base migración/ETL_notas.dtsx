@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="259"
-  DTS:VersionGUID="{7159AEB1-A2E5-471E-88B4-CD5C0B54FE3D}">
+  DTS:VersionBuild="282"
+  DTS:VersionGUID="{5109DAA2-9604-4DE7-B6D8-6F4318352334}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2454,7 +2454,18 @@ order by p.idpensumenfasismateriatipo, f.idestructura, c.idcarrera, p.idpensum, 
                   description="Comando SQL para ejecutar."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW_sga].[dbo].[Dim_alumno] SET [estudiante] = ?, [sexo] = ?, [nacionalidad] = ?, [lugar_nacimiento] = ?, [provincia_nacimiento] = ?, [canton_nacimiento] = ?, [provincia_domicilio] = ?,[canton_domicilio] = ?, [tipo_alumno] = ? WHERE [idalumno] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW_sga].[dbo].[Dim_alumno] 
+SET 
+[estudiante] = ?, 
+[sexo] = ?, 
+[nacionalidad] = ?, 
+[lugar_nacimiento] = ?, 
+[provincia_nacimiento] = ?, 
+[canton_nacimiento] = ?, 
+[provincia_domicilio] = ?,
+[canton_domicilio] = ?, 
+[tipo_alumno] = ? 
+WHERE [idalumno] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -2489,21 +2500,63 @@ order by p.idpensumenfasismateriatipo, f.idestructura, c.idcarrera, p.idpensum, 
                       cachedName="idalumno"
                       cachedPrecision="19"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_9]"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[sexo]"
                       cachedDataType="wstr"
-                      cachedLength="1"
+                      cachedLength="20"
                       cachedName="sexo"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[nacionalidad]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="nacionalidad"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[lugar_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="lugar_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[provincia_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="provincia_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[canton_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="canton_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[provincia_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="provincia_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[canton_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="canton_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].Columns[tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="tipo_alumno"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Actualizar Dim_alumno.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_8]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2773,21 +2826,6 @@ where [refTable].[idalumno] = ?</property>
                   synchronousInputId="Package\Cargar Dim_alumno\Búsqueda.Inputs[Entrada de búsqueda]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[id]"
-                      name="id"
-                      precision="19"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">id</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copiar columna"
@@ -2973,395 +3011,6 @@ where [refTable].[idalumno] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Cargar Dim_alumno\canton domicilio"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="canton domicilio"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\canton domicilio.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\canton domicilio.Inputs[Entrada de columna derivada].Columns[canton_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_domicilio"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(canton_domicilio) &lt; 1 || ISNULL(canton_domicilio) ? "SD" : UPPER(canton_domicilio)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\canton domicilio.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\canton domicilio.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\canton nacimiento"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="canton nacimiento"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\canton nacimiento.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\canton nacimiento.Inputs[Entrada de columna derivada].Columns[canton_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_nacimiento"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(canton_nacimiento) &lt; 1 || ISNULL(canton_nacimiento) ? "SD" : UPPER(canton_nacimiento)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\canton nacimiento.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\canton nacimiento.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\Conversión de datos"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Conversión de datos"
-              name="Conversión de datos"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos]"
-                  name="Entrada de conversión de datos">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[tipo_alumno]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="tipo_alumno"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[lugar_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="lugar_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[nacionalidad]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="nacionalidad"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[canton_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[canton_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="canton_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[provincia_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[provincia_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos]"
-                  exclusionGroup="1"
-                  name="Salida de conversión de datos"
-                  synchronousInputId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de lugar_nacimiento]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de lugar_nacimiento]"
-                      name="Copia de lugar_nacimiento"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de nacionalidad]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de nacionalidad]"
-                      name="Copia de nacionalidad"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_domicilio]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_domicilio]"
-                      name="Copia de canton_domicilio"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento]"
-                      name="Copia de canton_nacimiento"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio]"
-                      name="Copia de provincia_domicilio"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento]"
-                      name="Copia de provincia_nacimiento"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
-                      name="Copia de tipo_alumno"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
-                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de error de conversión de datos]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de conversión de datos"
-                  synchronousInputId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Cargar Dim_alumno\dat_alumno"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
@@ -3387,12 +3036,12 @@ where [refTable].[idalumno] = ?</property>
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-a.idalumno, 
+a.idalumno,
 isnull(a.apellidos,'NO REGISTRA') as apellidos, 
 isnull(a.nombre,'NO REGISTRA') as nombre, 
 isnull(a.sexo,'-') as sexo, 
 isnull(a.nacionalidad,'NO REGISTRA') as nacionalidad, 
-isnull(a.lugar_nacimiento,'NO REGISTRA') as lugar_nacimiento,
+case when len(a.lugar_nacimiento)=0 then 'NO REGISTRA' else isnull(a.lugar_nacimiento,'NO REGISTRA') end as lugar_nacimiento,
 isnull(ta.descripcion,'NO REGISTRA') as tipo_alumno, 
 isnull(c.descripcion,'NO REGISTRA') as canton_domicilio, 
 isnull(c1.descripcion,'NO REGISTRA') as canton_nacimiento,
@@ -3448,7 +3097,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]"
                       name="idalumno"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nombre]"
                       dataType="wstr"
@@ -3458,7 +3107,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="50"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nombre]"
                       name="nombre"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[apellidos]"
                       dataType="wstr"
@@ -3468,7 +3117,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="100"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[apellidos]"
                       name="apellidos"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]"
                       dataType="wstr"
@@ -3478,7 +3127,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="1"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]"
                       name="sexo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]"
                       dataType="wstr"
@@ -3488,7 +3137,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]"
                       name="tipo_alumno"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]"
                       dataType="wstr"
@@ -3498,7 +3147,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]"
                       name="canton_domicilio"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]"
                       dataType="wstr"
@@ -3508,7 +3157,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]"
                       name="canton_nacimiento"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]"
                       dataType="wstr"
@@ -3518,7 +3167,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]"
                       name="provincia_nacimiento"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]"
                       dataType="wstr"
@@ -3528,7 +3177,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="50"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]"
                       name="nacionalidad"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]"
                       dataType="wstr"
@@ -3538,7 +3187,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="4000"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]"
                       name="provincia_domicilio"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]"
                       dataType="wstr"
@@ -3548,7 +3197,7 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       length="50"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]"
                       name="lugar_nacimiento"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3775,28 +3424,63 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedName="idalumno"
                       cachedPrecision="19"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[idalumno]"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[nombre_completo]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[lugar_nacimiento]"
                       cachedDataType="wstr"
-                      cachedLength="151"
-                      cachedName="nombre_completo"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[estudiante]"
-                      lineageId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada].Columns[nombre_completo]" />
+                      cachedLength="50"
+                      cachedName="lugar_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[lugar_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[sexo]"
                       cachedDataType="wstr"
-                      cachedLength="1"
+                      cachedLength="20"
                       cachedName="sexo"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo_alumno]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[nacionalidad]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Copia de tipo_alumno"
+                      cachedName="nacionalidad"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="tipo_alumno"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]" />
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[provincia_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="provincia_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[canton_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="canton_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[provincia_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="provincia_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[canton_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="canton_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3915,42 +3599,6 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedName="nacionalidad"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de lugar_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de lugar_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de lugar_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de canton_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de canton_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de canton_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de canton_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de provincia_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de provincia_domicilio"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de provincia_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de provincia_nacimiento"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[Copia de tipo_alumno]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Copia de tipo_alumno"
-                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]" />
-                    <inputColumn
                       refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[sexo1]"
                       cachedDataType="wstr"
                       cachedLength="20"
@@ -3998,6 +3646,42 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       cachedLength="50"
                       cachedName="tipo_alumno"
                       lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[tipo_alumno1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="tipo_alumno"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_domicilio1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="canton_domicilio"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[canton_nacimiento1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="canton_nacimiento"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_nacimiento1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="provincia_nacimiento"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[provincia_domicilio1]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="provincia_domicilio"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional].Columns[lugar_nacimiento1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="lugar_nacimiento"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4045,213 +3729,17 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]})</property>
+                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_nacimiento]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].tipo_alumno != [Copia de tipo_alumno])</property>
+                      name="FriendlyExpression">([Búsqueda].tipo_alumno != dat_alumno.tipo_alumno) || ([Búsqueda].nacionalidad != dat_alumno.nacionalidad) || ([Búsqueda].sexo != dat_alumno.sexo) || ([Búsqueda].lugar_nacimiento != dat_alumno.lugar_nacimiento) || ([Búsqueda].provincia_nacimiento != dat_alumno.provincia_nacimiento) || ([Búsqueda].canton_nacimiento != dat_alumno.canton_nacimiento) || ([Búsqueda].provincia_domicilio != dat_alumno.provincia_domicilio) || ([Búsqueda].canton_domicilio != dat_alumno.canton_domicilio)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
                       name="EvaluationOrder">1</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 3]"
-                  description="Salida 3 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 3"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_domicilio]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].canton_domicilio != [Copia de canton_domicilio])</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">2</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 4]"
-                  description="Salida 4 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 4"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].provincia_domicilio != [Copia de provincia_domicilio])</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">3</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 5]"
-                  description="Salida 5 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 5"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].canton_nacimiento != [Copia de canton_nacimiento])</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">4</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 6]"
-                  description="Salida 6 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 6"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].provincia_nacimiento != [Copia de provincia_nacimiento])</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">5</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 7]"
-                  description="Salida 7 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 7"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]} != #{Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de lugar_nacimiento]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].lugar_nacimiento != [Copia de lugar_nacimiento])</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">6</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 8]"
-                  description="Salida 8 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 8"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]}</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">[Búsqueda].nacionalidad != dat_alumno.nacionalidad</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">7</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\División condicional.Outputs[Mayúsculas y minúsculas 9]"
-                  description="Salida 9 de la transformación División condicional"
-                  errorOrTruncationOperation="Cálculo"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Mayúsculas y minúsculas 9"
-                  synchronousInputId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
-                      expressionType="Notify"
-                      name="FriendlyExpression">([Búsqueda].sexo != dat_alumno.sexo)</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
-                      name="EvaluationOrder">8</property>
                   </properties>
                   <externalMetadataColumns />
                 </output>
@@ -4293,469 +3781,6 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Cargar Dim_alumno\genero descripcion completa"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="genero descripcion completa"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\genero descripcion completa.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\genero descripcion completa.Inputs[Entrada de columna derivada].Columns[sexo]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="sexo"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "M" ? "MASCULINO" : #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]} == "F" ? "FEMENINO" : "SD"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">sexo == "M" ? "MASCULINO" : sexo == "F" ? "FEMENINO" : "SD"</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\genero descripcion completa.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\genero descripcion completa.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\lugar de nacimiento"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="lugar de nacimiento"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\lugar de nacimiento.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\lugar de nacimiento.Inputs[Entrada de columna derivada].Columns[lugar_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="lugar_nacimiento"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(lugar_nacimiento) &lt; 1 || ISNULL(lugar_nacimiento) ? "SD" : UPPER(lugar_nacimiento)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\lugar de nacimiento.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\lugar de nacimiento.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\nacionalidad"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="nacionalidad"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\nacionalidad.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\nacionalidad.Inputs[Entrada de columna derivada].Columns[nacionalidad]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="nacionalidad"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(nacionalidad) &lt; 1 || ISNULL(nacionalidad) ? "SD" : UPPER(nacionalidad)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\nacionalidad.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\nacionalidad.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\nombres completos"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="nombres completos"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada].Columns[nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="nombre"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada].Columns[apellidos]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="apellidos"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[apellidos]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada].Columns[nombre_completo]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      length="151"
-                      lineageId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada].Columns[nombre_completo]"
-                      name="nombre_completo"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[UPPER]([TRIM](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[apellidos]}) + " " + [TRIM](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nombre]}))</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">UPPER(TRIM(apellidos) + " " + TRIM(nombre))</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\provincia domicilio"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="provincia domicilio"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\provincia domicilio.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\provincia domicilio.Inputs[Entrada de columna derivada].Columns[provincia_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_domicilio"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(provincia_domicilio) &lt; 1 || ISNULL(provincia_domicilio) ? "SD" : UPPER(provincia_domicilio)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\provincia domicilio.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\provincia domicilio.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Cargar Dim_alumno\provincia nacimiento"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="provincia nacimiento"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Cargar Dim_alumno\provincia nacimiento.Inputs[Entrada de columna derivada]"
-                  description="Entrada en la transformación Columna derivada"
-                  name="Entrada de columna derivada">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\provincia nacimiento.Inputs[Entrada de columna derivada].Columns[provincia_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="provincia_nacimiento"
-                      errorOrTruncationOperation="Cálculo"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión de columna derivada"
-                          name="Expression">[LEN](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}) &lt; 1 || [ISNULL](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}) ? "SD" : [UPPER](#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Expresión descriptiva de columna derivada"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(provincia_nacimiento) &lt; 1 || ISNULL(provincia_nacimiento) ? "SD" : UPPER(provincia_nacimiento)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de columna derivada]"
-                  description="Salida predeterminada de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  name="Salida de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\provincia nacimiento.Inputs[Entrada de columna derivada]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de error de columna derivada]"
-                  description="Salida de error de la transformación Columna derivada"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Cargar Dim_alumno\provincia nacimiento.Inputs[Entrada de columna derivada]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -4769,58 +3794,13 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
               name="Nuevos"
               startId="Package\Cargar Dim_alumno\División condicional.Outputs[Nuevos]" />
             <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada]"
-              endId="Package\Cargar Dim_alumno\nombres completos.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\genero descripcion completa.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada1]"
-              endId="Package\Cargar Dim_alumno\lugar de nacimiento.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\nombres completos.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada2]"
-              endId="Package\Cargar Dim_alumno\nacionalidad.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\lugar de nacimiento.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada3]"
-              endId="Package\Cargar Dim_alumno\canton domicilio.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\nacionalidad.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada4]"
-              endId="Package\Cargar Dim_alumno\canton nacimiento.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\canton domicilio.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada5]"
-              endId="Package\Cargar Dim_alumno\provincia domicilio.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\canton nacimiento.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada6]"
-              endId="Package\Cargar Dim_alumno\provincia nacimiento.Inputs[Entrada de columna derivada]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\provincia domicilio.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de columna derivada7]"
-              endId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos]"
-              name="Salida de columna derivada"
-              startId="Package\Cargar Dim_alumno\provincia nacimiento.Outputs[Salida de columna derivada]" />
-            <path
-              refId="Package\Cargar Dim_alumno.Paths[Salida de conversión de datos]"
-              endId="Package\Cargar Dim_alumno\Búsqueda.Inputs[Entrada de búsqueda]"
-              name="Salida de conversión de datos"
-              startId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos]" />
-            <path
               refId="Package\Cargar Dim_alumno.Paths[Salida de entradas coincidentes de búsqueda]"
               endId="Package\Cargar Dim_alumno\División condicional.Inputs[Entrada de división condicional]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
-              endId="Package\Cargar Dim_alumno\genero descripcion completa.Inputs[Entrada de columna derivada]"
+              endId="Package\Cargar Dim_alumno\Búsqueda.Inputs[Entrada de búsqueda]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -14099,433 +13079,131 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     design-time-name="Package\Cargar Dim_alumno">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="125,42"
           Id="Package\Cargar Dim_alumno\Búsqueda"
-          TopLeft="528,341" />
+          TopLeft="258,214" />
         <NodeLayout
           Size="138,42"
           Id="Package\Cargar Dim_alumno\Dim_alumno"
-          TopLeft="401.666666666667,522" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Cargar Dim_alumno\nacionalidad"
-          TopLeft="495,181" />
+          TopLeft="91.666666666667,348" />
         <NodeLayout
           Size="171,42"
           Id="Package\Cargar Dim_alumno\División condicional"
-          TopLeft="502,425" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Cargar Dim_alumno\Conversión de datos"
-          TopLeft="506,267" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Cargar Dim_alumno\provincia nacimiento"
-          TopLeft="267,264" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Cargar Dim_alumno\lugar de nacimiento"
-          TopLeft="477,106.666666666667" />
+          TopLeft="240,291" />
         <NodeLayout
           Size="135,42"
           Id="Package\Cargar Dim_alumno\dat_alumno"
-          TopLeft="48,21" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Cargar Dim_alumno\canton nacimiento"
-          TopLeft="27,181" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Cargar Dim_alumno\provincia domicilio"
-          TopLeft="41,256" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Cargar Dim_alumno\genero descripcion completa"
-          TopLeft="30,107" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Cargar Dim_alumno\canton domicilio"
-          TopLeft="282,179" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Cargar Dim_alumno\nombres completos"
-          TopLeft="277,108" />
+          TopLeft="257.222222222222,135.111111111111" />
         <NodeLayout
           Size="187,42"
           Id="Package\Cargar Dim_alumno\Actualizar Dim_alumno"
-          TopLeft="606,522" />
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada1]"
-          TopLeft="448,128.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29,0"
-              Start="0,0"
-              End="21.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="21.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada]"
-          TopLeft="244,128.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33,0"
-              Start="0,0"
-              End="25.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="25.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="410,350" />
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Nuevos]"
-          TopLeft="560.333333333333,467">
+          TopLeft="240,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89.6666666666663,55"
+              EndConnector="-79.333333333333,36"
               Start="0,0"
-              End="-89.6666666666663,47.5">
+              End="-79.333333333333,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.305909617613" />
+                    End="-75.333333333333,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.305909617613"
-                    Point2="0,22.305909617613"
-                    Point3="-4,22.305909617613" />
+                    Point1="-75.333333333333,0"
+                    Point2="-79.333333333333,0"
+                    Point3="-79.333333333333,4" />
                   <mssgle:LineSegment
-                    End="-85.6666666666663,22.305909617613" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-85.6666666666663,22.305909617613"
-                    Point2="-89.6666666666663,22.305909617613"
-                    Point3="-89.6666666666663,26.305909617613" />
-                  <mssgle:LineSegment
-                    End="-89.6666666666663,47.5" />
+                    End="-79.333333333333,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-61.5609114583332,27.305909617613,33.45515625,9.421875"
+              BoundingBox="-96.060911458333,-15.421875,33.45515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Modificar]"
-          TopLeft="614.666666666667,467">
+          TopLeft="411,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="84.8333333333334,55"
+              EndConnector="92.5,38"
               Start="0,0"
-              End="84.8333333333334,47.5">
+              End="92.5,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.305909617613" />
+                    End="88.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.305909617613"
-                    Point2="0,22.305909617613"
-                    Point3="4,22.305909617613" />
+                    Point1="88.5,0"
+                    Point2="92.5,0"
+                    Point3="92.5,4" />
                   <mssgle:LineSegment
-                    End="80.8333333333334,22.305909617613" />
-                  <mssgle:CubicBezierSegment
-                    Point1="80.8333333333334,22.305909617613"
-                    Point2="84.8333333333334,22.305909617613"
-                    Point3="84.8333333333334,26.305909617613" />
-                  <mssgle:LineSegment
-                    End="84.8333333333334,47.5" />
+                    End="92.5,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="21.8629752604167,27.305909617613,41.1073828125,9.7978515625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="115.5,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="21.5,44"
-              Start="0,0"
-              End="21.5,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="4,22" />
-                  <mssgle:LineSegment
-                    End="17.5,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="17.5,22"
-                    Point2="21.5,22"
-                    Point3="21.5,26" />
-                  <mssgle:LineSegment
-                    End="21.5,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="71.94630859375,-15.7978515625,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="589,383">
+          TopLeft="323,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,34.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,11.15234375,199.638046875,12.1953125"
+              BoundingBox="-99.8190234375,7.65234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de conversión de datos]"
-          TopLeft="592,309">
+          Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
+          TopLeft="323.722222222222,177.111111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="0,36.8888888888889"
               Start="0,0"
-              End="0,24.5">
+              End="0,29.3888888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,29.3888888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada7]"
-          TopLeft="443,286.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="63,0"
-              Start="0,0"
-              End="55.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="55.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada6]"
-          TopLeft="207,277">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="60,8"
-              Start="0,0"
-              End="52.5,8">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="26,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="26,0"
-                    Point2="30,0"
-                    Point3="30,4" />
-                  <mssgle:LineSegment
-                    End="30,4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30,4"
-                    Point2="30,8"
-                    Point3="34,8" />
-                  <mssgle:LineSegment
-                    End="52.5,8" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada5]"
-          TopLeft="109.5,223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.5,33"
-              Start="0,0"
-              End="14.5,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="4,16.5" />
-                  <mssgle:LineSegment
-                    End="10.5,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.5,16.5"
-                    Point2="14.5,16.5"
-                    Point3="14.5,20.5" />
-                  <mssgle:LineSegment
-                    End="14.5,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada4]"
-          TopLeft="282,201">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-90,0"
-              Start="0,0"
-              End="-82.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-82.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada3]"
-          TopLeft="495,201">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-58,0"
-              Start="0,0"
-              End="-50.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-50.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_alumno.Paths[Salida de columna derivada2]"
-          TopLeft="563.5,148.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.333333333333"
-              Start="0,0"
-              End="0,24.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14537,7 +13215,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14547,7 +13225,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
