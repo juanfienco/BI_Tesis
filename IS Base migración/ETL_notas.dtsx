@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="320"
-  DTS:VersionGUID="{AE849C8A-04EA-4646-B7A8-45A5AE546B06}">
+  DTS:VersionBuild="321"
+  DTS:VersionGUID="{A3672738-AB2A-429B-8762-1F3F8BA48B6C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1047,7 +1047,7 @@ max(c.descripcion) as carrera,
 max(e.descripcion) as enfasis,
 max(pe.descripcion) as pensum,
 max(m.codmateria) as codmateria, 
-max(m.descripcion) as materia,
+max(trim(m.descripcion)) as materia,
 max(a.descripcion) as eje,
 string_agg(convert(nvarchar, pr.idmateriapre),',') as prerequisito_ids,
 string_agg(convert(nvarchar, m2.descripcion), ',') as prerequisito_desc,
@@ -13229,7 +13229,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13239,7 +13239,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

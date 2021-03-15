@@ -24,6 +24,10 @@
       <FullPath>Dim Cursos.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Dim Pensum.dim</Name>
+      <FullPath>Dim Pensum.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Dim Alumno.dim</Name>
       <FullPath>Dim Alumno.dim</FullPath>
     </ProjectItem>
@@ -42,10 +46,6 @@
     <ProjectItem>
       <Name>Dim Periodo.dim</Name>
       <FullPath>Dim Periodo.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Dim Pensum.dim</Name>
-      <FullPath>Dim Pensum.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
