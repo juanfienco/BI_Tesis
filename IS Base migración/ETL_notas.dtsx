@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="334"
-  DTS:VersionGUID="{D988AE90-A4E6-4842-9F5E-3C998EEF79C7}">
+  DTS:VersionBuild="337"
+  DTS:VersionGUID="{1EF772FD-E3A0-42FD-B279-1174670B6FD1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7223,7 +7223,7 @@ where [refTable].[idtipoaprobado] = ?</property>
                       lineageId="Package\cargar Dim_estado_aprobado\cargar estado_aprobado.Outputs[Salida de origen de OLE DB].Columns[idtipoaprobado]"
                       name="idtipoaprobado"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\cargar Dim_estado_aprobado\cargar estado_aprobado.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
                       dataType="wstr"
@@ -7233,7 +7233,7 @@ where [refTable].[idtipoaprobado] = ?</property>
                       length="4000"
                       lineageId="Package\cargar Dim_estado_aprobado\cargar estado_aprobado.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
                       name="descripcion"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13474,20 +13474,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
                       cachedName="faltas"
                       externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[faltas]"
                       lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[faltas]" />
-                    <inputColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].Columns[sk_tipoalumno]"
-                      cachedDataType="numeric"
-                      cachedName="sk_tipoalumno"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoalumno]"
-                      lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[sk_tipoalumno]" />
-                    <inputColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].Columns[sk_tipoaprobado]"
-                      cachedDataType="numeric"
-                      cachedName="sk_tipoaprobado"
-                      cachedPrecision="19"
-                      externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoaprobado]"
-                      lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[sk_tipoaprobado]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13536,15 +13522,15 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
                       name="faltas"
                       precision="4" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoalumno]"
-                      dataType="numeric"
-                      name="sk_tipoalumno"
-                      precision="19" />
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      dataType="wstr"
+                      length="250"
+                      name="tipo_alumno" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoaprobado]"
-                      dataType="numeric"
-                      name="sk_tipoaprobado"
-                      precision="19" />
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_aprobado]"
+                      dataType="wstr"
+                      length="250"
+                      name="tipo_aprobado" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -13608,7 +13594,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumno](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;[estudiante] [nvarchar](300) NOT NULL,&#xA;&#x9;[sexo] [nvarchar](20) NOT NULL,&#xA;&#x9;[nacionalidad] [nvarchar](50) NOT NULL,&#xA;&#x9;[lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[tipo_alumno] [nvarchar](50) NOT NULL,&#xA;&#x9;CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[Fecha] [date] NOT NULL,&#xA;&#x9;[Año] [smallint] NOT NULL,&#xA;&#x9;[Mes] [tinyint] NOT NULL,&#xA;&#x9;[Dia] [tinyint] NOT NULL,&#xA;&#x9;[DiaDelAño] [smallint] NOT NULL,&#xA;&#x9;[SemanaDelAño] [tinyint] NOT NULL,&#xA;&#x9;[Trimestre] [tinyint] NOT NULL,&#xA;&#x9;[Semestre] [tinyint] NOT NULL,&#xA;&#x9;[NombreMes] [varchar](10) NOT NULL,&#xA;&#x9;[NombreMesCorto] [varchar](3) NOT NULL,&#xA;&#x9;[NombreDia] [varchar](10) NOT NULL,&#xA;&#x9;[NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](50) NOT NULL,&#xA;&#x9;[periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](250) NOT NULL,&#xA;&#x9;[descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA;&#x9;[descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_docente')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_docente](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[apellidos] [nvarchar](255) NULL,&#xA;&#x9;[idprofesor] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[especializacion] [nvarchar](255) NULL,&#xA;&#x9;[fecha_nacimiento] [date] NULL,&#xA;&#x9;[instruccion] [nvarchar](255) NULL,&#xA;&#x9;[categoria] [nvarchar](255) NULL,&#xA;&#x9;[colectivo] [nvarchar](255) NULL,&#xA;&#x9;[comision] [nvarchar](255) NULL,&#xA;&#x9;[nivel_formacion] [nvarchar](255) NULL,&#xA;&#x9;[dedicacion] [varchar](255) NULL,&#xA;&#x9;[estado_civil] [nvarchar](20) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[cargo] [varchar](255) NULL,&#xA;&#x9;[sexo_completo] [nvarchar](20) NULL,&#xA;&#x9;[nombre_completo] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_docente] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idfacultad] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[idpensum] [numeric](19, 0) NULL,&#xA;&#x9;[carrera] [nvarchar](255) NULL,&#xA;&#x9;[eje] [nvarchar](255) NULL,&#xA;&#x9;[creditos] [real] NULL,&#xA;&#x9;[creditos_real] [real] NULL,&#xA;&#x9;[nivel] [nvarchar](255) NULL,&#xA;&#x9;[pensum] [nvarchar](255) NULL,&#xA;&#x9;[codmateria] [nvarchar](255) NULL,&#xA;&#x9;[materia] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_ids] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_desc] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_codmateria] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_ids] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_desc] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_codmateria] [nvarchar](255) NULL,&#xA;&#x9;[idenfasis] [numeric](19, 0) NULL,&#xA;&#x9;[enfasis] [nvarchar](255) NULL,&#xA;&#x9;[id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idcurso] [numeric](19, 0) NULL,&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idfacultad] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[idpensum] [numeric](19, 0) NULL,&#xA;&#x9;[iddocentes] [nvarchar](4000) NULL,&#xA;&#x9;[periodo_academico] [nvarchar](4000) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[carrera] [nvarchar](255) NULL,&#xA;&#x9;[asignatura] [nvarchar](255) NULL,&#xA;&#x9;[pensum] [nvarchar](255) NULL,&#xA;&#x9;[nivel_itinerario] [nvarchar](255) NULL,&#xA;&#x9;[docente] [nvarchar](4000) NULL,&#xA;&#x9;[horario] [nvarchar](4000) NULL,&#xA;&#x9;[horas] [int] NULL,&#xA;&#x9;[paralelo] [nvarchar](10) NULL,&#xA;&#x9;[cupo] [int] NULL,&#xA;&#x9;[plan_contingencia] [nvarchar](5) NULL,&#xA;&#x9;[total_estudiantes_registrados] [int] NULL,&#xA;&#x9;[estado_curso] [varchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoaprobado')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoaprobado](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoaprobado] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAprobado] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoalumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoalumno](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAlumno] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_notas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_notas](&#xA;&#x9;[sk_tiempo] [numeric](19, 0) NULL,&#xA;&#x9;[sk_periodo] [numeric](19, 0) NULL,&#xA;&#x9;[sk_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[sk_cursos] [numeric](19, 0) NULL,&#xA;&#x9;[sk_malla] [numeric](19, 0) NULL,&#xA;&#x9;[sk_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_docente] [numeric](19, 0) NULL,&#xA;&#x9;[tipo_alumno] [nvarchar](250) NULL,&#xA;&#x9;[tipo_aprobado] [nvarchar](250) NULL,&#xA;&#x9;[nota] [float] NULL,&#xA;&#x9;[faltas] [numeric](4, 0) NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [DW_sga].[dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_alumno] FOREIGN KEY([sk_alumno])&#xA;REFERENCES [DW_sga].[dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_carrera] FOREIGN KEY([sk_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_cursos] FOREIGN KEY([sk_cursos])&#xA;REFERENCES [dbo].[Dim_cursos] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_cursos]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_docente] FOREIGN KEY([sk_docente])&#xA;REFERENCES [dbo].[Dim_docente] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_docente]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_pensum] FOREIGN KEY([sk_malla])&#xA;REFERENCES [dbo].[Dim_pensum] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_pensum]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_periodo] FOREIGN KEY([sk_periodo])&#xA;REFERENCES [dbo].[Dim_periodo] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_periodo]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_tiempo] FOREIGN KEY([sk_tiempo])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_tiempo]&#xA;END&#xA;ELSE&#xA;  delete from DW_sga.dbo.Fact_notas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumno](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;[estudiante] [nvarchar](300) NOT NULL,&#xA;&#x9;[sexo] [nvarchar](20) NOT NULL,&#xA;&#x9;[nacionalidad] [nvarchar](50) NOT NULL,&#xA;&#x9;[lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[tipo_alumno] [nvarchar](50) NOT NULL,&#xA;&#x9;CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[Fecha] [date] NOT NULL,&#xA;&#x9;[Año] [smallint] NOT NULL,&#xA;&#x9;[Mes] [tinyint] NOT NULL,&#xA;&#x9;[Dia] [tinyint] NOT NULL,&#xA;&#x9;[DiaDelAño] [smallint] NOT NULL,&#xA;&#x9;[SemanaDelAño] [tinyint] NOT NULL,&#xA;&#x9;[Trimestre] [tinyint] NOT NULL,&#xA;&#x9;[Semestre] [tinyint] NOT NULL,&#xA;&#x9;[NombreMes] [varchar](10) NOT NULL,&#xA;&#x9;[NombreMesCorto] [varchar](3) NOT NULL,&#xA;&#x9;[NombreDia] [varchar](10) NOT NULL,&#xA;&#x9;[NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](50) NOT NULL,&#xA;&#x9;[periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](250) NOT NULL,&#xA;&#x9;[descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA;&#x9;[descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_docente')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_docente](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[apellidos] [nvarchar](255) NULL,&#xA;&#x9;[idprofesor] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[especializacion] [nvarchar](255) NULL,&#xA;&#x9;[fecha_nacimiento] [date] NULL,&#xA;&#x9;[instruccion] [nvarchar](255) NULL,&#xA;&#x9;[categoria] [nvarchar](255) NULL,&#xA;&#x9;[colectivo] [nvarchar](255) NULL,&#xA;&#x9;[comision] [nvarchar](255) NULL,&#xA;&#x9;[nivel_formacion] [nvarchar](255) NULL,&#xA;&#x9;[dedicacion] [varchar](255) NULL,&#xA;&#x9;[estado_civil] [nvarchar](20) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[cargo] [varchar](255) NULL,&#xA;&#x9;[sexo_completo] [nvarchar](20) NULL,&#xA;&#x9;[nombre_completo] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_docente] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idfacultad] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[idpensum] [numeric](19, 0) NULL,&#xA;&#x9;[carrera] [nvarchar](255) NULL,&#xA;&#x9;[eje] [nvarchar](255) NULL,&#xA;&#x9;[creditos] [real] NULL,&#xA;&#x9;[creditos_real] [real] NULL,&#xA;&#x9;[nivel] [nvarchar](255) NULL,&#xA;&#x9;[pensum] [nvarchar](255) NULL,&#xA;&#x9;[codmateria] [nvarchar](255) NULL,&#xA;&#x9;[materia] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_ids] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_desc] [nvarchar](255) NULL,&#xA;&#x9;[prerequisito_codmateria] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_ids] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_desc] [nvarchar](255) NULL,&#xA;&#x9;[corequisito_codmateria] [nvarchar](255) NULL,&#xA;&#x9;[idenfasis] [numeric](19, 0) NULL,&#xA;&#x9;[enfasis] [nvarchar](255) NULL,&#xA;&#x9;[id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idcurso] [numeric](19, 0) NULL,&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idfacultad] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[idpensum] [numeric](19, 0) NULL,&#xA;&#x9;[iddocentes] [nvarchar](4000) NULL,&#xA;&#x9;[periodo_academico] [nvarchar](4000) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[carrera] [nvarchar](255) NULL,&#xA;&#x9;[asignatura] [nvarchar](255) NULL,&#xA;&#x9;[pensum] [nvarchar](255) NULL,&#xA;&#x9;[nivel_itinerario] [nvarchar](255) NULL,&#xA;&#x9;[docente] [nvarchar](4000) NULL,&#xA;&#x9;[horario] [nvarchar](4000) NULL,&#xA;&#x9;[horas] [int] NULL,&#xA;&#x9;[paralelo] [nvarchar](10) NULL,&#xA;&#x9;[cupo] [int] NULL,&#xA;&#x9;[plan_contingencia] [nvarchar](5) NULL,&#xA;&#x9;[total_estudiantes_registrados] [int] NULL,&#xA;&#x9;[estado_curso] [varchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoaprobado')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoaprobado](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoaprobado] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAprobado] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoalumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoalumno](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAlumno] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_notas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_notas](&#xA;&#x9;[sk_tiempo] [numeric](19, 0) NULL,&#xA;&#x9;[sk_periodo] [numeric](19, 0) NULL,&#xA;&#x9;[sk_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[sk_cursos] [numeric](19, 0) NULL,&#xA;&#x9;[sk_malla] [numeric](19, 0) NULL,&#xA;&#x9;[sk_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_docente] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tipoalumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tipoaprobado] [numeric](19, 0) NULL,&#xA;&#x9;[nota] [float] NULL,&#xA;&#x9;[faltas] [numeric](4, 0) NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [DW_sga].[dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_alumno] FOREIGN KEY([sk_alumno])&#xA;REFERENCES [DW_sga].[dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_carrera] FOREIGN KEY([sk_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_cursos] FOREIGN KEY([sk_cursos])&#xA;REFERENCES [dbo].[Dim_cursos] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_cursos]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_docente] FOREIGN KEY([sk_docente])&#xA;REFERENCES [dbo].[Dim_docente] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_docente]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_pensum] FOREIGN KEY([sk_malla])&#xA;REFERENCES [dbo].[Dim_pensum] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_pensum]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_periodo] FOREIGN KEY([sk_periodo])&#xA;REFERENCES [dbo].[Dim_periodo] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_periodo]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_tiempo] FOREIGN KEY([sk_tiempo])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_tiempo]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_tipoalumno] FOREIGN KEY([sk_tipoalumno])&#xA;REFERENCES [dbo].[Dim_tipoalumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_tipoalumno]&#xA;ALTER TABLE [dbo].[Fact_notas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_notas_Dim_tipoaprobado] FOREIGN KEY([sk_tipoaprobado])&#xA;REFERENCES [dbo].[Dim_tipoaprobado] ([id])&#xA;ALTER TABLE [dbo].[Fact_notas] CHECK CONSTRAINT [FK_Fact_notas_Dim_tipoaprobado]&#xA;END&#xA;ELSE&#xA;  delete from DW_sga.dbo.Fact_notas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -13785,10 +13771,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="175,42"
-          Id="Package\Cargar Dim_pensum"
-          TopLeft="651,400" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_alumno"
           TopLeft="645,488" />
@@ -13805,6 +13787,14 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Id="Package\Cargar Dim_docente"
           TopLeft="642,255" />
         <NodeLayout
+          Size="218,42"
+          Id="Package\cargar Dim_estado_aprobado"
+          TopLeft="418,390" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Cargar Dim_pensum"
+          TopLeft="651,400" />
+        <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_periodo"
           TopLeft="227,284" />
@@ -13812,6 +13802,10 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="170,42"
           Id="Package\Cargar Dim_tiempo"
           TopLeft="25,367" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\cargar Dim_tipoalumno"
+          TopLeft="427,278" />
         <NodeLayout
           Size="165,42"
           Id="Package\Cargar Fact_notas"
@@ -13970,6 +13964,40 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 11]"
+          TopLeft="527,432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.8,142"
+              Start="0,0"
+              End="-64.8,134.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.4661754855995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.4661754855995"
+                    Point2="0,78.4661754855995"
+                    Point3="-4,78.4661754855995" />
+                  <mssgle:LineSegment
+                    End="-60.8,78.4661754855995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.8,78.4661754855995"
+                    Point2="-64.8,78.4661754855995"
+                    Point3="-64.8,82.4661754855995" />
+                  <mssgle:LineSegment
+                    End="-64.8,134.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 12]"
           TopLeft="734,299">
           <EdgeLayout.Curve>
@@ -14060,6 +14088,28 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="314.5,326">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 5]"
           TopLeft="615.6,211">
           <EdgeLayout.Curve>
@@ -14116,70 +14166,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 8]"
-          TopLeft="315.5,416">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="115.3,158"
-              Start="0,0"
-              End="115.3,150.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,83.3074346952445" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,83.3074346952445"
-                    Point2="0,87.3074346952445"
-                    Point3="4,87.3074346952445" />
-                  <mssgle:LineSegment
-                    End="111.3,87.3074346952445" />
-                  <mssgle:CubicBezierSegment
-                    Point1="111.3,87.3074346952445"
-                    Point2="115.3,87.3074346952445"
-                    Point3="115.3,91.3074346952445" />
-                  <mssgle:LineSegment
-                    End="115.3,150.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\cargar Dim_tipoalumno"
-          TopLeft="427,278" />
-        <NodeLayout
-          Size="218,42"
-          Id="Package\cargar Dim_estado_aprobado"
-          TopLeft="418,390" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="314.5,326">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 7]"
           TopLeft="487.2,211">
           <EdgeLayout.Curve>
@@ -14214,6 +14200,40 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 8]"
+          TopLeft="315.5,416">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.3,158"
+              Start="0,0"
+              End="115.3,150.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.3074346952445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,83.3074346952445"
+                    Point2="0,87.3074346952445"
+                    Point3="4,87.3074346952445" />
+                  <mssgle:LineSegment
+                    End="111.3,87.3074346952445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.3,87.3074346952445"
+                    Point2="115.3,87.3074346952445"
+                    Point3="115.3,91.3074346952445" />
+                  <mssgle:LineSegment
+                    End="115.3,150.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 9]"
           TopLeft="524.25,320">
           <EdgeLayout.Curve>
@@ -14235,40 +14255,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 11]"
-          TopLeft="527,432">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-64.8,142"
-              Start="0,0"
-              End="-64.8,134.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,74.4661754855995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,74.4661754855995"
-                    Point2="0,78.4661754855995"
-                    Point3="-4,78.4661754855995" />
-                  <mssgle:LineSegment
-                    End="-60.8,78.4661754855995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-60.8,78.4661754855995"
-                    Point2="-64.8,78.4661754855995"
-                    Point3="-64.8,82.4661754855995" />
-                  <mssgle:LineSegment
-                    End="-64.8,134.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -14276,210 +14262,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     design-time-name="Package.ConnectionManagers[localhost]">
     <ProjectReferenceName></ProjectReferenceName>
   </ConnectionManager>
-  <TaskHost
-    design-time-name="Package\Cargar Dim_pensum">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Cargar Dim_pensum\Dim_pensum"
-          TopLeft="17,300" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Cargar Dim_pensum\Búsqueda"
-          TopLeft="158,162" />
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Cargar Dim_pensum\cargar materias_pensum"
-          TopLeft="120,24" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Cargar Dim_pensum\División condicional"
-          TopLeft="134,238" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Cargar Dim_pensum\Columna derivada"
-          TopLeft="137,94" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Cargar Dim_pensum\Actualizar Dim_pensum"
-          TopLeft="257,297" />
-        <EdgeLayout
-          Id="Package\Cargar Dim_pensum.Paths[Salida de origen de OLE DB]"
-          TopLeft="218.25,66">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28"
-              Start="0,0"
-              End="0,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_pensum.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="220,204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_pensum.Paths[Salida de columna derivada]"
-          TopLeft="219.75,136">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26"
-              Start="0,0"
-              End="0,18.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_pensum.Paths[Nuevos]"
-          TopLeft="134,259">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-46.5,41"
-              Start="0,0"
-              End="-46.5,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-42.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-42.5,0"
-                    Point2="-46.5,0"
-                    Point3="-46.5,4" />
-                  <mssgle:LineSegment
-                    End="-46.5,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-63.227578125,-15.421875,33.45515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_pensum.Paths[Modificar]"
-          TopLeft="305,259">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="46.5,38"
-              Start="0,0"
-              End="46.5,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="42.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="42.5,0"
-                    Point2="46.5,0"
-                    Point3="46.5,4" />
-                  <mssgle:LineSegment
-                    End="46.5,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="25.94630859375,-15.7978515625,41.1073828125,9.7978515625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_pensum\Dim_pensum">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_pensum\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_pensum]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_pensum\cargar materias_pensum">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Cargar Dim_alumno">
     <LayoutInfo>
@@ -14608,7 +14390,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14706,7 +14490,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14752,7 +14538,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15307,6 +15095,392 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\cargar Dim_estado_aprobado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\cargar Dim_estado_aprobado\Dim_estado_aprobado"
+          TopLeft="17,300" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\cargar Dim_estado_aprobado\cargar estado_aprobado"
+          TopLeft="124,62" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\cargar Dim_estado_aprobado\División condicional"
+          TopLeft="134,238" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\cargar Dim_estado_aprobado\Actualizar Dim_estado_aprobado"
+          TopLeft="257,297" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\cargar Dim_estado_aprobado\Búsqueda"
+          TopLeft="158,162" />
+        <EdgeLayout
+          Id="Package\cargar Dim_estado_aprobado.Paths[Salida de origen de OLE DB]"
+          TopLeft="220.5,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar Dim_estado_aprobado.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="220,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar Dim_estado_aprobado.Paths[Nuevos]"
+          TopLeft="134,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.5,41"
+              Start="0,0"
+              End="-24.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-20.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.5,0"
+                    Point2="-24.5,0"
+                    Point3="-24.5,4" />
+                  <mssgle:LineSegment
+                    End="-24.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.227578125,-15.421875,33.45515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar Dim_estado_aprobado.Paths[Modificar]"
+          TopLeft="305,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,38"
+              Start="0,0"
+              End="69,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="65,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65,0"
+                    Point2="69,0"
+                    Point3="69,4" />
+                  <mssgle:LineSegment
+                    End="69,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="48.44630859375,-15.7978515625,41.1073828125,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar Dim_estado_aprobado\Dim_estado_aprobado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar Dim_estado_aprobado\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_tipoaprobado]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cargar Dim_estado_aprobado\cargar estado_aprobado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cargar Dim_pensum">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Cargar Dim_pensum\Dim_pensum"
+          TopLeft="17,300" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Cargar Dim_pensum\Búsqueda"
+          TopLeft="158,162" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Cargar Dim_pensum\cargar materias_pensum"
+          TopLeft="120,24" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargar Dim_pensum\División condicional"
+          TopLeft="134,238" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Cargar Dim_pensum\Columna derivada"
+          TopLeft="137,94" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Cargar Dim_pensum\Actualizar Dim_pensum"
+          TopLeft="257,297" />
+        <EdgeLayout
+          Id="Package\Cargar Dim_pensum.Paths[Salida de origen de OLE DB]"
+          TopLeft="218.25,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_pensum.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="220,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_pensum.Paths[Salida de columna derivada]"
+          TopLeft="219.75,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_pensum.Paths[Nuevos]"
+          TopLeft="134,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.5,41"
+              Start="0,0"
+              End="-46.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-42.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.5,0"
+                    Point2="-46.5,0"
+                    Point3="-46.5,4" />
+                  <mssgle:LineSegment
+                    End="-46.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-63.227578125,-15.421875,33.45515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_pensum.Paths[Modificar]"
+          TopLeft="305,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.5,38"
+              Start="0,0"
+              End="46.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.5,0"
+                    Point2="46.5,0"
+                    Point3="46.5,4" />
+                  <mssgle:LineSegment
+                    End="46.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.94630859375,-15.7978515625,41.1073828125,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_pensum\Dim_pensum">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_pensum\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_pensum]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_pensum\cargar materias_pensum">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Cargar Dim_periodo">
     <LayoutInfo>
       <GraphLayout
@@ -15426,7 +15600,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15472,7 +15648,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15519,13 +15697,13 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Id="Package\Cargar Dim_tiempo\Dim_tiempo"
           TopLeft="145,380" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Cargar Dim_tiempo\División condicional"
-          TopLeft="227,253" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Cargar Dim_tiempo\Update Dim_tiempo"
           TopLeft="334,381" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargar Dim_tiempo\División condicional"
+          TopLeft="227,253" />
         <NodeLayout
           Size="125,42"
           Id="Package\Cargar Dim_tiempo\Búsqueda"
@@ -15534,28 +15712,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="146,42"
           Id="Package\Cargar Dim_tiempo\Cargar tiempo"
           TopLeft="233,40" />
-        <EdgeLayout
-          Id="Package\Cargar Dim_tiempo.Paths[Salida de origen de OLE DB]"
-          TopLeft="308.25,82">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_tiempo.Paths[Salida de entradas coincidentes de búsqueda]"
           TopLeft="311.5,189">
@@ -15652,6 +15808,30 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_tiempo.Paths[Salida de origen de OLE DB]"
+          TopLeft="308.25,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -15687,65 +15867,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Cargar Fact_notas">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Cargar Fact_notas\Fact_notas"
-          TopLeft="122,258" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Cargar Fact_notas\Cargar notas"
-          TopLeft="120,176" />
-        <EdgeLayout
-          Id="Package\Cargar Fact_notas.Paths[Salida de origen de OLE DB]"
-          TopLeft="188.25,218">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Fact_notas\Fact_notas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Fact_notas\Cargar notas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\cargar Dim_tipoalumno">
     <LayoutInfo>
       <GraphLayout
@@ -15754,10 +15875,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="156,42"
           Id="Package\cargar Dim_tipoalumno\Dim_tipoalumno"
           TopLeft="17,300" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\cargar Dim_tipoalumno\Búsqueda"
-          TopLeft="158,162" />
         <NodeLayout
           Size="170,42"
           Id="Package\cargar Dim_tipoalumno\cargar tipo_alumno"
@@ -15770,6 +15887,56 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
           Size="205,42"
           Id="Package\cargar Dim_tipoalumno\Actualizar Dim_tipoalumno"
           TopLeft="257,297" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\cargar Dim_tipoalumno\Búsqueda"
+          TopLeft="158,162" />
+        <EdgeLayout
+          Id="Package\cargar Dim_tipoalumno.Paths[Salida de origen de OLE DB]"
+          TopLeft="219.25,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\cargar Dim_tipoalumno.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="220,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\cargar Dim_tipoalumno.Paths[Nuevos]"
           TopLeft="134,259">
@@ -15830,52 +15997,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar Dim_tipoalumno.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="220,204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar Dim_tipoalumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="219.25,124">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -15924,128 +16045,32 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\cargar Dim_estado_aprobado">
+    design-time-name="Package\Cargar Fact_notas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185,42"
-          Id="Package\cargar Dim_estado_aprobado\Dim_estado_aprobado"
-          TopLeft="17,300" />
+          Size="130,42"
+          Id="Package\Cargar Fact_notas\Fact_notas"
+          TopLeft="122,258" />
         <NodeLayout
-          Size="125,42"
-          Id="Package\cargar Dim_estado_aprobado\Búsqueda"
-          TopLeft="158,162" />
-        <NodeLayout
-          Size="193,42"
-          Id="Package\cargar Dim_estado_aprobado\cargar estado_aprobado"
-          TopLeft="124,62" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\cargar Dim_estado_aprobado\División condicional"
-          TopLeft="134,238" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\cargar Dim_estado_aprobado\Actualizar Dim_estado_aprobado"
-          TopLeft="257,297" />
+          Size="139,42"
+          Id="Package\Cargar Fact_notas\Cargar notas"
+          TopLeft="120,176" />
         <EdgeLayout
-          Id="Package\cargar Dim_estado_aprobado.Paths[Nuevos]"
-          TopLeft="134,259">
+          Id="Package\Cargar Fact_notas.Paths[Salida de origen de OLE DB]"
+          TopLeft="188.25,218">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-24.5,41"
+              EndConnector="0,40"
               Start="0,0"
-              End="-24.5,33.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-20.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-20.5,0"
-                    Point2="-24.5,0"
-                    Point3="-24.5,4" />
-                  <mssgle:LineSegment
-                    End="-24.5,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-41.227578125,-15.421875,33.45515625,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar Dim_estado_aprobado.Paths[Modificar]"
-          TopLeft="305,259">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,38"
-              Start="0,0"
-              End="69,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="65,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="65,0"
-                    Point2="69,0"
-                    Point3="69,4" />
-                  <mssgle:LineSegment
-                    End="69,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="48.44630859375,-15.7978515625,41.1073828125,9.7978515625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar Dim_estado_aprobado.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="220,204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,7.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\cargar Dim_estado_aprobado.Paths[Salida de origen de OLE DB]"
-          TopLeft="220.5,104">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16058,7 +16083,15 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\cargar Dim_estado_aprobado\Dim_estado_aprobado">
+    design-time-name="Package\Cargar Fact_notas\Cargar notas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Fact_notas\Fact_notas">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -16067,37 +16100,6 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\cargar Dim_estado_aprobado\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_tipoaprobado]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\cargar Dim_estado_aprobado\cargar estado_aprobado">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
