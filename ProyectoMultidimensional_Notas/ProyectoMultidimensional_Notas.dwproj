@@ -47,6 +47,14 @@
       <Name>Dim Periodo.dim</Name>
       <FullPath>Dim Periodo.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Tipoalumno.dim</Name>
+      <FullPath>Dim Tipoalumno.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Tipoaprobado.dim</Name>
+      <FullPath>Dim Tipoaprobado.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
