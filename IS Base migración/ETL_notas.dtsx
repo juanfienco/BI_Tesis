@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="337"
-  DTS:VersionGUID="{1EF772FD-E3A0-42FD-B279-1174670B6FD1}">
+  DTS:VersionBuild="339"
+  DTS:VersionGUID="{7216938D-2025-4ED0-A8D4-2005913DA2E4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -13474,6 +13474,20 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
                       cachedName="faltas"
                       externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[faltas]"
                       lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[faltas]" />
+                    <inputColumn
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].Columns[sk_tipoalumno]"
+                      cachedDataType="numeric"
+                      cachedName="sk_tipoalumno"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoalumno]"
+                      lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[sk_tipoalumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].Columns[sk_tipoaprobado]"
+                      cachedDataType="numeric"
+                      cachedName="sk_tipoaprobado"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoaprobado]"
+                      lineageId="Package\Cargar Fact_notas\Cargar notas.Outputs[Salida de origen de OLE DB].Columns[sk_tipoaprobado]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13522,15 +13536,15 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
                       name="faltas"
                       precision="4" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      dataType="wstr"
-                      length="250"
-                      name="tipo_alumno" />
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoalumno]"
+                      dataType="numeric"
+                      name="sk_tipoalumno"
+                      precision="19" />
                     <externalMetadataColumn
-                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_aprobado]"
-                      dataType="wstr"
-                      length="250"
-                      name="tipo_aprobado" />
+                      refId="Package\Cargar Fact_notas\Fact_notas.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_tipoaprobado]"
+                      dataType="numeric"
+                      name="sk_tipoaprobado"
+                      precision="19" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -15247,7 +15261,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -15910,7 +15924,9 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16019,7 +16035,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -16029,7 +16045,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
