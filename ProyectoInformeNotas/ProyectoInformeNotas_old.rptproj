@@ -49,13 +49,7 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
-    <DataSet Include="DataSource_Notas_Compartidos.rsd" />
-  </ItemGroup>
-  <ItemGroup>
-    <DataSource Include="DataSourceNotas.rds" />
-  </ItemGroup>
-  <ItemGroup>
-    <Report Include="Reporte_Listado_TiposAprobados_Notas.rdl" />
+    <DataSource Include="DataSourceNotas_old.rds" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

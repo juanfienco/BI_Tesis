@@ -1,0 +1,681 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSourceNotas</DataSourceReference>
+      <CommandText> SELECT NON EMPTY { [Measures].[Nota], [Measures].[Cantidad], [Measures].[Faltas] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Tiempo].[Año].[Año].ALLMEMBERS * [Dim Tiempo].[Mes].[Mes].ALLMEMBERS * [Dim Tiempo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Dim Tiempo].[Nombre Dia].[Nombre Dia].ALLMEMBERS * [Dim Tiempo].[Dia Del Año].[Dia Del Año].ALLMEMBERS * [Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Pensum].[Enfasis].[Enfasis].ALLMEMBERS * [Dim Pensum].[Pensum].[Pensum].ALLMEMBERS * [Dim Pensum].[Nivel].[Nivel].ALLMEMBERS * [Dim Pensum].[Codmateria].[Codmateria].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Pensum].[Eje].[Eje].ALLMEMBERS * [Dim Pensum].[Creditos].[Creditos].ALLMEMBERS * [Dim Pensum].[Prerequisito Codmateria].[Prerequisito Codmateria].ALLMEMBERS * [Dim Pensum].[Prerequisito Desc].[Prerequisito Desc].ALLMEMBERS * [Dim Cursos].[Estado Curso].[Estado Curso].ALLMEMBERS * [Dim Pensum].[Corequisito Codmateria].[Corequisito Codmateria].ALLMEMBERS * [Dim Pensum].[Corequisito Desc].[Corequisito Desc].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Horario].[Horario].ALLMEMBERS * [Dim Cursos].[Horas].[Horas].ALLMEMBERS * [Dim Cursos].[Nivel Itinerario].[Nivel Itinerario].ALLMEMBERS * [Dim Alumno].[Nacionalidad].[Nacionalidad].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Total Estudiantes Registrados].[Total Estudiantes Registrados].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Alumno].[Lugar Nacimiento].[Lugar Nacimiento].ALLMEMBERS * [Dim Alumno].[Provincia Domicilio].[Provincia Domicilio].ALLMEMBERS * [Dim Alumno].[Canton Domicilio].[Canton Domicilio].ALLMEMBERS * [Dim Alumno].[Provincia Nacimiento].[Provincia Nacimiento].ALLMEMBERS * [Dim Alumno].[Canton Nacimiento].[Canton Nacimiento].ALLMEMBERS * [Dim Tipoalumno].[Descripcion].[Descripcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_notas] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Periodo</DimensionName>
+                    <HierarchyName>Periodo Descripcion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
+                    <LevelName>Periodo Descripcion</LevelName>
+                    <UniqueName>[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Periodo Descripcion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tiempo</DimensionName>
+                    <HierarchyName>Año</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tiempo].[Año]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Dim Tiempo].[Año].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tiempo</DimensionName>
+                    <HierarchyName>Mes</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tiempo].[Mes]</HierarchyUniqueName>
+                    <LevelName>Mes</LevelName>
+                    <UniqueName>[Dim Tiempo].[Mes].[Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tiempo</DimensionName>
+                    <HierarchyName>Nombre Mes</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tiempo].[Nombre Mes]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Dim Tiempo].[Nombre Mes].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tiempo</DimensionName>
+                    <HierarchyName>Nombre Dia</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tiempo].[Nombre Dia]</HierarchyUniqueName>
+                    <LevelName>Nombre Dia</LevelName>
+                    <UniqueName>[Dim Tiempo].[Nombre Dia].[Nombre Dia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Dia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tiempo</DimensionName>
+                    <HierarchyName>Dia Del Año</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tiempo].[Dia Del Año]</HierarchyUniqueName>
+                    <LevelName>Dia Del Año</LevelName>
+                    <UniqueName>[Dim Tiempo].[Dia Del Año].[Dia Del Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Dia Del Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Facultad</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                    <LevelName>Descripcion Facultad</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Facultad</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Carrera</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                    <LevelName>Descripcion Carrera</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Carrera</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Carrerasenesyt</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrerasenesyt]</HierarchyUniqueName>
+                    <LevelName>Descripcion Carrerasenesyt</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Carrerasenesyt</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Enfasis</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
+                    <LevelName>Enfasis</LevelName>
+                    <UniqueName>[Dim Pensum].[Enfasis].[Enfasis]</UniqueName>
+                  </ID>
+                  <ItemCaption>Enfasis</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Pensum</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Pensum]</HierarchyUniqueName>
+                    <LevelName>Pensum</LevelName>
+                    <UniqueName>[Dim Pensum].[Pensum].[Pensum]</UniqueName>
+                  </ID>
+                  <ItemCaption>Pensum</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Nivel</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
+                    <LevelName>Nivel</LevelName>
+                    <UniqueName>[Dim Pensum].[Nivel].[Nivel]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nivel</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Codmateria</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Codmateria]</HierarchyUniqueName>
+                    <LevelName>Codmateria</LevelName>
+                    <UniqueName>[Dim Pensum].[Codmateria].[Codmateria]</UniqueName>
+                  </ID>
+                  <ItemCaption>Codmateria</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Materia</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Materia]</HierarchyUniqueName>
+                    <LevelName>Materia</LevelName>
+                    <UniqueName>[Dim Pensum].[Materia].[Materia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Materia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Eje</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Eje]</HierarchyUniqueName>
+                    <LevelName>Eje</LevelName>
+                    <UniqueName>[Dim Pensum].[Eje].[Eje]</UniqueName>
+                  </ID>
+                  <ItemCaption>Eje</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Creditos</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Creditos]</HierarchyUniqueName>
+                    <LevelName>Creditos</LevelName>
+                    <UniqueName>[Dim Pensum].[Creditos].[Creditos]</UniqueName>
+                  </ID>
+                  <ItemCaption>Creditos</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Prerequisito Codmateria</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Prerequisito Codmateria]</HierarchyUniqueName>
+                    <LevelName>Prerequisito Codmateria</LevelName>
+                    <UniqueName>[Dim Pensum].[Prerequisito Codmateria].[Prerequisito Codmateria]</UniqueName>
+                  </ID>
+                  <ItemCaption>Prerequisito Codmateria</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Prerequisito Desc</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Prerequisito Desc]</HierarchyUniqueName>
+                    <LevelName>Prerequisito Desc</LevelName>
+                    <UniqueName>[Dim Pensum].[Prerequisito Desc].[Prerequisito Desc]</UniqueName>
+                  </ID>
+                  <ItemCaption>Prerequisito Desc</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Estado Curso</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Estado Curso]</HierarchyUniqueName>
+                    <LevelName>Estado Curso</LevelName>
+                    <UniqueName>[Dim Cursos].[Estado Curso].[Estado Curso]</UniqueName>
+                  </ID>
+                  <ItemCaption>Estado Curso</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Corequisito Codmateria</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Corequisito Codmateria]</HierarchyUniqueName>
+                    <LevelName>Corequisito Codmateria</LevelName>
+                    <UniqueName>[Dim Pensum].[Corequisito Codmateria].[Corequisito Codmateria]</UniqueName>
+                  </ID>
+                  <ItemCaption>Corequisito Codmateria</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Pensum</DimensionName>
+                    <HierarchyName>Corequisito Desc</HierarchyName>
+                    <HierarchyUniqueName>[Dim Pensum].[Corequisito Desc]</HierarchyUniqueName>
+                    <LevelName>Corequisito Desc</LevelName>
+                    <UniqueName>[Dim Pensum].[Corequisito Desc].[Corequisito Desc]</UniqueName>
+                  </ID>
+                  <ItemCaption>Corequisito Desc</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Docente</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Docente]</HierarchyUniqueName>
+                    <LevelName>Docente</LevelName>
+                    <UniqueName>[Dim Cursos].[Docente].[Docente]</UniqueName>
+                  </ID>
+                  <ItemCaption>Docente</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Cupo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Cupo]</HierarchyUniqueName>
+                    <LevelName>Cupo</LevelName>
+                    <UniqueName>[Dim Cursos].[Cupo].[Cupo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Cupo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Horario</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Horario]</HierarchyUniqueName>
+                    <LevelName>Horario</LevelName>
+                    <UniqueName>[Dim Cursos].[Horario].[Horario]</UniqueName>
+                  </ID>
+                  <ItemCaption>Horario</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Horas</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Horas]</HierarchyUniqueName>
+                    <LevelName>Horas</LevelName>
+                    <UniqueName>[Dim Cursos].[Horas].[Horas]</UniqueName>
+                  </ID>
+                  <ItemCaption>Horas</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Nivel Itinerario</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Nivel Itinerario]</HierarchyUniqueName>
+                    <LevelName>Nivel Itinerario</LevelName>
+                    <UniqueName>[Dim Cursos].[Nivel Itinerario].[Nivel Itinerario]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nivel Itinerario</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Nacionalidad</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Nacionalidad]</HierarchyUniqueName>
+                    <LevelName>Nacionalidad</LevelName>
+                    <UniqueName>[Dim Alumno].[Nacionalidad].[Nacionalidad]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nacionalidad</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Paralelo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Paralelo]</HierarchyUniqueName>
+                    <LevelName>Paralelo</LevelName>
+                    <UniqueName>[Dim Cursos].[Paralelo].[Paralelo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Paralelo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Plan Contingencia</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Plan Contingencia]</HierarchyUniqueName>
+                    <LevelName>Plan Contingencia</LevelName>
+                    <UniqueName>[Dim Cursos].[Plan Contingencia].[Plan Contingencia]</UniqueName>
+                  </ID>
+                  <ItemCaption>Plan Contingencia</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Cursos</DimensionName>
+                    <HierarchyName>Total Estudiantes Registrados</HierarchyName>
+                    <HierarchyUniqueName>[Dim Cursos].[Total Estudiantes Registrados]</HierarchyUniqueName>
+                    <LevelName>Total Estudiantes Registrados</LevelName>
+                    <UniqueName>[Dim Cursos].[Total Estudiantes Registrados].[Total Estudiantes Registrados]</UniqueName>
+                  </ID>
+                  <ItemCaption>Total Estudiantes Registrados</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Estudiante</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Estudiante]</HierarchyUniqueName>
+                    <LevelName>Estudiante</LevelName>
+                    <UniqueName>[Dim Alumno].[Estudiante].[Estudiante]</UniqueName>
+                  </ID>
+                  <ItemCaption>Estudiante</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Tipo Alumno</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Tipo Alumno]</HierarchyUniqueName>
+                    <LevelName>Tipo Alumno</LevelName>
+                    <UniqueName>[Dim Alumno].[Tipo Alumno].[Tipo Alumno]</UniqueName>
+                  </ID>
+                  <ItemCaption>Tipo Alumno</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Sexo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                    <LevelName>Sexo</LevelName>
+                    <UniqueName>[Dim Alumno].[Sexo].[Sexo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Sexo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Lugar Nacimiento</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Lugar Nacimiento]</HierarchyUniqueName>
+                    <LevelName>Lugar Nacimiento</LevelName>
+                    <UniqueName>[Dim Alumno].[Lugar Nacimiento].[Lugar Nacimiento]</UniqueName>
+                  </ID>
+                  <ItemCaption>Lugar Nacimiento</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Provincia Domicilio</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Provincia Domicilio]</HierarchyUniqueName>
+                    <LevelName>Provincia Domicilio</LevelName>
+                    <UniqueName>[Dim Alumno].[Provincia Domicilio].[Provincia Domicilio]</UniqueName>
+                  </ID>
+                  <ItemCaption>Provincia Domicilio</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Canton Domicilio</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Canton Domicilio]</HierarchyUniqueName>
+                    <LevelName>Canton Domicilio</LevelName>
+                    <UniqueName>[Dim Alumno].[Canton Domicilio].[Canton Domicilio]</UniqueName>
+                  </ID>
+                  <ItemCaption>Canton Domicilio</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Provincia Nacimiento</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Provincia Nacimiento]</HierarchyUniqueName>
+                    <LevelName>Provincia Nacimiento</LevelName>
+                    <UniqueName>[Dim Alumno].[Provincia Nacimiento].[Provincia Nacimiento]</UniqueName>
+                  </ID>
+                  <ItemCaption>Provincia Nacimiento</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Canton Nacimiento</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Canton Nacimiento]</HierarchyUniqueName>
+                    <LevelName>Canton Nacimiento</LevelName>
+                    <UniqueName>[Dim Alumno].[Canton Nacimiento].[Canton Nacimiento]</UniqueName>
+                  </ID>
+                  <ItemCaption>Canton Nacimiento</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Tipoalumno</DimensionName>
+                    <HierarchyName>Descripcion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Tipoalumno].[Descripcion]</HierarchyUniqueName>
+                    <LevelName>Descripcion</LevelName>
+                    <UniqueName>[Dim Tipoalumno].[Descripcion].[Descripcion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Cantidad</MeasureName>
+                    <UniqueName>[Measures].[Cantidad]</UniqueName>
+                  </ID>
+                  <ItemCaption>Cantidad</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Faltas</MeasureName>
+                    <UniqueName>[Measures].[Faltas]</UniqueName>
+                  </ID>
+                  <ItemCaption>Faltas</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Nota</MeasureName>
+                    <UniqueName>[Measures].[Nota]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nota</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>cubo_notas</From>
+            <Filter>
+              <FilterItems />
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties>
+              <IncludeMemberValue>true</IncludeMemberValue>
+            </QueryProperties>
+          </QuerySpecification>
+          <Query>
+            <Statement> SELECT NON EMPTY { [Measures].[Nota], [Measures].[Cantidad], [Measures].[Faltas] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Tiempo].[Año].[Año].ALLMEMBERS * [Dim Tiempo].[Mes].[Mes].ALLMEMBERS * [Dim Tiempo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Dim Tiempo].[Nombre Dia].[Nombre Dia].ALLMEMBERS * [Dim Tiempo].[Dia Del Año].[Dia Del Año].ALLMEMBERS * [Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Pensum].[Enfasis].[Enfasis].ALLMEMBERS * [Dim Pensum].[Pensum].[Pensum].ALLMEMBERS * [Dim Pensum].[Nivel].[Nivel].ALLMEMBERS * [Dim Pensum].[Codmateria].[Codmateria].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Pensum].[Eje].[Eje].ALLMEMBERS * [Dim Pensum].[Creditos].[Creditos].ALLMEMBERS * [Dim Pensum].[Prerequisito Codmateria].[Prerequisito Codmateria].ALLMEMBERS * [Dim Pensum].[Prerequisito Desc].[Prerequisito Desc].ALLMEMBERS * [Dim Cursos].[Estado Curso].[Estado Curso].ALLMEMBERS * [Dim Pensum].[Corequisito Codmateria].[Corequisito Codmateria].ALLMEMBERS * [Dim Pensum].[Corequisito Desc].[Corequisito Desc].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Horario].[Horario].ALLMEMBERS * [Dim Cursos].[Horas].[Horas].ALLMEMBERS * [Dim Cursos].[Nivel Itinerario].[Nivel Itinerario].ALLMEMBERS * [Dim Alumno].[Nacionalidad].[Nacionalidad].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Total Estudiantes Registrados].[Total Estudiantes Registrados].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Alumno].[Lugar Nacimiento].[Lugar Nacimiento].ALLMEMBERS * [Dim Alumno].[Provincia Domicilio].[Provincia Domicilio].ALLMEMBERS * [Dim Alumno].[Canton Domicilio].[Canton Domicilio].ALLMEMBERS * [Dim Alumno].[Provincia Nacimiento].[Provincia Nacimiento].ALLMEMBERS * [Dim Alumno].[Canton Nacimiento].[Canton Nacimiento].ALLMEMBERS * [Dim Tipoalumno].[Descripcion].[Descripcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_notas] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions />
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Periodo_Descripcion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tiempo].[Año].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion_Facultad">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Mes">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tiempo].[Mes].[Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion_Carrera">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tiempo].[Nombre Mes].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion_Carrerasenesyt">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Dia">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tiempo].[Nombre Dia].[Nombre Dia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Sexo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Dia_Del_Año">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tiempo].[Dia Del Año].[Dia Del Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Estudiante">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Estudiante].[Estudiante]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tipoalumno].[Descripcion].[Descripcion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Cantidad">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Cantidad]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Nota">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Nota]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Enfasis">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Enfasis].[Enfasis]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Pensum">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Pensum].[Pensum]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nivel">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Nivel].[Nivel]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Codmateria">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Codmateria].[Codmateria]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Materia">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Materia].[Materia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Eje">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Eje].[Eje]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Creditos">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Creditos].[Creditos]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Prerequisito_Codmateria">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Prerequisito Codmateria].[Prerequisito Codmateria]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Prerequisito_Desc">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Prerequisito Desc].[Prerequisito Desc]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Estado_Curso">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Estado Curso].[Estado Curso]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Corequisito_Codmateria">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Corequisito Codmateria].[Corequisito Codmateria]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Corequisito_Desc">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Corequisito Desc].[Corequisito Desc]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Docente">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Docente].[Docente]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Cupo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Cupo].[Cupo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Horario">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Horario].[Horario]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Horas">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Horas].[Horas]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nivel_Itinerario">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Nivel Itinerario].[Nivel Itinerario]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nacionalidad">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Nacionalidad].[Nacionalidad]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Paralelo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Paralelo].[Paralelo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Plan_Contingencia">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Plan Contingencia].[Plan Contingencia]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Total_Estudiantes_Registrados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Total Estudiantes Registrados].[Total Estudiantes Registrados]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Tipo_Alumno">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Tipo Alumno].[Tipo Alumno]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Lugar_Nacimiento">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Lugar Nacimiento].[Lugar Nacimiento]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Provincia_Domicilio">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Provincia Domicilio].[Provincia Domicilio]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Canton_Domicilio">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Canton Domicilio].[Canton Domicilio]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Provincia_Nacimiento">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Provincia Nacimiento].[Provincia Nacimiento]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Canton_Nacimiento">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Canton Nacimiento].[Canton Nacimiento]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Faltas">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Faltas]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

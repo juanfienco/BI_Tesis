@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="339"
-  DTS:VersionGUID="{7216938D-2025-4ED0-A8D4-2005913DA2E4}">
+  DTS:VersionBuild="341"
+  DTS:VersionGUID="{5EC15651-15F9-4385-BDBA-2F424036BBEA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -13032,7 +13032,7 @@ pe.id as sk_malla,
 c.id as sk_cursos, 
 a.id as sk_alumno,
 doc.id sk_docente,
-ta.id as sk_tipoaprobado,
+isnull(ta.id, 0) as sk_tipoaprobado,
 tt.id as sk_tipoalumno,
 max(md.nota) as nota,
 isnull(sum(f.faltas),0) as faltas
@@ -15924,9 +15924,7 @@ group by md.idalumno_mate_deta, pd.id, car.id, c.id, pe.id, a.id, doc.id, t.id, 
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
