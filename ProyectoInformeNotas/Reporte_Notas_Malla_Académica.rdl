@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource_MejoresPromedios">
+      <DataSourceReference>DataSourceNotas</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>1cb95d12-a26c-42f6-aa2c-565622c85a5a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_MejoresPromedios">
+      <Query>
+        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
+        <CommandText>WITH MEMBER [Measures].[Cantidad_carreras] AS [Measures].[Cantidad]&gt;1 SELECT NON EMPTY { [Measures].[Nota], [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Pensum].[Facultad].[Facultad].ALLMEMBERS * [Dim Pensum].[Carrera].[Carrera].ALLMEMBERS * [Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Enfasis].[Enfasis].ALLMEMBERS * [Dim Pensum].[Pensum].[Pensum].ALLMEMBERS * [Dim Pensum].[Nivel].[Nivel].ALLMEMBERS * [Dim Pensum].[Eje].[Eje].ALLMEMBERS * [Dim Pensum].[Codmateria].[Codmateria].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Pensum].[Creditos].[Creditos].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Alumno].[Estudiante].&amp;[ABAD ARTEAGA GEOMARA JAKELINE] } ) ON COLUMNS FROM ( SELECT ( { [Dim Pensum].[Carrera].[All].UNKNOWNMEMBER } ) ON COLUMNS FROM ( SELECT ( { [Dim Pensum].[Facultad].[All].UNKNOWNMEMBER } ) ON COLUMNS FROM ( SELECT ( { [Dim Carrera].[Descripcion Facultad].[All] } ) ON COLUMNS FROM [cubo_notas])))) WHERE ( [Dim Carrera].[Descripcion Facultad].[All] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Alumno</DimensionName>
+                      <HierarchyName>Estudiante</HierarchyName>
+                      <HierarchyUniqueName>[Dim Alumno].[Estudiante]</HierarchyUniqueName>
+                      <LevelName>Estudiante</LevelName>
+                      <UniqueName>[Dim Alumno].[Estudiante].[Estudiante]</UniqueName>
+                    </ID>
+                    <ItemCaption>Estudiante</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Facultad</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
+                      <LevelName>Facultad</LevelName>
+                      <UniqueName>[Dim Pensum].[Facultad].[Facultad]</UniqueName>
+                    </ID>
+                    <ItemCaption>Facultad</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Carrera</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
+                      <LevelName>Carrera</LevelName>
+                      <UniqueName>[Dim Pensum].[Carrera].[Carrera]</UniqueName>
+                    </ID>
+                    <ItemCaption>Carrera</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Periodo</DimensionName>
+                      <HierarchyName>Periodo Descripcion</HierarchyName>
+                      <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
+                      <LevelName>Periodo Descripcion</LevelName>
+                      <UniqueName>[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]</UniqueName>
+                    </ID>
+                    <ItemCaption>Periodo Descripcion</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Enfasis</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
+                      <LevelName>Enfasis</LevelName>
+                      <UniqueName>[Dim Pensum].[Enfasis].[Enfasis]</UniqueName>
+                    </ID>
+                    <ItemCaption>Enfasis</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Pensum</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Pensum]</HierarchyUniqueName>
+                      <LevelName>Pensum</LevelName>
+                      <UniqueName>[Dim Pensum].[Pensum].[Pensum]</UniqueName>
+                    </ID>
+                    <ItemCaption>Pensum</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Nivel</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
+                      <LevelName>Nivel</LevelName>
+                      <UniqueName>[Dim Pensum].[Nivel].[Nivel]</UniqueName>
+                    </ID>
+                    <ItemCaption>Nivel</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Eje</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Eje]</HierarchyUniqueName>
+                      <LevelName>Eje</LevelName>
+                      <UniqueName>[Dim Pensum].[Eje].[Eje]</UniqueName>
+                    </ID>
+                    <ItemCaption>Eje</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Codmateria</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Codmateria]</HierarchyUniqueName>
+                      <LevelName>Codmateria</LevelName>
+                      <UniqueName>[Dim Pensum].[Codmateria].[Codmateria]</UniqueName>
+                    </ID>
+                    <ItemCaption>Codmateria</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Materia</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Materia]</HierarchyUniqueName>
+                      <LevelName>Materia</LevelName>
+                      <UniqueName>[Dim Pensum].[Materia].[Materia]</UniqueName>
+                    </ID>
+                    <ItemCaption>Materia</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Creditos</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Creditos]</HierarchyUniqueName>
+                      <LevelName>Creditos</LevelName>
+                      <UniqueName>[Dim Pensum].[Creditos].[Creditos]</UniqueName>
+                    </ID>
+                    <ItemCaption>Creditos</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Nota</MeasureName>
+                      <UniqueName>[Measures].[Nota]</UniqueName>
+                    </ID>
+                    <ItemCaption>Nota</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Cantidad</MeasureName>
+                      <UniqueName>[Measures].[Cantidad]</UniqueName>
+                    </ID>
+                    <ItemCaption>Cantidad</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_notas</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Carrera].[Descripcion Facultad].[All]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Pensum].[Facultad].[All].UNKNOWNMEMBER</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Pensum].[Carrera].[All].UNKNOWNMEMBER</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Alumno].[Estudiante]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Alumno].[Estudiante].&amp;[ABAD ARTEAGA GEOMARA JAKELINE]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations>
+                <Calculation>
+                  <ID>[Cantidad_carreras]</ID>
+                  <Name>Cantidad_carreras</Name>
+                  <ParentUniqueName>[Measures]</ParentUniqueName>
+                  <Expression>[Measures].[Cantidad]&gt;1</Expression>
+                </Calculation>
+              </Calculations>
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement>WITH MEMBER [Measures].[Cantidad_carreras] AS [Measures].[Cantidad]&gt;1 SELECT NON EMPTY { [Measures].[Nota], [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Pensum].[Facultad].[Facultad].ALLMEMBERS * [Dim Pensum].[Carrera].[Carrera].ALLMEMBERS * [Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Enfasis].[Enfasis].ALLMEMBERS * [Dim Pensum].[Pensum].[Pensum].ALLMEMBERS * [Dim Pensum].[Nivel].[Nivel].ALLMEMBERS * [Dim Pensum].[Eje].[Eje].ALLMEMBERS * [Dim Pensum].[Codmateria].[Codmateria].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Pensum].[Creditos].[Creditos].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Alumno].[Estudiante].&amp;[ABAD ARTEAGA GEOMARA JAKELINE] } ) ON COLUMNS FROM ( SELECT ( { [Dim Pensum].[Carrera].[All].UNKNOWNMEMBER } ) ON COLUMNS FROM ( SELECT ( { [Dim Pensum].[Facultad].[All].UNKNOWNMEMBER } ) ON COLUMNS FROM ( SELECT ( { [Dim Carrera].[Descripcion Facultad].[All] } ) ON COLUMNS FROM [cubo_notas])))) WHERE ( [Dim Carrera].[Descripcion Facultad].[All] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Estudiante">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Estudiante].[Estudiante]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Facultad">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Facultad].[Facultad]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Carrera">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Carrera].[Carrera]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Periodo_Descripcion">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Enfasis">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Enfasis].[Enfasis]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Pensum">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Pensum].[Pensum]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nivel">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Nivel].[Nivel]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Eje">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Eje].[Eje]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Codmateria">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Codmateria].[Codmateria]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Materia">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Materia].[Materia]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Creditos">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Creditos].[Creditos]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nota">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Nota]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Cantidad">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Cantidad]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>aa1a9216-f3ab-4a45-a84d-2272fe05a21b</rd:ReportID>
+</Report>
