@@ -57,6 +57,7 @@
   <ItemGroup>
     <Report Include="Reporte_Listado_TiposAprobados_Notas.rdl" />
     <Report Include="Reporte_Notas_Malla_Académica.rdl" />
+    <Report Include="Reporte_Reprobados_Recuperacion.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
