@@ -117,15 +117,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>1. Reporte de estudiantes matriculados por periodo académico</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
