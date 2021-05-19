@@ -7,13 +7,13 @@
   DTS:CreatorName="PC-UUAIQ4K\User"
   DTS:DTSID="{5662DEE4-12C4-445D-833C-08B83212564E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3082"
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="271"
-  DTS:VersionGUID="{611B6768-F436-442D-9CDC-AE7108C6175F}">
+  DTS:VersionBuild="272"
+  DTS:VersionGUID="{AEC2DECD-9D50-456C-8B65-9A41DC10A164}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -6998,7 +6998,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="USE [DW_sga1]&#xA;GO&#xA;&#xA;DROP FUNCTION IF EXISTS dbo.SecuenciaFechas;&#xA;GO&#xA; CREATE FUNCTION SecuenciaFechas (@Año Char(4), @AñoFin Char(4))&#xA; RETURNS @SecuenciaFechas TABLE (&#xA;  Fecha date, &#xA;  Año smallint,&#xA;  Mes tinyint,&#xA;  Dia tinyint,&#xA;  DiaDelAño smallint,&#xA;  SemanaDelAño tinyint, &#xA;  Trimestre tinyint,&#xA;  Semestre tinyint,&#xA;  NombreMes varchar(10),&#xA;  NombreMesCorto char(3),&#xA;  NombreDia varchar(10),&#xA;  NombreDiaCorto char(3)) &#xA; AS BEGIN&#xA;  --Declara variables de fecha de inicio y fin de la secuencia&#xA;  DECLARE @FechaDesde DATE = @Año + '0101';&#xA;  DECLARE @FechaHasta DATE = @AñoFin + '1231';&#xA;  --CTE recursivo para generar las fechas&#xA;  WITH SecuenciaFechas(Fecha, Dia) AS &#xA;  (SELECT @FechaDesde, DATEPART(dw,@FechaDesde) as Fecha&#xA;   UNION ALL &#xA;   SELECT DATEADD(DAY, 1, Fecha), DATEPART(dw, DATEADD(DAY, 1, Fecha))&#xA;   FROM SecuenciaFechas &#xA;   WHERE Fecha &lt; @FechaHasta) &#xA;  --Consulta final en base al CTE para obtener la secuencia&#xA;  INSERT INTO @SecuenciaFechas (Fecha,Año,Mes,Dia,DiaDelAño,SemanaDelAño,Trimestre,Semestre,NombreMes,NombreMesCorto,NombreDia,NombreDiaCorto)&#xA;    SELECT &#xA;     Fecha, &#xA;     YEAR(Fecha) AS año,&#xA;     MONTH(Fecha) AS Mes,&#xA;     DAY(Fecha) AS Dia,&#xA;     DATENAME(dayofyear, Fecha) AS DiaDelAño,&#xA;     DATENAME(week, Fecha) AS SemanaDelAño,&#xA;     DATENAME(quarter, Fecha) AS Trimestre,&#xA;     CAST(ROUND(DATENAME(quarter, Fecha)/2.0,0) AS tinyint) AS Semestre,&#xA;     DATENAME(month, Fecha) AS NombreMes,&#xA;     UPPER(LEFT(DATENAME(month, Fecha),3)) AS NombreMesCorto,&#xA;     DATENAME(WEEKDAY, Fecha) AS NombreDia,&#xA;     UPPER(LEFT(DATENAME(WEEKDAY, Fecha),3)) As NombreDiaCorto&#xA;   FROM SecuenciaFechas &#xA;   OPTION (MAXRECURSION 0) &#xA;  RETURN &#xA; END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE [DW_sga]&#xA;GO&#xA;&#xA;DROP FUNCTION IF EXISTS dbo.SecuenciaFechas;&#xA;GO&#xA; CREATE FUNCTION SecuenciaFechas (@Año Char(4), @AñoFin Char(4))&#xA; RETURNS @SecuenciaFechas TABLE (&#xA;  Fecha date, &#xA;  Año smallint,&#xA;  Mes tinyint,&#xA;  Dia tinyint,&#xA;  DiaDelAño smallint,&#xA;  SemanaDelAño tinyint, &#xA;  Trimestre tinyint,&#xA;  Semestre tinyint,&#xA;  NombreMes varchar(10),&#xA;  NombreMesCorto char(3),&#xA;  NombreDia varchar(10),&#xA;  NombreDiaCorto char(3)) &#xA; AS BEGIN&#xA;  --Declara variables de fecha de inicio y fin de la secuencia&#xA;  DECLARE @FechaDesde DATE = @Año + '0101';&#xA;  DECLARE @FechaHasta DATE = @AñoFin + '1231';&#xA;  --CTE recursivo para generar las fechas&#xA;  WITH SecuenciaFechas(Fecha, Dia) AS &#xA;  (SELECT @FechaDesde, DATEPART(dw,@FechaDesde) as Fecha&#xA;   UNION ALL &#xA;   SELECT DATEADD(DAY, 1, Fecha), DATEPART(dw, DATEADD(DAY, 1, Fecha))&#xA;   FROM SecuenciaFechas &#xA;   WHERE Fecha &lt; @FechaHasta) &#xA;  --Consulta final en base al CTE para obtener la secuencia&#xA;  INSERT INTO @SecuenciaFechas (Fecha,Año,Mes,Dia,DiaDelAño,SemanaDelAño,Trimestre,Semestre,NombreMes,NombreMesCorto,NombreDia,NombreDiaCorto)&#xA;    SELECT &#xA;     Fecha, &#xA;     YEAR(Fecha) AS año,&#xA;     MONTH(Fecha) AS Mes,&#xA;     DAY(Fecha) AS Dia,&#xA;     DATENAME(dayofyear, Fecha) AS DiaDelAño,&#xA;     DATENAME(week, Fecha) AS SemanaDelAño,&#xA;     DATENAME(quarter, Fecha) AS Trimestre,&#xA;     CAST(ROUND(DATENAME(quarter, Fecha)/2.0,0) AS tinyint) AS Semestre,&#xA;     DATENAME(month, Fecha) AS NombreMes,&#xA;     UPPER(LEFT(DATENAME(month, Fecha),3)) AS NombreMesCorto,&#xA;     DATENAME(WEEKDAY, Fecha) AS NombreDia,&#xA;     UPPER(LEFT(DATENAME(WEEKDAY, Fecha),3)) As NombreDiaCorto&#xA;   FROM SecuenciaFechas &#xA;   OPTION (MAXRECURSION 0) &#xA;  RETURN &#xA; END&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -8025,7 +8025,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8035,7 +8035,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
