@@ -13,18 +13,7 @@
     <DataSet Name="DataSet_estudiantes_matriculados">
       <Query>
         <DataSourceName>DataSourceCuboMatricula</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoperiodo">
-            <Value>=Parameters!DimPeriodoperiodo.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarrerafacultad">
-            <Value>=Parameters!DimCarrerafacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreracarrera">
-            <Value>=Parameters!DimCarreracarrera.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -144,29 +133,7 @@
               <AutoExecute>false</AutoExecute>
               <From>cubo_matriculacion</From>
               <Filter>
-                <FilterItems>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Carrera].[facultad]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Carrera].[carrera]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                </FilterItems>
+                <FilterItems />
               </Filter>
               <Calculations />
               <Aggregates />
@@ -175,61 +142,8 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoperiodo</Name>
-                  <DefaultValues />
-                  <Caption>periodo</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[periodo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[periodo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[periodo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[periodo].ALLMEMBERS ON ROWS FROM [cubo_matriculacion]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarrerafacultad</Name>
-                  <DefaultValues />
-                  <Caption>facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoperiodo</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreracarrera</Name>
-                  <DefaultValues />
-                  <Caption>carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoperiodo</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarrerafacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
+              <Statement> SELECT NON EMPTY { [Measures].[cant_registrados], [Measures].[cant_finalizados], [Measures].[cant_pagados], [Measures].[cant_devueltos] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
@@ -2819,7 +2733,7 @@
       <Width>8.35428in</Width>
       <Page>
         <PageHeader>
-          <Height>2.03412cm</Height>
+          <Height>1.00225cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2827,7 +2741,7 @@
               <Source>Embedded</Source>
               <Value>LOGOULEAMHORIZONTAL1</Value>
               <Sizing>FitProportional</Sizing>
-              <Left>0.11163cm</Left>
+              <Left>0.42913cm</Left>
               <Height>0.81747cm</Height>
               <Width>2.98602cm</Width>
               <Style>
@@ -2856,7 +2770,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ReportName</rd:DefaultName>
-              <Left>3.92943cm</Left>
+              <Left>4.24693cm</Left>
               <Height>0.81747cm</Height>
               <Width>14.69357cm</Width>
               <ZIndex>1</ZIndex>
@@ -2882,185 +2796,6 @@
                 </Border>
               </Style>
             </Line>
-            <Textbox Name="Textbox36">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Facultad:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>1.0129cm</Top>
-              <Left>4.66272cm</Left>
-              <Height>0.6cm</Height>
-              <Width>1.52032cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox38">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Carrera:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>1.00965cm</Top>
-              <Left>12.78609cm</Left>
-              <Height>0.6cm</Height>
-              <Width>1.41449cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox37">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Periodo:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>0.97791cm</Top>
-              <Height>0.6cm</Height>
-              <Width>1.55765cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Facultad1">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!Facultad.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Facultad1</rd:DefaultName>
-              <Top>0.385in</Top>
-              <Left>2.48982in</Left>
-              <Height>0.25in</Height>
-              <Width>2.39583in</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Carrera1">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!Carrera.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Carrera1</rd:DefaultName>
-              <Top>0.41278in</Top>
-              <Left>5.65716in</Left>
-              <Height>0.25in</Height>
-              <Width>2.36458in</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Periodo">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!Periodo.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Periodo</rd:DefaultName>
-              <Top>0.37122in</Top>
-              <Left>0.64103in</Left>
-              <Height>0.25in</Height>
-              <Width>1.12525in</Width>
-              <ZIndex>8</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -3260,6 +2995,7 @@
               </Style>
             </Textbox>
             <Line Name="Line2">
+              <Top>0cm</Top>
               <Height>0cm</Height>
               <Width>20.15753cm</Width>
               <ZIndex>6</ZIndex>
@@ -3287,7 +3023,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoperiodo">
       <DataType>String</DataType>
-      <Prompt>periodo</Prompt>
+      <Prompt>Periodo</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoperiodo</DataSetName>
@@ -3299,7 +3035,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarrerafacultad">
       <DataType>String</DataType>
-      <Prompt>facultad</Prompt>
+      <Prompt>Facultad</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarrerafacultad</DataSetName>
@@ -3311,7 +3047,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarreracarrera">
       <DataType>String</DataType>
-      <Prompt>carrera</Prompt>
+      <Prompt>Carrera</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreracarrera</DataSetName>
@@ -3324,8 +3060,8 @@
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfColumns>3</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>

@@ -3,10 +3,11 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>DataSourceCuboMatricula</DataSourceReference>
-      <CommandText> SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <CommandText>SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
       <rd:DesignerState>
         <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
           <CommandType>MDX</CommandType>
+          <Type>Query</Type>
           <QuerySpecification xsi:type="MDXQuerySpecification">
             <Select>
               <Items>
@@ -20,6 +21,7 @@
                   </ID>
                   <ItemCaption>periodo</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -31,6 +33,7 @@
                   </ID>
                   <ItemCaption>arancel</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -42,6 +45,7 @@
                   </ID>
                   <ItemCaption>Facultad</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -53,6 +57,7 @@
                   </ID>
                   <ItemCaption>Carrera</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -64,6 +69,7 @@
                   </ID>
                   <ItemCaption>Sexo</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -75,6 +81,7 @@
                   </ID>
                   <ItemCaption>Fecha</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -86,6 +93,7 @@
                   </ID>
                   <ItemCaption>Año</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -97,6 +105,7 @@
                   </ID>
                   <ItemCaption>Nombre Mes</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -108,6 +117,7 @@
                   </ID>
                   <ItemCaption>Dia</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -119,6 +129,7 @@
                   </ID>
                   <ItemCaption>Fecha</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -130,6 +141,7 @@
                   </ID>
                   <ItemCaption>Año</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -141,6 +153,7 @@
                   </ID>
                   <ItemCaption>Nombre Mes</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -152,6 +165,7 @@
                   </ID>
                   <ItemCaption>Dia</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -163,6 +177,7 @@
                   </ID>
                   <ItemCaption>Fecha</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -174,6 +189,7 @@
                   </ID>
                   <ItemCaption>Año</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -185,6 +201,7 @@
                   </ID>
                   <ItemCaption>Nombre Mes</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Level">
@@ -196,29 +213,14 @@
                   </ID>
                   <ItemCaption>Dia</ItemCaption>
                   <UniqueName>true</UniqueName>
+                  <MemberValue>true</MemberValue>
                 </Item>
                 <Item>
                   <ID xsi:type="Measure">
-                    <MeasureName>cant_registrados</MeasureName>
-                    <UniqueName>[Measures].[cant_registrados]</UniqueName>
+                    <MeasureName>total_recaudado</MeasureName>
+                    <UniqueName>[Measures].[total_recaudado]</UniqueName>
                   </ID>
-                  <ItemCaption>cant_registrados</ItemCaption>
-                  <BackColor>true</BackColor>
-                  <ForeColor>true</ForeColor>
-                  <FontFamily>true</FontFamily>
-                  <FontSize>true</FontSize>
-                  <FontWeight>true</FontWeight>
-                  <FontStyle>true</FontStyle>
-                  <FontDecoration>true</FontDecoration>
-                  <FormattedValue>true</FormattedValue>
-                  <FormatString>true</FormatString>
-                </Item>
-                <Item>
-                  <ID xsi:type="Measure">
-                    <MeasureName>cant_finalizados</MeasureName>
-                    <UniqueName>[Measures].[cant_finalizados]</UniqueName>
-                  </ID>
-                  <ItemCaption>cant_finalizados</ItemCaption>
+                  <ItemCaption>total_recaudado</ItemCaption>
                   <BackColor>true</BackColor>
                   <ForeColor>true</ForeColor>
                   <FontFamily>true</FontFamily>
@@ -247,10 +249,10 @@
                 </Item>
                 <Item>
                   <ID xsi:type="Measure">
-                    <MeasureName>cant_retirados</MeasureName>
-                    <UniqueName>[Measures].[cant_retirados]</UniqueName>
+                    <MeasureName>cant_finalizados</MeasureName>
+                    <UniqueName>[Measures].[cant_finalizados]</UniqueName>
                   </ID>
-                  <ItemCaption>cant_retirados</ItemCaption>
+                  <ItemCaption>cant_finalizados</ItemCaption>
                   <BackColor>true</BackColor>
                   <ForeColor>true</ForeColor>
                   <FontFamily>true</FontFamily>
@@ -263,10 +265,26 @@
                 </Item>
                 <Item>
                   <ID xsi:type="Measure">
-                    <MeasureName>total_recaudado</MeasureName>
-                    <UniqueName>[Measures].[total_recaudado]</UniqueName>
+                    <MeasureName>cant_registrados</MeasureName>
+                    <UniqueName>[Measures].[cant_registrados]</UniqueName>
                   </ID>
-                  <ItemCaption>total_recaudado</ItemCaption>
+                  <ItemCaption>cant_registrados</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>cant_retirados</MeasureName>
+                    <UniqueName>[Measures].[cant_retirados]</UniqueName>
+                  </ID>
+                  <ItemCaption>cant_retirados</ItemCaption>
                   <BackColor>true</BackColor>
                   <ForeColor>true</ForeColor>
                   <FontFamily>true</FontFamily>
@@ -286,12 +304,10 @@
             </Filter>
             <Calculations />
             <Aggregates />
-            <QueryProperties>
-              <IncludeMemberValue>true</IncludeMemberValue>
-            </QueryProperties>
+            <QueryProperties />
           </QuerySpecification>
           <Query>
-            <Statement> SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <Statement>SELECT NON EMPTY { [Measures].[total_recaudado], [Measures].[cant_pagados], [Measures].[cant_finalizados], [Measures].[cant_registrados], [Measures].[cant_retirados] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Id Tiempo Registro].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Registro].[Año].[Año].ALLMEMBERS * [Id Tiempo Registro].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Registro].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Finalizo].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Finalizo].[Año].[Año].ALLMEMBERS * [Id Tiempo Finalizo].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Finalizo].[Dia].[Dia].ALLMEMBERS * [Id Tiempo Pago].[Fecha].[Fecha].ALLMEMBERS * [Id Tiempo Pago].[Año].[Año].ALLMEMBERS * [Id Tiempo Pago].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Id Tiempo Pago].[Dia].[Dia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_matriculacion] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
             <ParameterDefinitions />
           </Query>
         </QueryDefinition>
@@ -300,6 +316,10 @@
     <Fields>
       <Field Name="periodo">
         <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Periodo].[periodo].[periodo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="arancel">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tipomatricula].[arancel].[arancel]" /&gt;</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="Facultad">
@@ -312,10 +332,6 @@
       </Field>
       <Field Name="Sexo">
         <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="arancel">
-        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tipomatricula].[arancel].[arancel]" /&gt;</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="Fecha">
@@ -366,24 +382,24 @@
         <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Id Tiempo Pago].[Dia].[Dia]" /&gt;</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="cant_registrados">
-        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_registrados]" /&gt;</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
-      </Field>
-      <Field Name="cant_finalizados">
-        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_finalizados]" /&gt;</DataField>
+      <Field Name="total_recaudado">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[total_recaudado]" /&gt;</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="cant_pagados">
         <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_pagados]" /&gt;</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
-      <Field Name="cant_retirados">
-        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_retirados]" /&gt;</DataField>
+      <Field Name="cant_finalizados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_finalizados]" /&gt;</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
-      <Field Name="total_recaudado">
-        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[total_recaudado]" /&gt;</DataField>
+      <Field Name="cant_registrados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_registrados]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="cant_retirados">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[cant_retirados]" /&gt;</DataField>
         <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
     </Fields>

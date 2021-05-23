@@ -8,7 +8,7 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>ProyectoInformeMatriculacion</TargetReportFolder>
+    <TargetReportFolder>Proyecto de informe Matriculacion</TargetReportFolder>
     <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
     <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
     <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
@@ -22,7 +22,7 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>ProyectoInformeMatriculacion</TargetReportFolder>
+    <TargetReportFolder>Proyecto de informe Matriculacion</TargetReportFolder>
     <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
     <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
     <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
@@ -36,7 +36,7 @@
     <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>ProyectoInformeMatriculacion</TargetReportFolder>
+    <TargetReportFolder>Proyecto de informe Matriculacion</TargetReportFolder>
     <TargetDatasetFolder>Conjuntos de datos</TargetDatasetFolder>
     <TargetDatasourceFolder>Orígenes de datos</TargetDatasourceFolder>
     <TargetReportPartFolder>Elementos de informe</TargetReportPartFolder>
@@ -49,18 +49,14 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
-    <DataSet Include="DataSet_Matriculados_compartidos.rsd" />
+    <DataSet Include="DataSet_Matriculados.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="DataSourceCuboMatricula.rds" />
   </ItemGroup>
   <ItemGroup>
-    <Report Include="Menu_Matriculas.rdl" />
-    <Report Include="Reporte_descuentos.rdl" />
-    <Report Include="Reporte_estudiantes_deudores.rdl" />
-    <Report Include="Reporte_Matriculados.rdl" />
-    <Report Include="Reporte_matriculados_recaudado_valores.rdl" />
-    <Report Include="Reporte_matriculas_sin_finalizar.rdl" />
+    <Report Include="Menu_matriculacion.rdl" />
+    <Report Include="Reporte descuentos matriculación.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
