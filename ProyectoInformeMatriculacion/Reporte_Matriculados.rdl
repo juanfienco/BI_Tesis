@@ -2012,6 +2012,7 @@
                                   <Value>=Sum(Fields!total_recaudado.Value)</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <Format>'$' 0.00;('$' 0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2030,6 +2031,7 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-EC</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -2156,6 +2158,7 @@
                                   <Value>=Sum(Fields!total_recaudado.Value)</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <Format>'$' 0.00;('$' 0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2175,6 +2178,7 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-EC</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -2609,7 +2613,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.85417in</Size>
+                    <Size>1.06743in</Size>
                     <CellContents>
                       <Textbox Name="Facultad">
                         <CanGrow>true</CanGrow>
@@ -2652,7 +2656,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>1.98958in</Size>
+                        <Size>2.08333in</Size>
                         <CellContents>
                           <Textbox Name="Carrera">
                             <CanGrow>true</CanGrow>
@@ -2690,7 +2694,7 @@
                     </TablixMember>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1.98958in</Size>
+                        <Size>2.08333in</Size>
                         <CellContents>
                           <Textbox Name="Textbox206">
                             <CanGrow>true</CanGrow>
@@ -2733,7 +2737,7 @@
             <Top>2.22486in</Top>
             <Left>0.14458in</Left>
             <Height>1.22917in</Height>
-            <Width>5.7775in</Width>
+            <Width>5.08452in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
