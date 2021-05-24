@@ -13,8 +13,6 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeMatriculacio
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeNotas", "ProyectoInformeNotas\ProyectoInformeNotas.rptproj", "{DC99BF58-4074-42EE-A943-35B91C47049B}"
 EndProject
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Proyecto de informe Matriculacion", "Proyecto de informe Matriculacion\Proyecto de informe Matriculacion.rptproj", "{B408E786-05A4-4D2E-B96C-5AFD03374854}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -78,17 +76,6 @@ Global
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.ActiveCfg = Release
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Build.0 = Release
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Deploy.0 = Release
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Debug|x86.ActiveCfg = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Debug|x86.Build.0 = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Debug|x86.Deploy.0 = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.DebugLocal|x86.ActiveCfg = DebugLocal
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.DebugLocal|x86.Build.0 = DebugLocal
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Development|x86.ActiveCfg = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Development|x86.Build.0 = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Development|x86.Deploy.0 = Debug
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Release|x86.ActiveCfg = Release
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Release|x86.Build.0 = Release
-		{B408E786-05A4-4D2E-B96C-5AFD03374854}.Release|x86.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
