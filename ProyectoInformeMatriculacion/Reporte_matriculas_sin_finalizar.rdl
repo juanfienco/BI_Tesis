@@ -183,7 +183,6 @@
       <Body>
         <ReportItems>
           <Line Name="Line1">
-            <Top>1.81512cm</Top>
             <Height>0cm</Height>
             <Width>16.17708cm</Width>
             <Style>
@@ -2096,7 +2095,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>7.41547cm</Top>
+            <Top>5.82797cm</Top>
             <Height>5.4cm</Height>
             <Width>15.81074cm</Width>
             <ZIndex>1</ZIndex>
@@ -2451,7 +2450,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <Top>1.88568cm</Top>
+            <Top>0.3175cm</Top>
             <Height>5.3534cm</Height>
             <Width>7.5cm</Width>
             <ZIndex>2</ZIndex>
@@ -2821,7 +2820,7 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <Top>1.86592cm</Top>
+            <Top>0.3175cm</Top>
             <Left>7.53175cm</Left>
             <Height>5.37316cm</Height>
             <Width>8.28033cm</Width>
@@ -2836,10 +2835,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>5.28168in</Height>
+        <Height>5.52126in</Height>
         <Style />
       </Body>
-      <Width>8.55567in</Width>
+      <Width>6.48276in</Width>
       <Page>
         <PageHeader>
           <Height>0.81747cm</Height>
@@ -2868,7 +2867,7 @@
               <rd:DefaultName>ReportName</rd:DefaultName>
               <Left>3.44902cm</Left>
               <Height>0.81747cm</Height>
-              <Width>17.74038cm</Width>
+              <Width>12.581cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
