@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="275"
-  DTS:VersionGUID="{DB2E59CB-96C0-42BC-BC6E-53BBC94ED8B0}">
+  DTS:VersionBuild="286"
+  DTS:VersionGUID="{FB1A1DE2-E309-4968-967C-09CC1861C63E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -1406,6 +1406,704 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
               endId="Package\Cargar Dim_alumno\Búsqueda.Inputs[Entrada de búsqueda]"
               name="Salida de origen de OLE DB"
               startId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cargar Dim_arancel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{5201bbc1-a90e-4dd8-9a88-82c34d13b6ac}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar Dim_arancel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          engineThreads="3"
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar Dim_arancel\actualizar Dim_arancel"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="actualizar Dim_arancel"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW_sga].[dbo].[Dim_arancel] SET [descripcion_tipoarancel] = ? WHERE [idtipoarancel] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Connections[OleDbConnection]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].Columns[idtipoarancel]"
+                      cachedDataType="numeric"
+                      cachedName="idtipoarancel"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].Columns[descripcion_arancel]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="descripcion_arancel"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="19">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim_arancel\Búsqueda"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Búsqueda"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_arancel]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_arancel]) [refTable]
+where [refTable].[idtipoarancel] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idtipoarancel" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descripcion_tipoarancel" dataType="DT_WSTR" length="250" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim_arancel\Búsqueda.Connections[OleDbConnection]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda].Columns[idtipoarancel]"
+                      cachedDataType="numeric"
+                      cachedName="idtipoarancel"
+                      cachedPrecision="19"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">idtipoarancel</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]"
+                      name="idtipoarancel"
+                      precision="19"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">idtipoarancel</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim_arancel\cargar tipos aranceles"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="cargar tipos aranceles"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select tar.idtipoarancel,  tar.descripcion_arancel
+from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Connections[OleDbConnection]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoarancel]"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]"
+                      name="idtipoarancel"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_arancel]"
+                      length="100"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]"
+                      name="descripcion_arancel"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoarancel]"
+                      dataType="numeric"
+                      name="idtipoarancel"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_arancel]"
+                      dataType="wstr"
+                      length="100"
+                      name="descripcion_arancel" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[idtipoarancel]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[idtipoarancel]"
+                      name="idtipoarancel"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_arancel]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_arancel]"
+                      name="descripcion_arancel" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim_arancel\Dim_arancel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Dim_arancel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Dim_arancel]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim_arancel\Dim_arancel.Connections[OleDbConnection]"
+                  connectionManagerID="{D53FDAAE-533C-4DFE-A294-91576845DF7E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.DW_sga.dw_sga]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].Columns[idtipoarancel]"
+                      cachedDataType="numeric"
+                      cachedName="idtipoarancel"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].Columns[descripcion_arancel]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="descripcion_arancel"
+                      externalMetadataColumnId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_tipoarancel]"
+                      lineageId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      dataType="numeric"
+                      name="id"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
+                      dataType="numeric"
+                      name="idtipoarancel"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_tipoarancel]"
+                      dataType="wstr"
+                      length="250"
+                      name="descripcion_tipoarancel" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_arancel\Dim_arancel.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\Dim_arancel.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\Dim_arancel.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\Dim_arancel.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim_arancel\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional].Columns[idtipoarancel]"
+                      cachedDataType="numeric"
+                      cachedName="idtipoarancel"
+                      cachedPrecision="19"
+                      lineageId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim_arancel\División condicional.Outputs[Nuevos]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Nuevos"
+                  synchronousInputId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL([Búsqueda].idtipoarancel)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\División condicional.Outputs[Modificar]"
+                  description="Salida 2 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Modificar"
+                  synchronousInputId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">![ISNULL](#{Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL([Búsqueda].idtipoarancel)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\División condicional.Outputs[Sin cambios]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Sin cambios"
+                  synchronousInputId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim_arancel\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_arancel\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim_arancel\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar Dim_arancel.Paths[Modificar]"
+              endId="Package\Cargar Dim_arancel\actualizar Dim_arancel.Inputs[Entrada de comando de OLE DB]"
+              name="Modificar"
+              startId="Package\Cargar Dim_arancel\División condicional.Outputs[Modificar]" />
+            <path
+              refId="Package\Cargar Dim_arancel.Paths[Nuevos]"
+              endId="Package\Cargar Dim_arancel\Dim_arancel.Inputs[Entrada de destino de OLE DB]"
+              name="Nuevos"
+              startId="Package\Cargar Dim_arancel\División condicional.Outputs[Nuevos]" />
+            <path
+              refId="Package\Cargar Dim_arancel.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Cargar Dim_arancel\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Cargar Dim_arancel\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Cargar Dim_arancel.Paths[Salida de origen de OLE DB]"
+              endId="Package\Cargar Dim_arancel\Búsqueda.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Cargar Dim_arancel\cargar tipos aranceles.Outputs[Salida de origen de OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -5202,7 +5900,7 @@ where [refTable].[Fecha] = ?</property>
                   description="Comando SQL para ejecutar."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW_sga].[dbo].[Dim_tipomatricula] SET [descripcion_arancel] = ? WHERE [idtipoarancel] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DW_sga].[dbo].[Dim_tipomatricula] SET [descripcion_tipomatricula] = ? WHERE [idtipomatricula] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -5225,25 +5923,26 @@ where [refTable].[Fecha] = ?</property>
                   name="Entrada de comando de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].Columns[idtipoarancel]"
-                      cachedDataType="i4"
-                      cachedName="idtipoarancel"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
-                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].Columns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].Columns[descripcion]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="descripcion_arancel"
+                      cachedLength="4000"
+                      cachedName="descripcion"
                       externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
-                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[descripcion_arancel]" />
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].Columns[idtipomatricula]"
+                      cachedDataType="numeric"
+                      cachedName="idtipomatricula"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
                       dataType="wstr"
-                      length="100"
+                      length="50"
                       name="Param_0">
                       <properties>
                         <property
@@ -5254,8 +5953,9 @@ where [refTable].[Fecha] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
-                      dataType="i4"
-                      name="Param_1">
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="19">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5319,7 +6019,7 @@ where [refTable].[Fecha] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_tipomatricula]) [refTable]
-where [refTable].[idtipoarancel] = ?</property>
+where [refTable].[idtipomatricula] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -5350,12 +6050,12 @@ where [refTable].[idtipoarancel] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idtipoarancel" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descripcion_arancel" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idtipomatricula" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descripcion_tipomatricula" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]};</property>
+                  name="ParameterMap">#{Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -5379,15 +6079,16 @@ where [refTable].[idtipoarancel] = ?</property>
                   name="Entrada de búsqueda">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Búsqueda.Inputs[Entrada de búsqueda].Columns[idtipoarancel]"
-                      cachedDataType="i4"
-                      cachedName="idtipoarancel"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]">
+                      refId="Package\Cargar Dim_Tipomatricula\Búsqueda.Inputs[Entrada de búsqueda].Columns[idtipomatricula]"
+                      cachedDataType="numeric"
+                      cachedName="idtipomatricula"
+                      cachedPrecision="19"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">idtipoarancel</property>
+                          name="JoinToReferenceColumn">idtipomatricula</property>
                         <property
                           dataType="System.Null"
                           description="Especifica la columna de la tabla de referencia de la que se copia una columna."
@@ -5408,32 +6109,18 @@ where [refTable].[idtipoarancel] = ?</property>
                   synchronousInputId="Package\Cargar Dim_Tipomatricula\Búsqueda.Inputs[Entrada de búsqueda]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]"
-                      dataType="i4"
+                      refId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipomatricula]"
+                      dataType="numeric"
                       errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]"
-                      name="idtipoarancel"
+                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipomatricula]"
+                      name="idtipomatricula"
+                      precision="19"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">idtipoarancel</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[descripcion_arancel]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copiar columna"
-                      length="100"
-                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[descripcion_arancel]"
-                      name="descripcion_arancel"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">descripcion_arancel</property>
+                          name="CopyFromReferenceColumn">idtipomatricula</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5496,8 +6183,7 @@ where [refTable].[idtipoarancel] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select tar.idtipoarancel,  tar.descripcion_arancel
-from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from bd_migracion_sga.dbo.dat_tipo_matricula order by idtipomatricula</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -5534,36 +6220,49 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoarancel]"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]"
-                      name="idtipoarancel"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_arancel]"
-                      length="100"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]"
-                      name="descripcion_arancel"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion]"
+                      length="4000"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion]"
+                      name="descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipomatricula]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]"
+                      name="idtipomatricula"
+                      precision="19"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoarancel]"
-                      dataType="i4"
-                      name="idtipoarancel" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion]"
                       dataType="wstr"
-                      length="100"
-                      name="descripcion_arancel" />
+                      length="4000"
+                      name="descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipomatricula]"
+                      dataType="numeric"
+                      name="idtipomatricula"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[activo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="activo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].ExternalColumns[fechareg]"
+                      dataType="dbTimeStamp2"
+                      name="fechareg"
+                      scale="7" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5572,16 +6271,17 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[idtipoarancel]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[idtipoarancel]"
-                      name="idtipoarancel" />
-                    <outputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[descripcion]"
                       dataType="wstr"
-                      length="100"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_arancel]"
-                      name="descripcion_arancel" />
+                      length="4000"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[descripcion]"
+                      name="descripcion" />
+                    <outputColumn
+                      refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[idtipomatricula]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[idtipomatricula]"
+                      name="idtipomatricula"
+                      precision="19" />
                     <outputColumn
                       refId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -5672,34 +6372,36 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[idtipoarancel]"
-                      cachedDataType="i4"
-                      cachedName="idtipoarancel"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipoarancel]" />
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[idtipomatricula]"
+                      cachedDataType="numeric"
+                      cachedName="idtipomatricula"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipomatricula]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[idtipomatricula]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[descripcion_arancel]"
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].Columns[descripcion]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="descripcion_arancel"
-                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
-                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion_arancel]" />
+                      cachedLength="4000"
+                      cachedName="descripcion"
+                      externalMetadataColumnId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_tipomatricula]"
+                      lineageId="Package\Cargar Dim_Tipomatricula\cargar tipo_matricula.Outputs[Salida de origen de OLE DB].Columns[descripcion]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoarancel]"
-                      dataType="i4"
-                      name="idtipoarancel" />
-                    <externalMetadataColumn
-                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_arancel]"
-                      dataType="wstr"
-                      length="100"
-                      name="descripcion_arancel" />
-                    <externalMetadataColumn
                       refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipomatricula]"
+                      dataType="numeric"
+                      name="idtipomatricula"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim_Tipomatricula\Dim_tipomatricula.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_tipomatricula]"
+                      dataType="wstr"
+                      length="50"
+                      name="descripcion_tipomatricula" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5742,10 +6444,11 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                   name="Entrada de división condicional">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_Tipomatricula\División condicional.Inputs[Entrada de división condicional].Columns[idtipoarancel]"
-                      cachedDataType="i4"
-                      cachedName="idtipoarancel"
-                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]" />
+                      refId="Package\Cargar Dim_Tipomatricula\División condicional.Inputs[Entrada de división condicional].Columns[idtipomatricula]"
+                      cachedDataType="numeric"
+                      cachedName="idtipomatricula"
+                      cachedPrecision="19"
+                      lineageId="Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipomatricula]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5765,13 +6468,13 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">[ISNULL](#{Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]})</property>
+                      name="Expression">[ISNULL](#{Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipomatricula]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">ISNULL([Búsqueda].idtipoarancel)</property>
+                      name="FriendlyExpression">ISNULL([Búsqueda].idtipomatricula)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -5793,13 +6496,13 @@ from bd_migracion_sga.dbo.dat_tipo_arancel as tar where activo=1 order by 1</pro
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">![ISNULL](#{Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipoarancel]})</property>
+                      name="Expression">![ISNULL](#{Package\Cargar Dim_Tipomatricula\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idtipomatricula]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL([Búsqueda].idtipoarancel)</property>
+                      name="FriendlyExpression">!ISNULL([Búsqueda].idtipomatricula)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -5922,6 +6625,71 @@ max(dd.id) as id_descuento,
 min(convert(date, d1.fechareg)) as max_fecha_reg,
 max(convert(date, tva2.fechareg)) as finalizo,
 max(convert(date, d9.fechapago)) as fechapago,
+max(d1.idtipoalumno_his) as idtipoalumno_his, 
+coalesce(min(ta.descripcion), 'SD') as tipo_alumno_matricula,
+upper(max(case 
+when d10.idperiodogeneral=d9.idperiodo and d9.idenfasis=c3.idcarrera and convert(bit,d9.anual)=0 and (d10.idtipomatri=1 or d10.idtipomatri=2 or d10.idtipomatri=3) and (convert(date,d9.fechareg) between d10.fechaini and d10.fechafin) then d15.descripcion 
+when d10.idperiodogeneral=d9.idperiodo and d9.idenfasis=c3.idcarrera and convert(bit,d9.anual)=0 and convert(date,d9.fechareg) is null then 'Sin Finalizar' 
+end)) as tipo,
+max(d9.valor_neto_cancelar) as valor_neto_cancelar,
+max(d9.descuento_valor) as descuento_valor,
+max(d9.valor_total_cancelar) as valor_total_cancelar,
+max(d9.valor_pagado) as valor_pagado,
+max(d9.valor_pagado_antes) as valor_pagado_antes,
+max(isnull(d9.devuelto,0)) as devuelto,
+max(d9.retirado) as retirado,
+(case when max(dt2.id)&gt;0 then 0 else 1 end) as no_finalizo,
+(case when max(dt3.id)&gt;0 then 0 else 1 end) as no_pagado,
+(case when max(d9.valor_neto_cancelar)=0 and max(d9.valor_pagado_antes + d9.valor_pagado)=0 then 1 else 0 end) as descuento_gratuidad
+from dat_alumno_mate_deta d1
+inner join dat_enfasis d2 on d1.idenfasis = d2.idenfasis
+inner join dat_carrera d3 on d2.idcarrera = d3.idcarrera
+inner join dat_alumno d5 on d1.idalumno = d5.idalumno
+inner join dat_periododocente d12 on d1.idperiodo= d12.idperiododocente
+inner join dat_total_valores_alumno d9   on d9.idalumno = d5.idalumno and d12.idperiodogeneral = d9.idperiodo
+inner join dat_total_valores_alumno tva2 on tva2.idalumno = d5.idalumno and tva2.idperiodo=d12.idperiodogeneral and tva2.idenfasis=d3.idcarrera 
+inner join dat_matri_fechas d10 on  d10.idperiodogeneral = d12.idperiodogeneral
+inner join dat_arancel as d11 on d10.idarancel = d11.idarancel
+inner join dat_tipo_matricula as d15 on d10.idtipomatri=d15.idtipomatricula
+inner join dat_carrera c3 on d1.idcarrera_period = c3.idcarrera
+inner join dat_facultad fac on c3.idfacultad=fac.idestructura
+inner join dat_tipo_alumno as ta on d5.idtipoalumno=ta.idtipoalumno
+inner join DW_sga.dbo.Dim_alumno as da on d1.idalumno = da.idalumno
+inner join DW_sga.dbo.Dim_carrera as dc on d3.idcarrera = dc.idcarrera
+inner join DW_sga.dbo.Dim_periodo as dp on dp.idperiodogeneral = d12.idperiodogeneral
+inner join DW_sga.dbo.Dim_tipomatricula as dtm on d11.idtipoarancel = dtm.idtipoarancel
+inner join DW_sga.dbo.Dim_descuento as dd on trim(upper(ISNULL(d9.razon_descuento,'SIN DESCUENTO'))) = trim(upper(dd.descuento))
+inner join DW_sga.dbo.Dim_tiempo as dt on convert(date, dt.Fecha,111) = convert(date, d1.fechareg, 111)
+left outer join DW_sga.dbo.Dim_tiempo as dt2 on convert(date, dt2.Fecha,111) = convert(date, tva2.fechareg,111)
+left outer join DW_sga.dbo.Dim_tiempo as dt3 on convert(date, dt3.Fecha,111) = convert(date, d9.fechapago,111)
+where
+idtipoaprobado in (1000014, 1000015, 1000017, 1000021, 1000028, 1000029)
+and idtipoalumno_his != 1000003
+/*
+and idestructura  = 2200000052
+--and d12.idperiodogeneral=60 
+--and d9.idperiodo=60
+--and (d12.idperiodogeneral &lt;14 or d12.idperiodogeneral &gt;46)
+--and (d9.idperiodo&lt;14 or  d9.idperiodo&gt;46)
+*/
+and d1.idcurso &gt; 0
+group by d12.idperiodogeneral,fac.denominacion,c3.idcarrera,d5.idalumno, d5.codigo, c3.descripcion, d5.apellidos, d5.nombre
+order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre
+
+
+/*version anterior
+select
+max(dt.id) as id_tiempo_registro,
+max(dt2.id) as id_tiempo_finalizado,
+max(dt3.id) as id_tiempo_pagado,
+max(dp.id) as id_periodo,
+max(da.id) as id_alumno,
+max(dc.id) as id_carrera,
+max(dtm.id) as id_tipomatricula,
+max(dd.id) as id_descuento,
+min(convert(date, d1.fechareg)) as max_fecha_reg,
+max(convert(date, tva2.fechareg)) as finalizo,
+max(convert(date, d9.fechapago)) as fechapago,
 upper(case 
 when min(d1.idtipoalumno_his)is null then 'Revisar'
 when min(d1.idtipoalumno_his) is not null and min(d1.idtipoalumno_his)= 1000002 then 'Homlogante externo'
@@ -5974,7 +6742,7 @@ and (d12.idperiodogeneral &lt;14 or d12.idperiodogeneral &gt;46)
 and (d9.idperiodo&lt;14 or  d9.idperiodo&gt;46)
 and d1.idcurso &gt; 0
 group by d12.idperiodogeneral,fac.denominacion,c3.idcarrera,d5.idalumno, d5.codigo, c3.descripcion, d5.apellidos, d5.nombre
-order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
+order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre*/</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -6020,7 +6788,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="valor_total_cancelar"
                       precision="7"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[descuento_valor]"
                       dataType="numeric"
@@ -6031,7 +6799,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="descuento_valor"
                       precision="7"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[valor_neto_cancelar]"
                       dataType="numeric"
@@ -6042,7 +6810,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="valor_neto_cancelar"
                       precision="7"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[valor_pagado]"
                       dataType="numeric"
@@ -6053,7 +6821,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="valor_pagado"
                       precision="7"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[max_fecha_reg]"
                       dataType="dbDate"
@@ -6062,7 +6830,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[max_fecha_reg]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[max_fecha_reg]"
                       name="max_fecha_reg"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[finalizo]"
                       dataType="dbDate"
@@ -6071,7 +6839,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[finalizo]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[finalizo]"
                       name="finalizo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[fechapago]"
                       dataType="dbDate"
@@ -6080,18 +6848,17 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[fechapago]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[fechapago]"
                       name="fechapago"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno_matricula]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_alumno_matricula]"
-                      length="29"
+                      length="4000"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno_matricula]"
                       name="tipo_alumno_matricula"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo]"
                       dataType="wstr"
@@ -6101,7 +6868,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       length="4000"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo]"
                       name="tipo"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[devuelto]"
                       dataType="numeric"
@@ -6112,7 +6879,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="devuelto"
                       precision="16"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_periodo]"
                       dataType="numeric"
@@ -6122,7 +6889,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_periodo]"
                       name="id_periodo"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_alumno]"
                       dataType="numeric"
@@ -6132,7 +6899,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_alumno]"
                       name="id_alumno"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_carrera]"
                       dataType="numeric"
@@ -6142,7 +6909,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_carrera]"
                       name="id_carrera"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tipomatricula]"
                       dataType="i4"
@@ -6151,7 +6918,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[id_tipomatricula]"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tipomatricula]"
                       name="id_tipomatricula"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_descuento]"
                       dataType="numeric"
@@ -6161,7 +6928,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_descuento]"
                       name="id_descuento"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[valor_pagado_antes]"
                       dataType="numeric"
@@ -6172,7 +6939,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="valor_pagado_antes"
                       precision="7"
                       scale="2"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[retirado]"
                       codePage="1252"
@@ -6183,7 +6950,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       length="5"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[retirado]"
                       name="retirado"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_registro]"
                       dataType="numeric"
@@ -6193,7 +6960,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_registro]"
                       name="id_tiempo_registro"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_finalizado]"
                       dataType="numeric"
@@ -6203,7 +6970,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_finalizado]"
                       name="id_tiempo_finalizado"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_pagado]"
                       dataType="numeric"
@@ -6213,7 +6980,44 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[id_tiempo_pagado]"
                       name="id_tiempo_pagado"
                       precision="19"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[idtipoalumno_his]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoalumno_his]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[idtipoalumno_his]"
+                      name="idtipoalumno_his"
+                      precision="19"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[no_finalizo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[no_finalizo]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[no_finalizo]"
+                      name="no_finalizo"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[no_pagado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[no_pagado]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[no_pagado]"
+                      name="no_pagado"
+                      truncationRowDisposition="IgnoreFailure" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[descuento_gratuidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento_gratuidad]"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[descuento_gratuidad]"
+                      name="descuento_gratuidad"
+                      truncationRowDisposition="IgnoreFailure" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6255,9 +7059,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="fechapago" />
                     <externalMetadataColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_alumno_matricula]"
-                      codePage="1252"
-                      dataType="str"
-                      length="29"
+                      dataType="wstr"
+                      length="4000"
                       name="tipo_alumno_matricula" />
                     <externalMetadataColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo]"
@@ -6321,6 +7124,23 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       dataType="numeric"
                       name="id_tiempo_pagado"
                       precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoalumno_his]"
+                      dataType="numeric"
+                      name="idtipoalumno_his"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[no_finalizo]"
+                      dataType="i4"
+                      name="no_finalizo" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[no_pagado]"
+                      dataType="i4"
+                      name="no_pagado" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento_gratuidad]"
+                      dataType="i4"
+                      name="descuento_gratuidad" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6329,23 +7149,79 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_registro]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_registro]"
-                      name="id_tiempo_registro"
-                      precision="19" />
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_finalizado]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_finalizado]"
-                      name="id_tiempo_finalizado"
-                      precision="19" />
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_pagado]"
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_total_cancelar]"
                       dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_pagado]"
-                      name="id_tiempo_pagado"
-                      precision="19" />
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_total_cancelar]"
+                      name="valor_total_cancelar"
+                      precision="7"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_valor]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_valor]"
+                      name="descuento_valor"
+                      precision="7"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_neto_cancelar]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_neto_cancelar]"
+                      name="valor_neto_cancelar"
+                      precision="7"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado]"
+                      name="valor_pagado"
+                      precision="7"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[max_fecha_reg]"
+                      dataType="dbDate"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[max_fecha_reg]"
+                      name="max_fecha_reg" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[finalizo]"
+                      dataType="dbDate"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[finalizo]"
+                      name="finalizo" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[fechapago]"
+                      dataType="dbDate"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[fechapago]"
+                      name="fechapago" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo_alumno_matricula]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo_alumno_matricula]"
+                      name="tipo_alumno_matricula" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[devuelto]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[devuelto]"
+                      name="devuelto"
+                      precision="16"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_periodo]"
                       dataType="numeric"
@@ -6376,74 +7252,11 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       name="id_descuento"
                       precision="19" />
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[max_fecha_reg]"
-                      dataType="dbDate"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[max_fecha_reg]"
-                      name="max_fecha_reg" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[finalizo]"
-                      dataType="dbDate"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[finalizo]"
-                      name="finalizo" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[fechapago]"
-                      dataType="dbDate"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[fechapago]"
-                      name="fechapago" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo_alumno_matricula]"
-                      codePage="1252"
-                      dataType="str"
-                      length="29"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo_alumno_matricula]"
-                      name="tipo_alumno_matricula" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[tipo]"
-                      name="tipo" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_total_cancelar]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_total_cancelar]"
-                      name="valor_total_cancelar"
-                      precision="7"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_valor]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_valor]"
-                      name="descuento_valor"
-                      precision="7"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_neto_cancelar]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_neto_cancelar]"
-                      name="valor_neto_cancelar"
-                      precision="7"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado]"
-                      name="valor_pagado"
-                      precision="7"
-                      scale="2" />
-                    <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado_antes]"
                       dataType="numeric"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[valor_pagado_antes]"
                       name="valor_pagado_antes"
                       precision="7"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[devuelto]"
-                      dataType="numeric"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[devuelto]"
-                      name="devuelto"
-                      precision="16"
                       scale="2" />
                     <outputColumn
                       refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[retirado]"
@@ -6453,17 +7266,44 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[retirado]"
                       name="retirado" />
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_registro]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_registro]"
+                      name="id_tiempo_registro"
+                      precision="19" />
                     <outputColumn
-                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_finalizado]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_finalizado]"
+                      name="id_tiempo_finalizado"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_pagado]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[id_tiempo_pagado]"
+                      name="id_tiempo_pagado"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[idtipoalumno_his]"
+                      dataType="numeric"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[idtipoalumno_his]"
+                      name="idtipoalumno_his"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[no_finalizo]"
                       dataType="i4"
-                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[no_finalizo]"
+                      name="no_finalizo" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[no_pagado]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[no_pagado]"
+                      name="no_pagado" />
+                    <outputColumn
+                      refId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_gratuidad]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de error de origen de OLE DB].Columns[descuento_gratuidad]"
+                      name="descuento_gratuidad" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -6489,9 +7329,8 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo]" />
                     <inputColumn
                       refId="Package\Cargar Matriculacion\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[tipo_alumno_matricula]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="29"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
                       cachedName="tipo_alumno_matricula"
                       lineageId="Package\Cargar Matriculacion\Cargar Hechos Matriculacion.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno_matricula]" />
                   </inputColumns>
@@ -6964,7 +7803,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumno](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idalumno] [numeric](19, 0) NOT NULL,&#xA; [estudiante] [nvarchar](300) NOT NULL,&#xA; [sexo] [nvarchar](20) NOT NULL,&#xA; [nacionalidad] [nvarchar](50) NOT NULL,&#xA; [lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA; [canton_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_domicilio] [nvarchar](50) NOT NULL,&#xA; [canton_domicilio] [nvarchar](50) NOT NULL,&#xA; [tipo_alumno] [nvarchar](50) NOT NULL,&#xA; CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [Fecha] [date] NOT NULL,&#xA; [Año] [smallint] NOT NULL,&#xA; [Mes] [tinyint] NOT NULL,&#xA; [Dia] [tinyint] NOT NULL,&#xA; [DiaDelAño] [smallint] NOT NULL,&#xA; [SemanaDelAño] [tinyint] NOT NULL,&#xA; [Trimestre] [tinyint] NOT NULL,&#xA; [Semestre] [tinyint] NOT NULL,&#xA; [NombreMes] [varchar](10) NOT NULL,&#xA; [NombreMesCorto] [varchar](3) NOT NULL,&#xA; [NombreDia] [varchar](10) NOT NULL,&#xA; [NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA; [periodo_descripcion] [nvarchar](50) NOT NULL,&#xA; [periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcarrera] [numeric](19, 0) NOT NULL,&#xA; [descripcion_carrera] [nvarchar](250) NOT NULL,&#xA; [descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA; [descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [eje] [nvarchar](255) NULL,&#xA; [creditos] [real] NULL,&#xA; [creditos_real] [real] NULL,&#xA; [nivel] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [codmateria] [nvarchar](255) NULL,&#xA; [materia] [nvarchar](255) NULL,&#xA; [prerequisito_ids] [nvarchar](255) NULL,&#xA; [prerequisito_desc] [nvarchar](255) NULL,&#xA; [prerequisito_codmateria] [nvarchar](255) NULL,&#xA; [corequisito_ids] [nvarchar](255) NULL,&#xA; [corequisito_desc] [nvarchar](255) NULL,&#xA; [corequisito_codmateria] [nvarchar](255) NULL,&#xA; [idenfasis] [numeric](19, 0) NULL,&#xA; [enfasis] [nvarchar](255) NULL,&#xA; [id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcurso] [numeric](19, 0) NULL,&#xA; [idperiodo] [numeric](19, 0) NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [iddocentes] [nvarchar](4000) NULL,&#xA; [periodo_academico] [nvarchar](4000) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [asignatura] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [nivel_itinerario] [nvarchar](255) NULL,&#xA; [docente] [nvarchar](4000) NULL,&#xA; [horario] [nvarchar](4000) NULL,&#xA; [horas] [int] NULL,&#xA; [paralelo] [nvarchar](10) NULL,&#xA; [cupo] [int] NULL,&#xA; [plan_contingencia] [nvarchar](5) NULL,&#xA; [total_estudiantes_registrados] [int] NULL,&#xA; [estado_curso] [varchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_descuento')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_descuento](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[descuento] [nvarchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_descuento] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipomatricula')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipomatricula](&#xA;&#x9;[id] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoarancel] [int] NULL,&#xA;&#x9;[descripcion_arancel] [nvarchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_tipomatricula] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_Matriculacion')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_Matriculacion](&#xA;&#x9;[id_tiempo_registro] [numeric](19, 0) NULL,&#xA;&#x9;[id_tiempo_finalizo] [numeric](19, 0) NULL,&#xA;&#x9;[id_tiempo_pago] [numeric](19, 0) NULL,&#xA;&#x9;[id_periodo] [numeric](19, 0) NULL,&#xA;&#x9;[id_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[id_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[id_tipomatricula] [int] NULL,&#xA;&#x9;[id_descuento] [numeric](19, 0) NULL,&#xA;&#x9;[valor_total_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;[descuento_valor] [numeric](7, 2) NULL,&#xA;&#x9;[valor_neto_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;[valor_pagado] [numeric](7, 2) NULL,&#xA;&#x9;[valor_pagado_antes] [numeric](7, 2) NULL,&#xA;&#x9;[fecha_registro] [date] NULL,&#xA;&#x9;[fecha_finalizo] [date] NULL,&#xA;&#x9;[fecha_pago] [date] NULL,&#xA;&#x9;[tipo_alumno] [varchar](100) NULL,&#xA;&#x9;[tipo_matricula] [nvarchar](200) NULL,&#xA;&#x9;[devuelto] [numeric](7, 2) NULL,&#xA;&#x9;[retirado] [int] NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno] FOREIGN KEY([id_alumno])&#xA;REFERENCES [dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera] FOREIGN KEY([id_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento] FOREIGN KEY([id_descuento])&#xA;REFERENCES [dbo].[Dim_descuento] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo] FOREIGN KEY([id_periodo])&#xA;REFERENCES [dbo].[Dim_periodo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo] FOREIGN KEY([id_tiempo_registro])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1] FOREIGN KEY([id_tiempo_finalizo])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2] FOREIGN KEY([id_tiempo_pago])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula] FOREIGN KEY([id_tipomatricula])&#xA;REFERENCES [dbo].[Dim_tipomatricula] ([id])&#xA;ALTER TABLE [dbo].[Fact_matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula]&#xA;END&#xA;ELSE&#xA;delete from [DW_sga].[dbo].[Fact_Matriculacion];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumno](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idalumno] [numeric](19, 0) NOT NULL,&#xA; [estudiante] [nvarchar](300) NOT NULL,&#xA; [sexo] [nvarchar](20) NOT NULL,&#xA; [nacionalidad] [nvarchar](50) NOT NULL,&#xA; [lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA; [canton_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_domicilio] [nvarchar](50) NOT NULL,&#xA; [canton_domicilio] [nvarchar](50) NOT NULL,&#xA; [tipo_alumno] [nvarchar](50) NOT NULL,&#xA; CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [Fecha] [date] NOT NULL,&#xA; [Año] [smallint] NOT NULL,&#xA; [Mes] [tinyint] NOT NULL,&#xA; [Dia] [tinyint] NOT NULL,&#xA; [DiaDelAño] [smallint] NOT NULL,&#xA; [SemanaDelAño] [tinyint] NOT NULL,&#xA; [Trimestre] [tinyint] NOT NULL,&#xA; [Semestre] [tinyint] NOT NULL,&#xA; [NombreMes] [varchar](10) NOT NULL,&#xA; [NombreMesCorto] [varchar](3) NOT NULL,&#xA; [NombreDia] [varchar](10) NOT NULL,&#xA; [NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA; [periodo_descripcion] [nvarchar](50) NOT NULL,&#xA; [periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcarrera] [numeric](19, 0) NOT NULL,&#xA; [descripcion_carrera] [nvarchar](250) NOT NULL,&#xA; [descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA; [descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [eje] [nvarchar](255) NULL,&#xA; [creditos] [real] NULL,&#xA; [creditos_real] [real] NULL,&#xA; [nivel] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [codmateria] [nvarchar](255) NULL,&#xA; [materia] [nvarchar](255) NULL,&#xA; [prerequisito_ids] [nvarchar](255) NULL,&#xA; [prerequisito_desc] [nvarchar](255) NULL,&#xA; [prerequisito_codmateria] [nvarchar](255) NULL,&#xA; [corequisito_ids] [nvarchar](255) NULL,&#xA; [corequisito_desc] [nvarchar](255) NULL,&#xA; [corequisito_codmateria] [nvarchar](255) NULL,&#xA; [idenfasis] [numeric](19, 0) NULL,&#xA; [enfasis] [nvarchar](255) NULL,&#xA; [id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcurso] [numeric](19, 0) NULL,&#xA; [idperiodo] [numeric](19, 0) NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [iddocentes] [nvarchar](4000) NULL,&#xA; [periodo_academico] [nvarchar](4000) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [asignatura] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [nivel_itinerario] [nvarchar](255) NULL,&#xA; [docente] [nvarchar](4000) NULL,&#xA; [horario] [nvarchar](4000) NULL,&#xA; [horas] [int] NULL,&#xA; [paralelo] [nvarchar](10) NULL,&#xA; [cupo] [int] NULL,&#xA; [plan_contingencia] [nvarchar](5) NULL,&#xA; [total_estudiantes_registrados] [int] NULL,&#xA; [estado_curso] [varchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_descuento')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_descuento](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[descuento] [nvarchar](100) NULL,&#xA; CONSTRAINT [PK_Dim_descuento] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_arancel')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_arancel](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipoarancel] [numeric](19, 0) NOT NULL,&#xA;&#x9;[descripcion_tipoarancel] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_arancel] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipomatricula')) &#xA;BEGIN&#xA;CREATE TABLE [dbo].[Dim_tipomatricula](&#xA;&#x9;[id] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idtipomatricula] [numeric](19, 0) NULL,&#xA;&#x9;[descripcion_tipomatricula] [nvarchar](50) NULL,&#xA; CONSTRAINT [PK_Dim_tipomatricula] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_Matriculacion')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_Matriculacion](&#xA;&#x9;[id_tiempo_registro] [numeric](19, 0) NULL,&#xA;&#x9;[id_tiempo_finalizo] [numeric](19, 0) NULL,&#xA;&#x9;[id_tiempo_pago] [numeric](19, 0) NULL,&#xA;&#x9;[id_periodo] [numeric](19, 0) NULL,&#xA;&#x9;[id_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[id_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[id_tipomatricula] [int] NULL,&#xA;&#x9;[id_descuento] [numeric](19, 0) NULL,&#xA;&#x9;[valor_total_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;[descuento_valor] [numeric](7, 2) NULL,&#xA;&#x9;[valor_neto_cancelar] [numeric](7, 2) NULL,&#xA;&#x9;[valor_pagado] [numeric](7, 2) NULL,&#xA;&#x9;[valor_pagado_antes] [numeric](7, 2) NULL,&#xA;&#x9;[fecha_registro] [date] NULL,&#xA;&#x9;[fecha_finalizo] [date] NULL,&#xA;&#x9;[fecha_pago] [date] NULL,&#xA;&#x9;[tipo_alumno] [varchar](100) NULL,&#xA;&#x9;[tipo_matricula] [nvarchar](200) NULL,&#xA;&#x9;[devuelto] [numeric](7, 2) NULL,&#xA;&#x9;[retirado] [int] NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno] FOREIGN KEY([id_alumno])&#xA;REFERENCES [dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera] FOREIGN KEY([id_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento] FOREIGN KEY([id_descuento])&#xA;REFERENCES [dbo].[Dim_descuento] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_descuento]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo] FOREIGN KEY([id_periodo])&#xA;REFERENCES [dbo].[Dim_periodo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_periodo]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo] FOREIGN KEY([id_tiempo_registro])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1] FOREIGN KEY([id_tiempo_finalizo])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo1]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2] FOREIGN KEY([id_tiempo_pago])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_Matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tiempo2]&#xA;ALTER TABLE [dbo].[Fact_Matriculacion]  WITH CHECK ADD  CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula] FOREIGN KEY([id_tipomatricula])&#xA;REFERENCES [dbo].[Dim_tipomatricula] ([id])&#xA;ALTER TABLE [dbo].[Fact_matriculacion] CHECK CONSTRAINT [FK_Fact_Matriculacion_Dim_tipomatricula]&#xA;END&#xA;ELSE&#xA;delete from [DW_sga].[dbo].[Fact_Matriculacion];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -7047,6 +7886,22 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 10"
       DTS:To="Package\Cargar Dim_descuentos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{5666054F-150B-434D-8865-25AD441EBF4D}"
+      DTS:From="Package\Validación y creación de tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 11"
+      DTS:To="Package\Cargar Dim_arancel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{F96ADE81-1FD3-47FA-BB41-60E99E1B8EED}"
+      DTS:From="Package\Cargar Dim_arancel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 12"
+      DTS:To="Package\Cargar Matriculacion" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 13]"
       DTS:CreationName=""
@@ -7159,7 +8014,7 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         <NodeLayout
           Size="175,42"
           Id="Package\Cargar Matriculacion"
-          TopLeft="533,438" />
+          TopLeft="656,439" />
         <NodeLayout
           Size="200,42"
           Id="Package\Validación y creación de tablas\creacion tablas dimension"
@@ -7167,25 +8022,25 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         <NodeLayout
           Size="145,42"
           Id="Package\Validación y creación de tablas\crear DW_sga"
-          TopLeft="6.5,11" />
+          TopLeft="5.5,12" />
         <NodeLayout
           Size="201,42"
           Id="Package\Validación y creación de tablas\función secuencia_tiempo"
           TopLeft="184.5,13" />
         <EdgeLayout
           Id="Package\Validación y creación de tablas.PrecedenceConstraints[Restricción 15]"
-          TopLeft="151.5,33">
+          TopLeft="150.5,33.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="33,0"
+              EndConnector="34,0"
               Start="0,0"
-              End="25.5,0">
+              End="26.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="25.5,0" />
+                    End="26.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7219,36 +8074,36 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="650,63"
-          Size="650,106"
+          PanelSize="650,75"
+          Size="650,118"
           Id="Package\Validación y creación de tablas"
-          TopLeft="313,137" />
+          TopLeft="395,117" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="408.714285714286,243">
+          TopLeft="479.25,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-250.214285714286,67"
+              EndConnector="-320.75,75"
               Start="0,0"
-              End="-250.214285714286,59.5">
+              End="-320.75,67.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.2427843803056" />
+                    End="0,11.4398289554062" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.2427843803056"
-                    Point2="0,15.2427843803056"
-                    Point3="-4,15.2427843803056" />
+                    Point1="0,11.4398289554062"
+                    Point2="0,15.4398289554062"
+                    Point3="-4,15.4398289554062" />
                   <mssgle:LineSegment
-                    End="-246.214285714286,15.2427843803056" />
+                    End="-316.75,15.4398289554062" />
                   <mssgle:CubicBezierSegment
-                    Point1="-246.214285714286,15.2427843803056"
-                    Point2="-250.214285714286,15.2427843803056"
-                    Point3="-250.214285714286,19.2427843803056" />
+                    Point1="-316.75,15.4398289554062"
+                    Point2="-320.75,15.4398289554062"
+                    Point3="-320.75,19.4398289554062" />
                   <mssgle:LineSegment
-                    End="-250.214285714286,59.5" />
+                    End="-320.75,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7259,30 +8114,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="775.571428571429,243">
+          TopLeft="800.25,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="143.428571428571,64"
+              EndConnector="118.75,72"
               Start="0,0"
-              End="143.428571428571,56.5">
+              End="118.75,64.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.4089768608865" />
+                    End="0,26.9293549802545" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.4089768608865"
-                    Point2="0,23.4089768608865"
-                    Point3="4,23.4089768608865" />
+                    Point1="0,26.9293549802545"
+                    Point2="0,30.9293549802545"
+                    Point3="4,30.9293549802545" />
                   <mssgle:LineSegment
-                    End="139.428571428571,23.4089768608865" />
+                    End="114.75,30.9293549802545" />
                   <mssgle:CubicBezierSegment
-                    Point1="139.428571428571,23.4089768608865"
-                    Point2="143.428571428571,23.4089768608865"
-                    Point3="143.428571428571,27.4089768608865" />
+                    Point1="114.75,30.9293549802545"
+                    Point2="118.75,30.9293549802545"
+                    Point3="118.75,34.9293549802545" />
                   <mssgle:LineSegment
-                    End="143.428571428571,56.5" />
+                    End="118.75,64.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7293,30 +8148,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 10]"
-          TopLeft="683.857142857143,243">
+          TopLeft="720,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="45.6428571428571,68"
+              EndConnector="9.5,76"
               Start="0,0"
-              End="45.6428571428571,60.5">
+              End="9.5,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.4192480491842" />
+                    End="0,34" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.4192480491842"
-                    Point2="0,31.4192480491842"
-                    Point3="4,31.4192480491842" />
+                    Point1="0,34"
+                    Point2="0,38"
+                    Point3="4,38" />
                   <mssgle:LineSegment
-                    End="41.6428571428571,31.4192480491842" />
+                    End="5.5,38" />
                   <mssgle:CubicBezierSegment
-                    Point1="41.6428571428571,31.4192480491842"
-                    Point2="45.6428571428571,31.4192480491842"
-                    Point3="45.6428571428571,35.4192480491842" />
+                    Point1="5.5,38"
+                    Point2="9.5,38"
+                    Point3="9.5,42" />
                   <mssgle:LineSegment
-                    End="45.6428571428571,60.5" />
+                    End="9.5,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7331,26 +8186,26 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-97.0714285714286,85"
+              EndConnector="14,86"
               Start="0,0"
-              End="-97.0714285714286,77.5">
+              End="14,78.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.6088480070083" />
+                    End="0,39" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,41.6088480070083"
-                    Point2="0,45.6088480070083"
-                    Point3="-4,45.6088480070083" />
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="4,43" />
                   <mssgle:LineSegment
-                    End="-93.0714285714286,45.6088480070083" />
+                    End="10,43" />
                   <mssgle:CubicBezierSegment
-                    Point1="-93.0714285714286,45.6088480070083"
-                    Point2="-97.0714285714286,45.6088480070083"
-                    Point3="-97.0714285714286,49.6088480070083" />
+                    Point1="10,43"
+                    Point2="14,43"
+                    Point3="14,47" />
                   <mssgle:LineSegment
-                    End="-97.0714285714286,77.5" />
+                    End="14,78.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7361,30 +8216,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="592.142857142857,243">
+          TopLeft="639.75,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-61.6428571428571,68"
+              EndConnector="-109.25,76"
               Start="0,0"
-              End="-61.6428571428571,60.5">
+              End="-109.25,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.4192480491842" />
+                    End="0,28.6476524791575" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.4192480491842"
-                    Point2="0,31.4192480491842"
-                    Point3="-4,31.4192480491842" />
+                    Point1="0,28.6476524791575"
+                    Point2="0,32.6476524791575"
+                    Point3="-4,32.6476524791575" />
                   <mssgle:LineSegment
-                    End="-57.6428571428571,31.4192480491842" />
+                    End="-105.25,32.6476524791575" />
                   <mssgle:CubicBezierSegment
-                    Point1="-57.6428571428571,31.4192480491842"
-                    Point2="-61.6428571428571,31.4192480491842"
-                    Point3="-61.6428571428571,35.4192480491842" />
+                    Point1="-105.25,32.6476524791575"
+                    Point2="-109.25,32.6476524791575"
+                    Point3="-109.25,36.6476524791575" />
                   <mssgle:LineSegment
-                    End="-61.6428571428571,60.5" />
+                    End="-109.25,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7395,30 +8250,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="500.428571428571,243">
+          TopLeft="559.5,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-159.928571428571,66"
+              EndConnector="-219,74"
               Start="0,0"
-              End="-159.928571428571,58.5">
+              End="-219,66.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1405073877892" />
+                    End="0,20.8682328907048" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1405073877892"
-                    Point2="0,24.1405073877892"
-                    Point3="-4,24.1405073877892" />
+                    Point1="0,20.8682328907048"
+                    Point2="0,24.8682328907048"
+                    Point3="-4,24.8682328907048" />
                   <mssgle:LineSegment
-                    End="-155.928571428571,24.1405073877892" />
+                    End="-215,24.8682328907048" />
                   <mssgle:CubicBezierSegment
-                    Point1="-155.928571428571,24.1405073877892"
-                    Point2="-159.928571428571,24.1405073877892"
-                    Point3="-159.928571428571,28.1405073877892" />
+                    Point1="-215,24.8682328907048"
+                    Point2="-219,24.8682328907048"
+                    Point3="-219,28.8682328907048" />
                   <mssgle:LineSegment
-                    End="-159.928571428571,58.5" />
+                    End="-219,66.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7429,30 +8284,30 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="867.285714285714,243">
+          TopLeft="880.5,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="247.714285714286,65"
+              EndConnector="234.5,73"
               Start="0,0"
-              End="247.714285714286,57.5">
+              End="234.5,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.7877758913413" />
+                    End="0,20.5321756894791" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.7877758913413"
-                    Point2="0,14.7877758913413"
-                    Point3="4,14.7877758913413" />
+                    Point1="0,20.5321756894791"
+                    Point2="0,24.5321756894791"
+                    Point3="4,24.5321756894791" />
                   <mssgle:LineSegment
-                    End="243.714285714286,14.7877758913413" />
+                    End="230.5,24.5321756894791" />
                   <mssgle:CubicBezierSegment
-                    Point1="243.714285714286,14.7877758913413"
-                    Point2="247.714285714286,14.7877758913413"
-                    Point3="247.714285714286,18.7877758913413" />
+                    Point1="230.5,24.5321756894791"
+                    Point2="234.5,24.5321756894791"
+                    Point3="234.5,28.5321756894791" />
                   <mssgle:LineSegment
-                    End="247.714285714286,57.5" />
+                    End="234.5,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7467,26 +8322,26 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="402.357142857143,86"
+              EndConnector="522.375,87"
               Start="0,0"
-              End="402.357142857143,78.5">
+              End="522.375,79.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.2321981424148" />
+                    End="0,63.741935483871" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.2321981424148"
-                    Point2="0,65.2321981424148"
-                    Point3="4,65.2321981424148" />
+                    Point1="0,63.741935483871"
+                    Point2="0,67.741935483871"
+                    Point3="4,67.741935483871" />
                   <mssgle:LineSegment
-                    End="398.357142857143,65.2321981424148" />
+                    End="518.375,67.741935483871" />
                   <mssgle:CubicBezierSegment
-                    Point1="398.357142857143,65.2321981424148"
-                    Point2="402.357142857143,65.2321981424148"
-                    Point3="402.357142857143,69.2321981424148" />
+                    Point1="518.375,67.741935483871"
+                    Point2="522.375,67.741935483871"
+                    Point3="522.375,71.741935483871" />
                   <mssgle:LineSegment
-                    End="402.357142857143,78.5" />
+                    End="522.375,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7501,26 +8356,26 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-262.714285714286,89"
+              EndConnector="-154.625,90"
               Start="0,0"
-              End="-262.714285714286,81.5">
+              End="-154.625,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.9389430477168" />
+                    End="0,47.0948905109489" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,51.9389430477168"
-                    Point2="0,55.9389430477168"
-                    Point3="-4,55.9389430477168" />
+                    Point1="0,47.0948905109489"
+                    Point2="0,51.0948905109489"
+                    Point3="-4,51.0948905109489" />
                   <mssgle:LineSegment
-                    End="-258.714285714286,55.9389430477168" />
+                    End="-150.625,51.0948905109489" />
                   <mssgle:CubicBezierSegment
-                    Point1="-258.714285714286,55.9389430477168"
-                    Point2="-262.714285714286,55.9389430477168"
-                    Point3="-262.714285714286,59.9389430477168" />
+                    Point1="-150.625,51.0948905109489"
+                    Point2="-154.625,51.0948905109489"
+                    Point3="-154.625,55.0948905109489" />
                   <mssgle:LineSegment
-                    End="-262.714285714286,81.5" />
+                    End="-154.625,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7535,26 +8390,26 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="244.214285714286,87"
+              EndConnector="361.25,88"
               Start="0,0"
-              End="244.214285714286,79.5">
+              End="361.25,80.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.6818881477681" />
+                    End="0,53.7861163227017" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,50.6818881477681"
-                    Point2="0,54.6818881477681"
-                    Point3="4,54.6818881477681" />
+                    Point1="0,53.7861163227017"
+                    Point2="0,57.7861163227017"
+                    Point3="4,57.7861163227017" />
                   <mssgle:LineSegment
-                    End="240.214285714286,54.6818881477681" />
+                    End="357.25,57.7861163227017" />
                   <mssgle:CubicBezierSegment
-                    Point1="240.214285714286,54.6818881477681"
-                    Point2="244.214285714286,54.6818881477681"
-                    Point3="244.214285714286,58.6818881477681" />
+                    Point1="357.25,57.7861163227017"
+                    Point2="361.25,57.7861163227017"
+                    Point3="361.25,61.7861163227017" />
                   <mssgle:LineSegment
-                    End="244.214285714286,79.5" />
+                    End="361.25,80.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7569,26 +8424,26 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="78.0714285714286,85"
+              EndConnector="192.125,86"
               Start="0,0"
-              End="78.0714285714286,77.5">
+              End="192.125,78.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.6088480070083" />
+                    End="0,44.8240064882401" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,41.6088480070083"
-                    Point2="0,45.6088480070083"
-                    Point3="4,45.6088480070083" />
+                    Point1="0,44.8240064882401"
+                    Point2="0,48.8240064882401"
+                    Point3="4,48.8240064882401" />
                   <mssgle:LineSegment
-                    End="74.0714285714286,45.6088480070083" />
+                    End="188.125,48.8240064882401" />
                   <mssgle:CubicBezierSegment
-                    Point1="74.0714285714286,45.6088480070083"
-                    Point2="78.0714285714286,45.6088480070083"
-                    Point3="78.0714285714286,49.6088480070083" />
+                    Point1="188.125,48.8240064882401"
+                    Point2="192.125,48.8240064882401"
+                    Point3="192.125,52.8240064882401" />
                   <mssgle:LineSegment
-                    End="78.0714285714286,77.5" />
+                    End="192.125,78.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7603,26 +8458,98 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-434.857142857143,88"
+              EndConnector="-329.75,89"
               Start="0,0"
-              End="-434.857142857143,80.5">
+              End="-329.75,81.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.7492260061919" />
+                    End="0,54.4427767354597" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,62.7492260061919"
-                    Point2="0,66.7492260061919"
-                    Point3="-4,66.7492260061919" />
+                    Point1="0,54.4427767354597"
+                    Point2="0,58.4427767354597"
+                    Point3="-4,58.4427767354597" />
                   <mssgle:LineSegment
-                    End="-430.857142857143,66.7492260061919" />
+                    End="-325.75,58.4427767354597" />
                   <mssgle:CubicBezierSegment
-                    Point1="-430.857142857143,66.7492260061919"
-                    Point2="-434.857142857143,66.7492260061919"
-                    Point3="-434.857142857143,70.7492260061919" />
+                    Point1="-325.75,58.4427767354597"
+                    Point2="-329.75,58.4427767354597"
+                    Point3="-329.75,62.4427767354597" />
                   <mssgle:LineSegment
-                    End="-434.857142857143,80.5" />
+                    End="-329.75,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Cargar Dim_arancel"
+          TopLeft="1236,310" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 11]"
+          TopLeft="960.75,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="361.25,75"
+              Start="0,0"
+              End="361.25,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4398289554062" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4398289554062"
+                    Point2="0,15.4398289554062"
+                    Point3="4,15.4398289554062" />
+                  <mssgle:LineSegment
+                    End="357.25,15.4398289554062" />
+                  <mssgle:CubicBezierSegment
+                    Point1="357.25,15.4398289554062"
+                    Point2="361.25,15.4398289554062"
+                    Point3="361.25,19.4398289554062" />
+                  <mssgle:LineSegment
+                    End="361.25,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 12]"
+          TopLeft="1322,352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-515.875,87"
+              Start="0,0"
+              End="-515.875,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.741935483871" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.741935483871"
+                    Point2="0,67.741935483871"
+                    Point3="-4,67.741935483871" />
+                  <mssgle:LineSegment
+                    End="-511.875,67.741935483871" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-511.875,67.741935483871"
+                    Point2="-515.875,67.741935483871"
+                    Point3="-515.875,71.741935483871" />
+                  <mssgle:LineSegment
+                    End="-515.875,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7762,7 +8689,9 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8170,7 +9099,9 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8216,7 +9147,9 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8266,7 +9199,9 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8389,10 +9324,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Size="212,42"
           Id="Package\Cargar Dim_Tipomatricula\actualizar Dim_tipomatricula"
           TopLeft="436,313" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Cargar Dim_Tipomatricula\Búsqueda"
-          TopLeft="328,144" />
         <EdgeLayout
           Id="Package\Cargar Dim_Tipomatricula.Paths[Modificar]"
           TopLeft="418.666666666667,278">
@@ -8425,24 +9356,64 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="41.1129752604167,19.1946697566628,41.1073828125,9.7978515625"
+              BoundingBox="41.1129752604165,19.1946697566628,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Cargar Dim_Tipomatricula.Paths[Salida de origen de OLE DB]"
-          TopLeft="388.5,97">
+          Id="Package\Cargar Dim_Tipomatricula.Paths[Nuevos]"
+          TopLeft="364.333333333333,278">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47"
+              EndConnector="-112.333333333333,31"
               Start="0,0"
-              End="0,39.5">
+              End="-112.333333333333,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,8.57242178447277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.57242178447277"
+                    Point2="0,12.5724217844728"
+                    Point3="-4,12.5724217844728" />
+                  <mssgle:LineSegment
+                    End="-108.333333333333,12.5724217844728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-108.333333333333,12.5724217844728"
+                    Point2="-112.333333333333,12.5724217844728"
+                    Point3="-112.333333333333,16.5724217844728" />
+                  <mssgle:LineSegment
+                    End="-112.333333333333,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-72.8942447916667,17.5724217844728,33.45515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Cargar Dim_Tipomatricula\Búsqueda"
+          TopLeft="327,131" />
+        <EdgeLayout
+          Id="Package\Cargar Dim_Tipomatricula.Paths[Salida de origen de OLE DB]"
+          TopLeft="388,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8453,61 +9424,25 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Cargar Dim_Tipomatricula.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="391,186">
+          TopLeft="390.5,173">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="0,63"
               Start="0,0"
-              End="0,42.5">
+              End="0,55.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="0,55.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,15.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cargar Dim_Tipomatricula.Paths[Nuevos]"
-          TopLeft="391.5,278">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-139.5,31"
-              Start="0,0"
-              End="-139.5,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.5"
-                    Point2="0,15.5"
-                    Point3="-4,15.5" />
-                  <mssgle:LineSegment
-                    End="-135.5,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-135.5,15.5"
-                    Point2="-139.5,15.5"
-                    Point3="-139.5,19.5" />
-                  <mssgle:LineSegment
-                    End="-139.5,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-86.477578125,20.5,33.45515625,9.421875"
+              BoundingBox="-99.8190234375,21.65234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8524,29 +9459,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Cargar Dim_Tipomatricula\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_tipomatricula]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -8576,28 +9488,6 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
           Id="Package\Cargar Matriculacion\Conversión de datos"
           TopLeft="289,149" />
         <EdgeLayout
-          Id="Package\Cargar Matriculacion.Paths[Salida de origen de OLE DB]"
-          TopLeft="377.5,94">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Cargar Matriculacion.Paths[Salida de conversión de datos]"
           TopLeft="375.25,191">
           <EdgeLayout.Curve>
@@ -8611,6 +9501,28 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Matriculacion.Paths[Salida de origen de OLE DB]"
+          TopLeft="377.5,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8640,6 +9552,219 @@ order by  fac.denominacion,c3.descripcion, d5.apellidos,d5.nombre</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cargar Dim_arancel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Cargar Dim_arancel\Búsqueda"
+          TopLeft="328,144" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Cargar Dim_arancel\cargar tipos aranceles"
+          TopLeft="307,56" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Cargar Dim_arancel\actualizar Dim_arancel"
+          TopLeft="436,313" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Cargar Dim_arancel\División condicional"
+          TopLeft="306,236" />
+        <EdgeLayout
+          Id="Package\Cargar Dim_arancel.Paths[Modificar]"
+          TopLeft="418.666666666667,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.833333333333,35"
+              Start="0,0"
+              End="109.833333333333,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.1946697566628" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.1946697566628"
+                    Point2="0,14.1946697566628"
+                    Point3="4,14.1946697566628" />
+                  <mssgle:LineSegment
+                    End="105.833333333333,14.1946697566628" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.833333333333,14.1946697566628"
+                    Point2="109.833333333333,14.1946697566628"
+                    Point3="109.833333333333,18.1946697566628" />
+                  <mssgle:LineSegment
+                    End="109.833333333333,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="34.3629752604167,19.1946697566628,41.1073828125,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_arancel.Paths[Salida de origen de OLE DB]"
+          TopLeft="394.25,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim_arancel.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="391,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,15.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Cargar Dim_arancel\Dim_arancel"
+          TopLeft="181,314" />
+        <EdgeLayout
+          Id="Package\Cargar Dim_arancel.Paths[Nuevos]"
+          TopLeft="364.333333333333,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-114.833333333333,36"
+              Start="0,0"
+              End="-114.833333333333,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.6002317497103" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.6002317497103"
+                    Point2="0,14.6002317497103"
+                    Point3="-4,14.6002317497103" />
+                  <mssgle:LineSegment
+                    End="-110.833333333333,14.6002317497103" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-110.833333333333,14.6002317497103"
+                    Point2="-114.833333333333,14.6002317497103"
+                    Point3="-114.833333333333,18.6002317497103" />
+                  <mssgle:LineSegment
+                    End="-114.833333333333,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.1442447916667,19.6002317497103,33.45515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_arancel\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_arancel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_arancel\cargar tipos aranceles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_Tipomatricula\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_tipomatricula]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_arancel\Dim_arancel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
