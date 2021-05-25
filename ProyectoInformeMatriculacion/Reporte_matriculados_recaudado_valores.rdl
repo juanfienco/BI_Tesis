@@ -13,7 +13,7 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSourceCuboMatricula</DataSourceName>
-        <CommandText> SELECT NON EMPTY { [Measures].[Valor Total Cancelar], [Measures].[Valor Pagado] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[facultad].[facultad].ALLMEMBERS * [Dim Carrera].[carrera].[carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[periodo].&amp;[6.55E2] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Valor Total Cancelar], [Measures].[Valor Pagado] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[facultad].[facultad].ALLMEMBERS * [Dim Carrera].[carrera].[carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[periodo].&amp;[6.55E2], [Dim Periodo].[periodo].&amp;[6.49E2] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -142,6 +142,9 @@
                         <Member>
                           <MemberUniqueName>[Dim Periodo].[periodo].&amp;[6.55E2]</MemberUniqueName>
                         </Member>
+                        <Member>
+                          <MemberUniqueName>[Dim Periodo].[periodo].&amp;[6.49E2]</MemberUniqueName>
+                        </Member>
                       </Members>
                     </Condition>
                   </FilterItem>
@@ -154,7 +157,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Valor Total Cancelar], [Measures].[Valor Pagado] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[facultad].[facultad].ALLMEMBERS * [Dim Carrera].[carrera].[carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[periodo].&amp;[6.55E2] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Valor Total Cancelar], [Measures].[Valor Pagado] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[facultad].[facultad].ALLMEMBERS * [Dim Carrera].[carrera].[carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Alumno].[Tipo Alumno].[Tipo Alumno].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[periodo].&amp;[6.55E2], [Dim Periodo].[periodo].&amp;[6.49E2] } ) ON COLUMNS FROM [cubo_matriculacion]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions />
             </Query>
           </QueryDefinition>
@@ -1205,10 +1208,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Tipo Alumno</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox111</rd:DefaultName>
@@ -1237,10 +1244,13 @@
                                   <Value>Estudiante</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox123</rd:DefaultName>
@@ -1269,10 +1279,13 @@
                                   <Value>arancel</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox125</rd:DefaultName>
@@ -1301,10 +1314,13 @@
                                   <Value>Valor Total Cancelar</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox113</rd:DefaultName>
@@ -1333,10 +1349,13 @@
                                   <Value>Valor Pagado</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox115</rd:DefaultName>
@@ -1545,10 +1564,13 @@
                                 <Value>facultad</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Textbox119</rd:DefaultName>
@@ -1580,10 +1602,13 @@
                                     <Value>carrera</Value>
                                     <Style>
                                       <FontFamily>Arial</FontFamily>
+                                      <FontWeight>Bold</FontWeight>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
                             <rd:DefaultName>Textbox121</rd:DefaultName>
@@ -1710,7 +1735,7 @@
             <Top>5.65891cm</Top>
             <Left>0.18362cm</Left>
             <Height>1.2cm</Height>
-            <Width>21.5639cm</Width>
+            <Width>21.56389cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1722,10 +1747,10 @@
         <Height>3.55846in</Height>
         <Style />
       </Body>
-      <Width>8.67063in</Width>
+      <Width>9.70188in</Width>
       <Page>
         <PageHeader>
-          <Height>1.95792cm</Height>
+          <Height>1.19063cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1790,96 +1815,6 @@
                 </Border>
               </Style>
             </Line>
-            <Textbox Name="Textbox36">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Facultad:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>1.15895cm</Top>
-              <Left>4.71854cm</Left>
-              <Height>0.6cm</Height>
-              <Width>1.52032cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox38">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Carrera:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>1.1557cm</Top>
-              <Left>12.84191cm</Left>
-              <Height>0.6cm</Height>
-              <Width>1.41449cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox37">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Periodo:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>1.12396cm</Top>
-              <Left>0.05582cm</Left>
-              <Height>0.6cm</Height>
-              <Width>1.55765cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -1940,7 +1875,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>UserID</rd:DefaultName>
-              <Left>0cm</Left>
+              <Top>0cm</Top>
               <Height>0.6cm</Height>
               <Width>6.88556cm</Width>
               <ZIndex>1</ZIndex>
@@ -2099,7 +2034,7 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>1</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>
