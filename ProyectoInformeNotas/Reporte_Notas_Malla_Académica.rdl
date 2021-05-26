@@ -17,26 +17,17 @@
           <QueryParameter Name="DimPeriodoPeriodoDescripcion">
             <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
+          <QueryParameter Name="DimPensumFacultad">
+            <Value>=Parameters!DimPensumFacultad.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionCarrera">
-            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEnfasis">
-            <Value>=Parameters!DimPensumEnfasis.Value</Value>
+          <QueryParameter Name="DimPensumCarrera">
+            <Value>=Parameters!DimPensumCarrera.Value</Value>
           </QueryParameter>
           <QueryParameter Name="DimPensumNivel">
             <Value>=Parameters!DimPensumNivel.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="DimPensumEje">
-            <Value>=Parameters!DimPensumEje.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCursosPlanContingencia">
-            <Value>=Parameters!DimCursosPlanContingencia.Value</Value>
-          </QueryParameter>
         </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Pensum_desglose].[Creditos].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ), IIF( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED), [Dim Carrera].[Descripcion Carrera].currentmember ), IIF( STRTOSET(@DimPensumEnfasis, CONSTRAINED).Count = 1, STRTOSET(@DimPensumEnfasis, CONSTRAINED), [Dim Pensum].[Enfasis].currentmember ), IIF( STRTOSET(@DimPensumNivel, CONSTRAINED).Count = 1, STRTOSET(@DimPensumNivel, CONSTRAINED), [Dim Pensum].[Nivel].currentmember ), IIF( STRTOSET(@DimPensumEje, CONSTRAINED).Count = 1, STRTOSET(@DimPensumEje, CONSTRAINED), [Dim Pensum].[Eje].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Pensum_desglose].[Creditos].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimPensumFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimPensumFacultad, CONSTRAINED), [Dim Pensum].[Facultad].currentmember ), IIF( STRTOSET(@DimPensumCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimPensumCarrera, CONSTRAINED), [Dim Pensum].[Carrera].currentmember ), IIF( STRTOSET(@DimPensumNivel, CONSTRAINED).Count = 1, STRTOSET(@DimPensumNivel, CONSTRAINED), [Dim Pensum].[Nivel].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -227,21 +218,14 @@
                     </Condition>
                   </FilterItem>
                   <FilterItem>
-                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members />
                       <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                   <FilterItem>
-                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members />
                       <Parametrized>true</Parametrized>
@@ -249,20 +233,6 @@
                   </FilterItem>
                   <FilterItem>
                     <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Pensum].[Eje]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Cursos].[Plan Contingencia]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members />
                       <Parametrized>true</Parametrized>
@@ -277,7 +247,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Pensum_desglose].[Creditos].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ), IIF( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED), [Dim Carrera].[Descripcion Carrera].currentmember ), IIF( STRTOSET(@DimPensumEnfasis, CONSTRAINED).Count = 1, STRTOSET(@DimPensumEnfasis, CONSTRAINED), [Dim Pensum].[Enfasis].currentmember ), IIF( STRTOSET(@DimPensumNivel, CONSTRAINED).Count = 1, STRTOSET(@DimPensumNivel, CONSTRAINED), [Dim Pensum].[Nivel].currentmember ), IIF( STRTOSET(@DimPensumEje, CONSTRAINED).Count = 1, STRTOSET(@DimPensumEje, CONSTRAINED), [Dim Pensum].[Eje].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[Cantidad] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Pensum].[Pensum_desglose].[Creditos].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimPensumFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimPensumFacultad, CONSTRAINED), [Dim Pensum].[Facultad].currentmember ), IIF( STRTOSET(@DimPensumCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimPensumCarrera, CONSTRAINED), [Dim Pensum].[Carrera].currentmember ), IIF( STRTOSET(@DimPensumNivel, CONSTRAINED).Count = 1, STRTOSET(@DimPensumNivel, CONSTRAINED), [Dim Pensum].[Nivel].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimPeriodoPeriodoDescripcion</Name>
@@ -293,14 +263,14 @@
                   <MultipleValues>true</MultipleValues>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
+                  <Name>DimPensumFacultad</Name>
                   <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                  <Caption>Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
                     <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
                           <Name>DimPeriodoPeriodoDescripcion</Name>
@@ -311,44 +281,20 @@
                   <MultipleValues>true</MultipleValues>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>DimCarreraDescripcionCarrera</Name>
+                  <Name>DimPensumCarrera</Name>
                   <DefaultValues />
-                  <Caption>Descripcion Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                  <Caption>Carrera</Caption>
+                  <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
                     <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
                           <Name>DimPeriodoPeriodoDescripcion</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEnfasis</Name>
-                  <DefaultValues />
-                  <Caption>Enfasis</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
+                          <Name>DimPensumFacultad</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -361,84 +307,18 @@
                   <Caption>Nivel</Caption>
                   <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
                     <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
                           <Name>DimPeriodoPeriodoDescripcion</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
+                          <Name>DimPensumFacultad</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEje</Name>
-                  <DefaultValues />
-                  <Caption>Eje</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Eje]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumNivel</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCursosPlanContingencia</Name>
-                  <DefaultValues />
-                  <Caption>Plan Contingencia</Caption>
-                  <HierarchyUniqueName>[Dim Cursos].[Plan Contingencia]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Cursos].[Plan Contingencia].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Cursos].[Plan Contingencia].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumNivel</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEje</Name>
+                          <Name>DimPensumCarrera</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -509,669 +389,6 @@
         </Field>
         <Field Name="Plan_Contingencia">
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Plan Contingencia].[Plan Contingencia]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DimPensumEnfasis">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionCarrera">
-            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionCarrera</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DimPensumPensum">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumFacultad">
-            <Value>=Parameters!DimPensumFacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumCarrera">
-            <Value>=Parameters!DimPensumCarrera.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEnfasis">
-            <Value>=Parameters!DimPensumEnfasis.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Pensum].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Pensum].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Pensum].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Pensum].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Pensum].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Pensum].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Pensum].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Pensum].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumFacultad</Name>
-                  <DefaultValues />
-                  <Caption>Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumCarrera</Name>
-                  <DefaultValues />
-                  <Caption>Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEnfasis</Name>
-                  <DefaultValues />
-                  <Caption>Enfasis</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumCarrera</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DimPensumNivel">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionCarrera">
-            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEnfasis">
-            <Value>=Parameters!DimPensumEnfasis.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionCarrera</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEnfasis</Name>
-                  <DefaultValues />
-                  <Caption>Enfasis</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DimPensumEje">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionCarrera">
-            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEnfasis">
-            <Value>=Parameters!DimPensumEnfasis.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumNivel">
-            <Value>=Parameters!DimPensumNivel.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionCarrera</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEnfasis</Name>
-                  <DefaultValues />
-                  <Caption>Enfasis</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumNivel</Name>
-                  <DefaultValues />
-                  <Caption>Nivel</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1383,234 +600,6 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DimCursosPlanContingencia">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionCarrera">
-            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEnfasis">
-            <Value>=Parameters!DimPensumEnfasis.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumNivel">
-            <Value>=Parameters!DimPensumNivel.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimPensumEje">
-            <Value>=Parameters!DimPensumEje.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Cursos].[Plan Contingencia].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Cursos].[Plan Contingencia].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Cursos].[Plan Contingencia].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEje, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimCarreraDescripcionCarrera</Name>
-                  <DefaultValues />
-                  <Caption>Descripcion Carrera</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEnfasis</Name>
-                  <DefaultValues />
-                  <Caption>Enfasis</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Enfasis]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Enfasis].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Enfasis].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumNivel</Name>
-                  <DefaultValues />
-                  <Caption>Nivel</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Nivel]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>DimPensumEje</Name>
-                  <DefaultValues />
-                  <Caption>Eje</Caption>
-                  <HierarchyUniqueName>[Dim Pensum].[Eje]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</Statement>
-                    <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Eje].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Eje].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Eje].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Eje].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumNivel, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumEnfasis, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))))</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>DimPeriodoPeriodoDescripcion</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionFacultad</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimCarreraDescripcionCarrera</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumEnfasis</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>DimPensumNivel</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="DimPeriodoPeriodoDescripcion">
       <Query>
         <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
@@ -1685,15 +674,21 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DimCarreraDescripcionFacultad">
+    <DataSet Name="DimPensumNivel">
       <Query>
         <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="DimPeriodoPeriodoDescripcion">
             <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="DimPensumFacultad">
+            <Value>=Parameters!DimPensumFacultad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimPensumCarrera">
+            <Value>=Parameters!DimPensumCarrera.Value</Value>
+          </QueryParameter>
         </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</CommandText>
+        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -1737,103 +732,7 @@
               <QueryProperties />
             </QuerySpecification>
             <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>DimPeriodoPeriodoDescripcion</Name>
-                  <DefaultValues />
-                  <Caption>Periodo Descripcion</Caption>
-                  <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[Periodo Descripcion].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[Periodo Descripcion].ALLMEMBERS ON ROWS FROM [cubo_notas]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <MultipleValues>true</MultipleValues>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterValue">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterLevel">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DimCarreraDescripcionCarrera">
-      <Query>
-        <DataSourceName>DataSource_MejoresPromedios</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="DimPeriodoPeriodoDescripcion">
-            <Value>=Parameters!DimPeriodoPeriodoDescripcion.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="DimCarreraDescripcionFacultad">
-            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</CommandText>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>MDX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>cubo_notas</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
+              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Nivel].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Nivel].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Nivel].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Nivel].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimPeriodoPeriodoDescripcion</Name>
@@ -1849,17 +748,38 @@
                   <MultipleValues>true</MultipleValues>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>DimCarreraDescripcionFacultad</Name>
+                  <Name>DimPensumFacultad</Name>
                   <DefaultValues />
-                  <Caption>Descripcion Facultad</Caption>
-                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                  <Caption>Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Pensum].[Facultad]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
                     <ParameterizedStatement>
-                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
                           <Name>DimPeriodoPeriodoDescripcion</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimPensumCarrera</Name>
+                  <DefaultValues />
+                  <Caption>Carrera</Caption>
+                  <HierarchyUniqueName>[Dim Pensum].[Carrera]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Pensum].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Pensum].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Pensum].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Pensum].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPensumFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoPeriodoDescripcion, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas]))</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimPeriodoPeriodoDescripcion</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>DimPensumFacultad</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -2722,7 +1642,7 @@
                           <TablixHeader>
                             <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox598">
+                              <Textbox Name="Textbox8">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -2740,7 +1660,7 @@
                                     </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox598</rd:DefaultName>
+                                <rd:DefaultName>Textbox8</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -3148,7 +2068,6 @@
                                       <PaddingBottom>2pt</PaddingBottom>
                                     </Style>
                                   </Textbox>
-                                  <rd:Selected>true</rd:Selected>
                                 </CellContents>
                               </TablixHeader>
                               <TablixMembers>
@@ -3764,9 +2683,10 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!Nivel.Value</Value>
+                                                    <Value>=Int(Fields!Nivel.Value)</Value>
                                                     <Style>
                                                       <FontFamily>Arial</FontFamily>
+                                                      <Format>0;(0)</Format>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -3785,6 +2705,7 @@
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
+                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixHeader>
                                       <TablixMembers>
@@ -4472,12 +3393,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoPeriodoDescripcion">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Periodo].[Periodo Descripcion].&amp;[2020-1]</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Periodo Descripcion</Prompt>
+      <Prompt>Periodo Académico</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoPeriodoDescripcion</DataSetName>
@@ -4489,11 +3405,6 @@
     </ReportParameter>
     <ReportParameter Name="DimPensumFacultad">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Pensum].[Facultad].&amp;[ARQUITECTURA]</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Facultad</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -4506,11 +3417,6 @@
     </ReportParameter>
     <ReportParameter Name="DimPensumCarrera">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Pensum].[Carrera].&amp;[ARQUITECTURA 2017]</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Carrera</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -4521,75 +3427,8 @@
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
-    <ReportParameter Name="DimCarreraDescripcionFacultad">
-      <DataType>String</DataType>
-      <Prompt>Descripcion Facultad</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="DimCarreraDescripcionCarrera">
-      <DataType>String</DataType>
-      <Prompt>Descripcion Carrera</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimCarreraDescripcionCarrera</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="DimPensumEnfasis">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <DataSetReference>
-          <DataSetName>DimPensumEnfasis</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-        </DataSetReference>
-      </DefaultValue>
-      <Prompt>Enfasis</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimPensumEnfasis</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="DimPensumPensum">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Pensum].[Pensum].&amp;[2017]</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Pensum</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimPensumPensum</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
     <ReportParameter Name="DimPensumNivel">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Pensum].[Nivel].&amp;[1]</Value>
-          <Value>[Dim Pensum].[Nivel].&amp;[2]</Value>
-          <Value>[Dim Pensum].[Nivel].&amp;[3]</Value>
-          <Value>[Dim Pensum].[Nivel].[All]</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Nivel</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -4600,45 +3439,11 @@
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
-    <ReportParameter Name="DimPensumEje">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Pensum].[Eje].[All]</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Eje</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimPensumEje</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="DimCursosPlanContingencia">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Cursos].[Plan Contingencia].[All]</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>Plan Contingencia</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>DimCursosPlanContingencia</DataSetName>
-          <ValueField>ParameterValue</ValueField>
-          <LabelField>ParameterCaptionIndented</LabelField>
-        </DataSetReference>
-      </ValidValues>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>3</NumberOfColumns>
-      <NumberOfRows>4</NumberOfRows>
+      <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -4658,37 +3463,7 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>DimCarreraDescripcionFacultad</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>DimCarreraDescripcionCarrera</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>DimPensumEnfasis</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>DimPensumPensum</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>2</RowIndex>
           <ParameterName>DimPensumNivel</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>DimPensumEje</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>3</RowIndex>
-          <ParameterName>DimCursosPlanContingencia</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
