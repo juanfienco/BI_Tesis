@@ -2,415 +2,658 @@
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <DataSourceReference>DataSourceNotas</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>d5b1dd9f-6d76-4fd2-ad96-b8454dfeaf6a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText> SELECT NON EMPTY { [Measures].[Nota] } ON COLUMNS, NON EMPTY { ([Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[Periodo Descripcion].&amp;[2020-1], [Dim Periodo].[Periodo Descripcion].&amp;[2019-2], [Dim Periodo].[Periodo Descripcion].&amp;[2019-1] } ) ON COLUMNS FROM [cubo_notas]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Alumno</DimensionName>
+                      <HierarchyName>Estudiante</HierarchyName>
+                      <HierarchyUniqueName>[Dim Alumno].[Estudiante]</HierarchyUniqueName>
+                      <LevelName>Estudiante</LevelName>
+                      <UniqueName>[Dim Alumno].[Estudiante].[Estudiante]</UniqueName>
+                    </ID>
+                    <ItemCaption>Estudiante</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Periodo</DimensionName>
+                      <HierarchyName>Periodo Descripcion</HierarchyName>
+                      <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
+                      <LevelName>Periodo Descripcion</LevelName>
+                      <UniqueName>[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]</UniqueName>
+                    </ID>
+                    <ItemCaption>Periodo Descripcion</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Carrera</DimensionName>
+                      <HierarchyName>Descripcion Facultad</HierarchyName>
+                      <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                      <LevelName>Descripcion Facultad</LevelName>
+                      <UniqueName>[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]</UniqueName>
+                    </ID>
+                    <ItemCaption>Descripcion Facultad</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Cursos</DimensionName>
+                      <HierarchyName>Paralelo</HierarchyName>
+                      <HierarchyUniqueName>[Dim Cursos].[Paralelo]</HierarchyUniqueName>
+                      <LevelName>Paralelo</LevelName>
+                      <UniqueName>[Dim Cursos].[Paralelo].[Paralelo]</UniqueName>
+                    </ID>
+                    <ItemCaption>Paralelo</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Carrera</DimensionName>
+                      <HierarchyName>Descripcion Carrera</HierarchyName>
+                      <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                      <LevelName>Descripcion Carrera</LevelName>
+                      <UniqueName>[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]</UniqueName>
+                    </ID>
+                    <ItemCaption>Descripcion Carrera</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Alumno</DimensionName>
+                      <HierarchyName>Sexo</HierarchyName>
+                      <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                      <LevelName>Sexo</LevelName>
+                      <UniqueName>[Dim Alumno].[Sexo].[Sexo]</UniqueName>
+                    </ID>
+                    <ItemCaption>Sexo</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Pensum</DimensionName>
+                      <HierarchyName>Materia</HierarchyName>
+                      <HierarchyUniqueName>[Dim Pensum].[Materia]</HierarchyUniqueName>
+                      <LevelName>Materia</LevelName>
+                      <UniqueName>[Dim Pensum].[Materia].[Materia]</UniqueName>
+                    </ID>
+                    <ItemCaption>Materia</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Cursos</DimensionName>
+                      <HierarchyName>Asignatura</HierarchyName>
+                      <HierarchyUniqueName>[Dim Cursos].[Asignatura]</HierarchyUniqueName>
+                      <LevelName>Asignatura</LevelName>
+                      <UniqueName>[Dim Cursos].[Asignatura].[Asignatura]</UniqueName>
+                    </ID>
+                    <ItemCaption>Asignatura</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Nota</MeasureName>
+                      <UniqueName>[Measures].[Nota]</UniqueName>
+                    </ID>
+                    <ItemCaption>Nota</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_notas</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Periodo].[Periodo Descripcion]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Periodo].[Periodo Descripcion].&amp;[2020-1]</MemberUniqueName>
+                        </Member>
+                        <Member>
+                          <MemberUniqueName>[Dim Periodo].[Periodo Descripcion].&amp;[2019-2]</MemberUniqueName>
+                        </Member>
+                        <Member>
+                          <MemberUniqueName>[Dim Periodo].[Periodo Descripcion].&amp;[2019-1]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { [Measures].[Nota] } ON COLUMNS, NON EMPTY { ([Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Periodo].[Periodo Descripcion].[Periodo Descripcion].ALLMEMBERS * [Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Pensum].[Materia].[Materia].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Periodo].[Periodo Descripcion].&amp;[2020-1], [Dim Periodo].[Periodo Descripcion].&amp;[2019-2], [Dim Periodo].[Periodo Descripcion].&amp;[2019-1] } ) ON COLUMNS FROM [cubo_notas]) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Estudiante">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Estudiante].[Estudiante]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Periodo_Descripcion">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Periodo].[Periodo Descripcion].[Periodo Descripcion]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descripcion_Facultad">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Paralelo">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Paralelo].[Paralelo]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descripcion_Carrera">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Sexo">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Materia">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Pensum].[Materia].[Materia]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Asignatura">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Asignatura].[Asignatura]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nota">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Nota]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
         <ReportItems>
-          <Rectangle Name="Rectangle1">
-            <ReportItems>
-              <Line Name="Line1">
-                <Top>1.26146cm</Top>
-                <Left>0.3175cm</Left>
-                <Height>0cm</Height>
-                <Width>17.76cm</Width>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                </Style>
-              </Line>
-              <Textbox Name="Textbox5">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>4. Reporte de promedio de notas por periodo y curso</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <ActionInfo>
-                  <Actions>
-                    <Action>
-                      <Drillthrough>
-                        <ReportName>Reporte_nota_promedio_por_curso</ReportName>
-                      </Drillthrough>
-                    </Action>
-                  </Actions>
-                </ActionInfo>
-                <Top>4.34827cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>1</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox4">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>3. Reporte de estudiantes de recuperación que reprobaron asignatura</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Reprobados_Recuperacion</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>3.36931cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox3">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>2. Reporte de Notas por malla académica</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Notas_Malla_Académica</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>2.39035cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>3</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox2">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>1. Reporte de notas de estudiantes según el tipo de aprobado</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Listado_TiposAprobados_Notas</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>1.43785cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>4</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox6">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>5. Reporte de </Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>5.27431cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>5</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox7">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>DASHBOARD</Value>
+          <Tablix Name="Tablix1">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox17">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox17</rd:DefaultName>
                         <Style>
-                          <FontSize>18pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>Underline</TextDecoration>
-                          <Color>DarkBlue</Color>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
                         </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>DE </Value>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="ColumnGroup">
+                    <GroupExpressions>
+                      <GroupExpression />
+                    </GroupExpressions>
+                  </Group>
+                  <TablixHeader>
+                    <Size>0.6cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox15">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox15</rd:DefaultName>
                         <Style>
-                          <FontSize>18pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>Underline</TextDecoration>
-                          <Color>DarkBlue</Color>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
                         </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>NOTAS</Value>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="RowGroup">
+                    <GroupExpressions>
+                      <GroupExpression />
+                    </GroupExpressions>
+                  </Group>
+                  <TablixHeader>
+                    <Size>2.5cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox14">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox14</rd:DefaultName>
                         <Style>
-                          <FontSize>18pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>Underline</TextDecoration>
-                          <Color>DarkBlue</Color>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
                         </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox7</rd:DefaultName>
-                <Top>2.39035cm</Top>
-                <Left>0.25731cm</Left>
-                <Height>3.16646cm</Height>
-                <Width>4.56375cm</Width>
-                <ZIndex>6</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Image Name="Logo_Uleam">
-                <Source>Embedded</Source>
-                <Value>LOGOULEAMHORIZONTAL</Value>
-                <Sizing>FitProportional</Sizing>
-                <Top>0.28568cm</Top>
-                <Left>0.635cm</Left>
-                <Height>0.79939cm</Height>
-                <Width>2.69062cm</Width>
-                <ZIndex>7</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-              </Image>
-              <Textbox Name="Textbox1">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>MENÚ DE REPORTES NOTAS</Value>
-                        <Style>
-                          <FontFamily>Book Antiqua</FontFamily>
-                          <FontSize>18pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>0.24694cm</Top>
-                <Left>3.50201cm</Left>
-                <Height>0.83813cm</Height>
-                <Width>13.98292cm</Width>
-                <ZIndex>8</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Line Name="Line2">
-                <Top>1.43785cm</Top>
-                <Left>4.99745cm</Left>
-                <Height>5.96994cm</Height>
-                <Width>0cm</Width>
-                <ZIndex>9</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                </Style>
-              </Line>
-              <Textbox Name="Textbox8">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>6. Reporte de </Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>6.14634cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
-                <ZIndex>10</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-            </ReportItems>
-            <KeepTogether>true</KeepTogether>
-            <Top>0.3175cm</Top>
-            <Height>7.54918cm</Height>
-            <Width>18.22917cm</Width>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <Top>1.37266cm</Top>
+            <Left>1.10807cm</Left>
+            <Height>1.2cm</Height>
+            <Width>5cm</Width>
             <Style>
               <Border>
-                <Style>Solid</Style>
+                <Style>None</Style>
               </Border>
             </Style>
-          </Rectangle>
+          </Tablix>
         </ReportItems>
-        <Height>3.18436in</Height>
+        <Height>2.97917in</Height>
         <Style />
       </Body>
-      <Width>7.20809in</Width>
+      <Width>10.89065in</Width>
       <Page>
+        <PageHeader>
+          <Height>0.92604cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="logo_uleam">
+              <Source>Embedded</Source>
+              <Value>LOGOULEAMHORIZONTAL1</Value>
+              <Sizing>FitProportional</Sizing>
+              <Left>2.0986cm</Left>
+              <Height>0.81747cm</Height>
+              <Width>2.98602cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Textbox Name="ReportName">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>REPORTE DE MEJORES PROMEDIOS POR PERIODO LECTIVO Y CARRERA</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ReportName</rd:DefaultName>
+              <Left>5.6571cm</Left>
+              <Height>0.81747cm</Height>
+              <Width>18.66666cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>0.92604cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="UserID">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=User!UserID</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>UserID</rd:DefaultName>
+              <Top>0.28602cm</Top>
+              <Height>0.6cm</Height>
+              <Width>4.68952cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.14491cm</Top>
+              <Left>10.57113cm</Left>
+              <Height>0.6cm</Height>
+              <Width>5.44957cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox48">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Página</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox46</rd:DefaultName>
+              <Top>0.17639cm</Top>
+              <Left>23.09231cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.23145cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>0.17639cm</Top>
+              <Left>24.35904cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.14164cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox47">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>de</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox45</rd:DefaultName>
+              <Top>0.17639cm</Top>
+              <Left>25.61357cm</Left>
+              <Height>0.6cm</Height>
+              <Width>0.58609cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="TotalPages">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>TotalPages</rd:DefaultName>
+              <Top>0.17639cm</Top>
+              <Left>26.3443cm</Left>
+              <Height>0.6cm</Height>
+              <Width>0.94149cm</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line1">
+              <Top>0.14491cm</Top>
+              <Height>0cm</Height>
+              <Width>27.66226cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -425,11 +668,11 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>1</NumberOfRows>
+      <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>
-    <EmbeddedImage Name="LOGOULEAMHORIZONTAL">
+    <EmbeddedImage Name="LOGOULEAMHORIZONTAL1">
       <MIMEType>image/png</MIMEType>
       <ImageData>iVBORw0KGgoAAAANSUhEUgAABngAAAIICAYAAABNbOB5AAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACHEAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABK2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAACjPY2BgMnB0cXJlEmBgyM0rKQpyd1KIiIxSYD/PwMbAzAAGicnFBY4BAT4gdl5+XioDBvh2jYERRF/WBZnFQBrgSi4oKgHSf4DYKCW1OJmBgdEAyM4uLykAijPOAbJFkrLB7A0gdlFIkDOQfQTI5kuHsK+A2EkQ9hMQuwjoCSD7C0h9OpjNxAE2B8KWAbFLUitA9jI45xdUFmWmZ5QoGFpaWio4puQnpSoEVxaXpOYWK3jmJecXFeQXJZakpgDVQtwHBoIQhaAQ0wBqtNBkoDIAxQOE9TkQHL6MYmcQYgiQXFpUBmUyMhkT5iPMmCPBwOC/lIGB5Q9CzKSXgWGBDgMD/1SEmJohA4OAPgPDvjkAwMZP/eeaqagAAAAJcEhZcwAADsQAAA7EAZUrDhsAADo5aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzEzOCA3OS4xNTk4MjQsIDIwMTYvMDkvMTQtMDE6MDk6MDEgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0
 cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iCiAgICAgICAgICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE3IChXaW5kb3dzKTwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8eG1wOkNyZWF0ZURhdGU+MjAxNy0wOC0yM1QxMDo0Nzo1My0wNTowMDwveG1wOkNyZWF0ZURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTctMDgtMjNUMTA6NDc6NTMtMDU6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDx4bXA6TW9kaWZ5RGF0ZT4yMDE3LTA4LTIzVDEwOjQ3OjUzLTA1OjAwPC94bXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDo4N2ZjNTU3My01OTM1LTlmNDgtOWY2Yi02Zjg1OTRmNTYyMzc8
@@ -572,5 +815,5 @@ ERERERERERERERGRlFGAR0REREREREREREREJGUU4BEREREREREREREREUkZBXhERERERERERERERERS
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>6f00df20-88cf-478e-a9bb-d552dcaab04c</rd:ReportID>
+  <rd:ReportID>1bfac35f-d695-4cc4-afe5-0899a80ed2ae</rd:ReportID>
 </Report>

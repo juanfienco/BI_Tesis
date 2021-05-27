@@ -58,6 +58,7 @@
   <ItemGroup>
     <Report Include="Menu_Notas.rdl" />
     <Report Include="Reporte_Listado_TiposAprobados_Notas.rdl" />
+    <Report Include="Reporte_mejores_promedios_periodos_carrera.rdl" />
     <Report Include="Reporte_Notas_Malla_Académica.rdl" />
     <Report Include="Reporte_nota_promedio_por_curso.rdl" />
     <Report Include="Reporte_Reprobados_Recuperacion.rdl" />
