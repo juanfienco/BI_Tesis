@@ -23,8 +23,11 @@
           <QueryParameter Name="DimCarreracarrera">
             <Value>=Parameters!DimCarreracarrera.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="DimAlumnoSexo">
+            <Value>=Parameters!DimAlumnoSexo.Value</Value>
+          </QueryParameter>
         </QueryParameters>
-        <CommandText> SELECT NON EMPTY { [Measures].[cant_descuentos], [Measures].[Descuento Valor] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( -{ [Dim Tipomatricula].[arancel].&amp;[85] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText> SELECT NON EMPTY { [Measures].[cant_descuentos], [Measures].[Descuento Valor] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimAlumnoSexo, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -168,13 +171,24 @@
                     </Condition>
                   </FilterItem>
                   <FilterItem>
-                    <HierarchyUniqueName>[Dim Tipomatricula].[arancel]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[Dim Descuento].[descuento]</HierarchyUniqueName>
                     <Condition xsi:type="NotEqualTo">
                       <Members>
                         <Member>
-                          <MemberUniqueName>[Dim Tipomatricula].[arancel].&amp;[85]</MemberUniqueName>
+                          <MemberUniqueName>[Dim Descuento].[descuento].&amp;[2.32E2]</MemberUniqueName>
                         </Member>
                       </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Alumno].[Sexo].[All]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                      <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                 </FilterItems>
@@ -186,7 +200,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[cant_descuentos], [Measures].[Descuento Valor] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( -{ [Dim Tipomatricula].[arancel].&amp;[85] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement> SELECT NON EMPTY { [Measures].[cant_descuentos], [Measures].[Descuento Valor] } ON COLUMNS, NON EMPTY { ([Dim Periodo].[periodo].[periodo].ALLMEMBERS * [Dim Carrera].[Facu].[Carrera].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Tipomatricula].[arancel].[arancel].ALLMEMBERS * [Dim Descuento].[descuento].[descuento].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimAlumnoSexo, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))) WHERE ( IIF( STRTOSET(@DimCarrerafacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarrerafacultad, CONSTRAINED), [Dim Carrera].[facultad].currentmember ), IIF( STRTOSET(@DimCarreracarrera, CONSTRAINED).Count = 1, STRTOSET(@DimCarreracarrera, CONSTRAINED), [Dim Carrera].[carrera].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimPeriodoperiodo</Name>
@@ -234,6 +248,32 @@
                         </ReferencedParameter>
                         <ReferencedParameter>
                           <Name>DimCarrerafacultad</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimAlumnoSexo</Name>
+                  <DefaultValues>
+                    <DefaultValue>[Dim Alumno].[Sexo].[All]</DefaultValue>
+                  </DefaultValues>
+                  <Caption>Sexo</Caption>
+                  <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimPeriodoperiodo</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>DimCarrerafacultad</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>DimCarreracarrera</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -540,6 +580,144 @@
             <Query>
               <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[periodo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[periodo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[periodo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[periodo].ALLMEMBERS ON ROWS FROM [cubo_matriculacion]</Statement>
               <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterValue">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterLevel">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DimAlumnoSexo">
+      <Query>
+        <DataSourceName>DataSourceDescuentos</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="DimPeriodoperiodo">
+            <Value>=Parameters!DimPeriodoperiodo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimCarrerafacultad">
+            <Value>=Parameters!DimCarrerafacultad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimCarreracarrera">
+            <Value>=Parameters!DimCarreracarrera.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_matriculacion</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Alumno].[Sexo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Alumno].[Sexo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Alumno].[Sexo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Alumno].[Sexo].ALLMEMBERS ON ROWS FROM ( SELECT ( -{ [Dim Descuento].[descuento].&amp;[2.32E2] } ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreracarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))))</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>DimPeriodoperiodo</Name>
+                  <DefaultValues />
+                  <Caption>periodo</Caption>
+                  <HierarchyUniqueName>[Dim Periodo].[periodo]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Periodo].[periodo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Periodo].[periodo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Periodo].[periodo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Periodo].[periodo].ALLMEMBERS ON ROWS FROM [cubo_matriculacion]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimCarrerafacultad</Name>
+                  <DefaultValues />
+                  <Caption>facultad</Caption>
+                  <HierarchyUniqueName>[Dim Carrera].[facultad]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[facultad].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion])</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimPeriodoperiodo</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimCarreracarrera</Name>
+                  <DefaultValues />
+                  <Caption>carrera</Caption>
+                  <HierarchyUniqueName>[Dim Carrera].[carrera]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarrerafacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimPeriodoperiodo, CONSTRAINED) ) ON COLUMNS FROM [cubo_matriculacion]))</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimPeriodoperiodo</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>DimCarrerafacultad</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
@@ -1025,7 +1203,7 @@
             <DataSetName>DataSet_Descuentos_Matriculas</DataSetName>
             <Top>6.46437cm</Top>
             <Left>0.27961cm</Left>
-            <Height>1.93646cm</Height>
+            <Height>1.93647cm</Height>
             <Width>13.40969cm</Width>
             <Style>
               <Border>
@@ -1406,7 +1584,7 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>3.96695in</Height>
+        <Height>4.9982in</Height>
         <Style />
       </Body>
       <Width>10.99839in</Width>
@@ -1484,7 +1662,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.92604cm</Height>
+          <Height>0.97896cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1742,11 +1920,28 @@
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
+    <ReportParameter Name="DimAlumnoSexo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>[Dim Alumno].[Sexo].[All]</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Sexo</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DimAlumnoSexo</DataSetName>
+          <ValueField>ParameterValue</ValueField>
+          <LabelField>ParameterCaptionIndented</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>1</NumberOfRows>
+      <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1762,6 +1957,11 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>DimCarreracarrera</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>DimAlumnoSexo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
