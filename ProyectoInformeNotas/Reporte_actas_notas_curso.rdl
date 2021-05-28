@@ -810,7 +810,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1511,7 +1510,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>REPORTE DE ACTAS DE CALIFICACIONES GENREADAS POR CURSO</Value>
+                      <Value>REPORTE DE ACTAS DE CALIFICACIONES GENERADAS POR CURSO</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
