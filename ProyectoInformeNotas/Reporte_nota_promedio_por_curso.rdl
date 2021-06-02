@@ -27,7 +27,7 @@
             <Value>=Parameters!DimCursosPlanContingencia.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>WITH MEMBER [Measures].[promedio_curso] AS Round([Measures].[Nota]/[Measures].[Cantidad],2) SELECT NON EMPTY { [Measures].[Nota], [Measures].[Nota Recuperacion], [Measures].[Cantidad], [Measures].[promedio_curso] } ON COLUMNS, NON EMPTY { ([Dim Cursos].[Periodo Academico].[Periodo Academico].ALLMEMBERS * [Dim Cursos].[Facultad].[Facultad].ALLMEMBERS * [Dim Cursos].[Carrera].[Carrera].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosPeriodoAcademico, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <CommandText>WITH MEMBER [Measures].[promedio_curso] AS Round([Measures].[Nota]/[Measures].[Cantidad],2) SELECT NON EMPTY { [Measures].[Nota], [Measures].[Nota Recuperacion], [Measures].[Cantidad], [Measures].[promedio_curso] } ON COLUMNS, NON EMPTY { ([Dim Cursos].[Periodo Academico].[Periodo Academico].ALLMEMBERS * [Dim Cursos].[Facultad].[Facultad].ALLMEMBERS * [Dim Cursos].[Carrera].[Carrera].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Tipoaprobado].[Tipo aprobado].[Tipo aprobado].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosPeriodoAcademico, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -120,6 +120,17 @@
                       <UniqueName>[Dim Cursos].[Paralelo].[Paralelo]</UniqueName>
                     </ID>
                     <ItemCaption>Paralelo</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Tipoaprobado</DimensionName>
+                      <HierarchyName>Tipo aprobado</HierarchyName>
+                      <HierarchyUniqueName>[Dim Tipoaprobado].[Tipo aprobado]</HierarchyUniqueName>
+                      <LevelName>Tipo aprobado</LevelName>
+                      <UniqueName>[Dim Tipoaprobado].[Tipo aprobado].[Tipo aprobado]</UniqueName>
+                    </ID>
+                    <ItemCaption>Tipo aprobado</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
@@ -240,7 +251,7 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement>WITH MEMBER [Measures].[promedio_curso] AS Round([Measures].[Nota]/[Measures].[Cantidad],2) SELECT NON EMPTY { [Measures].[Nota], [Measures].[Nota Recuperacion], [Measures].[Cantidad], [Measures].[promedio_curso] } ON COLUMNS, NON EMPTY { ([Dim Cursos].[Periodo Academico].[Periodo Academico].ALLMEMBERS * [Dim Cursos].[Facultad].[Facultad].ALLMEMBERS * [Dim Cursos].[Carrera].[Carrera].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosPeriodoAcademico, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <Statement>WITH MEMBER [Measures].[promedio_curso] AS Round([Measures].[Nota]/[Measures].[Cantidad],2) SELECT NON EMPTY { [Measures].[Nota], [Measures].[Nota Recuperacion], [Measures].[Cantidad], [Measures].[promedio_curso] } ON COLUMNS, NON EMPTY { ([Dim Cursos].[Periodo Academico].[Periodo Academico].ALLMEMBERS * [Dim Cursos].[Facultad].[Facultad].ALLMEMBERS * [Dim Cursos].[Carrera].[Carrera].ALLMEMBERS * [Dim Cursos].[Docente].[Docente].ALLMEMBERS * [Dim Cursos].[Asignatura].[Asignatura].ALLMEMBERS * [Dim Cursos].[Cupo].[Cupo].ALLMEMBERS * [Dim Cursos].[Plan Contingencia].[Plan Contingencia].ALLMEMBERS * [Dim Cursos].[Paralelo].[Paralelo].ALLMEMBERS * [Dim Tipoaprobado].[Tipo aprobado].[Tipo aprobado].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCursosPlanContingencia, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCursosPeriodoAcademico, CONSTRAINED) ) ON COLUMNS FROM [cubo_notas])))) WHERE ( IIF( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED), [Dim Carrera].[Descripcion Facultad].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimCursosPeriodoAcademico</Name>
@@ -356,6 +367,10 @@
         </Field>
         <Field Name="Asignatura">
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Cursos].[Asignatura].[Asignatura]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tipo_aprobado">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Tipoaprobado].[Tipo aprobado].[Tipo aprobado]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Nota">
@@ -1148,6 +1163,9 @@
                 <TablixColumn>
                   <Width>0.77119in</Width>
                 </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
@@ -1170,6 +1188,38 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>promedio_curso</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Tipo_aprobado">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Tipo_aprobado.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Tipo_aprobado</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1273,6 +1323,10 @@
                           </Textbox>
                         </CellContents>
                       </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                        <TablixMember />
+                      </TablixMembers>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
@@ -1521,7 +1575,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.125in</Top>
             <Height>0.75in</Height>
-            <Width>9.23651in</Width>
+            <Width>10.23651in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1559,7 +1613,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>REPORTE DE NOTAS PROMEDIO POR CURSO Y PERIODO ACADÉMICO</Value>
+                      <Value>REPORTE DE NOTAS PROMEDIO POR CURSO Y PERÍODO ACADÉMICO</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1814,7 +1868,7 @@
   <ReportParameters>
     <ReportParameter Name="DimCursosPeriodoAcademico">
       <DataType>String</DataType>
-      <Prompt>Periodo Academico</Prompt>
+      <Prompt>Período académico:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCursosPeriodoAcademico</DataSetName>
@@ -1831,7 +1885,7 @@
           <Value>[Dim Carrera].[Descripcion Facultad].[All]</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Facultad</Prompt>
+      <Prompt>Facultad:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
@@ -1848,7 +1902,7 @@
           <Value>[Dim Cursos].[Carrera].[All]</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Carrera</Prompt>
+      <Prompt>Carrera:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCursosCarrera</DataSetName>
@@ -1865,7 +1919,7 @@
           <Value>[Dim Cursos].[Plan Contingencia].[All]</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Plan Contingencia</Prompt>
+      <Prompt>Plan Contingencia:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCursosPlanContingencia</DataSetName>

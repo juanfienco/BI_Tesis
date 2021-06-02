@@ -652,7 +652,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Periodo</Value>
+                                <Value>Período</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
                                   <FontWeight>Bold</FontWeight>
@@ -1938,7 +1938,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.17639cm</Top>
             <Height>3.78459cm</Height>
-            <Width>27.91859cm</Width>
+            <Width>27.9186cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2231,7 +2231,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoPeriodoDescripcion">
       <DataType>String</DataType>
-      <Prompt>Periodo Descripcion</Prompt>
+      <Prompt>Período académico:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoPeriodoDescripcion</DataSetName>
@@ -2243,7 +2243,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarreraDescripcionFacultad">
       <DataType>String</DataType>
-      <Prompt>Facultad</Prompt>
+      <Prompt>Facultad:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
@@ -2256,7 +2256,7 @@
     <ReportParameter Name="DimCarreraDescripcionCarrera">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
-      <Prompt>Carrera</Prompt>
+      <Prompt>Carrera:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionCarrera</DataSetName>
@@ -2269,8 +2269,8 @@
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfColumns>3</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2278,13 +2278,13 @@
           <ParameterName>DimPeriodoPeriodoDescripcion</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>DimCarreraDescripcionFacultad</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>2</RowIndex>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>DimCarreraDescripcionCarrera</ParameterName>
         </CellDefinition>
       </CellDefinitions>

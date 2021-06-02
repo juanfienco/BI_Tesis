@@ -885,7 +885,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>3.30768cm</Size>
                     <CellContents>
                       <Textbox Name="Facultad">
                         <CanGrow>true</CanGrow>
@@ -1103,7 +1103,7 @@
             <Top>6.27481cm</Top>
             <Left>0.21855cm</Left>
             <Height>1.72335cm</Height>
-            <Width>19.14749cm</Width>
+            <Width>19.95516cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1119,12 +1119,12 @@
                       <GroupExpression>=Fields!Acta_Estado.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
-                  <Label>=Fields!Acta_Estado.Value</Label>
                   <SortExpressions>
                     <SortExpression>
                       <Value>=Fields!Acta_Estado.Value</Value>
                     </SortExpression>
                   </SortExpressions>
+                  <Label>=Fields!Acta_Estado.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -1136,12 +1136,12 @@
                       <GroupExpression>=Fields!Periodo_Academico.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
-                  <Label>=Fields!Periodo_Academico.Value</Label>
                   <SortExpressions>
                     <SortExpression>
                       <Value>=Fields!Periodo_Academico.Value</Value>
                     </SortExpression>
                   </SortExpressions>
+                  <Label>=Fields!Periodo_Academico.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
@@ -1480,7 +1480,7 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>3.50892in</Height>
+        <Height>3.69225in</Height>
         <Style />
       </Body>
       <Width>10.89065in</Width>
@@ -1545,7 +1545,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>4.23333cm</Height>
+          <Height>0.93133cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1767,7 +1767,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoPeriodoDescripcion">
       <DataType>String</DataType>
-      <Prompt>Periodo Descripcion</Prompt>
+      <Prompt>Período académico:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoPeriodoDescripcion</DataSetName>
@@ -1779,7 +1779,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarreraDescripcionFacultad">
       <DataType>String</DataType>
-      <Prompt>Descripcion Facultad</Prompt>
+      <Prompt>Facultad:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
@@ -1791,7 +1791,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarreraDescripcionCarrera">
       <DataType>String</DataType>
-      <Prompt>Descripcion Carrera</Prompt>
+      <Prompt>Carrera:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionCarrera</DataSetName>

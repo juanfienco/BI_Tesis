@@ -710,7 +710,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Periodo</Value>
+                                <Value>Período</Value>
                                 <Style />
                               </TextRun>
                             </TextRuns>
@@ -1829,7 +1829,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoPeriodoDescripcion">
       <DataType>String</DataType>
-      <Prompt>Periodo Académico</Prompt>
+      <Prompt>Período Académico:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoPeriodoDescripcion</DataSetName>
@@ -1865,7 +1865,7 @@
     </ReportParameter>
     <ReportParameter Name="DimTipoaprobadoTipoaprobado">
       <DataType>String</DataType>
-      <Prompt>Tipo aprobado</Prompt>
+      <Prompt>Tipo aprobado:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimTipoaprobadoTipoaprobado</DataSetName>

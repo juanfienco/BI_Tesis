@@ -865,23 +865,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox604">
+                        <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Cantidad</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox604</rd:DefaultName>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1575,7 +1578,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Periodo</Value>
+                                <Value>Período</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
                                 </Style>
@@ -2170,7 +2173,7 @@
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>Enfasis</Value>
+                                            <Value>Énfasis</Value>
                                             <Style>
                                               <FontFamily>Arial</FontFamily>
                                             </Style>
@@ -2690,7 +2693,9 @@
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
-                                                <Style />
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Nivel1</rd:DefaultName>
@@ -2705,7 +2710,6 @@
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixHeader>
                                       <TablixMembers>
@@ -3135,7 +3139,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CANTIDAD DE ESTUDIANTES REGISTRADOS SEGÚN CADA ASIGNATURA DE MALLA ACADÉMICA</Value>
+                      <Value>CANTIDAD DE ESTUDIANTES REGISTRADOS SEGÚN CADA ASIGNATURA DE LA MALLA ACADÉMICA</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3393,7 +3397,7 @@
   <ReportParameters>
     <ReportParameter Name="DimPeriodoPeriodoDescripcion">
       <DataType>String</DataType>
-      <Prompt>Periodo Académico</Prompt>
+      <Prompt>Período académico:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPeriodoPeriodoDescripcion</DataSetName>
@@ -3405,7 +3409,7 @@
     </ReportParameter>
     <ReportParameter Name="DimPensumFacultad">
       <DataType>String</DataType>
-      <Prompt>Facultad</Prompt>
+      <Prompt>Facultad:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPensumFacultad</DataSetName>
@@ -3417,7 +3421,7 @@
     </ReportParameter>
     <ReportParameter Name="DimPensumCarrera">
       <DataType>String</DataType>
-      <Prompt>Carrera</Prompt>
+      <Prompt>Carrera:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPensumCarrera</DataSetName>
@@ -3429,7 +3433,7 @@
     </ReportParameter>
     <ReportParameter Name="DimPensumNivel">
       <DataType>String</DataType>
-      <Prompt>Nivel</Prompt>
+      <Prompt>Nivel de malla académica:</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimPensumNivel</DataSetName>
