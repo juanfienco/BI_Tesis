@@ -192,15 +192,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>5. Reporte de actas de calificaciones generadas por curso</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -376,15 +367,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>6. Reporte de mejores promedios por carrera y curso</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>

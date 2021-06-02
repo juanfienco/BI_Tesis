@@ -56,6 +56,7 @@
     <DataSource Include="DataSourceCuboMatricula.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="Dashboard_matriculas.rdl" />
     <Report Include="Menu_Matriculas.rdl" />
     <Report Include="Reporte_descuentos.rdl" />
     <Report Include="Reporte_estudiantes_deudores.rdl" />
