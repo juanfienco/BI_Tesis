@@ -2967,14 +2967,14 @@
                                                   <TablixHeader>
                                                     <Size>1.80102cm</Size>
                                                     <CellContents>
-                                                      <Textbox Name="Creditos">
+                                                      <Textbox Name="Textbox7">
                                                         <CanGrow>true</CanGrow>
                                                         <KeepTogether>true</KeepTogether>
                                                         <Paragraphs>
                                                           <Paragraph>
                                                             <TextRuns>
                                                               <TextRun>
-                                                                <Value>=Fields!Creditos.Value</Value>
+                                                                <Value />
                                                                 <Style>
                                                                   <FontFamily>Arial</FontFamily>
                                                                   <FontSize>9pt</FontSize>
@@ -2986,7 +2986,7 @@
                                                             </Style>
                                                           </Paragraph>
                                                         </Paragraphs>
-                                                        <rd:DefaultName>Creditos</rd:DefaultName>
+                                                        <rd:DefaultName>Textbox7</rd:DefaultName>
                                                         <Style>
                                                           <Border>
                                                             <Color>LightGrey</Color>
@@ -2998,6 +2998,7 @@
                                                           <PaddingBottom>2pt</PaddingBottom>
                                                         </Style>
                                                       </Textbox>
+                                                      <rd:Selected>true</rd:Selected>
                                                     </CellContents>
                                                   </TablixHeader>
                                                 </TablixMember>
