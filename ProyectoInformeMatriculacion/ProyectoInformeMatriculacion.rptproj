@@ -62,7 +62,6 @@
     <Report Include="Reporte_estudiantes_deudores.rdl" />
     <Report Include="Reporte_Matriculados.rdl" />
     <Report Include="Reporte_matriculados_recaudado_valores.rdl" />
-    <Report Include="Reporte_matriculas_sin_finalizar.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
