@@ -7,16 +7,95 @@
   DTS:CreatorName="PC-UUAIQ4K\User"
   DTS:DTSID="{1AB75B03-2B62-4322-8BA3-6E52E99D102D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="77"
-  DTS:VersionGUID="{CB04E9EF-E218-4BE7-926C-7111735B0144}">
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{75C384A4-4F45-4E17-A810-92E402C46C09}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{45CAA26C-F8F7-4842-AAC6-33073D817B4D}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source= ;Extended Properties=&quot;EXCEL 12.0;XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5781822-5FE4-4A0C-98EF-FFCF05EA5653}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreFichero">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{050E8FB0-C2FD-4416-A226-F9D12455DE4F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20181">
+      <DTS:VariableValue
+        DTS:DataType="3">100004</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8FFD3E23-EE01-4470-A277-C267390ACC7F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20182">
+      <DTS:VariableValue
+        DTS:DataType="3">100005</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E72ECC63-B5CD-424C-910E-815B6781FEE2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20191">
+      <DTS:VariableValue
+        DTS:DataType="3">100000</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2B013DEA-6A5C-431B-83E4-B3B05B234D7D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20192">
+      <DTS:VariableValue
+        DTS:DataType="3">100001</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D97DCA9F-C5E6-4D5F-9DF4-D79E333A7217}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20201">
+      <DTS:VariableValue
+        DTS:DataType="3">100002</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B4BE8D5F-BF30-4A9D-BE6E-6D8BEBB107F9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Periodo_Lectivo20202">
+      <DTS:VariableValue
+        DTS:DataType="3">100003</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Contenedor de secuencias 1"
@@ -16705,55 +16784,55 @@ periodo_academico, ciudad_id
       <GraphLayout
         Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="112,42"
+          Size="112,41.6"
           Id="Package\Contenedor de secuencias 1\carrera"
           TopLeft="185,10" />
         <NodeLayout
-          Size="160,42"
+          Size="160,41.6"
           Id="Package\Contenedor de secuencias 1\direccion_carrera"
           TopLeft="331,10" />
         <NodeLayout
-          Size="121,42"
+          Size="120.8,41.6"
           Id="Package\Contenedor de secuencias 1\encuesta"
           TopLeft="18,318" />
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Contenedor de secuencias 1\estado_estudio"
           TopLeft="17,95" />
         <NodeLayout
-          Size="113,42"
+          Size="112.8,41.6"
           Id="Package\Contenedor de secuencias 1\estudio"
           TopLeft="356,92" />
         <NodeLayout
-          Size="116,42"
+          Size="116,41.6"
           Id="Package\Contenedor de secuencias 1\facultad"
           TopLeft="27,9" />
         <NodeLayout
-          Size="159,42"
+          Size="159.2,41.6"
           Id="Package\Contenedor de secuencias 1\grupo_preguntas"
           TopLeft="25,248" />
         <NodeLayout
-          Size="110,42"
+          Size="110.4,41.6"
           Id="Package\Contenedor de secuencias 1\opcion"
           TopLeft="369,247" />
         <NodeLayout
-          Size="121,42"
+          Size="120.8,41.6"
           Id="Package\Contenedor de secuencias 1\pregunta"
           TopLeft="219,247" />
         <NodeLayout
-          Size="172,42"
+          Size="172,41.6"
           Id="Package\Contenedor de secuencias 1\respuesta_encuesta"
           TopLeft="166,316" />
         <NodeLayout
-          Size="91,42"
+          Size="91.2,41.6"
           Id="Package\Contenedor de secuencias 1\rol"
           TopLeft="26,172" />
         <NodeLayout
-          Size="109,42"
+          Size="108.8,41.6"
           Id="Package\Contenedor de secuencias 1\salario"
           TopLeft="165,173" />
         <NodeLayout
-          Size="137,42"
+          Size="136.8,41.6"
           Id="Package\Contenedor de secuencias 1\tipo_estudio"
           TopLeft="190,93" />
         <EdgeLayout
@@ -16935,40 +17014,40 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="514,415"
-          Size="514,458"
+          PanelSize="513.6,415.2"
+          Size="513.6,457.6"
           Id="Package\Contenedor de secuencias 1"
           TopLeft="78,386" />
         <NodeLayout
-          Size="110,42"
+          Size="110.4,41.6"
           Id="Package\Contenedor de secuencias 2\ciudad"
           TopLeft="80,469" />
         <NodeLayout
-          Size="115,42"
+          Size="115.2,41.6"
           Id="Package\Contenedor de secuencias 2\idiomas"
           TopLeft="75,272" />
         <NodeLayout
-          Size="107,42"
+          Size="107.2,41.6"
           Id="Package\Contenedor de secuencias 2\oferta"
           TopLeft="84,5.5" />
         <NodeLayout
-          Size="148,42"
+          Size="148,41.6"
           Id="Package\Contenedor de secuencias 2\oferta_favorita"
           TopLeft="62,70.5" />
         <NodeLayout
-          Size="136,42"
+          Size="136,41.6"
           Id="Package\Contenedor de secuencias 2\oferta_titulo"
           TopLeft="66,138.5" />
         <NodeLayout
-          Size="98,42"
+          Size="97.6,41.6"
           Id="Package\Contenedor de secuencias 2\pais"
           TopLeft="86,338" />
         <NodeLayout
-          Size="121,42"
+          Size="120.8,41.6"
           Id="Package\Contenedor de secuencias 2\provincia"
           TopLeft="73,403" />
         <NodeLayout
-          Size="103,42"
+          Size="103.2,41.6"
           Id="Package\Contenedor de secuencias 2\titulo"
           TopLeft="81,206.5" />
         <EdgeLayout
@@ -17128,40 +17207,40 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="266,551"
-          Size="266,594"
+          PanelSize="265.6,551.2"
+          Size="265.6,593.6"
           Id="Package\Contenedor de secuencias 2"
           TopLeft="635,251" />
         <NodeLayout
-          Size="143,42"
+          Size="143.2,41.6"
           Id="Package\Contenedor de secuencias 3\disponibilidad"
           TopLeft="62,340" />
         <NodeLayout
-          Size="119,42"
+          Size="119.2,41.6"
           Id="Package\Contenedor de secuencias 3\empresa"
           TopLeft="70,4" />
         <NodeLayout
-          Size="136,42"
+          Size="136,41.6"
           Id="Package\Contenedor de secuencias 3\especialidad"
           TopLeft="60,410" />
         <NodeLayout
-          Size="169,42"
+          Size="168.8,41.6"
           Id="Package\Contenedor de secuencias 3\estado_postulacion"
           TopLeft="52,137" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Contenedor de secuencias 3\experiencia_laboral"
           TopLeft="53,205" />
         <NodeLayout
-          Size="127,42"
+          Size="127.2,41.6"
           Id="Package\Contenedor de secuencias 3\institucion"
           TopLeft="68,70" />
         <NodeLayout
-          Size="169,42"
+          Size="168.8,41.6"
           Id="Package\Contenedor de secuencias 3\nivel_conocimiento"
           TopLeft="49,481" />
         <NodeLayout
-          Size="132,42"
+          Size="132,41.6"
           Id="Package\Contenedor de secuencias 3\postulacion"
           TopLeft="68,273" />
         <EdgeLayout
@@ -17321,24 +17400,24 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="262,557"
-          Size="262,600"
+          PanelSize="262.4,556.8"
+          Size="262.4,600"
           Id="Package\Contenedor de secuencias 3"
           TopLeft="963,253" />
         <NodeLayout
-          Size="125,42"
+          Size="124.8,41.6"
           Id="Package\Contenedor de secuencias 4\respuesta"
           TopLeft="67,269" />
         <NodeLayout
-          Size="113,42"
+          Size="112.8,41.6"
           Id="Package\Contenedor de secuencias 4\usuario"
           TopLeft="74,195" />
         <NodeLayout
-          Size="176,42"
+          Size="176,41.6"
           Id="Package\Contenedor de secuencias 4\usuario_especialidad"
           TopLeft="41,116" />
         <NodeLayout
-          Size="160,42"
+          Size="160,41.6"
           Id="Package\Contenedor de secuencias 4\usuarios_idiomas"
           TopLeft="48,47" />
         <EdgeLayout
@@ -17410,12 +17489,12 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="260,367"
-          Size="260,410"
+          PanelSize="260,367.2"
+          Size="260,409.6"
           Id="Package\Contenedor de secuencias 4"
           TopLeft="1299,352" />
         <NodeLayout
-          Size="279,54"
+          Size="279.2,54.4"
           Id="Package\Validación tablas seguimiento a graduados"
           TopLeft="202,279" />
         <EdgeLayout
@@ -17861,7 +17940,7 @@ periodo_academico, ciudad_id
     design-time-name="Package\Contenedor de secuencias 1\opcion">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="110,42"
           Id="Package\Contenedor de secuencias 1\opcion\opcion"
@@ -17889,12 +17968,35 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias 1\opcion\cargar opcion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias 1\opcion\opcion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Contenedor de secuencias 1\pregunta">
     <LayoutInfo>
@@ -19171,7 +19273,7 @@ periodo_academico, ciudad_id
     design-time-name="Package\Contenedor de secuencias 4\usuario">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="146,42"
           Id="Package\Contenedor de secuencias 4\usuario\cargar usuario"
@@ -19199,12 +19301,35 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias 4\usuario\cargar usuario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias 4\usuario\usuario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Contenedor de secuencias 4\usuario_especialidad">
     <LayoutInfo>
@@ -19316,48 +19441,6 @@ periodo_academico, ciudad_id
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Contenedor de secuencias 4\usuarios_idiomas\usuarios_idiomas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias 1\opcion\opcion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias 1\opcion\cargar opcion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias 4\usuario\cargar usuario">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias 4\usuario\usuario">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

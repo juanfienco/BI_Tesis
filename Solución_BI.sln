@@ -3,17 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Exportar_datos_Postgres_a_SQLServer", "IS Base migración\Exportar_datos_Postgres_a_SQLServer.dtproj", "{48B7731A-7404-48E2-98A7-710577DA8DEE}"
-EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Notas", "ProyectoMultidimensional_Notas\ProyectoMultidimensional_Notas.dwproj", "{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{48B7731A-7404-48E2-98A7-710577DA8DEE} = {48B7731A-7404-48E2-98A7-710577DA8DEE}
-	EndProjectSection
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Matriculacion", "ProyectoMultidimensional_Matriculacion\ProyectoMultidimensional_Matriculacion.dwproj", "{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}"
-	ProjectSection(ProjectDependencies) = postProject
-		{48B7731A-7404-48E2-98A7-710577DA8DEE} = {48B7731A-7404-48E2-98A7-710577DA8DEE}
-	EndProjectSection
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeMatriculacion", "ProyectoInformeMatriculacion\ProyectoInformeMatriculacion.rptproj", "{D512B42F-090A-4091-AE88-2621A191F31F}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -25,7 +17,7 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeNotas", "Pro
 		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2} = {2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupTesisBI", "SetupTesisBI\SetupTesisBI.vdproj", "{9A060330-07D0-44C3-A062-E88265AD0332}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Exportar_datos_Postgres_a_SQLServer", "IS Base migración\Exportar_datos_Postgres_a_SQLServer.dtproj", "{3A1AB889-1D7C-4292-B334-28627FA17D3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Debug|x86.ActiveCfg = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Debug|x86.Build.0 = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.DebugLocal|x86.ActiveCfg = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.DebugLocal|x86.Build.0 = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Development|x86.ActiveCfg = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Development|x86.Build.0 = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Release|x86.ActiveCfg = Development
-		{48B7731A-7404-48E2-98A7-710577DA8DEE}.Release|x86.Build.0 = Development
 		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.ActiveCfg = Development
 		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.Build.0 = Development
 		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.Deploy.0 = Development
@@ -90,10 +74,14 @@ Global
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.ActiveCfg = Release
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Build.0 = Release
 		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Deploy.0 = Release
-		{9A060330-07D0-44C3-A062-E88265AD0332}.Debug|x86.ActiveCfg = Debug
-		{9A060330-07D0-44C3-A062-E88265AD0332}.DebugLocal|x86.ActiveCfg = Debug
-		{9A060330-07D0-44C3-A062-E88265AD0332}.Development|x86.ActiveCfg = Debug
-		{9A060330-07D0-44C3-A062-E88265AD0332}.Release|x86.ActiveCfg = Release
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Debug|x86.ActiveCfg = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Debug|x86.Build.0 = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.DebugLocal|x86.ActiveCfg = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.DebugLocal|x86.Build.0 = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Development|x86.ActiveCfg = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Development|x86.Build.0 = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Release|x86.ActiveCfg = Development
+		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Release|x86.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

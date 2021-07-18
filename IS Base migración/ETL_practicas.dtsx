@@ -1,0 +1,2607 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/10/2021 12:32:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-NTL9CBB"
+  DTS:CreatorName="DESKTOP-NTL9CBB\Juan"
+  DTS:DTSID="{AACE0DFF-5EEC-4043-B45F-A367B6AB678B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
+  DTS:LocaleID="12298"
+  DTS:ObjectName="Excel"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="84"
+  DTS:VersionGUID="{304CA88D-CD38-4C08-80F2-9E462AEA4A9F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{F66890D3-3BC3-4DCE-97DB-A6A9ED0E6AD2}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::ExcelPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Excel\practicas\ingenieria industrial 2019.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{AC2FB3EA-715E-4C9E-B254-2D0DF2819AF9}"
+      DTS:ObjectName="Administrador de conexiones con Excel 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Excel\LOG.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{087CFA94-ABC9-4C20-86C0-C3DC92EDB163}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Directory">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Excel\practicas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{66E0CEE0-6CD4-4A63-9BC3-A9F5679E01DB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Excel\practicas\ingenieria industrial 2019.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contenedor de bucles Foreach"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:DelayValidation="True"
+      DTS:Description="Contenedor de bucles Foreach"
+      DTS:DTSID="{78D70BD0-2196-42B4-9B28-F1AE9458A4A3}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contenedor de bucles Foreach">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{5453173B-91CA-44A0-BC9F-7A471DE20EEE}"
+        DTS:ObjectName="{5453173B-91CA-44A0-BC9F-7A471DE20EEE}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::Directory]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Excel\practicas" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{13F6DB02-4587-4C7C-90ED-A6D2BE32BD9F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarea Flujo de datos"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+                  description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+                  name="Búsqueda"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dat_practicas_preprofesionales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dat_practicas_preprofesionales]) [refTable]
+where [refTable].[nombre_empresa] = ? and [refTable].[codigo_carrera] = ? and [refTable].[identificacion] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el tipo de caché de la tabla de búsqueda."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indica si se debe hacer referencia a metadatos en formato XML."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idperiodo" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idcarrera" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idalumno" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idempresa" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idtipoempresa" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idtutordocente" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idcampo_especifico" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_inicio" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_fin" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="numero_horas" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idmateria" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_empresa" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="campo_especifico" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="codigo_ies" dataType="DT_NUMERIC" length="0" precision="19" scale="0" codePage="0"/&gt;&lt;referenceColumn name="identificacion_docente_tutor" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="periodo_descripcion" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="tipo_empresa" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="identificacion" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="tipo_identificacion" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="codigo_carrera" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="descripcion_carrera" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="anio_lectivo" dataType="DT_WSTR" length="4" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                      name="ParameterMap">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]};#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]};#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Connections[OleDbConnection]"
+                      connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                      description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda]"
+                      name="Entrada de búsqueda">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda].Columns[Copia de CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de CODIGO CARRERA"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                              name="JoinToReferenceColumn">codigo_carrera</property>
+                            <property
+                              dataType="System.Null"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                              name="JoinToReferenceColumn">identificacion</property>
+                            <property
+                              dataType="System.Null"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                              name="JoinToReferenceColumn">nombre_empresa</property>
+                            <property
+                              dataType="System.Null"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
+                      errorOrTruncationOperation="Búsqueda"
+                      exclusionGroup="1"
+                      name="Salida de entradas coincidentes de búsqueda"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[codigo_carrera]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copiar columna"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[codigo_carrera]"
+                          name="codigo_carrera"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn">codigo_carrera</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copiar columna"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]"
+                          name="identificacion"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn">identificacion</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_empresa]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copiar columna"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_empresa]"
+                          name="nombre_empresa"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                              name="CopyFromReferenceColumn">nombre_empresa</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                      description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                      exclusionGroup="1"
+                      name="Salida de entradas no coincidentes de búsqueda"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de error de búsqueda]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de búsqueda"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+                  description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+                  name="Comando de OLE DB"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+UPDATE [dbo].[dat_practicas_preprofesionales] SET 
+	  codigo_ies = ?
+	  ,campo_especifico = ?
+      ,fecha_inicio = ?
+      ,fecha_fin = ?
+      ,numero_horas = ?
+	  ,identificacion_docente_tutor = ?
+      ,periodo_descripcion = ?
+	  ,tipo_empresa = ?
+      ,descripcion_carrera = ?
+      ,anio_lectivo = ?
+ WHERE identificacion =  ?
+ and codigo_carrera = ?
+ and nombre_empresa = ?
+</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                      errorOrTruncationOperation="Ejecución de comando"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de comando de OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[CODIGO IES]"
+                          cachedDataType="r8"
+                          cachedName="CODIGO IES"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Campo específico]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Campo específico"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha inicio"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de Fecha fin]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha fin"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de Número horas]"
+                          cachedDataType="r4"
+                          cachedName="Copia de Número horas"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Número horas]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de identificacion docente"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[PERIODO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="PERIODO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PERIODO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Tipo institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[nombre_empresa]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="nombre_empresa"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_8]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre_empresa]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de AÑO]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="Copia de AÑO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_9]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de AÑO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_10]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Copia de CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de CODIGO CARRERA"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_11]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_12]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                          dataType="numeric"
+                          name="Param_0"
+                          precision="19">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                          dataType="dbDate"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                          dataType="dbDate"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                          dataType="r8"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_8]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_8">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_9]"
+                          dataType="wstr"
+                          length="4"
+                          name="Param_9">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_10]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_10">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_11]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_11">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_12]"
+                          dataType="wstr"
+                          length="255"
+                          name="Param_12">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de comando de OLE DB]"
+                      exclusionGroup="1"
+                      name="Salida de comando de OLE DB"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de comando de OLE DB"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Conversión de datos"
+                  name="Conversión de datos"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos]"
+                      name="Entrada de conversión de datos">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[TIPO DE IDENTIFICACION]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TIPO DE IDENTIFICACION"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Tipo institución"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Fecha inicio"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[Número horas]"
+                          cachedDataType="r8"
+                          cachedName="Número horas"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[Fecha fin ]"
+                          cachedDataType="date"
+                          cachedName="Fecha fin "
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="identificacion docente"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CODIGO CARRERA"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[AÑO]"
+                          cachedDataType="r8"
+                          cachedName="AÑO"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[Cédula]"
+                          cachedDataType="r8"
+                          cachedName="Cédula"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos]"
+                      exclusionGroup="1"
+                      name="Salida de conversión de datos"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          name="Copia de TIPO DE IDENTIFICACION"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]"
+                          name="Copia de Tipo institución"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]"
+                          name="Copia de Fecha inicio"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Número horas]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Número horas]"
+                          name="Copia de Número horas"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]"
+                          name="Copia de Fecha fin"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]"
+                          name="Copia de identificacion docente"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]"
+                          name="Copia de CODIGO CARRERA"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de AÑO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de AÑO]"
+                          name="Copia de AÑO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]"
+                          name="Copia de Cédula"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de error de conversión de datos]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de conversión de datos"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel"
+                  componentClassID="Microsoft.ExcelDestination"
+                  contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Destino de Excel"
+                  name="Destino de Excel"
+                  usesDispositions="true">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">LOG$</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de Excel">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[CODIGO IES]"
+                          cachedDataType="r8"
+                          cachedName="CODIGO IES"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Campo específico]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Campo específico"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[PERIODO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="PERIODO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PERIODO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CARRERA"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de AÑO]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="Copia de AÑO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de AÑO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de identificacion docente"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de CODIGO CARRERA"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de TIPO DE IDENTIFICACION"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de TIPO DE IDENTIFICACION]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Tipo institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha inicio"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de Número horas]"
+                          cachedDataType="r4"
+                          cachedName="Copia de Número horas"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Número horas]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de Fecha fin]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha fin"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
+                          dataType="wstr"
+                          length="255"
+                          name="CODIGO IES" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          name="CODIGO CARRERA" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                          dataType="wstr"
+                          length="255"
+                          name="TIPO DE IDENTIFICACION" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cédula" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
+                          dataType="wstr"
+                          length="255"
+                          name="Institución" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
+                          dataType="wstr"
+                          length="255"
+                          name="Tipo institución" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
+                          dataType="wstr"
+                          length="255"
+                          name="Fecha inicio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
+                          dataType="wstr"
+                          length="255"
+                          name="Fecha fin " />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
+                          dataType="wstr"
+                          length="255"
+                          name="Número horas" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
+                          dataType="wstr"
+                          length="255"
+                          name="Campo específico" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                          dataType="wstr"
+                          length="255"
+                          name="No# Cédula docente" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
+                          dataType="wstr"
+                          length="255"
+                          name="AÑO" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
+                          dataType="wstr"
+                          length="255"
+                          name="PERIODO" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          name="CARRERA" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Outputs[Salida de error de destino de Excel]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de Excel"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino de OLE DB"
+                  name="Destino de OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">[dbo].[dat_practicas_preprofesionales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Tipo institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_empresa]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cédula]"
+                          cachedDataType="r8"
+                          cachedName="Cédula"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[PERIODO]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="PERIODO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo_descripcion]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PERIODO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha inicio"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_inicio]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_empresa]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Campo específico]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Campo específico"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[campo_especifico]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CODIGO IES]"
+                          cachedDataType="r8"
+                          cachedName="CODIGO IES"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[codigo_ies]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de TIPO DE IDENTIFICACION"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_identificacion]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de TIPO DE IDENTIFICACION]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de identificacion docente"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion_docente_tutor]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de CODIGO CARRERA"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[codigo_carrera]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de AÑO]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="Copia de AÑO"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[anio_lectivo]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de AÑO]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de Fecha fin]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha fin"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_fin]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de Número horas]"
+                          cachedDataType="r4"
+                          cachedName="Copia de Número horas"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[numero_horas]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Número horas]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CARRERA"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_carrera]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idperiodo]"
+                          dataType="numeric"
+                          name="idperiodo"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idcarrera]"
+                          dataType="numeric"
+                          name="idcarrera"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idalumno]"
+                          dataType="numeric"
+                          name="idalumno"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idempresa]"
+                          dataType="numeric"
+                          name="idempresa"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtipoempresa]"
+                          dataType="i4"
+                          name="idtipoempresa" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idtutordocente]"
+                          dataType="numeric"
+                          name="idtutordocente"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idcampo_especifico]"
+                          dataType="i4"
+                          name="idcampo_especifico" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_inicio]"
+                          dataType="dbDate"
+                          name="fecha_inicio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_fin]"
+                          dataType="dbDate"
+                          name="fecha_fin" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[numero_horas]"
+                          dataType="r8"
+                          name="numero_horas" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[idmateria]"
+                          dataType="numeric"
+                          name="idmateria"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_empresa]"
+                          dataType="wstr"
+                          length="255"
+                          name="nombre_empresa" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[campo_especifico]"
+                          dataType="wstr"
+                          length="255"
+                          name="campo_especifico" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[codigo_ies]"
+                          dataType="numeric"
+                          name="codigo_ies"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[codigo_carrera]"
+                          dataType="wstr"
+                          length="50"
+                          name="codigo_carrera" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion_docente_tutor]"
+                          dataType="wstr"
+                          length="50"
+                          name="identificacion_docente_tutor" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo_descripcion]"
+                          dataType="wstr"
+                          length="255"
+                          name="periodo_descripcion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_empresa]"
+                          dataType="wstr"
+                          length="50"
+                          name="tipo_empresa" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion]"
+                          dataType="wstr"
+                          length="50"
+                          name="identificacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_identificacion]"
+                          dataType="wstr"
+                          length="50"
+                          name="tipo_identificacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_carrera]"
+                          dataType="wstr"
+                          length="255"
+                          name="descripcion_carrera" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[anio_lectivo]"
+                          dataType="wstr"
+                          length="4"
+                          name="anio_lectivo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de OLE DB"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+                  name="División condicional"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]"
+                      description="Entrada en la transformación División condicional"
+                      name="Entrada de división condicional">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[CODIGO IES]"
+                          cachedDataType="r8"
+                          cachedName="CODIGO IES"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CODIGO CARRERA"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[TIPO DE IDENTIFICACION]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TIPO DE IDENTIFICACION"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Cédula]"
+                          cachedDataType="r8"
+                          cachedName="Cédula"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Tipo institución"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Fecha inicio"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Número horas]"
+                          cachedDataType="r8"
+                          cachedName="Número horas"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Campo específico]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Campo específico"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="identificacion docente"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Fecha fin ]"
+                          cachedDataType="date"
+                          cachedName="Fecha fin "
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[filas nulas]"
+                      description="Salida 1 de la transformación División condicional"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="filas nulas"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                          name="Expression">[ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]}) &amp;&amp; [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Fecha fin ]) &amp;&amp; ISNULL([identificacion docente]) &amp;&amp; ISNULL([Campo específico]) &amp;&amp; ISNULL([Número horas]) &amp;&amp; ISNULL([Fecha inicio]) &amp;&amp; ISNULL([Tipo institución]) &amp;&amp; ISNULL([Institución]) &amp;&amp; ISNULL([Cédula]) &amp;&amp; ISNULL([TIPO DE IDENTIFICACION]) &amp;&amp; ISNULL([CODIGO CARRERA]) &amp;&amp; ISNULL([CODIGO IES])</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[filas con valores faltantes]"
+                      description="Salida 6 de la transformación División condicional"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="filas con valores faltantes"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                          name="Expression">[ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Fecha inicio]) || ISNULL([Fecha fin ]) || ISNULL([Institución]) || ISNULL([Cédula]) || ISNULL([identificacion docente])</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[FILAS VALIDAS]"
+                      description="Salida predeterminada de la transformación División condicional"
+                      exclusionGroup="1"
+                      name="FILAS VALIDAS"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[Salida de error de división condicional]"
+                      description="Salida de error de la transformación División condicional"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de división condicional"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres"
+                  componentClassID="Microsoft.CharacterMap"
+                  contactInfo="Mapa de caracteres;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+                  description="Especifica las operaciones de cadena para aplicar."
+                  name="Mapa de caracteres"
+                  usesDispositions="true"
+                  version="2">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres]"
+                      name="Entrada de mapa de caracteres">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Copia de CODIGO CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de CODIGO CARRERA"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de CODIGO CARRERA]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">512</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de TIPO DE IDENTIFICACION"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de TIPO DE IDENTIFICACION]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">512</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Institución]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Institución"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">8388608</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Copia de Tipo institución]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Tipo institución"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">512</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Campo específico]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Campo específico"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">8388608</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[CARRERA]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CARRERA"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">8388608</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          errorOrTruncationOperation="Asignar columna"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">512</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de mapa de caracteres]"
+                      exclusionGroup="1"
+                      name="Salida de mapa de caracteres"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de error de mapa de caracteres]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de mapa de caracteres"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de error de mapa de caracteres].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de error de mapa de caracteres].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de error de mapa de caracteres].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de error de mapa de caracteres].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+                  description="Origen de Excel"
+                  name="Origen de Excel"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset">'2019$'</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="Variable que contiene el comando SQL para ejecutar."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="La asignación de parámetros del comando SQL a variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                      connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel]"
+                      name="Salida de origen de Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CODIGO IES]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO IES]"
+                          name="CODIGO IES"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CODIGO CARRERA]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CODIGO CARRERA]"
+                          name="CODIGO CARRERA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO DE IDENTIFICACION]"
+                          name="TIPO DE IDENTIFICACION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cédula]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]"
+                          name="Cédula"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Institución]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]"
+                          name="Institución"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Tipo institución]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Tipo institución]"
+                          name="Tipo institución"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha inicio]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]"
+                          name="Fecha inicio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Número horas]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Número horas]"
+                          name="Número horas"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Campo específico]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Campo específico]"
+                          name="Campo específico"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[No# Cédula docente]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]"
+                          name="identificacion docente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PERIODO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PERIODO]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PERIODO]"
+                          name="PERIODO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha fin ]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]"
+                          name="Fecha fin "
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]"
+                          name="AÑO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CARRERA]"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]"
+                          name="CARRERA"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CODIGO IES]"
+                          dataType="r8"
+                          name="CODIGO IES" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CODIGO CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          name="CODIGO CARRERA" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                          dataType="wstr"
+                          length="255"
+                          name="TIPO DE IDENTIFICACION" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cédula]"
+                          dataType="r8"
+                          name="Cédula" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Institución]"
+                          dataType="wstr"
+                          length="255"
+                          name="Institución" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Tipo institución]"
+                          dataType="wstr"
+                          length="255"
+                          name="Tipo institución" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha inicio]"
+                          dataType="date"
+                          name="Fecha inicio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha fin ]"
+                          dataType="date"
+                          name="Fecha fin " />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Número horas]"
+                          dataType="r8"
+                          name="Número horas" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Campo específico]"
+                          dataType="wstr"
+                          length="255"
+                          name="Campo específico" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[No# Cédula docente]"
+                          dataType="wstr"
+                          length="255"
+                          name="No# Cédula docente" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PERIODO]"
+                          dataType="wstr"
+                          length="255"
+                          name="PERIODO" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO]"
+                          dataType="r8"
+                          name="AÑO" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          name="CARRERA" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CODIGO IES]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CODIGO IES]"
+                          name="CODIGO IES" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CODIGO CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CODIGO CARRERA]"
+                          name="CODIGO CARRERA" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO DE IDENTIFICACION]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO DE IDENTIFICACION]"
+                          name="TIPO DE IDENTIFICACION" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cédula]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cédula]"
+                          name="Cédula" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Institución]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Institución]"
+                          name="Institución" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Tipo institución]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Tipo institución]"
+                          name="Tipo institución" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha inicio]"
+                          dataType="date"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha inicio]"
+                          name="Fecha inicio" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Número horas]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Número horas]"
+                          name="Número horas" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Campo específico]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Campo específico]"
+                          name="Campo específico" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[No# Cédula docente]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[No# Cédula docente]"
+                          name="No# Cédula docente" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PERIODO]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PERIODO]"
+                          name="PERIODO" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO]"
+                          name="AÑO" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CARRERA]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CARRERA]"
+                          name="CARRERA" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha fin ]"
+                          dataType="date"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha fin ]"
+                          name="Fecha fin " />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[filas con valores faltantes]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                  name="filas con valores faltantes"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[filas con valores faltantes]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[FILAS VALIDAS]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Inputs[Entrada de mapa de caracteres]"
+                  name="FILAS VALIDAS"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Outputs[FILAS VALIDAS]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional]"
+                  name="Salida de conversión de datos"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas no coincidentes de búsqueda]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de mapa de caracteres]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda.Inputs[Entrada de búsqueda]"
+                  name="Salida de mapa de caracteres"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres.Outputs[Salida de mapa de caracteres]" />
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de origen de Excel]"
+                  endId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos]"
+                  name="Salida de origen de Excel"
+                  startId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7346DCE1-7E0F-4E97-9C57-C3246019E839}"
+          DTS:ObjectName="{7346DCE1-7E0F-4E97-9C57-C3246019E839}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ExcelPath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos"
+          TopLeft="40.4571463117794,31.200003646402" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254.4,171.2"
+          Size="254.4,214.4"
+          Id="Package\Contenedor de bucles Foreach"
+          TopLeft="355.000006045614,121.588236999348" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contenedor de bucles Foreach\Tarea Flujo de datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos"
+          TopLeft="331.857145667076,109.621848203261" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB"
+          TopLeft="35.4285690443852,481.252104175721" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel"
+          TopLeft="343.571434422415,39.764706440038" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de origen de Excel]"
+          TopLeft="419.314290044746,81.364706440038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.2571417632228"
+              Start="0,0"
+              End="0,20.7571417632228">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7571417632228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional"
+          TopLeft="335.000005705016,182.941178980171" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
+          TopLeft="419.628575686046,151.221848203261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.7193307769099"
+              Start="0,0"
+              End="0,24.2193307769099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2193307769099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel"
+          TopLeft="687.857154571281,289.247062577178" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[filas con valores faltantes]"
+          TopLeft="447.266672371683,224.541178980171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="318.590482199598,64.7058835970078"
+              Start="0,0"
+              End="318.590482199598,57.2058835970078">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2435025565539" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2435025565539"
+                    Point2="0,26.2435025565539"
+                    Point3="4,26.2435025565539" />
+                  <mssgle:LineSegment
+                    End="314.590482199598,26.2435025565539" />
+                  <mssgle:CubicBezierSegment
+                    Point1="314.590482199598,26.2435025565539"
+                    Point2="318.590482199598,26.2435025565539"
+                    Point3="318.590482199598,30.2435025565539" />
+                  <mssgle:LineSegment
+                    End="318.590482199598,57.2058835970078" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="102.609811412299,31.2435025565539,113.370859375,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda"
+          TopLeft="187.142860329881,369.211768470256" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="249.142860329881,410.811768470256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129.714291285496,70.4403357054649"
+              Start="0,0"
+              End="-129.714291285496,62.9403357054649">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2201678527325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2201678527325"
+                    Point2="0,35.2201678527325"
+                    Point3="-4,35.2201678527325" />
+                  <mssgle:LineSegment
+                    End="-125.714291285496,35.2201678527325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-125.714291285496,35.2201678527325"
+                    Point2="-129.714291285496,35.2201678527325"
+                    Point3="-129.714291285496,39.2201678527325" />
+                  <mssgle:LineSegment
+                    End="-129.714291285496,62.9403357054649" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-171.746169080248,40.2201678527325,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB"
+          TopLeft="428.571435869957,457.117652067264" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="268.476193663214,410.811768470256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="248.495242206742,46.3058835970076"
+              Start="0,0"
+              End="248.495242206742,38.8058835970076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.8762837592897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.8762837592897"
+                    Point2="0,18.8762837592897"
+                    Point3="4,18.8762837592897" />
+                  <mssgle:LineSegment
+                    End="244.495242206742,18.8762837592897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="244.495242206742,18.8762837592897"
+                    Point2="248.495242206742,18.8762837592897"
+                    Point3="248.495242206742,22.8762837592897" />
+                  <mssgle:LineSegment
+                    End="248.495242206742,38.8058835970076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="24.4285976658711,23.8762837592897,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres"
+          TopLeft="227.857146737527,265.917649150142" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[FILAS VALIDAS]"
+          TopLeft="393.133339038349,224.541178980171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-80.076192300822,41.3764701699715"
+              Start="0,0"
+              End="-80.076192300822,33.8764701699715">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7815265061466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7815265061466"
+                    Point2="0,16.7815265061466"
+                    Point3="-4,16.7815265061466" />
+                  <mssgle:LineSegment
+                    End="-76.076192300822,16.7815265061466" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.076192300822,16.7815265061466"
+                    Point2="-80.076192300822,16.7815265061466"
+                    Point3="-80.076192300822,20.7815265061466" />
+                  <mssgle:LineSegment
+                    End="-80.076192300822,33.8764701699715" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.370576619161,21.7815265061466,68.6649609375,9.5341796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de mapa de caracteres]"
+          TopLeft="313.057146737527,307.517649150142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-63.9142864076463,61.6941193201139"
+              Start="0,0"
+              End="-63.9142864076463,54.1941193201139">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.847059660057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.847059660057"
+                    Point2="0,30.847059660057"
+                    Point3="-4,30.847059660057" />
+                  <mssgle:LineSegment
+                    End="-59.9142864076463,30.847059660057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59.9142864076463,30.847059660057"
+                    Point2="-63.9142864076463,30.847059660057"
+                    Point3="-63.9142864076463,34.847059660057" />
+                  <mssgle:LineSegment
+                    End="-63.9142864076463,54.1941193201139" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dat_practicas_preprofesionales]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
