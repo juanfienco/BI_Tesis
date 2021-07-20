@@ -12,8 +12,8 @@
   DTS:ObjectName="Excel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{304CA88D-CD38-4C08-80F2-9E462AEA4A9F}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{4524B04F-411E-4D63-85B8-EEAB2A620728}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Excel\LOG.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Excel\LOG.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -63,6 +63,17 @@
       DTS:ObjectName="ExcelPath">
       <DTS:VariableValue
         DTS:DataType="8">C:\Excel\practicas\ingenieria industrial 2019.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{76BF3D83-60F0-4F2B-BC99-2E7468E01D68}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fecha_actual">
+      <DTS:VariableValue
+        DTS:DataType="7">7/19/2021 2:01:32 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1182,6 +1193,11 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           dataType="wstr"
                           length="255"
                           name="CARRERA" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[fecha_reg]"
+                          dataType="wstr"
+                          length="255"
+                          name="fecha_reg" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1290,12 +1306,6 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_empresa]"
                           lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Tipo institución]" />
                         <inputColumn
-                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cédula]"
-                          cachedDataType="r8"
-                          cachedName="Cédula"
-                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion]"
-                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]" />
-                        <inputColumn
                           refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[PERIODO]"
                           cachedDataType="wstr"
                           cachedLength="255"
@@ -1375,6 +1385,13 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           cachedName="CARRERA"
                           externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[descripcion_carrera]"
                           lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CARRERA]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion]"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1483,6 +1500,10 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           dataType="wstr"
                           length="4"
                           name="anio_lectivo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_reg]"
+                          dataType="dbTimeStamp"
+                          name="fecha_reg" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1585,6 +1606,28 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           cachedDataType="date"
                           cachedName="Fecha fin "
                           lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Copia de Fecha inicio]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha inicio"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Copia de Fecha fin]"
+                          cachedDataType="date"
+                          cachedName="Copia de Fecha fin"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Copia de identificacion docente]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de identificacion docente"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional.Inputs[Entrada de división condicional].Columns[Copia de Cédula]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Copia de Cédula"
+                          lineageId="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -1632,13 +1675,13 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                           containsID="true"
                           dataType="System.String"
                           description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                          name="Expression">[ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha inicio]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha fin ]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cédula]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[identificacion docente]})</property>
+                          name="Expression">[ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha inicio]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Fecha fin]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Institución]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de Cédula]}) || [ISNULL](#{Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion docente]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                           expressionType="Notify"
-                          name="FriendlyExpression">ISNULL([Fecha inicio]) || ISNULL([Fecha fin ]) || ISNULL([Institución]) || ISNULL([Cédula]) || ISNULL([identificacion docente])</property>
+                          name="FriendlyExpression">ISNULL([Copia de Fecha inicio]) || ISNULL([Copia de Fecha fin]) || ISNULL([Institución]) || ISNULL([Copia de Cédula]) || ISNULL([Copia de identificacion docente])</property>
                         <property
                           dataType="System.Int32"
                           description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -1806,7 +1849,7 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                             <property
                               dataType="System.UInt32"
                               name="MapFlags"
-                              typeConverter="LCMappingType">512</property>
+                              typeConverter="LCMappingType">8388608</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -1861,7 +1904,7 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                     <property
                       dataType="System.String"
                       description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                      name="OpenRowset">'2019$'</property>
+                      name="OpenRowset">Hoja$</property>
                     <property
                       dataType="System.String"
                       description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2285,10 +2328,6 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos"
-          TopLeft="331.857145667076,109.621848203261" />
-        <NodeLayout
           Size="168,41.6"
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de OLE DB"
           TopLeft="35.4285690443852,481.252104175721" />
@@ -2296,6 +2335,30 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
           Size="152,41.6"
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Origen de Excel"
           TopLeft="343.571434422415,39.764706440038" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel"
+          TopLeft="609.285724661789,260.952944533305" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional"
+          TopLeft="335.000005705016,182.941178980171" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres"
+          TopLeft="227.857146737527,265.917649150142" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB"
+          TopLeft="428.571435869957,457.117652067264" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda"
+          TopLeft="187.142860329881,369.211768470256" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Conversión de datos"
+          TopLeft="331.857145667076,109.621848203261" />
         <EdgeLayout
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de origen de Excel]"
           TopLeft="419.314290044746,81.364706440038">
@@ -2318,24 +2381,32 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\División condicional"
-          TopLeft="335.000005705016,182.941178980171" />
         <EdgeLayout
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
-          TopLeft="419.628575686046,151.221848203261">
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de mapa de caracteres]"
+          TopLeft="313.057146737527,307.517649150142">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.7193307769099"
+              EndConnector="-63.9142864076463,61.6941193201139"
               Start="0,0"
-              End="0,24.2193307769099">
+              End="-63.9142864076463,54.1941193201139">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.2193307769099" />
+                    End="0,26.847059660057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.847059660057"
+                    Point2="0,30.847059660057"
+                    Point3="-4,30.847059660057" />
+                  <mssgle:LineSegment
+                    End="-59.9142864076463,30.847059660057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59.9142864076463,30.847059660057"
+                    Point2="-63.9142864076463,30.847059660057"
+                    Point3="-63.9142864076463,34.847059660057" />
+                  <mssgle:LineSegment
+                    End="-63.9142864076463,54.1941193201139" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2344,50 +2415,6 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Destino de Excel"
-          TopLeft="687.857154571281,289.247062577178" />
-        <EdgeLayout
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[filas con valores faltantes]"
-          TopLeft="447.266672371683,224.541178980171">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="318.590482199598,64.7058835970078"
-              Start="0,0"
-              End="318.590482199598,57.2058835970078">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.2435025565539" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.2435025565539"
-                    Point2="0,26.2435025565539"
-                    Point3="4,26.2435025565539" />
-                  <mssgle:LineSegment
-                    End="314.590482199598,26.2435025565539" />
-                  <mssgle:CubicBezierSegment
-                    Point1="314.590482199598,26.2435025565539"
-                    Point2="318.590482199598,26.2435025565539"
-                    Point3="318.590482199598,30.2435025565539" />
-                  <mssgle:LineSegment
-                    End="318.590482199598,57.2058835970078" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="102.609811412299,31.2435025565539,113.370859375,9.7978515625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="124,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Búsqueda"
-          TopLeft="187.142860329881,369.211768470256" />
         <EdgeLayout
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="249.142860329881,410.811768470256">
@@ -2424,10 +2451,6 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Comando de OLE DB"
-          TopLeft="428.571435869957,457.117652067264" />
         <EdgeLayout
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
           TopLeft="268.476193663214,410.811768470256">
@@ -2460,14 +2483,32 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="24.4285976658711,23.8762837592897,199.638046875,12.1953125"
+              BoundingBox="24.428597665871,23.8762837592897,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos\Mapa de caracteres"
-          TopLeft="227.857146737527,265.917649150142" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
+          TopLeft="419.628575686046,151.221848203261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.7193307769099"
+              Start="0,0"
+              End="0,24.2193307769099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2193307769099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[FILAS VALIDAS]"
           TopLeft="393.133339038349,224.541178980171">
@@ -2505,37 +2546,39 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[Salida de mapa de caracteres]"
-          TopLeft="313.057146737527,307.517649150142">
+          Id="Package\Contenedor de bucles Foreach\Tarea Flujo de datos.Paths[filas con valores faltantes]"
+          TopLeft="447.266672371683,224.541178980171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-63.9142864076463,61.6941193201139"
+              EndConnector="240.019052290106,36.4117655531337"
               Start="0,0"
-              End="-63.9142864076463,54.1941193201139">
+              End="240.019052290106,28.9117655531337">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.847059660057" />
+                    End="0,10.7679346801547" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.847059660057"
-                    Point2="0,30.847059660057"
-                    Point3="-4,30.847059660057" />
+                    Point1="0,10.7679346801547"
+                    Point2="0,14.7679346801547"
+                    Point3="4,14.7679346801547" />
                   <mssgle:LineSegment
-                    End="-59.9142864076463,30.847059660057" />
+                    End="236.019052290106,14.7679346801547" />
                   <mssgle:CubicBezierSegment
-                    Point1="-59.9142864076463,30.847059660057"
-                    Point2="-63.9142864076463,30.847059660057"
-                    Point3="-63.9142864076463,34.847059660057" />
+                    Point1="236.019052290106,14.7679346801547"
+                    Point2="240.019052290106,14.7679346801547"
+                    Point3="240.019052290106,18.7679346801547" />
                   <mssgle:LineSegment
-                    End="-63.9142864076463,54.1941193201139" />
+                    End="240.019052290106,28.9117655531337" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="63.324096457553,19.7679346801547,113.370859375,9.7978515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2586,7 +2629,7 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2596,7 +2639,7 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
