@@ -12,8 +12,8 @@
   DTS:ObjectName="Excel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="190"
-  DTS:VersionGUID="{90FE89F4-27F4-4184-A97B-9580B597A6AB}">
+  DTS:VersionBuild="193"
+  DTS:VersionGUID="{B3DA5B48-93B2-4A41-9F82-BF06C541AAF9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">7/26/2021 2:37:13 AM</DTS:VariableValue>
+        DTS:DataType="7">7/26/2021 11:17:37 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2313,13 +2313,6 @@ where [refTable].[nombre_empresa] = ? and [refTable].[codigo_carrera] = ? and [r
                   name="Entrada de comando de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].Columns[C_empresa_nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="C_empresa_nombre"
-                      externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
-                      lineageId="Package\Crear lista de Empresas desde transaccional\Conversión de datos.Outputs[Salida de conversión de datos].Columns[C_empresa_nombre]" />
-                    <inputColumn
                       refId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].Columns[tipo_empresa]"
                       cachedDataType="wstr"
                       cachedLength="100"
@@ -2333,6 +2326,13 @@ where [refTable].[nombre_empresa] = ? and [refTable].[codigo_carrera] = ? and [r
                       cachedName="ruc"
                       externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
                       lineageId="Package\Crear lista de Empresas desde transaccional\Búsqueda empresa existente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ruc]" />
+                    <inputColumn
+                      refId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].Columns[empresa_p]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="empresa_p"
+                      externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Crear lista de Empresas desde transaccional\Listar empresas de practicas profesionales migradas.Outputs[Salida de origen de OLE DB].Columns[empresa_p]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2931,19 +2931,19 @@ where [refTable].[nombre_empresa] = ?</property>
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].Columns[C_empresa_nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="C_empresa_nombre"
-                      externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_empresa]"
-                      lineageId="Package\Crear lista de Empresas desde transaccional\Conversión de datos.Outputs[Salida de conversión de datos].Columns[C_empresa_nombre]" />
-                    <inputColumn
                       refId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].Columns[C_tipo_empresa]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="C_tipo_empresa"
                       externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_empresa]"
                       lineageId="Package\Crear lista de Empresas desde transaccional\Conversión de datos.Outputs[Salida de conversión de datos].Columns[C_tipo_empresa]" />
+                    <inputColumn
+                      refId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].Columns[empresa_p]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="empresa_p"
+                      externalMetadataColumnId="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre_empresa]"
+                      lineageId="Package\Crear lista de Empresas desde transaccional\Listar empresas de practicas profesionales migradas.Outputs[Salida de origen de OLE DB].Columns[empresa_p]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3353,13 +3353,14 @@ order by 1,2</property>
                   description="Especifica la instrucción SQL que genera la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dat_empresas_migradas]</property>
                 <property
                   dataType="System.String"
                   description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dat_empresas_migradas]) [refTable]
+where [refTable].[nombre_empresa] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -3374,7 +3375,7 @@ order by 1,2</property>
                   dataType="System.Int32"
                   description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
+                  typeConverter="LookupNoMatchBehavior">1</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
@@ -3390,12 +3391,12 @@ order by 1,2</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idempresa" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ruc" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre_empresa" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="tipo_empresa" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_reg" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -3408,6 +3409,8 @@ order by 1,2</property>
               <connections>
                 <connection
                   refId="Package\Enlazar empresas a practicas\Búsqueda.Connections[OleDbConnection]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -3415,6 +3418,25 @@ order by 1,2</property>
                 <input
                   refId="Package\Enlazar empresas a practicas\Búsqueda.Inputs[Entrada de búsqueda]"
                   name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\Búsqueda.Inputs[Entrada de búsqueda].Columns[nombre_empresa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre_empresa"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">nombre_empresa</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -3422,10 +3444,40 @@ order by 1,2</property>
                 <output
                   refId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
                   errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Salida de entradas coincidentes de búsqueda"
                   synchronousInputId="Package\Enlazar empresas a practicas\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[busqueda_idempresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[busqueda_idempresa]"
+                      name="busqueda_idempresa"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">idempresa</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[busqueda_ruc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[busqueda_ruc]"
+                      name="busqueda_ruc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">ruc</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -3476,7 +3528,7 @@ order by 1,2</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[dat_empresas_migradas]</property>
+                  name="OpenRowset">[dbo].[dat_practicas_preprofesionales]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -3522,16 +3574,6 @@ order by 1,2</property>
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[ruc]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[ruc]"
-                      length="50"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[ruc]"
-                      name="ruc"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
@@ -3540,24 +3582,6 @@ order by 1,2</property>
                       length="255"
                       lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]"
                       name="nombre_empresa"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_provincia]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_provincia]"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_provincia]"
-                      name="codigo_provincia"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_canton]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_canton]"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_canton]"
-                      name="codigo_canton"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_empresa]"
@@ -3570,50 +3594,320 @@ order by 1,2</property>
                       name="tipo_empresa"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_abreviado]"
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idempresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idempresa]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idempresa]"
+                      name="idempresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_reg]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_reg]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_reg]"
+                      name="fecha_reg"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idperiodo]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idperiodo]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idperiodo]"
+                      name="idperiodo"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idcarrera]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idcarrera]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idcarrera]"
+                      name="idcarrera"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idalumno]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idalumno]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idalumno]"
+                      name="idalumno"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idtipoempresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoempresa]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idtipoempresa]"
+                      name="idtipoempresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idtutordocente]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idtutordocente]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idtutordocente]"
+                      name="idtutordocente"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idcampo_especifico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idcampo_especifico]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idcampo_especifico]"
+                      name="idcampo_especifico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_inicio]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_inicio]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_inicio]"
+                      name="fecha_inicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_fin]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_fin]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_fin]"
+                      name="fecha_fin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[numero_horas]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[numero_horas]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[numero_horas]"
+                      name="numero_horas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idmateria]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idmateria]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[idmateria]"
+                      name="idmateria"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[campo_especifico]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_abreviado]"
-                      length="100"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_abreviado]"
-                      name="nombre_abreviado"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[campo_especifico]"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[campo_especifico]"
+                      name="campo_especifico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_ies]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_ies]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_ies]"
+                      name="codigo_ies"
+                      precision="19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_docente_tutor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[identificacion_docente_tutor]"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_docente_tutor]"
+                      name="identificacion_docente_tutor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[periodo_descripcion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[periodo_descripcion]"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[periodo_descripcion]"
+                      name="periodo_descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[identificacion]"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion]"
+                      name="identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_identificacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_identificacion]"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_identificacion]"
+                      name="tipo_identificacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_carrera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_carrera]"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_carrera]"
+                      name="codigo_carrera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[descripcion_carrera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_carrera]"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[descripcion_carrera]"
+                      name="descripcion_carrera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[anio_lectivo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[anio_lectivo]"
+                      length="4"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[anio_lectivo]"
+                      name="anio_lectivo"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[ruc]"
-                      dataType="wstr"
-                      length="50"
-                      name="ruc" />
                     <externalMetadataColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_empresa]"
                       dataType="wstr"
                       length="255"
                       name="nombre_empresa" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_provincia]"
-                      dataType="i4"
-                      name="codigo_provincia" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_canton]"
-                      dataType="i4"
-                      name="codigo_canton" />
-                    <externalMetadataColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_empresa]"
                       dataType="wstr"
-                      length="100"
+                      length="50"
                       name="tipo_empresa" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre_abreviado]"
-                      dataType="wstr"
-                      length="100"
-                      name="nombre_abreviado" />
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idempresa]"
+                      dataType="numeric"
+                      name="idempresa"
+                      precision="19" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[FECHA_REG]"
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_reg]"
                       dataType="dbTimeStamp"
-                      name="FECHA_REG" />
+                      name="fecha_reg" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idperiodo]"
+                      dataType="numeric"
+                      name="idperiodo"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idcarrera]"
+                      dataType="numeric"
+                      name="idcarrera"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idalumno]"
+                      dataType="numeric"
+                      name="idalumno"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idtipoempresa]"
+                      dataType="i4"
+                      name="idtipoempresa" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idtutordocente]"
+                      dataType="numeric"
+                      name="idtutordocente"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idcampo_especifico]"
+                      dataType="i4"
+                      name="idcampo_especifico" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_inicio]"
+                      dataType="dbDate"
+                      name="fecha_inicio" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_fin]"
+                      dataType="dbDate"
+                      name="fecha_fin" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[numero_horas]"
+                      dataType="r8"
+                      name="numero_horas" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[idmateria]"
+                      dataType="numeric"
+                      name="idmateria"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[campo_especifico]"
+                      dataType="wstr"
+                      length="255"
+                      name="campo_especifico" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_ies]"
+                      dataType="numeric"
+                      name="codigo_ies"
+                      precision="19" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[identificacion_docente_tutor]"
+                      dataType="wstr"
+                      length="50"
+                      name="identificacion_docente_tutor" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[periodo_descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      name="periodo_descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[identificacion]"
+                      dataType="wstr"
+                      length="50"
+                      name="identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_identificacion]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo_identificacion" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[codigo_carrera]"
+                      dataType="wstr"
+                      length="50"
+                      name="codigo_carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[descripcion_carrera]"
+                      dataType="wstr"
+                      length="255"
+                      name="descripcion_carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].ExternalColumns[anio_lectivo]"
+                      dataType="wstr"
+                      length="4"
+                      name="anio_lectivo" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3622,11 +3916,66 @@ order by 1,2</property>
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[ruc]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[ruc]"
-                      name="ruc" />
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idperiodo]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idperiodo]"
+                      name="idperiodo"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idcarrera]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idcarrera]"
+                      name="idcarrera"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idalumno]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idalumno]"
+                      name="idalumno"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idempresa]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idempresa]"
+                      name="idempresa"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idtipoempresa]"
+                      dataType="i4"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idtipoempresa]"
+                      name="idtipoempresa" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idtutordocente]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idtutordocente]"
+                      name="idtutordocente"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idcampo_especifico]"
+                      dataType="i4"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idcampo_especifico]"
+                      name="idcampo_especifico" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_inicio]"
+                      dataType="dbDate"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_inicio]"
+                      name="fecha_inicio" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_fin]"
+                      dataType="dbDate"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_fin]"
+                      name="fecha_fin" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[numero_horas]"
+                      dataType="r8"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[numero_horas]"
+                      name="numero_horas" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idmateria]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[idmateria]"
+                      name="idmateria"
+                      precision="19" />
                     <outputColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[nombre_empresa]"
                       dataType="wstr"
@@ -3634,27 +3983,70 @@ order by 1,2</property>
                       lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[nombre_empresa]"
                       name="nombre_empresa" />
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_provincia]"
-                      dataType="i4"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_provincia]"
-                      name="codigo_provincia" />
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[campo_especifico]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[campo_especifico]"
+                      name="campo_especifico" />
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_canton]"
-                      dataType="i4"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_canton]"
-                      name="codigo_canton" />
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_ies]"
+                      dataType="numeric"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_ies]"
+                      name="codigo_ies"
+                      precision="19" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[identificacion_docente_tutor]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[identificacion_docente_tutor]"
+                      name="identificacion_docente_tutor" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[periodo_descripcion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[periodo_descripcion]"
+                      name="periodo_descripcion" />
                     <outputColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[tipo_empresa]"
                       dataType="wstr"
-                      length="100"
+                      length="50"
                       lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[tipo_empresa]"
                       name="tipo_empresa" />
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[nombre_abreviado]"
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[identificacion]"
                       dataType="wstr"
-                      length="100"
-                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[nombre_abreviado]"
-                      name="nombre_abreviado" />
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[identificacion]"
+                      name="identificacion" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[tipo_identificacion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[tipo_identificacion]"
+                      name="tipo_identificacion" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_carrera]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[codigo_carrera]"
+                      name="codigo_carrera" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_carrera]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[descripcion_carrera]"
+                      name="descripcion_carrera" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[anio_lectivo]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[anio_lectivo]"
+                      name="anio_lectivo" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_reg]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[fecha_reg]"
+                      name="fecha_reg" />
                     <outputColumn
                       refId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -3673,11 +4065,129 @@ order by 1,2</property>
               </outputs>
             </component>
             <component
-              refId="Package\Enlazar empresas a practicas\Destino de Excel"
+              refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Guardar idempresa en practicas"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE  [bd_migracion_sga].[dbo].[dat_practicas_preprofesionales]
+   SET idempresa = ?
+ WHERE 
+     nombre_empresa= ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Connections[OleDbConnection]"
+                  connectionManagerID="{5970592B-754C-4570-95AA-09ACD1C6A9E4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.bd_migracion_sga.sga_login]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].Columns[busqueda_idempresa]"
+                      cachedDataType="i4"
+                      cachedName="busqueda_idempresa"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[busqueda_idempresa]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].Columns[nombre_empresa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre_empresa"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="numeric"
+                      name="Param_0"
+                      precision="19">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas"
               componentClassID="Microsoft.ExcelDestination"
               contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
               description="Destino de Excel"
-              name="Destino de Excel"
+              name="LOG registros sin enlace a empresas"
               usesDispositions="true">
               <properties>
                 <property
@@ -3687,7 +4197,7 @@ order by 1,2</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">LOG_EMPRESA$</property>
+                  name="OpenRowset">Practicas_empresas$</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -3721,7 +4231,7 @@ order by 1,2</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Enlazar empresas a practicas\Destino de Excel.Connections[OleDbConnection]"
+                  refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
                   connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -3729,85 +4239,217 @@ order by 1,2</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                  refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de Excel">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[nombre_empresa]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[fecha_reg]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_reg"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[fecha_reg]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_reg]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[codigo_ies]"
+                      cachedDataType="numeric"
+                      cachedName="codigo_ies"
+                      cachedPrecision="19"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_ies]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[codigo_carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="codigo_carrera"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_carrera]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[tipo_identificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="tipo_identificacion"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_identificacion]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[identificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="identificacion"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[nombre_empresa]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="nombre_empresa"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[NOMBRE_EMPRESA]"
-                      lineageId="Package\Enlazar empresas a practicas\335:invalid" />
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[nombre_empresa]" />
                     <inputColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[_Similarity]"
-                      cachedDataType="r4"
-                      cachedName="_Similarity"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[NOMBRE_ABREVIADO]"
-                      lineageId="Package\Enlazar empresas a practicas\336:invalid" />
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[tipo_empresa]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="tipo_empresa"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_empresa]" />
                     <inputColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].Columns[_Confidence]"
-                      cachedDataType="r4"
-                      cachedName="_Confidence"
-                      externalMetadataColumnId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO_PROVINCIA]"
-                      lineageId="Package\Enlazar empresas a practicas\337:invalid" />
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[fecha_inicio]"
+                      cachedDataType="dbDate"
+                      cachedName="fecha_inicio"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_inicio]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[fecha_fin]"
+                      cachedDataType="dbDate"
+                      cachedName="fecha_fin"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[fecha_fin]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[numero_horas]"
+                      cachedDataType="r8"
+                      cachedName="numero_horas"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[numero_horas]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[campo_especifico]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="campo_especifico"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[campo_especifico]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[identificacion_docente_tutor]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="identificacion_docente_tutor"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_docente_tutor]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[anio_lectivo]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="anio_lectivo"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[anio_lectivo]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[periodo_descripcion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="periodo_descripcion"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[periodo_descripcion]" />
+                    <inputColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].Columns[descripcion_carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="descripcion_carrera"
+                      externalMetadataColumnId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                      lineageId="Package\Enlazar empresas a practicas\Cargar empresas practicas.Outputs[Salida de origen de OLE DB].Columns[descripcion_carrera]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[RUC]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[fecha_reg]"
                       dataType="wstr"
                       length="255"
-                      name="RUC" />
+                      name="fecha_reg" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[NOMBRE_EMPRESA]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
                       dataType="wstr"
                       length="255"
-                      name="NOMBRE_EMPRESA" />
+                      name="CODIGO IES" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO_EMPRESA]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
                       dataType="wstr"
                       length="255"
-                      name="TIPO_EMPRESA" />
+                      name="CODIGO CARRERA" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[NOMBRE_ABREVIADO]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
                       dataType="wstr"
                       length="255"
-                      name="NOMBRE_ABREVIADO" />
+                      name="TIPO DE IDENTIFICACION" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO_PROVINCIA]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
                       dataType="wstr"
                       length="255"
-                      name="CODIGO_PROVINCIA" />
+                      name="Cédula" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO_CANTON]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
                       dataType="wstr"
                       length="255"
-                      name="CODIGO_CANTON" />
+                      name="Institución" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tipo institución" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha inicio" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha fin " />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Número horas" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Campo específico" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                      dataType="wstr"
+                      length="255"
+                      name="No# Cédula docente" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AÑO" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
+                      dataType="wstr"
+                      length="255"
+                      name="PERIODO" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                      dataType="wstr"
+                      length="255"
+                      name="CARRERA" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel].ExternalColumns[busqueda_empresa]"
+                      dataType="wstr"
+                      length="255"
+                      name="busqueda_empresa" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Enlazar empresas a practicas\Destino de Excel.Outputs[Salida de error de destino de Excel]"
+                  refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Outputs[Salida de error de destino de Excel]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de Excel"
-                  synchronousInputId="Package\Enlazar empresas a practicas\Destino de Excel.Inputs[Entrada de destino de Excel]">
+                  synchronousInputId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Enlazar empresas a practicas\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      lineageId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Enlazar empresas a practicas\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      refId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Enlazar empresas a practicas\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      lineageId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3817,6 +4459,16 @@ order by 1,2</property>
             </component>
           </components>
           <paths>
+            <path
+              refId="Package\Enlazar empresas a practicas.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Enlazar empresas a practicas\Guardar idempresa en practicas.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Enlazar empresas a practicas.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas.Inputs[Entrada de destino de Excel]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Enlazar empresas a practicas\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]" />
             <path
               refId="Package\Enlazar empresas a practicas.Paths[Salida de origen de OLE DB]"
               endId="Package\Enlazar empresas a practicas\Búsqueda.Inputs[Entrada de búsqueda]"
@@ -6360,21 +7012,21 @@ where [refTable].[ced_pas] = ?</property>
           Id="Package\Crear lista de Empresas desde transaccional\Empresas a depurar"
           TopLeft="706.114284193759,287.894118590833" />
         <NodeLayout
+          Size="323.2,41.6"
+          Id="Package\Crear lista de Empresas desde transaccional\Listar empresas de practicas profesionales migradas"
+          TopLeft="248.116880708369,53.44920035982" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Crear lista de Empresas desde transaccional\Multidifusión"
+          TopLeft="345.714291601765,184.164708263239" />
+        <NodeLayout
           Size="276.8,41.6"
           Id="Package\Crear lista de Empresas desde transaccional\Si empresa tiene mas de un tipo_empresa"
           TopLeft="556.114290069074,189.129411421515" />
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Crear lista de Empresas desde transaccional\Conversión de datos"
-          TopLeft="321,119" />
-        <NodeLayout
           Size="200.8,41.6"
           Id="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas"
           TopLeft="78.5428566684528,378.305882138447" />
-        <NodeLayout
-          Size="323.2,41.6"
-          Id="Package\Crear lista de Empresas desde transaccional\Listar empresas de practicas profesionales migradas"
-          TopLeft="248.116880708369,53.44920035982" />
         <NodeLayout
           Size="213.6,41.6"
           Id="Package\Crear lista de Empresas desde transaccional\Búsqueda empresa existente"
@@ -6383,6 +7035,10 @@ where [refTable].[ced_pas] = ?</property>
           Size="220.8,41.6"
           Id="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas"
           TopLeft="539.685713251756,384.541176245369" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Crear lista de Empresas desde transaccional\Conversión de datos"
+          TopLeft="321,119" />
         <EdgeLayout
           Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de origen de OLE DB]"
           TopLeft="408.958440354185,95.04920035982">
@@ -6397,6 +7053,50 @@ where [refTable].[ced_pas] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,16.45079964018" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de multidifusión 1]"
+          TopLeft="412.000002341611,225.764708263239">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.2470561959751"
+              Start="0,0"
+              End="0,42.7470561959751">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.7470561959751" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de Multidifusión 1]"
+          TopLeft="483.314291601765,207.447059842377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.7999984673089,0"
+              Start="0,0"
+              End="65.2999984673089,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="65.2999984673089,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6478,6 +7178,28 @@ where [refTable].[ced_pas] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de conversión de datos]"
+          TopLeft="411.357145800883,160.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.5647082632389"
+              Start="0,0"
+              End="0,16.0647082632389">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0647082632389" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Crear lista de Empresas desde transaccional.Paths[Empresa con más de un tipo]"
           TopLeft="694.514290069074,230.729411421515">
           <EdgeLayout.Curve>
@@ -6513,94 +7235,11 @@ where [refTable].[ced_pas] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="137.6,41.6"
-          Id="Package\Crear lista de Empresas desde transaccional\Multidifusión"
-          TopLeft="345.714291601765,184.164708263239" />
-        <EdgeLayout
-          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de conversión de datos]"
-          TopLeft="411.357145800883,160.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.5647082632389"
-              Start="0,0"
-              End="0,16.0647082632389">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.0647082632389" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de Multidifusión 1]"
-          TopLeft="483.314291601765,207.447059842377">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="72.7999984673089,0"
-              Start="0,0"
-              End="65.2999984673089,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="65.2999984673089,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Crear lista de Empresas desde transaccional.Paths[Salida de multidifusión 1]"
-          TopLeft="412.000002341611,225.764708263239">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50.2470561959751"
-              Start="0,0"
-              End="0,42.7470561959751">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.7470561959751" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Crear lista de Empresas desde transaccional\Empresas a depurar">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6621,12 +7260,25 @@ where [refTable].[ced_pas] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Crear lista de Empresas desde transaccional\Insertar lista de empresas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Crear lista de Empresas desde transaccional\Búsqueda empresa existente">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6647,40 +7299,114 @@ where [refTable].[ced_pas] = ?</property>
     design-time-name="Package\Enlazar empresas a practicas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="124,41.6"
           Id="Package\Enlazar empresas a practicas\Búsqueda"
-          TopLeft="243.571432719425,110.88235449626" />
+          TopLeft="290.00000493867,120.82353110627" />
         <NodeLayout
           Size="203.2,41.6"
           Id="Package\Enlazar empresas a practicas\Cargar empresas practicas"
-          TopLeft="204.571428717399,30.9999998176799" />
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\Enlazar empresas a practicas\Destino de Excel"
-          TopLeft="222.142860925928,226.352944350985" />
+          TopLeft="243.142857945695,23.3529408869034" />
         <EdgeLayout
           Id="Package\Enlazar empresas a practicas.Paths[Salida de origen de OLE DB]"
-          TopLeft="305.871430718412,72.5999998176799">
+          TopLeft="348.371431442183,64.9529408869034">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.2823546785797"
+              EndConnector="0,55.8705902193662"
               Start="0,0"
-              End="0,30.7823546785797">
+              End="0,48.3705902193662">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.7823546785797" />
+                    End="0,48.3705902193662" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Enlazar empresas a practicas\Guardar idempresa en practicas"
+          TopLeft="44.2857150398961,219.470591313287" />
+        <EdgeLayout
+          Id="Package\Enlazar empresas a practicas.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="332.666671605337,162.42353110627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174.380956565441,57.047060207017"
+              Start="0,0"
+              End="-174.380956565441,49.547060207017">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2548525684655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.2548525684655"
+                    Point2="0,23.2548525684655"
+                    Point3="-4,23.2548525684655" />
+                  <mssgle:LineSegment
+                    End="-170.380956565441,23.2548525684655" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170.380956565441,23.2548525684655"
+                    Point2="-174.380956565441,23.2548525684655"
+                    Point3="-174.380956565441,27.2548525684655" />
+                  <mssgle:LineSegment
+                    End="-174.380956565441,49.547060207017" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-187.00950172022,28.2548525684655,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="249.6,41.6"
+          Id="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas"
+          TopLeft="560.000009536743,220.235297206364" />
+        <EdgeLayout
+          Id="Package\Enlazar empresas a practicas.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="371.333338272004,162.42353110627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="313.466671264739,57.8117661000944"
+              Start="0,0"
+              End="313.466671264739,50.3117661000944">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5665798115034" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5665798115034"
+                    Point2="0,23.5665798115034"
+                    Point3="4,23.5665798115034" />
+                  <mssgle:LineSegment
+                    End="309.466671264739,23.5665798115034" />
+                  <mssgle:CubicBezierSegment
+                    Point1="309.466671264739,23.5665798115034"
+                    Point2="313.466671264739,23.5665798115034"
+                    Point3="313.466671264739,27.5665798115034" />
+                  <mssgle:LineSegment
+                    End="313.466671264739,50.3117661000944" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="49.8443121948697,28.5665798115034,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6688,20 +7414,30 @@ where [refTable].[ced_pas] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Enlazar empresas a practicas\Cargar empresas practicas">
+    design-time-name="Package\Enlazar empresas a practicas\Búsqueda">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dat_empresas_migradas]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Enlazar empresas a practicas\Destino de Excel">
+    design-time-name="Package\Enlazar empresas a practicas\Cargar empresas practicas">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7079,6 +7815,19 @@ where [refTable].[ced_pas] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Enlazar estudiantes y docentes\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Enlazar empresas a practicas\LOG registros sin enlace a empresas">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
