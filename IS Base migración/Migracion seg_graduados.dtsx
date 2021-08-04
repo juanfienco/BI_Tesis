@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="98"
-  DTS:VersionGUID="{75C384A4-4F45-4E17-A810-92E402C46C09}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{B87277DB-1FA5-4A9D-A076-24C5C7412261}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -17207,10 +17207,10 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="265.6,551.2"
+          PanelSize="265.6,550.4"
           Size="265.6,593.6"
           Id="Package\Contenedor de secuencias 2"
-          TopLeft="635,251" />
+          TopLeft="632.959183638714,268.478991841775" />
         <NodeLayout
           Size="143.2,41.6"
           Id="Package\Contenedor de secuencias 3\disponibilidad"
@@ -17403,7 +17403,7 @@ periodo_academico, ciudad_id
           PanelSize="262.4,556.8"
           Size="262.4,600"
           Id="Package\Contenedor de secuencias 3"
-          TopLeft="963,253" />
+          TopLeft="950.755101832287,262.831932910998" />
         <NodeLayout
           Size="124.8,41.6"
           Id="Package\Contenedor de secuencias 4\respuesta"
@@ -17489,40 +17489,40 @@ periodo_academico, ciudad_id
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="260,367.2"
+          PanelSize="260,366.4"
           Size="260,409.6"
           Id="Package\Contenedor de secuencias 4"
-          TopLeft="1299,352" />
+          TopLeft="1238.91836630429,358.554621940666" />
         <NodeLayout
-          Size="279.2,54.4"
+          Size="279.2,41.6"
           Id="Package\Validación tablas seguimiento a graduados"
-          TopLeft="202,279" />
+          TopLeft="202,280.092436990111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="592,615">
+          TopLeft="591.6,614.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="43,-67"
+              EndConnector="41.3591836387144,-49.5210081582251"
               Start="0,0"
-              End="35.5,-67">
+              End="33.8591836387144,-49.5210081582251">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="17.5,0" />
+                    End="16.6795918193572,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="17.5,0"
-                    Point2="21.5,0"
-                    Point3="21.5,-4" />
+                    Point1="16.6795918193572,0"
+                    Point2="20.6795918193572,0"
+                    Point3="20.6795918193572,-4" />
                   <mssgle:LineSegment
-                    End="21.5,-63" />
+                    End="20.6795918193572,-45.5210081582251" />
                   <mssgle:CubicBezierSegment
-                    Point1="21.5,-63"
-                    Point2="21.5,-67"
-                    Point3="25.5,-67" />
+                    Point1="20.6795918193572,-45.5210081582251"
+                    Point2="20.6795918193572,-49.5210081582251"
+                    Point3="24.6795918193572,-49.5210081582251" />
                   <mssgle:LineSegment
-                    End="35.5,-67" />
+                    End="33.8591836387144,-49.5210081582251" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17533,18 +17533,18 @@ periodo_academico, ciudad_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="901,550.5">
+          TopLeft="898.559183638714,564.055462376387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="62,0"
+              EndConnector="52.1959181935725,0"
               Start="0,0"
-              End="54.5,0">
+              End="44.6959181935725,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="54.5,0" />
+                    End="44.6959181935725,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17555,18 +17555,18 @@ periodo_academico, ciudad_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="1225,555">
+          TopLeft="1213.15510183229,563.093277425832">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74,0"
+              EndConnector="25.7632644720052,0"
               Start="0,0"
-              End="66.5,0">
+              End="18.2632644720052,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="66.5,0" />
+                    End="18.2632644720052,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17577,18 +17577,18 @@ periodo_academico, ciudad_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="338.25,333">
+          TopLeft="338.2,321.692436990111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53"
+              EndConnector="0,64.307563009889"
               Start="0,0"
-              End="0,45.5">
+              End="0,56.807563009889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,56.807563009889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17604,13 +17604,13 @@ periodo_academico, ciudad_id
     design-time-name="Package\Contenedor de secuencias 1\carrera">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="112,42"
+          Size="112,41.6"
           Id="Package\Contenedor de secuencias 1\carrera\carrera"
           TopLeft="77,133" />
         <NodeLayout
-          Size="145,42"
+          Size="144.8,41.6"
           Id="Package\Contenedor de secuencias 1\carrera\cargar carrera"
           TopLeft="56,45" />
         <EdgeLayout
@@ -17632,9 +17632,7 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17804,17 +17802,17 @@ periodo_academico, ciudad_id
     design-time-name="Package\Contenedor de secuencias 1\facultad">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="116,42"
+          Size="116,41.6"
           Id="Package\Contenedor de secuencias 1\facultad\facultad"
           TopLeft="75,206" />
         <NodeLayout
-          Size="149,42"
+          Size="148.8,41.6"
           Id="Package\Contenedor de secuencias 1\facultad\cargar facultad"
           TopLeft="56,45" />
         <NodeLayout
-          Size="175,42"
+          Size="175.2,41.6"
           Id="Package\Contenedor de secuencias 1\facultad\Conversión de datos"
           TopLeft="46,118" />
         <EdgeLayout
@@ -17836,9 +17834,7 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17860,9 +17856,7 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
