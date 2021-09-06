@@ -1375,10 +1375,10 @@
                 <SSIS:Property SSIS:Name="Name">Migracion_practicas</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">321</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">348</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1DF3A88B-B531-4654-BFC2-425C341C3557}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{05331DBA-E09D-4CB8-8A1B-14AE455B2AF8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1642,10 +1642,10 @@
                 <SSIS:Property SSIS:Name="Name">ETL_practicas</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">23</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EDF7E375-76AA-4CAC-899A-E609173D355C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{35B1A755-100B-4507-8F7B-25E5C0D479FC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

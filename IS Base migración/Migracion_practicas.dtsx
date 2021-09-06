@@ -12,8 +12,8 @@
   DTS:ObjectName="Migracion_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="336"
-  DTS:VersionGUID="{B4B1E31A-88BB-4200-AC25-E835592C86AD}">
+  DTS:VersionBuild="348"
+  DTS:VersionGUID="{05331DBA-E09D-4CB8-8A1B-14AE455B2AF8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">9/5/2021 12:59:35 PM</DTS:VariableValue>
+        DTS:DataType="7">9/6/2021 11:11:52 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -3830,33 +3830,8 @@ order by 3
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias\tablas unesco"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Tarea Ejecutar SQL"
-          DTS:DTSID="{3a0cab0b-3db1-44d9-afe3-455cd294d315}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="tablas unesco"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-              SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[areas_conocimiento]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[areas_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[areas_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_conocimiento]') and type =(N'U'))&#xA;&#x9;delete from [bd_migracion_sga].[dbo].[subarea_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_areaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY] &#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_especifica]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[subarea_especifica];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_especifica](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_subareaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción]"
-          DTS:CreationName=""
-          DTS:DTSID="{1696DFDB-7162-4A65-8645-61DF174E4124}"
-          DTS:From="Package\Contenedor de secuencias\tablas unesco"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Restricción"
-          DTS:To="Package\Contenedor de secuencias\Llenar areas conocimiento" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
           DTS:CreationName=""
@@ -7947,11 +7922,11 @@ order by 3</property>
               </outputs>
             </component>
             <component
-              refId="Package\Enlazar docentes\log cedulas tutores"
+              refId="Package\Enlazar docentes\Log Tutor"
               componentClassID="Microsoft.ExcelDestination"
               contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
               description="Destino de Excel"
-              name="log cedulas tutores"
+              name="Log Tutor"
               usesDispositions="true">
               <properties>
                 <property
@@ -7995,7 +7970,7 @@ order by 3</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Enlazar docentes\log cedulas tutores.Connections[OleDbConnection]"
+                  refId="Package\Enlazar docentes\Log Tutor.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
                   connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -8003,72 +7978,132 @@ order by 3</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel]"
+                  refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de Excel">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].Columns[codigo_carrera]"
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[codigo_carrera]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="codigo_carrera"
-                      externalMetadataColumnId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
+                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
                       lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_carrera]" />
                     <inputColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].Columns[descripcion_carrera]"
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[descripcion_carrera]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="descripcion_carrera"
-                      externalMetadataColumnId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
                       lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[descripcion_carrera]" />
                     <inputColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].Columns[identificacion_convertida]"
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[identificacion_docente_tutor]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="identificacion_convertida"
-                      externalMetadataColumnId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[Cedula docente]"
-                      lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_convertida]" />
+                      cachedName="identificacion_docente_tutor"
+                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                      lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_docente_tutor]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[fecha_reg]"
+                      dataType="wstr"
+                      length="255"
+                      name="fecha_reg" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODIGO IES" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
                       dataType="wstr"
                       length="255"
                       name="CODIGO CARRERA" />
                     <externalMetadataColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO DE IDENTIFICACION" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cédula" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
+                      dataType="wstr"
+                      length="255"
+                      name="Institución" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tipo institución" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha inicio" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha fin " />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
+                      dataType="wstr"
+                      length="255"
+                      name="Número horas" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Campo específico" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
+                      dataType="wstr"
+                      length="255"
+                      name="No# Cédula docente" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AÑO" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
+                      dataType="wstr"
+                      length="255"
+                      name="PERIODO" />
+                    <externalMetadataColumn
+                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
                       dataType="wstr"
                       length="255"
                       name="CARRERA" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel].ExternalColumns[Cedula docente]"
-                      dataType="wstr"
-                      length="255"
-                      name="Cedula docente" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Enlazar docentes\log cedulas tutores.Outputs[Salida de error de destino de Excel]"
+                  refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de Excel"
-                  synchronousInputId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel]">
+                  synchronousInputId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Enlazar docentes\log cedulas tutores.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                      lineageId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Enlazar docentes\log cedulas tutores.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Enlazar docentes\log cedulas tutores.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                      lineageId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -8085,7 +8120,7 @@ order by 3</property>
               startId="Package\Enlazar docentes\Búsqueda Docente Tutor SGA.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Enlazar docentes.Paths[Salida de entradas no coincidentes de búsqueda]"
-              endId="Package\Enlazar docentes\log cedulas tutores.Inputs[Entrada de destino de Excel]"
+              endId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]"
               name="Salida de entradas no coincidentes de búsqueda"
               startId="Package\Enlazar docentes\Búsqueda Docente Tutor SGA.Outputs[Salida de entradas no coincidentes de búsqueda]" />
             <path
@@ -11382,7 +11417,24 @@ order by 3</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-          SQLTask:SqlStatementSource="USE [bd_migracion_sga]&#xA;GO&#xA;&#xA;DROP TABLE [dbo].[dat_practicas_preprofesionales];&#xA;CREATE TABLE [dbo].[dat_practicas_preprofesionales](&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[idtipoempresa] [int] NULL,&#xA;&#x9;[idtutordocente] [numeric](19, 0) NULL,&#xA;&#x9;[idcampo_especifico] [int] NULL,&#xA;&#x9;[fecha_inicio] [date] NULL,&#xA;&#x9;[fecha_fin] [date] NULL,&#xA;&#x9;[numero_horas] [float] NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[campo_especifico] [nvarchar](255) NULL,&#xA;&#x9;[codigo_ies] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion_docente_tutor] [nvarchar](50) NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](50) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[tipo_identificacion] [nvarchar](50) NULL,&#xA;&#x9;[codigo_carrera] [nvarchar](50) NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](255) NULL,&#xA;&#x9;[anio_lectivo] [nvarchar](4) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;ALTER TABLE [dbo].[dat_practicas_preprofesionales] ADD  CONSTRAINT [DF_dat_practicas_preprofesionales_fecha_reg]  DEFAULT (getutcdate()) FOR [fecha_reg]&#xA;GO&#xA;&#xA;&#xA;DROP TABLE [dbo].[dat_empresas_migradas];&#xA;CREATE TABLE [dbo].[dat_empresas_migradas](&#xA;&#x9;[idempresa] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[ruc] [nvarchar](50) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](100) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;ALTER TABLE [dbo].[dat_empresas_migradas] ADD  DEFAULT (getdate()) FOR [fecha_reg]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="USE [bd_migracion_sga]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_practicas_preprofesionales]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_practicas_preprofesionales];&#xA;&#x9;&#xA;else&#xA;CREATE TABLE [dbo].[dat_practicas_preprofesionales](&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[idtipoempresa] [int] NULL,&#xA;&#x9;[idtutordocente] [numeric](19, 0) NULL,&#xA;&#x9;[idcampo_especifico] [int] NULL,&#xA;&#x9;[fecha_inicio] [date] NULL,&#xA;&#x9;[fecha_fin] [date] NULL,&#xA;&#x9;[numero_horas] [float] NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[campo_especifico] [nvarchar](255) NULL,&#xA;&#x9;[codigo_ies] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion_docente_tutor] [nvarchar](50) NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](50) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[tipo_identificacion] [nvarchar](50) NULL,&#xA;&#x9;[codigo_carrera] [nvarchar](50) NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](255) NULL,&#xA;&#x9;[anio_lectivo] [nvarchar](4) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_empresas_migradas]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_empresas_migradas];&#xA;ELSE&#xA;CREATE TABLE [dbo].[dat_empresas_migradas](&#xA;&#x9;[idempresa] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[ruc] [nvarchar](50) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](100) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\tablas unesco"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3a0cab0b-3db1-44d9-afe3-455cd294d315}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="tablas unesco"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
+          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[areas_conocimiento]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[areas_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[areas_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_conocimiento]') and type =(N'U'))&#xA;&#x9;delete from [bd_migracion_sga].[dbo].[subarea_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_areaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY] &#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_especifica]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[subarea_especifica];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_especifica](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_subareaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11710,6 +11762,14 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       DTS:ObjectName="Restricción 5"
       DTS:To="Package\Crear lista de Empresas desde transaccional" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{96E02ADE-E5CF-4D54-8E78-3D71B759E771}"
+      DTS:From="Package\tablas unesco"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 6"
+      DTS:To="Package\Contenedor de secuencias" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 7]"
       DTS:CreationName=""
       DTS:DTSID="{11AF2CCC-CED7-404B-AFEA-4B166D7BB2D3}"
@@ -11747,53 +11807,31 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185.6,41.6"
+          Size="186,42"
           Id="Package\Contenedor de bucles Foreach\cargar todos los excels"
           TopLeft="36.1714319530799,15.1411798917713" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="252.8,112"
-          Size="252.8,155.2"
+          PanelSize="253,112"
+          Size="253,155"
           Id="Package\Contenedor de bucles Foreach"
-          TopLeft="303.57143374122,148.352943257066" />
+          TopLeft="303.57143374122,176.352943257066" />
         <NodeLayout
-          Size="142.4,41.6"
-          Id="Package\Contenedor de secuencias\tablas unesco"
-          TopLeft="64.4857185310244,7.02941178615531" />
-        <NodeLayout
-          Size="201.6,41.6"
+          Size="202,42"
           Id="Package\Contenedor de secuencias\Llenar areas conocimiento"
-          TopLeft="29.4285714529,71.905884326288" />
+          TopLeft="28.4285714529,9.905884326288" />
         <NodeLayout
-          Size="217.6,41.6"
+          Size="218,42"
           Id="Package\Contenedor de secuencias\Llenar subareas conocimiento"
-          TopLeft="29.4285714528993,138.164706440039" />
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción]"
-          TopLeft="132.957144991962,48.6294117861553">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.2764725401327"
-              Start="0,0"
-              End="0,15.7764725401327">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.7764725401327" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="28.4285714528993,76.164706440039" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas"
+          TopLeft="29.0857141032518,152.223530923949" />
         <EdgeLayout
           Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
-          TopLeft="134.2285714529,113.505884326288">
+          TopLeft="133.2285714529,51.505884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11813,13 +11851,9 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="206.4,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas"
-          TopLeft="30.0857141032518,214.223530923949" />
         <EdgeLayout
           Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 2]"
-          TopLeft="135.757142778076,179.764706440039">
+          TopLeft="134.757142778076,117.764706440039">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11842,45 +11876,49 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="265.6,292"
-          Size="265.6,335.2"
+          PanelSize="282,223"
+          Size="282,266"
           Id="Package\Contenedor de secuencias"
-          TopLeft="675.000011495182,45.8823535846593" />
+          TopLeft="708.000011495182,124.882353584659" />
         <NodeLayout
-          Size="285.6,41.6"
+          Size="286,42"
           Id="Package\Crear lista de Empresas desde transaccional"
-          TopLeft="292.14286211802,346.305885784848" />
+          TopLeft="292.14286211802,374.305885784848" />
         <NodeLayout
-          Size="196,41.6"
+          Size="196,42"
           Id="Package\Enlazar campo especifico"
-          TopLeft="617.142867652738,444.211770475778" />
+          TopLeft="617.142867652738,472.211770475778" />
         <NodeLayout
-          Size="173.6,41.6"
+          Size="174,42"
           Id="Package\Enlazar con carreras"
-          TopLeft="486.428579712402,501.64706585894" />
+          TopLeft="486.428579712402,529.64706585894" />
         <NodeLayout
-          Size="157.6,41.6"
+          Size="158,42"
           Id="Package\Enlazar docentes"
-          TopLeft="113.571430505538,499.352948179708" />
+          TopLeft="113.571430505538,527.352948179708" />
         <NodeLayout
-          Size="214.4,41.6"
+          Size="214,42"
           Id="Package\Enlazar empresas a practicas"
-          TopLeft="274.285718956775,549.658830318156" />
+          TopLeft="274.285718956775,577.658830318156" />
         <NodeLayout
-          Size="169.6,41.6"
+          Size="170,42"
           Id="Package\Enlazar estudiantes"
-          TopLeft="42.1428578605462,361.70588742573" />
+          TopLeft="42.1428578605462,389.70588742573" />
         <NodeLayout
-          Size="153.6,50.4"
+          Size="154,42"
           Id="Package\Tablas practicas"
-          TopLeft="359.285720404314,64.2352950185229" />
+          TopLeft="359.285720404314,92.2352950185229" />
         <NodeLayout
-          Size="161.6,41.6"
+          Size="142,42"
+          Id="Package\tablas unesco"
+          TopLeft="779.485718531024,54.0294117861553" />
+        <NodeLayout
+          Size="162,42"
           Id="Package\Tipos de empresa"
-          TopLeft="296.428576476719,471.576475821894" />
+          TopLeft="296.428576476719,499.576475821894" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="432.45714792962,303.552943257066">
+          TopLeft="432.45714792962,331.552943257066">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11902,7 +11940,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="407.18286211802,387.905885784848">
+          TopLeft="407.18286211802,415.905885784848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11936,7 +11974,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="292.14286211802,367.105885784848">
+          TopLeft="292.14286211802,395.105885784848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11970,7 +12008,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="462.70286211802,387.905885784848">
+          TopLeft="462.70286211802,415.905885784848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12004,18 +12042,74 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="433.028577072767,114.635295018523">
+          TopLeft="433.178577072767,134.235295018523">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.7176482385429"
+              EndConnector="0,42.1176482385431"
               Start="0,0"
-              End="0,26.2176482385429">
+              End="0,34.6176482385431">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.2176482385429" />
+                    End="0,34.6176482385431" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 5]"
+          TopLeft="708.000011495182,257.882353584659">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129.857149377162,137.423532200189"
+              Start="0,0"
+              End="-122.357149377162,137.423532200189">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-60.928574688581,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.928574688581,0"
+                    Point2="-64.928574688581,0"
+                    Point3="-64.928574688581,4" />
+                  <mssgle:LineSegment
+                    End="-64.928574688581,133.423532200189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.928574688581,133.423532200189"
+                    Point2="-64.928574688581,137.423532200189"
+                    Point3="-68.928574688581,137.423532200189" />
+                  <mssgle:LineSegment
+                    End="-122.357149377162,137.423532200189" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 6]"
+          TopLeft="849.742865013103,96.0294117861553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.8529417985037"
+              Start="0,0"
+              End="0,21.3529417985037">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3529417985037" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12026,7 +12120,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 7]"
-          TopLeft="518.22286211802,387.905885784848">
+          TopLeft="518.22286211802,415.905885784848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12060,7 +12154,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 8]"
-          TopLeft="351.66286211802,387.905885784848">
+          TopLeft="351.66286211802,415.905885784848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12094,7 +12188,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 9]"
-          TopLeft="379.357147716747,513.176475821894">
+          TopLeft="379.357147716747,541.176475821894">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12106,40 +12200,6 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,28.9823544962616" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 5]"
-          TopLeft="675.000011495182,213.482353584659">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-97.2571493771623,153.623532200189"
-              Start="0,0"
-              End="-89.7571493771623,153.623532200189">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-44.6285746885811,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-44.6285746885811,0"
-                    Point2="-48.6285746885811,0"
-                    Point3="-48.6285746885811,4" />
-                  <mssgle:LineSegment
-                    End="-48.6285746885811,149.623532200189" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-48.6285746885811,149.623532200189"
-                    Point2="-48.6285746885811,153.623532200189"
-                    Point3="-52.6285746885811,153.623532200189" />
-                  <mssgle:LineSegment
-                    End="-89.7571493771623,153.623532200189" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12474,44 +12534,295 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\Cargar areas de conocimiento"
+          TopLeft="97.1428587971901,22.9411767923296" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\Conversión de datos"
+          TopLeft="126,102" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\areas_conocimiento"
+          TopLeft="123.714287770038,172.352942710104" />
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar areas conocimiento.Paths[Salida de origen de OLE DB]"
+          TopLeft="209.771429398595,64.5411767923296">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.4588232076704"
+              Start="0,0"
+              End="0,29.9588232076704">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9588232076704" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar areas conocimiento.Paths[Salida de conversión de datos]"
+          TopLeft="211.457143885019,143.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.752942710104"
+              Start="0,0"
+              End="0,21.252942710104">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.252942710104" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento\Cargar areas de conocimiento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento\areas_conocimiento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor de secuencias\Llenar subareas conocimiento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\Conversión de datos"
+          TopLeft="411.428578435158,107.058825030871" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\Cargar subareas de conocimiento"
+          TopLeft="387.142863735861,25.1294106922348" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\subarea de conocimiento"
+          TopLeft="404.000006897109,206.470591130966" />
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento.Paths[Salida de origen de OLE DB]"
+          TopLeft="501.68572108551,66.7294106922348">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.3294143386366"
+              Start="0,0"
+              End="0,32.8294143386366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.8294143386366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento.Paths[Salida de conversión de datos]"
+          TopLeft="500.314292666134,148.658825030871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.8117661000946"
+              Start="0,0"
+              End="0,50.3117661000946">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.3117661000946" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias\Llenar subareas conocimiento\subarea de conocimiento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor de secuencias\Llenar subareas especificas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas\Conversión de datos"
+          TopLeft="163.5,114.5" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas\Cargar subarea especifica"
+          TopLeft="149.71429747708,26.023526912907" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas\subarea especifica"
+          TopLeft="170.428583458978,201.411766282415" />
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas.Paths[Salida de origen de OLE DB]"
+          TopLeft="250.00714873854,67.623526912907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.876473087093"
+              Start="0,0"
+              End="0,39.376473087093">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.376473087093" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor de secuencias\Llenar subareas especificas.Paths[Salida de conversión de datos]"
+          TopLeft="251.764291729489,156.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.311766282415"
+              Start="0,0"
+              End="0,37.811766282415">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.811766282415" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de secuencias\Llenar subareas especificas\subarea especifica">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Crear lista de Empresas desde transaccional">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="116.8,41.6"
+          Size="117,42"
           Id="Package\Crear lista de Empresas desde transaccional\Ordenar"
           TopLeft="358,269.4" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174,42"
           Id="Package\Crear lista de Empresas desde transaccional\Conversión de datos"
           TopLeft="330,125" />
         <NodeLayout
-          Size="125.6,41.6"
+          Size="126,42"
           Id="Package\Crear lista de Empresas desde transaccional\Ordenar 1"
           TopLeft="725,412" />
         <NodeLayout
-          Size="323.2,41.6"
+          Size="323,42"
           Id="Package\Crear lista de Empresas desde transaccional\Listar empresas de practicas profesionales migradas"
           TopLeft="249.831166434819,53.6844944667424" />
         <NodeLayout
-          Size="124,41.6"
+          Size="124,42"
           Id="Package\Crear lista de Empresas desde transaccional\Búsqueda"
           TopLeft="347,344" />
         <NodeLayout
-          Size="292,41.6"
+          Size="292,42"
           Id="Package\Crear lista de Empresas desde transaccional\Actualizar listado de empresas tabla practicas"
           TopLeft="273.542852410978,194.71764532142" />
         <NodeLayout
-          Size="200,50.4"
+          Size="200,50"
           Id="Package\Crear lista de Empresas desde transaccional\agregar empresa migrada"
           TopLeft="695,493" />
         <NodeLayout
-          Size="217.6,41.6"
+          Size="218,42"
           Id="Package\Crear lista de Empresas desde transaccional\actualizar empresas migradas"
           TopLeft="67,452" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\Crear lista de Empresas desde transaccional\Columna derivada"
           TopLeft="704,339.4" />
         <EdgeLayout
@@ -12958,126 +13269,102 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Enlazar con carreras\División condicional"
           TopLeft="423.571435784808,234.000003281762" />
         <NodeLayout
-          Size="182.4,41.6"
+          Size="182,42"
           Id="Package\Enlazar con carreras\Búsqueda aproximada"
           TopLeft="420.000007152558,151.411766829375" />
         <NodeLayout
-          Size="138.4,41.6"
+          Size="138,42"
           Id="Package\Enlazar con carreras\Log Carreras"
           TopLeft="631.428582181736,341.058828312634" />
         <NodeLayout
-          Size="199.2,41.6"
+          Size="199,42"
           Id="Package\Enlazar con carreras\cargar practicas migradas"
           TopLeft="145.000002469335,43.5882359054263" />
         <NodeLayout
-          Size="310.4,41.6"
+          Size="310,42"
           Id="Package\Enlazar con carreras\Actualizar campo idcarrera codigos alfanumericos"
           TopLeft="244.785718360727,341.970592954168" />
         <NodeLayout
-          Size="293.6,41.6"
+          Size="294,42"
           Id="Package\Enlazar con carreras\Actualizar campo idcarrera codigos numericos"
           TopLeft="30.000000510897,240.117650426383" />
         <NodeLayout
-          Size="124,41.6"
+          Size="125,42"
           Id="Package\Enlazar con carreras\Búsqueda"
           TopLeft="185.000003150531,111.647060389337" />
         <EdgeLayout
-          Id="Package\Enlazar con carreras.Paths[Salida de origen de OLE DB]"
-          TopLeft="245.800002809933,85.1882359054263">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26.458824483911"
-              Start="0,0"
-              End="0,18.958824483911">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.958824483911" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Enlazar con carreras.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="309.000003150531,132.447060389337">
+          TopLeft="310.000003150531,132.647060389337">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="111.000004002027,39.7647064400377"
+              EndConnector="110.000004002027,39.764706440038"
               Start="0,0"
-              End="103.500004002027,39.7647064400377">
+              End="102.500004002027,39.764706440038">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="51.5000020010133,0" />
+                    End="51.0000020010135,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="51.5000020010133,0"
-                    Point2="55.5000020010133,0"
-                    Point3="55.5000020010133,4" />
+                    Point1="51.0000020010135,0"
+                    Point2="55.0000020010135,0"
+                    Point3="55.0000020010135,4" />
                   <mssgle:LineSegment
-                    End="55.5000020010133,35.7647064400377" />
+                    End="55.0000020010135,35.764706440038" />
                   <mssgle:CubicBezierSegment
-                    Point1="55.5000020010133,35.7647064400377"
-                    Point2="55.5000020010133,39.7647064400377"
-                    Point3="59.5000020010133,39.7647064400377" />
+                    Point1="55.0000020010135,35.764706440038"
+                    Point2="55.0000020010135,39.764706440038"
+                    Point3="59.0000020010135,39.764706440038" />
                   <mssgle:LineSegment
-                    End="103.500004002027,39.7647064400377" />
+                    End="102.500004002027,39.764706440038" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-51.3890214364867,-18.1953125,213.778046875,12.1953125"
+              BoundingBox="-51.8890214364865,-18.1953125,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Enlazar con carreras.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="247.000003150531,153.247060389337">
+          TopLeft="247.500003150531,153.647060389337">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-70.200002639634,86.870590037046"
+              EndConnector="-70.500002639634,86.470590037046"
               Start="0,0"
-              End="-70.200002639634,79.370590037046">
+              End="-70.500002639634,78.970590037046">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.435295018523" />
+                    End="0,39.235295018523" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.435295018523"
-                    Point2="0,43.435295018523"
-                    Point3="-4,43.435295018523" />
+                    Point1="0,39.235295018523"
+                    Point2="0,43.235295018523"
+                    Point3="-4,43.235295018523" />
                   <mssgle:LineSegment
-                    End="-66.200002639634,43.435295018523" />
+                    End="-66.500002639634,43.235295018523" />
                   <mssgle:CubicBezierSegment
-                    Point1="-66.200002639634,43.435295018523"
-                    Point2="-70.200002639634,43.435295018523"
-                    Point3="-70.200002639634,47.435295018523" />
+                    Point1="-66.500002639634,43.235295018523"
+                    Point2="-70.500002639634,43.235295018523"
+                    Point3="-70.500002639634,47.235295018523" />
                   <mssgle:LineSegment
-                    End="-70.200002639634,79.370590037046" />
+                    End="-70.500002639634,78.970590037046" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-134.919024757317,48.435295018523,199.638046875,12.1953125"
+              BoundingBox="-135.069024757317,48.235295018523,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13100,9 +13387,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13137,7 +13422,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="49.4832086151309,31.5488815939165,65.8240625,9.7490234375"
+              BoundingBox="49.483208615131,31.5488815939165,65.8240625,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13175,6 +13460,28 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             <mssgm:EdgeLabel
               BoundingBox="-61.4132167849573,31.9186763694595,41.1073828125,9.7978515625"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Enlazar con carreras.Paths[Salida de origen de OLE DB]"
+          TopLeft="246.000002809933,85.5882359054263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.0588244839107"
+              Start="0,0"
+              End="0,18.5588244839107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5588244839107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13248,57 +13555,21 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Enlazar docentes\log cedulas tutores"
-          TopLeft="515.994241438019,266.300650836137" />
+          Size="125,42"
+          Id="Package\Enlazar docentes\Log Tutor"
+          TopLeft="443,260" />
         <NodeLayout
-          Size="217.6,41.6"
+          Size="218,42"
           Id="Package\Enlazar docentes\Búsqueda Docente Tutor SGA"
           TopLeft="228.502170393331,117.364702793637" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\Enlazar docentes\Actualización datos"
-          TopLeft="8.80375739351618,261.545102229003" />
+          TopLeft="22.8037573935162,254.545102229003" />
         <NodeLayout
-          Size="200,41.6"
+          Size="200,42"
           Id="Package\Enlazar docentes\Cargar docentes practicas"
           TopLeft="239.662341810335,37.0705851144029" />
-        <EdgeLayout
-          Id="Package\Enlazar docentes.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="302.368837059997,158.964702793637">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-209.565079666481,102.580399435366"
-              Start="0,0"
-              End="-209.565079666481,95.0803994353659">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.4814169979509" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.4814169979509"
-                    Point2="0,41.4814169979509"
-                    Point3="-4,41.4814169979509" />
-                  <mssgle:LineSegment
-                    End="-205.565079666481,41.4814169979509" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-205.565079666481,41.4814169979509"
-                    Point2="-209.565079666481,41.4814169979509"
-                    Point3="-209.565079666481,45.4814169979509" />
-                  <mssgle:LineSegment
-                    End="-209.565079666481,95.0803994353659" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-204.601563270741,46.4814169979509,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Enlazar docentes.Paths[Salida de origen de OLE DB]"
           TopLeft="338.482256101833,78.6705851144029">
@@ -13318,63 +13589,84 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Enlazar docentes.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="372.235503726664,158.964702793637">
+          TopLeft="372.502170393331,159.364702793637">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="227.358737711355,107.3359480425"
+              EndConnector="132.997829606669,100.635297206363"
               Start="0,0"
-              End="227.358737711355,99.8359480424999">
+              End="132.997829606669,93.135297206363">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.4044636609817" />
+                    End="0,36.6940546080375" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.4044636609817"
-                    Point2="0,43.4044636609817"
-                    Point3="4,43.4044636609817" />
+                    Point1="0,36.6940546080375"
+                    Point2="0,40.6940546080375"
+                    Point3="4,40.6940546080375" />
                   <mssgle:LineSegment
-                    End="223.358737711355,43.4044636609817" />
+                    End="128.997829606669,40.6940546080375" />
                   <mssgle:CubicBezierSegment
-                    Point1="223.358737711355,43.4044636609817"
-                    Point2="227.358737711355,43.4044636609817"
-                    Point3="227.358737711355,47.4044636609817" />
+                    Point1="128.997829606669,40.6940546080375"
+                    Point2="132.997829606669,40.6940546080375"
+                    Point3="132.997829606669,44.6940546080375" />
                   <mssgle:LineSegment
-                    End="227.358737711355,99.8359480424999" />
+                    End="132.997829606669,93.135297206363" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="6.79034541817749,48.4044636609817,213.778046875,12.1953125"
+              BoundingBox="-40.3901086341655,45.6940546080375,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Enlazar docentes.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="302.502170393331,159.364702793637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.698412999815,95.180399435366"
+              Start="0,0"
+              End="-195.698412999815,87.680399435366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.4882489520059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.4882489520059"
+                    Point2="0,38.4882489520059"
+                    Point3="-4,38.4882489520059" />
+                  <mssgle:LineSegment
+                    End="-191.698412999815,38.4882489520059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.698412999815,38.4882489520059"
+                    Point2="-195.698412999815,38.4882489520059"
+                    Point3="-195.698412999815,42.4882489520059" />
+                  <mssgle:LineSegment
+                    End="-195.698412999815,87.680399435366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-197.668229937407,43.4882489520059,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Enlazar docentes\log cedulas tutores">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Enlazar docentes\Búsqueda Docente Tutor SGA">
     <Properties>
@@ -13412,23 +13704,23 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="182.4,41.6"
+          Size="182,42"
           Id="Package\Enlazar empresas a practicas\Búsqueda aproximada"
           TopLeft="520.714294581997,173.588237728627" />
         <NodeLayout
-          Size="203.2,41.6"
+          Size="203,42"
           Id="Package\Enlazar empresas a practicas\Cargar empresas practicas"
           TopLeft="243.142857945695,23.3529408869034" />
         <NodeLayout
-          Size="228,41.6"
+          Size="228,42"
           Id="Package\Enlazar empresas a practicas\Guardar idempresa en practicas"
           TopLeft="30.2857150398961,219.470591313287" />
         <NodeLayout
-          Size="236.8,41.6"
+          Size="237,42"
           Id="Package\Enlazar empresas a practicas\Guardar idempresa en practicas 1"
           TopLeft="339.571434592715,303.129414520957" />
         <NodeLayout
-          Size="124,41.6"
+          Size="124,42"
           Id="Package\Enlazar empresas a practicas\Búsqueda"
           TopLeft="290.00000493867,120.058825213192" />
         <EdgeLayout
@@ -13773,245 +14065,6 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Enlazar estudiantes\log cedulas erroneas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="218.4,41.6"
-          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\Cargar areas de conocimiento"
-          TopLeft="97.1428587971901,22.9411767923296" />
-        <NodeLayout
-          Size="172,41.6"
-          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\areas_conocimiento"
-          TopLeft="123.714287770038,172.352942710104" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Contenedor de secuencias\Llenar areas conocimiento\Conversión de datos"
-          TopLeft="126,102" />
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar areas conocimiento.Paths[Salida de origen de OLE DB]"
-          TopLeft="209.771429398595,64.5411767923296">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.4588232076704"
-              Start="0,0"
-              End="0,29.9588232076704">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.9588232076704" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar areas conocimiento.Paths[Salida de conversión de datos]"
-          TopLeft="211.457143885019,143.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.752942710104"
-              Start="0,0"
-              End="0,21.252942710104">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.252942710104" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento\areas_conocimiento">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento\Cargar areas de conocimiento">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Contenedor de secuencias\Llenar subareas especificas">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas\subarea especifica"
-          TopLeft="170.428583458978,201.411766282415" />
-        <NodeLayout
-          Size="199.2,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas\Cargar subarea especifica"
-          TopLeft="149.71429747708,26.023526912907" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas\Conversión de datos"
-          TopLeft="163.5,114.5" />
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas.Paths[Salida de origen de OLE DB]"
-          TopLeft="250.00714873854,67.623526912907">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.876473087093"
-              Start="0,0"
-              End="0,39.376473087093">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.376473087093" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar subareas especificas.Paths[Salida de conversión de datos]"
-          TopLeft="251.764291729489,156.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.311766282415"
-              Start="0,0"
-              End="0,37.811766282415">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.811766282415" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Llenar subareas especificas\subarea especifica">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Contenedor de secuencias\Llenar subareas conocimiento">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="235.2,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\Cargar subareas de conocimiento"
-          TopLeft="387.142863735861,25.1294106922348" />
-        <NodeLayout
-          Size="196,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\subarea de conocimiento"
-          TopLeft="404.000006897109,206.470591130966" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento\Conversión de datos"
-          TopLeft="411.428578435158,107.058825030871" />
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento.Paths[Salida de origen de OLE DB]"
-          TopLeft="501.68572108551,66.7294106922348">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.3294143386366"
-              Start="0,0"
-              End="0,32.8294143386366">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.8294143386366" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias\Llenar subareas conocimiento.Paths[Salida de conversión de datos]"
-          TopLeft="500.314292666134,148.658825030871">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.8117661000946"
-              Start="0,0"
-              End="0,50.3117661000946">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.3117661000946" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Llenar subareas conocimiento\subarea de conocimiento">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

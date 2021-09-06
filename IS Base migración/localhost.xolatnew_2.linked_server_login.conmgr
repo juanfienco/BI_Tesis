@@ -5,6 +5,12 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=master;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-{189E1D30-5AE6-444C-BCAA-A57FB78F30A5}localhost.xolatnew_2.linked_server_login;" />
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=master;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-{189E1D30-5AE6-444C-BCAA-A57FB78F30A5}localhost.xolatnew_2.linked_server_login;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"></DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
