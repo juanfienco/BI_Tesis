@@ -12,8 +12,8 @@
   DTS:ObjectName="Migracion_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="348"
-  DTS:VersionGUID="{05331DBA-E09D-4CB8-8A1B-14AE455B2AF8}">
+  DTS:VersionBuild="352"
+  DTS:VersionGUID="{EC3DEB46-A291-4F80-840D-635B8394443E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">9/6/2021 11:11:52 AM</DTS:VariableValue>
+        DTS:DataType="7">9/6/2021 10:35:34 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2389,6 +2389,7 @@ where [refTable].[nombre_empresa] = ? and [refTable].[identificacion_docente_tut
     <DTS:Executable
       DTS:refId="Package\Contenedor de secuencias"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{355C4F73-EC8E-4479-8514-480D2D894D2F}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -3853,6 +3854,7 @@ order by 3
     <DTS:Executable
       DTS:refId="Package\Crear lista de Empresas desde transaccional"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{f9c7dc30-55de-4ef1-8302-adab151214ee}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -5050,6 +5052,7 @@ dat_practicas_preprofesionales as p</property>
     <DTS:Executable
       DTS:refId="Package\Enlazar campo especifico"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{07F72467-6B20-43D9-806E-90DEDAD60D02}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -6086,6 +6089,7 @@ dat_practicas_preprofesionales as p</property>
     <DTS:Executable
       DTS:refId="Package\Enlazar con carreras"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{7C5F0FEE-0592-48FD-A26D-467FD9B1D408}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -7408,6 +7412,7 @@ order by 4</property>
     <DTS:Executable
       DTS:refId="Package\Enlazar docentes"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{45728489-e045-45e9-9f40-a33cc10ea2a1}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -7921,196 +7926,6 @@ order by 3</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Enlazar docentes\Log Tutor"
-              componentClassID="Microsoft.ExcelDestination"
-              contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
-              description="Destino de Excel"
-              name="Log Tutor"
-              usesDispositions="true">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">'LOG DOCENTE$'</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Comando SQL para ejecutar."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Enlazar docentes\Log Tutor.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
-                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]"
-                  errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="Entrada de destino de Excel">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[codigo_carrera]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="codigo_carrera"
-                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
-                      lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[codigo_carrera]" />
-                    <inputColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[descripcion_carrera]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="descripcion_carrera"
-                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
-                      lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[descripcion_carrera]" />
-                    <inputColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].Columns[identificacion_docente_tutor]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="identificacion_docente_tutor"
-                      externalMetadataColumnId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
-                      lineageId="Package\Enlazar docentes\Cargar docentes practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion_docente_tutor]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[fecha_reg]"
-                      dataType="wstr"
-                      length="255"
-                      name="fecha_reg" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO IES]"
-                      dataType="wstr"
-                      length="255"
-                      name="CODIGO IES" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CODIGO CARRERA]"
-                      dataType="wstr"
-                      length="255"
-                      name="CODIGO CARRERA" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
-                      dataType="wstr"
-                      length="255"
-                      name="TIPO DE IDENTIFICACION" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
-                      dataType="wstr"
-                      length="255"
-                      name="Cédula" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Institución]"
-                      dataType="wstr"
-                      length="255"
-                      name="Institución" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Tipo institución]"
-                      dataType="wstr"
-                      length="255"
-                      name="Tipo institución" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha inicio]"
-                      dataType="wstr"
-                      length="255"
-                      name="Fecha inicio" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Fecha fin ]"
-                      dataType="wstr"
-                      length="255"
-                      name="Fecha fin " />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Número horas]"
-                      dataType="wstr"
-                      length="255"
-                      name="Número horas" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[Campo específico]"
-                      dataType="wstr"
-                      length="255"
-                      name="Campo específico" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[No# Cédula docente]"
-                      dataType="wstr"
-                      length="255"
-                      name="No# Cédula docente" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[AÑO]"
-                      dataType="wstr"
-                      length="255"
-                      name="AÑO" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[PERIODO]"
-                      dataType="wstr"
-                      length="255"
-                      name="PERIODO" />
-                    <externalMetadataColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel].ExternalColumns[CARRERA]"
-                      dataType="wstr"
-                      length="255"
-                      name="CARRERA" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de destino de Excel"
-                  synchronousInputId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Enlazar docentes\Log Tutor.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -8118,11 +7933,6 @@ order by 3</property>
               endId="Package\Enlazar docentes\Actualización datos.Inputs[Entrada de comando de OLE DB]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\Enlazar docentes\Búsqueda Docente Tutor SGA.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\Enlazar docentes.Paths[Salida de entradas no coincidentes de búsqueda]"
-              endId="Package\Enlazar docentes\Log Tutor.Inputs[Entrada de destino de Excel]"
-              name="Salida de entradas no coincidentes de búsqueda"
-              startId="Package\Enlazar docentes\Búsqueda Docente Tutor SGA.Outputs[Salida de entradas no coincidentes de búsqueda]" />
             <path
               refId="Package\Enlazar docentes.Paths[Salida de origen de OLE DB]"
               endId="Package\Enlazar docentes\Búsqueda Docente Tutor SGA.Inputs[Entrada de búsqueda]"
@@ -8135,6 +7945,7 @@ order by 3</property>
     <DTS:Executable
       DTS:refId="Package\Enlazar empresas a practicas"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{BDD5D08D-5DAA-4B20-8413-0924C4199108}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -10649,6 +10460,7 @@ where [refTable].[nombre_empresa] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Enlazar estudiantes"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{C5B687A0-4F19-4A6B-BF7E-1A79B406C9C9}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -11249,13 +11061,6 @@ order by 3</property>
                   name="Entrada de destino de Excel">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].Columns[identificacion]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="identificacion"
-                      externalMetadataColumnId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
-                      lineageId="Package\Enlazar estudiantes\Cargar practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion]" />
-                    <inputColumn
                       refId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].Columns[descripcion_carrera]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -11276,6 +11081,13 @@ order by 3</property>
                       cachedName="tipo_identificacion"
                       externalMetadataColumnId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].ExternalColumns[TIPO DE IDENTIFICACION]"
                       lineageId="Package\Enlazar estudiantes\Cargar practicas.Outputs[Salida de origen de OLE DB].Columns[tipo_identificacion]" />
+                    <inputColumn
+                      refId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].Columns[identificacion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="identificacion"
+                      externalMetadataColumnId="Package\Enlazar estudiantes\log cedulas erroneas.Inputs[Entrada de destino de Excel].ExternalColumns[Cédula]"
+                      lineageId="Package\Enlazar estudiantes\Cargar practicas.Outputs[Salida de origen de OLE DB].Columns[identificacion]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -11440,6 +11252,7 @@ order by 3</property>
     <DTS:Executable
       DTS:refId="Package\Tipos de empresa"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{E2C590B9-7EA7-4CA6-BB58-65D94CC3917D}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -11807,26 +11620,26 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Contenedor de bucles Foreach\cargar todos los excels"
           TopLeft="36.1714319530799,15.1411798917713" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="253,112"
-          Size="253,155"
+          PanelSize="252.8,112"
+          Size="252.8,155.2"
           Id="Package\Contenedor de bucles Foreach"
           TopLeft="303.57143374122,176.352943257066" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Contenedor de secuencias\Llenar areas conocimiento"
           TopLeft="28.4285714529,9.905884326288" />
         <NodeLayout
-          Size="218,42"
+          Size="217.6,41.6"
           Id="Package\Contenedor de secuencias\Llenar subareas conocimiento"
           TopLeft="28.4285714528993,76.164706440039" />
         <NodeLayout
-          Size="206,42"
+          Size="206.4,41.6"
           Id="Package\Contenedor de secuencias\Llenar subareas especificas"
           TopLeft="29.0857141032518,152.223530923949" />
         <EdgeLayout
@@ -11876,44 +11689,44 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="282,223"
-          Size="282,266"
+          PanelSize="281.6,223.2"
+          Size="281.6,265.6"
           Id="Package\Contenedor de secuencias"
           TopLeft="708.000011495182,124.882353584659" />
         <NodeLayout
-          Size="286,42"
+          Size="286.4,41.6"
           Id="Package\Crear lista de Empresas desde transaccional"
           TopLeft="292.14286211802,374.305885784848" />
         <NodeLayout
-          Size="196,42"
+          Size="196,41.6"
           Id="Package\Enlazar campo especifico"
           TopLeft="617.142867652738,472.211770475778" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\Enlazar con carreras"
           TopLeft="486.428579712402,529.64706585894" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Enlazar docentes"
           TopLeft="113.571430505538,527.352948179708" />
         <NodeLayout
-          Size="214,42"
+          Size="214.4,41.6"
           Id="Package\Enlazar empresas a practicas"
           TopLeft="274.285718956775,577.658830318156" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Enlazar estudiantes"
           TopLeft="42.1428578605462,389.70588742573" />
         <NodeLayout
-          Size="154,42"
+          Size="153.6,41.6"
           Id="Package\Tablas practicas"
           TopLeft="359.285720404314,92.2352950185229" />
         <NodeLayout
-          Size="142,42"
+          Size="142.4,41.6"
           Id="Package\tablas unesco"
           TopLeft="779.485718531024,54.0294117861553" />
         <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\Tipos de empresa"
           TopLeft="296.428576476719,499.576475821894" />
         <EdgeLayout
@@ -12042,18 +11855,18 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="433.178577072767,134.235295018523">
+          TopLeft="433.028577072767,133.835295018523">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.1176482385431"
+              EndConnector="0,42.5176482385431"
               Start="0,0"
-              End="0,34.6176482385431">
+              End="0,35.0176482385431">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.6176482385431" />
+                    End="0,35.0176482385431" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13297,6 +13110,30 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           Id="Package\Enlazar con carreras\Búsqueda"
           TopLeft="185.000003150531,111.647060389337" />
         <EdgeLayout
+          Id="Package\Enlazar con carreras.Paths[Salida de origen de OLE DB]"
+          TopLeft="246.000002809933,85.5882359054263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.0588244839107"
+              Start="0,0"
+              End="0,18.5588244839107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5588244839107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Enlazar con carreras.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="310.000003150531,132.647060389337">
           <EdgeLayout.Curve>
@@ -13387,7 +13224,9 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13462,28 +13301,6 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Enlazar con carreras.Paths[Salida de origen de OLE DB]"
-          TopLeft="246.000002809933,85.5882359054263">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26.0588244839107"
-              Start="0,0"
-              End="0,18.5588244839107">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5588244839107" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -13555,79 +13372,17 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="125,42"
-          Id="Package\Enlazar docentes\Log Tutor"
-          TopLeft="443,260" />
-        <NodeLayout
-          Size="218,42"
+          Size="217.6,41.6"
           Id="Package\Enlazar docentes\Búsqueda Docente Tutor SGA"
           TopLeft="228.502170393331,117.364702793637" />
         <NodeLayout
-          Size="168,42"
+          Size="168,41.6"
           Id="Package\Enlazar docentes\Actualización datos"
           TopLeft="22.8037573935162,254.545102229003" />
         <NodeLayout
-          Size="200,42"
+          Size="200,41.6"
           Id="Package\Enlazar docentes\Cargar docentes practicas"
           TopLeft="239.662341810335,37.0705851144029" />
-        <EdgeLayout
-          Id="Package\Enlazar docentes.Paths[Salida de origen de OLE DB]"
-          TopLeft="338.482256101833,78.6705851144029">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.6941176792332"
-              Start="0,0"
-              End="0,31.1941176792332">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.1941176792332" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Enlazar docentes.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="372.502170393331,159.364702793637">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="132.997829606669,100.635297206363"
-              Start="0,0"
-              End="132.997829606669,93.135297206363">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.6940546080375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.6940546080375"
-                    Point2="0,40.6940546080375"
-                    Point3="4,40.6940546080375" />
-                  <mssgle:LineSegment
-                    End="128.997829606669,40.6940546080375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="128.997829606669,40.6940546080375"
-                    Point2="132.997829606669,40.6940546080375"
-                    Point3="132.997829606669,44.6940546080375" />
-                  <mssgle:LineSegment
-                    End="132.997829606669,93.135297206363" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-40.3901086341655,45.6940546080375,213.778046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Enlazar docentes.Paths[Salida de entradas coincidentes de búsqueda]"
           TopLeft="302.502170393331,159.364702793637">
@@ -13661,6 +13416,30 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-197.668229937407,43.4882489520059,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Enlazar docentes.Paths[Salida de origen de OLE DB]"
+          TopLeft="338.482256101833,78.6705851144029">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.6941176792332"
+              Start="0,0"
+              End="0,31.1941176792332">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.1941176792332" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13947,9 +13726,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13958,33 +13735,33 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="203.960755192032,56.8455765984427"
+              EndConnector="203.960755192032,56.8455765984424"
               Start="0,0"
-              End="203.960755192032,49.3455765984427">
+              End="203.960755192032,49.3455765984424">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.9500775086881" />
+                    End="0,18.9500775086879" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.9500775086881"
-                    Point2="0,22.9500775086881"
-                    Point3="4,22.9500775086881" />
+                    Point1="0,18.9500775086879"
+                    Point2="0,22.9500775086879"
+                    Point3="4,22.9500775086879" />
                   <mssgle:LineSegment
-                    End="199.960755192032,22.9500775086881" />
+                    End="199.960755192032,22.9500775086879" />
                   <mssgle:CubicBezierSegment
-                    Point1="199.960755192032,22.9500775086881"
-                    Point2="203.960755192032,22.9500775086881"
-                    Point3="203.960755192032,26.9500775086881" />
+                    Point1="199.960755192032,22.9500775086879"
+                    Point2="203.960755192032,22.9500775086879"
+                    Point3="203.960755192032,26.9500775086879" />
                   <mssgle:LineSegment
-                    End="203.960755192032,49.3455765984427" />
+                    End="203.960755192032,49.3455765984424" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-13.596634122734,27.9500775086881,231.1540234375,16"
+              BoundingBox="-4.90864584148416,27.9500775086879,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
