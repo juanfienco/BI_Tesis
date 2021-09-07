@@ -12,8 +12,8 @@
   DTS:ObjectName="Migracion_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="357"
-  DTS:VersionGUID="{2536D290-3173-4776-B56C-0F26A589ABE5}">
+  DTS:VersionBuild="358"
+  DTS:VersionGUID="{0B89D021-48D5-4596-BB22-5096426AEEFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">9/6/2021 11:05:52 PM</DTS:VariableValue>
+        DTS:DataType="7">9/7/2021 1:39:36 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2417,6 +2417,7 @@ where [refTable].[nombre_empresa] = ? and [refTable].[identificacion_docente_tut
         <DTS:Executable
           DTS:refId="Package\Contenedor de secuencias\Llenar areas conocimiento"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Flujo de datos"
           DTS:DTSID="{9C960ECB-D261-42BE-A59E-4FE3B2F6A798}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -2874,6 +2875,7 @@ SELECT id, descripcion, substring(descripcion,1,2) as codigo_a, estado FROM mod_
         <DTS:Executable
           DTS:refId="Package\Contenedor de secuencias\Llenar subareas conocimiento"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Flujo de datos"
           DTS:DTSID="{7f687052-a935-4ed0-bf89-13270772e935}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -3360,6 +3362,7 @@ inner join mod_vinpract.nom_area_conocimiento as a on a.id=sa.id_areaconocimient
         <DTS:Executable
           DTS:refId="Package\Contenedor de secuencias\Llenar subareas especificas"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Flujo de datos"
           DTS:DTSID="{f6c12b54-5cfa-4e47-8ea2-9b8f6d280aef}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -11683,14 +11686,14 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.6588221137509"
+              EndConnector="0,24.658822113751"
               Start="0,0"
-              End="0,17.1588221137509">
+              End="0,17.158822113751">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.1588221137509" />
+                    End="0,17.158822113751" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11724,8 +11727,8 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="281.6,222.4"
-          Size="281.6,265.6"
+          PanelSize="277.6,224"
+          Size="277.6,267.2"
           Id="Package\Contenedor de secuencias"
           TopLeft="644.734704295331,207.90756483309" />
         <NodeLayout
@@ -11735,11 +11738,11 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         <NodeLayout
           Size="196,41.6"
           Id="Package\Enlazar campo especifico"
-          TopLeft="635.510214904308,549.774796773654" />
+          TopLeft="638.571439446236,575.993284536317" />
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\Enlazar con carreras"
-          TopLeft="512.959192409114,600.655470216151" />
+          TopLeft="504.795926963972,629.058831959035" />
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\Enlazar docentes"
@@ -11864,26 +11867,26 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="136.976330291094,131.220171915867"
+              EndConnector="128.813064845952,159.623533658751"
               Start="0,0"
-              End="136.976330291094,123.720171915867">
+              End="128.813064845952,152.123533658751">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.545633633255" />
+                    End="0,67.2181731237374" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,54.545633633255"
-                    Point2="0,58.545633633255"
-                    Point3="4,58.545633633255" />
+                    Point1="0,67.2181731237374"
+                    Point2="0,71.2181731237374"
+                    Point3="4,71.2181731237374" />
                   <mssgle:LineSegment
-                    End="132.976330291094,58.545633633255" />
+                    End="124.813064845952,71.2181731237374" />
                   <mssgle:CubicBezierSegment
-                    Point1="132.976330291094,58.545633633255"
-                    Point2="136.976330291094,58.545633633255"
-                    Point3="136.976330291094,62.545633633255" />
+                    Point1="124.813064845952,71.2181731237374"
+                    Point2="128.813064845952,71.2181731237374"
+                    Point3="128.813064845952,75.2181731237374" />
                   <mssgle:LineSegment
-                    End="136.976330291094,123.720171915867" />
+                    End="128.813064845952,152.123533658751" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11894,13 +11897,13 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 5]"
-          TopLeft="644.734704295331,340.70756483309">
+          TopLeft="644.734704295331,341.50756483309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-66.1918421773114,107.927733467194"
+              EndConnector="-66.1918421773114,107.127733467194"
               Start="0,0"
-              End="-58.6918421773114,107.927733467194">
+              End="-58.6918421773114,107.127733467194">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -11911,13 +11914,13 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
                     Point2="-33.0959210886557,0"
                     Point3="-33.0959210886557,4" />
                   <mssgle:LineSegment
-                    End="-33.0959210886557,103.927733467194" />
+                    End="-33.0959210886557,103.127733467194" />
                   <mssgle:CubicBezierSegment
-                    Point1="-33.0959210886557,103.927733467194"
-                    Point2="-33.0959210886557,107.927733467194"
-                    Point3="-37.0959210886557,107.927733467194" />
+                    Point1="-33.0959210886557,103.127733467194"
+                    Point2="-33.0959210886557,107.127733467194"
+                    Point3="-37.0959210886557,107.127733467194" />
                   <mssgle:LineSegment
-                    End="-58.6918421773114,107.927733467194" />
+                    End="-58.6918421773114,107.127733467194" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11932,26 +11935,26 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="214.647352786288,80.3394984733706"
+              EndConnector="217.708577328216,106.557986236033"
               Start="0,0"
-              End="214.647352786288,72.8394984733706">
+              End="217.708577328216,99.0579862360331">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.6329912701634" />
+                    End="0,27.3455274968772" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.6329912701634"
-                    Point2="0,23.6329912701634"
-                    Point3="4,23.6329912701634" />
+                    Point1="0,27.3455274968772"
+                    Point2="0,31.3455274968772"
+                    Point3="4,31.3455274968772" />
                   <mssgle:LineSegment
-                    End="210.647352786288,23.6329912701634" />
+                    End="213.708577328216,31.3455274968772" />
                   <mssgle:CubicBezierSegment
-                    Point1="210.647352786288,23.6329912701634"
-                    Point2="214.647352786288,23.6329912701634"
-                    Point3="214.647352786288,27.6329912701634" />
+                    Point1="213.708577328216,31.3455274968772"
+                    Point2="217.708577328216,31.3455274968772"
+                    Point3="217.708577328216,35.3455274968772" />
                   <mssgle:LineSegment
-                    End="214.647352786288,72.8394984733706" />
+                    End="217.708577328216,99.0579862360331" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12068,26 +12071,26 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="138.7836856197,37.4848747095021"
+              EndConnector="136.7836856197,37.4848747095021"
               Start="0,0"
-              End="138.7836856197,29.9848747095021">
+              End="136.7836856197,29.9848747095021">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.7424373547511" />
+                    End="0,14.742437354751" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.7424373547511"
-                    Point2="0,18.7424373547511"
-                    Point3="4,18.7424373547511" />
+                    Point1="0,14.742437354751"
+                    Point2="0,18.742437354751"
+                    Point3="4,18.742437354751" />
                   <mssgle:LineSegment
-                    End="134.7836856197,18.7424373547511" />
+                    End="132.7836856197,18.742437354751" />
                   <mssgle:CubicBezierSegment
-                    Point1="134.7836856197,18.7424373547511"
-                    Point2="138.7836856197,18.7424373547511"
-                    Point3="138.7836856197,22.7424373547511" />
+                    Point1="132.7836856197,18.742437354751"
+                    Point2="136.7836856197,18.742437354751"
+                    Point3="136.7836856197,22.742437354751" />
                   <mssgle:LineSegment
-                    End="138.7836856197,29.9848747095021" />
+                    End="136.7836856197,29.9848747095021" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12493,7 +12496,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
     design-time-name="Package\Contenedor de secuencias\Llenar areas conocimiento">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="218.4,41.6"
           Id="Package\Contenedor de secuencias\Llenar areas conocimiento\Cargar areas de conocimiento"
@@ -12525,9 +12528,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12549,9 +12550,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -19,6 +19,8 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeNotas", "Pro
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Exportar_datos_Postgres_a_SQLServer", "IS Base migración\Exportar_datos_Postgres_a_SQLServer.dtproj", "{3A1AB889-1D7C-4292-B334-28627FA17D3A}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Practicas", "ProyectoMultidimensional_Practicas\ProyectoMultidimensional_Practicas.dwproj", "{90F7B001-97AF-4998-A55B-1645732C83FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -82,6 +84,18 @@ Global
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Development|x86.Build.0 = Development
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Release|x86.ActiveCfg = Development
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Release|x86.Build.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Debug|x86.ActiveCfg = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Debug|x86.Build.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Debug|x86.Deploy.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.DebugLocal|x86.ActiveCfg = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.DebugLocal|x86.Build.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.DebugLocal|x86.Deploy.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Development|x86.ActiveCfg = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Development|x86.Build.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Development|x86.Deploy.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.ActiveCfg = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.Build.0 = Development
+		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

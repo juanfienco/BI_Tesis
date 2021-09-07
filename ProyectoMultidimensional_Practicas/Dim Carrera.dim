@@ -1,0 +1,183 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4b0c863a-d623-4a8b-b654-0ade3ce76508" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Carrera</ID>
+  <Name>Dim Carrera</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2911" scrolltop="-5758" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="10647" y="14182" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_carrera" left="-1250" top="381" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4784" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b01200006b0a0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Dim_carrera" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2911</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5758</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-1250</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>381</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="144840aa-de19-495a-b494-a85abafff99a">
+    <DataSourceViewID>vista_practicas</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="6f4a2969-d577-4a77-a707-6794eaa0cd7d">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="766d570e-5e81-4d4f-a15e-10ad579b003b">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="70fa48bf-67ad-40a5-b4b5-4fa30ae7bc55">
+          <DataType>Double</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="594624cd-ef5e-4b44-8d8b-da9f8286aa35">
+            <TableID>dbo_Dim_carrera</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="39674620-16fe-41fc-aa89-1121828dabda">
+          <AttributeID>Idcarrera</AttributeID>
+          <Name>Idcarrera</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="759ee3f0-47d2-4597-8a3b-47c86c5d6b4b">
+          <AttributeID>Descripcion Carrera</AttributeID>
+          <Name>Descripcion Carrera</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="55666f10-a798-4893-af23-baffb0c95f2f">
+          <AttributeID>Descripcion Carrerasenesyt</AttributeID>
+          <Name>Descripcion Carrerasenesyt</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5e356803-52fa-4b48-b548-754e7d12fb51">
+          <AttributeID>Descripcion Facultad</AttributeID>
+          <Name>Descripcion Facultad</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a214af7a-7e60-4709-9fb5-f5c335f5e256">
+      <ID>Idcarrera</ID>
+      <Name>Idcarrera</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a458e794-de34-44b5-a61a-9532902e800d">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c508b540-6396-4c48-abff-3184f988c4c0">
+            <TableID>dbo_Dim_carrera</TableID>
+            <ColumnID>idcarrera</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="57434155-e502-4e78-abf1-a04cece83cc8">
+      <ID>Descripcion Carrera</ID>
+      <Name>Descripcion Carrera</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9763cc81-059f-49ae-8d3b-23eaed220621">
+          <DataType>WChar</DataType>
+          <DataSize>250</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="028fca01-07e0-4e27-bdfa-225491ab3640">
+            <TableID>dbo_Dim_carrera</TableID>
+            <ColumnID>descripcion_carrera</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f20785a7-fe25-4a31-8eb4-d78000992702">
+      <ID>Descripcion Carrerasenesyt</ID>
+      <Name>Descripcion Carrerasenesyt</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="368c65d6-c1ba-41fd-9f77-14e269e70db3">
+          <DataType>WChar</DataType>
+          <DataSize>250</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d141f836-1cb1-4131-9c1b-b8030cd450e5">
+            <TableID>dbo_Dim_carrera</TableID>
+            <ColumnID>descripcion_carrerasenesyt</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="386d8caf-56af-43f8-b17e-55c91cab729b">
+      <ID>Descripcion Facultad</ID>
+      <Name>Descripcion Facultad</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e3f411c1-5230-4333-b5f5-2a4785964a2b">
+          <DataType>WChar</DataType>
+          <DataSize>250</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e8d4f9b1-2f9c-4283-aa7c-b7c6d03ad80d">
+            <TableID>dbo_Dim_carrera</TableID>
+            <ColumnID>descripcion_facultad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
