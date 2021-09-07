@@ -12,8 +12,8 @@
   DTS:ObjectName="Migracion_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="354"
-  DTS:VersionGUID="{6BB89550-785E-412B-82F3-8BCD7994B7E1}">
+  DTS:VersionBuild="357"
+  DTS:VersionGUID="{2536D290-3173-4776-B56C-0F26A589ABE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,10 +73,27 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">9/6/2021 10:54:32 PM</DTS:VariableValue>
+        DTS:DataType="7">9/6/2021 11:05:52 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\bd_migracion_sga"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{f9e357b0-3148-413a-8076-16b1e13a3863}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="bd_migracion_sga"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2D9994AF-620B-4A24-81FF-AE43E77F57DB}"
+          SQLTask:SqlStatementSource="USE [master]&#xA;GO&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysdatabases WHERE (name = 'bd_migracion_sga'))&#xA;BEGIN&#xA; CREATE DATABASE [bd_migracion_sga]&#xA;END&#xA;GO&#xA;&#xA;USE [bd_migracion_sga]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Contenedor de bucles Foreach"
       DTS:CreationName="STOCK:FOREACHLOOP"
@@ -3849,89 +3866,6 @@ order by 3
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 2"
           DTS:To="Package\Contenedor de secuencias\Llenar subareas especificas" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Contenedor de secuencias 1"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Contenedor de secuencias"
-      DTS:DTSID="{95D92491-3AC5-4C5A-8BB7-D775C60C2907}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Contenedor de secuencias 1">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias 1\bd_migracion_sga"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Tarea Ejecutar SQL"
-          DTS:DTSID="{f9e357b0-3148-413a-8076-16b1e13a3863}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="bd_migracion_sga"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-              SQLTask:SqlStatementSource="USE [master]&#xA;GO&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysdatabases WHERE (name = 'bd_migracion_sga'))&#xA;BEGIN&#xA; CREATE DATABASE [bd_migracion_sga]&#xA;END&#xA;GO&#xA;&#xA;USE [bd_migracion_sga]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias 1\Tablas practicas"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:DelayValidation="True"
-          DTS:Description="Tarea Ejecutar SQL"
-          DTS:DTSID="{8D10CE34-2537-4843-AD2C-CF3F14D5F252}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Tablas practicas"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-              SQLTask:SqlStatementSource="USE [bd_migracion_sga]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_practicas_preprofesionales]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_practicas_preprofesionales];&#xA;&#x9;&#xA;else&#xA;CREATE TABLE [dbo].[dat_practicas_preprofesionales](&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[idtipoempresa] [int] NULL,&#xA;&#x9;[idtutordocente] [numeric](19, 0) NULL,&#xA;&#x9;[idcampo_especifico] [int] NULL,&#xA;&#x9;[fecha_inicio] [date] NULL,&#xA;&#x9;[fecha_fin] [date] NULL,&#xA;&#x9;[numero_horas] [float] NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[campo_especifico] [nvarchar](255) NULL,&#xA;&#x9;[codigo_ies] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion_docente_tutor] [nvarchar](50) NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](50) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[tipo_identificacion] [nvarchar](50) NULL,&#xA;&#x9;[codigo_carrera] [nvarchar](50) NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](255) NULL,&#xA;&#x9;[anio_lectivo] [nvarchar](4) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_empresas_migradas]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_empresas_migradas];&#xA;ELSE&#xA;CREATE TABLE [dbo].[dat_empresas_migradas](&#xA;&#x9;[idempresa] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[ruc] [nvarchar](50) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](100) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias 1\tablas unesco"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:DelayValidation="True"
-          DTS:Description="Tarea Ejecutar SQL"
-          DTS:DTSID="{3a0cab0b-3db1-44d9-afe3-455cd294d315}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="tablas unesco"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-              SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[areas_conocimiento]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[areas_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[areas_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_conocimiento]') and type =(N'U'))&#xA;&#x9;delete from [bd_migracion_sga].[dbo].[subarea_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_areaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY] &#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_especifica]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[subarea_especifica];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_especifica](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_subareaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Contenedor de secuencias 1.PrecedenceConstraints[Restricción]"
-          DTS:CreationName=""
-          DTS:DTSID="{1989848D-682E-4561-8FE6-F6D37DE192A4}"
-          DTS:From="Package\Contenedor de secuencias 1\bd_migracion_sga"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Restricción"
-          DTS:To="Package\Contenedor de secuencias 1\Tablas practicas" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Contenedor de secuencias 1.PrecedenceConstraints[Restricción 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{8842A002-3942-40CA-9285-5CF6C5A22C48}"
-          DTS:From="Package\Contenedor de secuencias 1\Tablas practicas"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Restricción 1"
-          DTS:To="Package\Contenedor de secuencias 1\tablas unesco" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -11299,6 +11233,42 @@ order by 3</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Tablas practicas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{8D10CE34-2537-4843-AD2C-CF3F14D5F252}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tablas practicas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
+          SQLTask:SqlStatementSource="USE [bd_migracion_sga]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_practicas_preprofesionales]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_practicas_preprofesionales];&#xA;&#x9;&#xA;else&#xA;CREATE TABLE [dbo].[dat_practicas_preprofesionales](&#xA;&#x9;[idperiodo] [numeric](19, 0) NULL,&#xA;&#x9;[idcarrera] [numeric](19, 0) NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[idtipoempresa] [int] NULL,&#xA;&#x9;[idtutordocente] [numeric](19, 0) NULL,&#xA;&#x9;[idcampo_especifico] [int] NULL,&#xA;&#x9;[fecha_inicio] [date] NULL,&#xA;&#x9;[fecha_fin] [date] NULL,&#xA;&#x9;[numero_horas] [float] NULL,&#xA;&#x9;[idmateria] [numeric](19, 0) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[campo_especifico] [nvarchar](255) NULL,&#xA;&#x9;[codigo_ies] [numeric](19, 0) NULL,&#xA;&#x9;[identificacion_docente_tutor] [nvarchar](50) NULL,&#xA;&#x9;[periodo_descripcion] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](50) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[tipo_identificacion] [nvarchar](50) NULL,&#xA;&#x9;[codigo_carrera] [nvarchar](50) NULL,&#xA;&#x9;[descripcion_carrera] [nvarchar](255) NULL,&#xA;&#x9;[anio_lectivo] [nvarchar](4) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=OBJECT_ID(N'[dat_empresas_migradas]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[dat_empresas_migradas];&#xA;ELSE&#xA;CREATE TABLE [dbo].[dat_empresas_migradas](&#xA;&#x9;[idempresa] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[ruc] [nvarchar](50) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[tipo_empresa] [nvarchar](100) NULL,&#xA;&#x9;[fecha_reg] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\tablas unesco"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3a0cab0b-3db1-44d9-afe3-455cd294d315}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="tablas unesco"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
+          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[areas_conocimiento]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[areas_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[areas_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_conocimiento]') and type =(N'U'))&#xA;&#x9;delete from [bd_migracion_sga].[dbo].[subarea_conocimiento];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_conocimiento](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_areaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY] &#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID=&#x9;OBJECT_ID(N'[subarea_especifica]') and type =(N'U'))&#xA;&#x9;DELETE FROM [dbo].[subarea_especifica];&#xA;else&#xA;&#x9;CREATE TABLE [dbo].[subarea_especifica](&#xA;&#x9; [id] [int] NULL,&#xA;&#x9; [id_subareaconocimiento] [int] NULL,&#xA;&#x9; [descripcion] [nvarchar](255) NULL,&#xA;&#x9; [denominacion] [nvarchar](255) NULL,&#xA;&#x9; [estado] [bit] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Tipos de empresa"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
@@ -11592,6 +11562,22 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       DTS:ObjectName="Restricción 1"
       DTS:To="Package\Tipos de empresa" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{4923D234-A507-4539-BA82-8A7BEC22ACD6}"
+      DTS:From="Package\bd_migracion_sga"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 10"
+      DTS:To="Package\Tablas practicas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7B0390C-93C8-43BE-8B87-EF435DAC9EAE}"
+      DTS:From="Package\bd_migracion_sga"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 11"
+      DTS:To="Package\tablas unesco" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
       DTS:DTSID="{46CD742E-6CB4-49E9-A034-3E9F57EC34A2}"
@@ -11610,8 +11596,8 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
       DTS:CreationName=""
-      DTS:DTSID="{5AB57A8C-F9F8-4E2D-856D-F182DC6B73BD}"
-      DTS:From="Package\Contenedor de secuencias 1"
+      DTS:DTSID="{84BC839C-7DDE-4974-B7E6-5DE81132D74A}"
+      DTS:From="Package\Tablas practicas"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 4"
       DTS:To="Package\Contenedor de bucles Foreach" />
@@ -11626,8 +11612,8 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 6]"
       DTS:CreationName=""
-      DTS:DTSID="{4FAB4087-F9D0-4489-85E3-5EE6024A95F4}"
-      DTS:From="Package\Contenedor de secuencias 1"
+      DTS:DTSID="{EA1A262B-B5FA-4E82-BA5B-9ACF5BDB0078}"
+      DTS:From="Package\tablas unesco"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 6"
       DTS:To="Package\Contenedor de secuencias" />
@@ -12032,93 +12018,42 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <NodeLayout
           Size="164,41.6"
-          Id="Package\Contenedor de secuencias 1\bd_migracion_sga"
-          TopLeft="17.3306169541865,24.0714288318858" />
+          Id="Package\bd_migracion_sga"
+          TopLeft="428.718372143114,56.0378150494454" />
         <NodeLayout
           Size="153.6,41.6"
-          Id="Package\Contenedor de secuencias 1\Tablas practicas"
-          TopLeft="212.330620275017,25.8184881273026" />
+          Id="Package\Tablas practicas"
+          TopLeft="296.16734947762,130.978152682295" />
         <NodeLayout
           Size="142.4,41.6"
-          Id="Package\Contenedor de secuencias 1\tablas unesco"
-          TopLeft="400.897961395822,22.5705885784849" />
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias 1.PrecedenceConstraints[Restricción]"
-          TopLeft="181.330616954186,45.7449584795942">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="31.0000033208303,0"
-              Start="0,0"
-              End="23.5000033208303,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="23.5000033208303,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Contenedor de secuencias 1.PrecedenceConstraints[Restricción 1]"
-          TopLeft="365.930620275017,44.9945383528937">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.9673411208051,0"
-              Start="0,0"
-              End="27.4673411208051,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.4673411208051,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="574.4,122.4"
-          Size="574.4,165.6"
-          Id="Package\Contenedor de secuencias 1"
-          TopLeft="283.673474218686,13.1092438813311" />
+          Id="Package\tablas unesco"
+          TopLeft="575.551018675631,128.822690123588" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="476.473474218686,178.709243881331">
+          TopLeft="372.96734947762,172.578152682295">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-194.461226670665,50.0806749010597"
+              EndConnector="-90.9551019295997,56.2117661000962"
               Start="0,0"
-              End="-194.461226670665,42.5806749010597">
+              End="-90.9551019295997,48.7117661000962">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.1157377519256" />
+                    End="0,24.1058830500481" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.1157377519256"
-                    Point2="0,20.1157377519256"
-                    Point3="-4,20.1157377519256" />
+                    Point1="0,24.1058830500481"
+                    Point2="0,28.1058830500481"
+                    Point3="-4,28.1058830500481" />
                   <mssgle:LineSegment
-                    End="-190.461226670665,20.1157377519256" />
+                    End="-86.9551019295997,28.1058830500481" />
                   <mssgle:CubicBezierSegment
-                    Point1="-190.461226670665,20.1157377519256"
-                    Point2="-194.461226670665,20.1157377519256"
-                    Point3="-194.461226670665,24.1157377519256" />
+                    Point1="-86.9551019295997,28.1058830500481"
+                    Point2="-90.9551019295997,28.1058830500481"
+                    Point3="-90.9551019295997,32.1058830500481" />
                   <mssgle:LineSegment
-                    End="-194.461226670665,42.5806749010597" />
+                    End="-90.9551019295997,48.7117661000962" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12129,30 +12064,98 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 6]"
-          TopLeft="665.273474218686,178.709243881331">
+          TopLeft="646.751018675631,170.422690123588">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.261230076645,29.1983209517588"
+              EndConnector="138.7836856197,37.4848747095021"
               Start="0,0"
-              End="120.261230076645,21.6983209517588">
+              End="138.7836856197,29.9848747095021">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.72799224895644" />
+                    End="0,14.7424373547511" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,7.72799224895644"
-                    Point2="0,11.7279922489564"
-                    Point3="4,11.7279922489564" />
+                    Point1="0,14.7424373547511"
+                    Point2="0,18.7424373547511"
+                    Point3="4,18.7424373547511" />
                   <mssgle:LineSegment
-                    End="116.261230076645,11.7279922489564" />
+                    End="134.7836856197,18.7424373547511" />
                   <mssgle:CubicBezierSegment
-                    Point1="116.261230076645,11.7279922489564"
-                    Point2="120.261230076645,11.7279922489564"
-                    Point3="120.261230076645,15.7279922489564" />
+                    Point1="134.7836856197,18.7424373547511"
+                    Point2="138.7836856197,18.7424373547511"
+                    Point3="138.7836856197,22.7424373547511" />
                   <mssgle:LineSegment
-                    End="120.261230076645,21.6983209517588" />
+                    End="138.7836856197,29.9848747095021" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 10]"
+          TopLeft="510.718372143114,97.6378150494454">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.751022665494,33.3403376328493"
+              Start="0,0"
+              End="-137.751022665494,25.8403376328493">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6701688164246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6701688164246"
+                    Point2="0,16.6701688164246"
+                    Point3="-4,16.6701688164246" />
+                  <mssgle:LineSegment
+                    End="-133.751022665494,16.6701688164246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-133.751022665494,16.6701688164246"
+                    Point2="-137.751022665494,16.6701688164246"
+                    Point3="-137.751022665494,20.6701688164246" />
+                  <mssgle:LineSegment
+                    End="-137.751022665494,25.8403376328493" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 11]"
+          TopLeft="536.718372143114,97.6378150494454">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.032646532517,31.1848750741424"
+              Start="0,0"
+              End="110.032646532517,23.6848750741424">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.65473191414476" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.65473191414476"
+                    Point2="0,12.6547319141448"
+                    Point3="4,12.6547319141448" />
+                  <mssgle:LineSegment
+                    End="106.032646532517,12.6547319141448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.032646532517,12.6547319141448"
+                    Point2="110.032646532517,12.6547319141448"
+                    Point3="110.032646532517,16.6547319141448" />
+                  <mssgle:LineSegment
+                    End="110.032646532517,23.6848750741424" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
