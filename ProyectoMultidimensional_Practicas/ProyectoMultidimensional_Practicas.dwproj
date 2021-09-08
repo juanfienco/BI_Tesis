@@ -52,6 +52,12 @@
       <FullPath>vista_practicas.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
+  <Roles>
+    <ProjectItem>
+      <Name>Role.role</Name>
+      <FullPath>Role.role</FullPath>
+    </ProjectItem>
+  </Roles>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
@@ -60,14 +66,14 @@
           <ConfigurationSetting>
             <Id>DW_practicas</Id>
             <Name>DW_practicas</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=DW_sga</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Persist Security Info=True;Password=;User ID=;Initial Catalog=DW_sga</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
           <ConfigurationSetting>
             <Id>DW_practicas</Id>
             <Name>DW_practicas</Name>
-            <Value xsi:type="xsd:int">0</Value>
+            <Value xsi:type="xsd:int">1</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>
       </Options>
