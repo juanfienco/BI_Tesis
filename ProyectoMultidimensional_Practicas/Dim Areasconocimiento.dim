@@ -1,16 +1,16 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8e3c86f9-66db-472f-844a-8552ec12493a" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4e011595-c560-422b-8448-ecb0d287a42a" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Dim Areasconocimiento</ID>
   <Name>Dim Areasconocimiento</Name>
-  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
-  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2403" scrolltop="-4858" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="10647" y="14182" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2678" scrolltop="-8189" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11033" y="21378" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -19,9 +19,9 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_areasconocimiento" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="5800" height="4466" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_areasconocimiento" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="5636" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
-              <ddsxmlobjectstreaminitwrapper binary="000e0000a816000072110000" />
+              <ddsxmlobjectstreaminitwrapper binary="000e00000416000088130000" />
             </control>
             <layoutobject>
               <ddsxmlobj>
@@ -47,11 +47,11 @@
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
-      <Value>-2403</Value>
+      <Value>-2678</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
-      <Value>-4858</Value>
+      <Value>-8189</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
@@ -66,67 +66,67 @@
       <Value>100</Value>
     </Annotation>
   </Annotations>
-  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="b61f36d9-3e54-4363-aabc-94083ad96950">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="32481b81-551b-4525-ae55-3e62bc23de0c">
     <DataSourceViewID>vista_practicas</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="811959b1-9346-4ca8-8d97-ee094d5e1dbf">
+  <ErrorConfiguration dwd:design-time-name="2c96b729-3122-4ef2-a8fd-e43109dd78fd">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="32a83c2a-e1fc-4bdd-9966-45f34782ad4d">
+    <Attribute dwd:design-time-name="276cf774-fea6-45c5-bf00-1a11d60f085b">
       <ID>Id</ID>
       <Name>Id</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="2efad88a-d65f-4955-a8e5-1c3be82e11b7">
+        <KeyColumn dwd:design-time-name="c620bee4-8258-4b0d-8830-51dbb891b436">
           <DataType>Double</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="9e5b7010-8293-4267-b9a8-a95e62e56d3b">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e74cc279-4d96-4c91-8080-0d0ce956c628">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>id</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="e4e768db-d751-4021-826e-55e5518a4664">
+        <AttributeRelationship dwd:design-time-name="e69d1dcf-4ad1-4d3a-a4ca-00d941485f57">
           <AttributeID>Idareaconocimiento</AttributeID>
           <Name>Idareaconocimiento</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="9af7ffe7-43ad-4b62-b64d-90251310455d">
+        <AttributeRelationship dwd:design-time-name="d926e613-b9c2-411e-a38c-d276c59424fd">
           <AttributeID>Area Conocimiento Codigo</AttributeID>
           <Name>Area Conocimiento Codigo</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="e8116f1b-14aa-4083-8926-fb4ec8857c48">
+        <AttributeRelationship dwd:design-time-name="d3bc4f33-faa2-4f2f-b108-b5e8cf19ada0">
           <AttributeID>Area Conocimiento Descripcion</AttributeID>
           <Name>Area Conocimiento Descripcion</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="f4476c48-90d6-49aa-9ba9-7048826a9ac5">
+        <AttributeRelationship dwd:design-time-name="d22d7b28-862e-4639-95be-35d6bdf3d77e">
           <AttributeID>Idsubareaconocimiento</AttributeID>
           <Name>Idsubareaconocimiento</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="d4c8565b-2a06-408b-9dac-0591866d18f0">
+        <AttributeRelationship dwd:design-time-name="7ac1855e-454c-4519-8741-9f194d5db04f">
           <AttributeID>Subarea Conocimiento Codigo</AttributeID>
           <Name>Subarea Conocimiento Codigo</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="061e5565-e4b4-4b2c-8f71-bf3297d52e64">
+        <AttributeRelationship dwd:design-time-name="b6bf8b3b-b216-4dc2-aaff-24259e230b4c">
           <AttributeID>Subarea Conocimiento Descripcion</AttributeID>
           <Name>Subarea Conocimiento Descripcion</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="84282f01-620a-4748-bf45-75dad9ccba03">
+        <AttributeRelationship dwd:design-time-name="5cfc5e4c-a005-4856-9496-31ee77b4f252">
           <AttributeID>Idsubareaespecifica</AttributeID>
           <Name>Idsubareaespecifica</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="ba503442-e5b4-4271-aeef-0b285b880488">
+        <AttributeRelationship dwd:design-time-name="07e882e2-363c-476e-921c-86d627ea7558">
           <AttributeID>Subarea Especifica Codigo</AttributeID>
           <Name>Subarea Especifica Codigo</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="d1c40278-26ec-43b3-bb20-f89f5a98e8dd">
+        <AttributeRelationship dwd:design-time-name="13de1ec5-510a-4330-8fa4-86de81a0aaa5">
           <AttributeID>Subarea Especifica Descripcion</AttributeID>
           <Name>Subarea Especifica Descripcion</Name>
         </AttributeRelationship>
@@ -135,13 +135,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="38cd8aff-8cdf-458f-9b51-e79b76fb1404">
+    <Attribute dwd:design-time-name="c5382c24-ee37-4620-ad07-7df616994c16">
       <ID>Idareaconocimiento</ID>
       <Name>Idareaconocimiento</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="300c6db7-6cc3-45b9-aebb-c5a4128a4ba7">
+        <KeyColumn dwd:design-time-name="65d8445a-e202-4e93-80b0-d3f897ed2049">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="fc53e9f0-7ab7-4047-8600-e235fdf6295d">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bc6aa5b5-ff8e-4ed0-9da0-3c63adfc8abc">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>idareaconocimiento</ColumnID>
           </Source>
@@ -150,14 +150,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="54d95656-40bb-4c5a-bcd2-949172654606">
+    <Attribute dwd:design-time-name="c6c222b6-f666-4c96-a30b-2fff9b50068b">
       <ID>Area Conocimiento Codigo</ID>
       <Name>Area Conocimiento Codigo</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="dff89e96-dd5b-494f-8630-c93d202a4be4">
+        <KeyColumn dwd:design-time-name="d69de405-528d-4293-984e-3773f214bda8">
           <DataType>WChar</DataType>
           <DataSize>10</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="b564cff7-92bd-4736-973a-8d11bd0b40c4">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6ae74630-5aab-4d9d-93b0-02618b30ce3f">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>area_conocimiento_codigo</ColumnID>
           </Source>
@@ -166,14 +166,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="d325073b-299e-4b4a-b748-3434d11b80a3">
+    <Attribute dwd:design-time-name="5040e138-c85e-439a-a246-fe9a264d818a">
       <ID>Area Conocimiento Descripcion</ID>
       <Name>Area Conocimiento Descripcion</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="7c858a95-c2d5-4c17-a104-bebbb9cfa3a2">
+        <KeyColumn dwd:design-time-name="dd4d9fe3-5d2d-4da1-bd55-7b8ef906b056">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="3d28a654-6479-4417-976f-e4db6f605ef9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4c7941f7-47f2-4b2b-8640-14765c6131c6">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>area_conocimiento_descripcion</ColumnID>
           </Source>
@@ -182,13 +182,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="adfda3c4-7aee-4b3c-9632-58ceaaf513df">
+    <Attribute dwd:design-time-name="8b737f9e-e661-4f23-ab62-ff50b977be15">
       <ID>Idsubareaconocimiento</ID>
       <Name>Idsubareaconocimiento</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="c4ddf638-1269-41df-a11a-568dc7f3d3a4">
+        <KeyColumn dwd:design-time-name="d59f021e-ba39-4317-9f2d-429c86333558">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="a3711876-b3d7-4592-8dbc-24d7d0417eda">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="59df65f4-5f1d-4d7a-924f-01e8c19d6253">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>idsubareaconocimiento</ColumnID>
           </Source>
@@ -197,14 +197,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="4b748c4f-99f2-480f-9362-d4543c659880">
+    <Attribute dwd:design-time-name="1d30e527-1cf9-4db5-b221-b9e6e151a9cf">
       <ID>Subarea Conocimiento Codigo</ID>
       <Name>Subarea Conocimiento Codigo</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="e8c417e5-6391-4531-ae6e-adb54859dfa8">
+        <KeyColumn dwd:design-time-name="2a3aab21-4649-419d-85c7-4b3cb13c829e">
           <DataType>WChar</DataType>
           <DataSize>10</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="daa90565-37e5-4577-bb89-366bf51597a2">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="14ebfede-c0b3-46be-97a5-08eed1d769aa">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>subarea_conocimiento_codigo</ColumnID>
           </Source>
@@ -213,14 +213,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="6c719782-5a69-4105-9efc-c3d00cf0602e">
+    <Attribute dwd:design-time-name="d4ddf2ca-8515-4cdc-812d-7d3794311cbb">
       <ID>Subarea Conocimiento Descripcion</ID>
       <Name>Subarea Conocimiento Descripcion</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="aa80e2ed-acb6-4295-8e8f-101a44852ad1">
+        <KeyColumn dwd:design-time-name="edcc343d-cd95-4036-84cd-d0183c072414">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="e02d8b15-4186-492c-a34c-04047f24b9ee">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="00a18e36-c39c-479b-8042-ec7231ec372b">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>subarea_conocimiento_descripcion</ColumnID>
           </Source>
@@ -229,13 +229,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="4956875d-3092-405a-9ede-84d6689530a1">
+    <Attribute dwd:design-time-name="400f79b9-87e4-4933-b134-92bd92f062db">
       <ID>Idsubareaespecifica</ID>
       <Name>Idsubareaespecifica</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="a8df2521-7050-4e96-8a81-d3a2586cb573">
+        <KeyColumn dwd:design-time-name="6991063d-dc59-4500-be1a-38648be48fdb">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="cc52bdbf-8e1d-4be9-bf20-aa2ab0d96047">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c55515b9-76af-458c-b11d-6617d3a4e0e4">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>idsubareaespecifica</ColumnID>
           </Source>
@@ -244,14 +244,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="133b7174-bdb6-4950-8603-f055adb05ec8">
+    <Attribute dwd:design-time-name="a20e45ca-a32f-4f0b-9390-01dfe809d9aa">
       <ID>Subarea Especifica Codigo</ID>
       <Name>Subarea Especifica Codigo</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="387b4884-3022-4b8e-bce9-65ad735e0e37">
+        <KeyColumn dwd:design-time-name="7107cb9d-c269-4f44-8bfe-39fc6db6fcca">
           <DataType>WChar</DataType>
           <DataSize>10</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="9110b11d-8900-4618-8d22-8859d3a40d77">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c40b6398-2b8e-472a-ad19-c4e37d9a08e7">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>subarea_especifica_codigo</ColumnID>
           </Source>
@@ -260,14 +260,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="e08e228b-171a-46f7-913f-cc2d0c3337bd">
+    <Attribute dwd:design-time-name="82085232-62c5-4605-818f-dad589091e79">
       <ID>Subarea Especifica Descripcion</ID>
       <Name>Subarea Especifica Descripcion</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="3b513f7b-9617-4741-9f4e-e08521c52b87">
+        <KeyColumn dwd:design-time-name="787364f8-e6aa-4a9e-8d68-b17aed72210a">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="64fd6b6d-c581-4175-805c-f3d813555dcf">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a966f9cf-ec59-402f-b755-765b366c4793">
             <TableID>dbo_Dim_areasconocimiento</TableID>
             <ColumnID>subarea_especifica_descripcion</ColumnID>
           </Source>
@@ -278,21 +278,21 @@
     </Attribute>
   </Attributes>
   <Hierarchies>
-    <Hierarchy dwd:design-time-name="2bc67dd2-c828-41aa-8e03-00b764c51ce0">
+    <Hierarchy dwd:design-time-name="cdc8241e-5eac-4d85-add6-64e27f30c07f">
       <ID>Jerarquía</ID>
       <Name>Jerarquía</Name>
       <Levels>
-        <Level dwd:design-time-name="879685cb-76db-467d-890c-de6b5249bcec">
+        <Level dwd:design-time-name="fc3d50b3-7979-4cbe-a6aa-173e1f10d709">
           <ID>Area Conocimiento Descripcion</ID>
           <Name>Area Conocimiento Descripcion</Name>
           <SourceAttributeID>Area Conocimiento Descripcion</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="21791e47-3cbe-480b-aaed-36c27c70cdb8">
+        <Level dwd:design-time-name="63f80c81-6c81-485e-9b1f-4e293c134cf8">
           <ID>Subarea Conocimiento Descripcion</ID>
           <Name>Subarea Conocimiento Descripcion</Name>
           <SourceAttributeID>Subarea Conocimiento Descripcion</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="4545b382-77c9-48b9-8e1c-be64972fab88">
+        <Level dwd:design-time-name="06ff5eb2-37fb-4fa5-9415-ccb942450c87">
           <ID>Subarea Especifica Descripcion</ID>
           <Name>Subarea Especifica Descripcion</Name>
           <SourceAttributeID>Subarea Especifica Descripcion</SourceAttributeID>

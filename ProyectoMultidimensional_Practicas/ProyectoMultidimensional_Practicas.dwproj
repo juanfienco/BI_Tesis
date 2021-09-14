@@ -24,6 +24,10 @@
       <FullPath>Dim Tiempo.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Dim Alumno.dim</Name>
+      <FullPath>Dim Alumno.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Dim Carrera.dim</Name>
       <FullPath>Dim Carrera.dim</FullPath>
     </ProjectItem>
