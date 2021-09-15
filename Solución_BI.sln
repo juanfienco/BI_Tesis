@@ -3,23 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Notas", "ProyectoMultidimensional_Notas\ProyectoMultidimensional_Notas.dwproj", "{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}"
-EndProject
-Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Matriculacion", "ProyectoMultidimensional_Matriculacion\ProyectoMultidimensional_Matriculacion.dwproj", "{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}"
-EndProject
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeMatriculacion", "ProyectoInformeMatriculacion\ProyectoInformeMatriculacion.rptproj", "{D512B42F-090A-4091-AE88-2621A191F31F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562} = {7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}
-	EndProjectSection
-EndProject
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformeNotas", "ProyectoInformeNotas\ProyectoInformeNotas.rptproj", "{DC99BF58-4074-42EE-A943-35B91C47049B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2} = {2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}
-	EndProjectSection
-EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Exportar_datos_Postgres_a_SQLServer", "IS Base migración\Exportar_datos_Postgres_a_SQLServer.dtproj", "{3A1AB889-1D7C-4292-B334-28627FA17D3A}"
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "ProyectoMultidimensional_Practicas", "ProyectoMultidimensional_Practicas\ProyectoMultidimensional_Practicas.dwproj", "{90F7B001-97AF-4998-A55B-1645732C83FE}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ProyectoInformePracticas", "ProyectoInformePracticas\ProyectoInformePracticas.rptproj", "{F31A16CC-D84D-482D-8E5A-19BA59AB842E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,53 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.ActiveCfg = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.Build.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Debug|x86.Deploy.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.DebugLocal|x86.ActiveCfg = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.DebugLocal|x86.Build.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.DebugLocal|x86.Deploy.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Development|x86.ActiveCfg = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Development|x86.Build.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Development|x86.Deploy.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Release|x86.ActiveCfg = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Release|x86.Build.0 = Development
-		{2AFED6A7-CE56-4691-9F51-AAA6F760DBF2}.Release|x86.Deploy.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Debug|x86.ActiveCfg = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Debug|x86.Build.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Debug|x86.Deploy.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.DebugLocal|x86.ActiveCfg = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.DebugLocal|x86.Build.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.DebugLocal|x86.Deploy.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Development|x86.ActiveCfg = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Development|x86.Build.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Development|x86.Deploy.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.ActiveCfg = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.Build.0 = Development
-		{7EF40EED-B497-4AD3-BD87-1EF2BC2D0562}.Release|x86.Deploy.0 = Development
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.ActiveCfg = Debug
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.Build.0 = Debug
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Debug|x86.Deploy.0 = Debug
-		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.ActiveCfg = DebugLocal
-		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.Build.0 = DebugLocal
-		{D512B42F-090A-4091-AE88-2621A191F31F}.DebugLocal|x86.Deploy.0 = DebugLocal
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.ActiveCfg = 
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.Build.0 = 
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Development|x86.Deploy.0 = 
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.ActiveCfg = Release
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.Build.0 = Release
-		{D512B42F-090A-4091-AE88-2621A191F31F}.Release|x86.Deploy.0 = Release
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Debug|x86.ActiveCfg = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Debug|x86.Build.0 = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Debug|x86.Deploy.0 = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.DebugLocal|x86.ActiveCfg = DebugLocal
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.DebugLocal|x86.Build.0 = DebugLocal
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Development|x86.ActiveCfg = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Development|x86.Build.0 = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Development|x86.Deploy.0 = Debug
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.ActiveCfg = Release
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Build.0 = Release
-		{DC99BF58-4074-42EE-A943-35B91C47049B}.Release|x86.Deploy.0 = Release
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Debug|x86.ActiveCfg = Development
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.Debug|x86.Build.0 = Development
 		{3A1AB889-1D7C-4292-B334-28627FA17D3A}.DebugLocal|x86.ActiveCfg = Development
@@ -96,6 +37,17 @@ Global
 		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.ActiveCfg = Development
 		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.Build.0 = Development
 		{90F7B001-97AF-4998-A55B-1645732C83FE}.Release|x86.Deploy.0 = Development
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Debug|x86.ActiveCfg = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Debug|x86.Build.0 = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Debug|x86.Deploy.0 = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.DebugLocal|x86.Build.0 = DebugLocal
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Development|x86.ActiveCfg = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Development|x86.Build.0 = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Development|x86.Deploy.0 = Debug
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Release|x86.ActiveCfg = Release
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Release|x86.Build.0 = Release
+		{F31A16CC-D84D-482D-8E5A-19BA59AB842E}.Release|x86.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

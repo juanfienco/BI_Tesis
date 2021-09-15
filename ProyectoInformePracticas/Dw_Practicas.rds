@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Dw_Practicas">
+  <ConnectionProperties>
+    <Extension>OLEDB-MD</Extension>
+    <ConnectString>Data Source=.;Initial Catalog=ProyectoMultidimensional_Practicas</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>9f2f91e8-8982-4bfd-b7a7-e048ba8f356b</DataSourceID>
+</RptDataSource>
