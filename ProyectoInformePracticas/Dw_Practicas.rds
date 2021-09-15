@@ -3,6 +3,7 @@
   <ConnectionProperties>
     <Extension>OLEDB-MD</Extension>
     <ConnectString>Data Source=.;Initial Catalog=ProyectoMultidimensional_Practicas</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
   </ConnectionProperties>
   <DataSourceID>9f2f91e8-8982-4bfd-b7a7-e048ba8f356b</DataSourceID>
 </RptDataSource>
