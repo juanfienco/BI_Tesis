@@ -3,6 +3,32 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>Dw_Practicas</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="Facultad">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
+          <rd:DbType>String</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="Carrera">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
+          <rd:DbType>String</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="AreaConocimiento">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:UserDefined>true</rd:UserDefined>
+          <rd:DbType>String</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
       <CommandText> SELECT NON EMPTY { [Measures].[Recuento Fact Practicas], [Measures].[Numero Horas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Empresas].[Nombre Empresa].[Nombre Empresa].ALLMEMBERS * [Dim Areasconocimiento].[Area Conocimiento Descripcion].[Area Conocimiento Descripcion].ALLMEMBERS * [Sk Tiempoinicio].[Año].[Año].ALLMEMBERS * [Sk Tiempoinicio].[Semestre].[Semestre].ALLMEMBERS * [Sk Tiempoinicio].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempofin].[Año].[Año].ALLMEMBERS * [Sk Tiempofin].[Semestre].[Semestre].ALLMEMBERS * [Sk Tiempofin].[Fecha].[Fecha].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Alumno].[Identificacion].[Identificacion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_practicas] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
       <rd:DesignerState>
         <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
