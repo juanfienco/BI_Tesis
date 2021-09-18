@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <DataSet Include="DataSet4.rsd" />
+    <DataSet Include="DataSet_practicas.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="Dw_Practicas.rds" />
@@ -57,7 +58,7 @@
   <ItemGroup>
     <Report Include="MenúPracticas.rdl" />
     <Report Include="Reporte_Empresa_AreasConocimiento_Carrera.rdl" />
-    <Report Include="Reporte_facultad_tutores_por_empresa.rdl" />
+    <Report Include="Reporte_visita_tutores_empresa.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

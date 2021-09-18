@@ -26,7 +26,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>4. Listado de empresas por facultad-carrera y áreas de conocimiento</Value>
+                        <Value>4. Horas de prácticas realizadas en empresas por facultad-carrera y áreas de conocimiento</Value>
                         <ActionInfo>
                           <Actions>
                             <Action>
@@ -55,7 +55,7 @@
                 <Top>4.66577cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
@@ -74,7 +74,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>3. Listado de visitas realizadas por tutor a empresas</Value>
+                        <Value>3. Listado de visitas realizadas por tutor a empresas </Value>
                         <ActionInfo>
                           <Actions>
                             <Action>
@@ -91,10 +91,19 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_visita_tutores_empresa</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
                 <Top>3.68681cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -113,7 +122,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>2. Listado de supervisores activos</Value>
+                        <Value>2. Cantidad de estudiantes por tutores</Value>
                         <ActionInfo>
                           <Actions>
                             <Action>
@@ -133,7 +142,7 @@
                 <Top>2.70785cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
@@ -152,7 +161,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>1. Listado de prácticas realizadas por facultad-carrera </Value>
+                        <Value>1. Cantidad de estudiantes por prácticas por facultad-carrera-sexo</Value>
                         <ActionInfo>
                           <Actions>
                             <Action>
@@ -172,7 +181,7 @@
                 <Top>1.75535cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
@@ -191,7 +200,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>5. Reporte de </Value>
+                        <Value>5. Listado de graduados por facultad y carrera y año</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -211,7 +220,7 @@
                 <Top>5.59181cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
@@ -247,7 +256,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Prácticas</Value>
+                        <Value>Prácticas /Seg. graduados</Value>
                         <Style>
                           <FontFamily>Tahoma</FontFamily>
                           <FontSize>14pt</FontSize>
@@ -333,7 +342,7 @@
               <Line Name="Line2">
                 <Top>1.43785cm</Top>
                 <Left>4.99745cm</Left>
-                <Height>5.96994cm</Height>
+                <Height>6.577cm</Height>
                 <Width>0cm</Width>
                 <ZIndex>9</ZIndex>
                 <Style>
@@ -349,7 +358,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>6. Reporte de </Value>
+                        <Value>6. Reporte de encuestas realizadas por facultad, carrera, encargado</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -360,7 +369,7 @@
                 <Top>6.46384cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
-                <Width>11.56547cm</Width>
+                <Width>14.74047cm</Width>
                 <ZIndex>10</ZIndex>
                 <Visibility>
                   <Hidden>true</Hidden>
@@ -392,8 +401,8 @@
               </Image>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Height>7.54918cm</Height>
-            <Width>18.22917cm</Width>
+            <Height>8.01485cm</Height>
+            <Width>20.53634cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -401,10 +410,10 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>2.97212in</Height>
+        <Height>3.15545in</Height>
         <Style />
       </Body>
-      <Width>7.17684in</Width>
+      <Width>8.08517in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -420,7 +429,7 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>1</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>

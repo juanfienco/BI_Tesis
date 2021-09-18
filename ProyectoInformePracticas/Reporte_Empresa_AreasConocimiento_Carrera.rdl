@@ -2077,13 +2077,13 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>4.0235in</Height>
+        <Height>3.55833in</Height>
         <Style />
       </Body>
       <Width>12.29239in</Width>
       <Page>
         <PageHeader>
-          <Height>1.74822cm</Height>
+          <Height>1.38839cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2091,8 +2091,8 @@
               <Source>Embedded</Source>
               <Value>LOGOULEAMHORIZONTAL</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.33635cm</Top>
-              <Left>0.81133cm</Left>
+              <Top>0.01885cm</Top>
+              <Left>0.49383cm</Left>
               <Height>1.21005cm</Height>
               <Width>4.08059cm</Width>
               <Style>
@@ -2108,7 +2108,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>REPORTE DE PRACTICAS PRE-PROFESIONALES</Value>
+                      <Value>Horas de prácticas realizadas en empresas por Facultad-Carrera-Áres conocimiento</Value>
                       <Style>
                         <FontSize>20pt</FontSize>
                       </Style>
@@ -2120,10 +2120,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox79</rd:DefaultName>
-              <Top>0.3175cm</Top>
-              <Left>5.06831cm</Left>
+              <Left>4.75081cm</Left>
               <Height>0.98128cm</Height>
-              <Width>21.00174cm</Width>
+              <Width>26.08174cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2136,7 +2135,7 @@
               </Style>
             </Textbox>
             <Line Name="Line2">
-              <Top>1.66268cm</Top>
+              <Top>1.34518cm</Top>
               <Left>0.41389cm</Left>
               <Height>0cm</Height>
               <Width>30.5715cm</Width>
@@ -2343,7 +2342,7 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>1</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>

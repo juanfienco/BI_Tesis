@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>Dw_Practicas</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="DimCarreraDescripcionFacultad">
+          <DefaultValue>[Dim Carrera].[Descripcion Facultad].&amp;[ARQUITECTURA]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimCarreraDescripcionCarrera">
+          <DefaultValue>=new Object() {"[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA 2017]", "[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA (Créditos)]"}</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="DimDocenteNombreCompleto">
+          <DefaultValue>[Dim Docente].[Nombre Completo].[All]</DefaultValue>
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>true</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText> SELECT NON EMPTY { [Measures].[Numero Horas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Areasconocimiento].[Area Conocimiento Descripcion].[Area Conocimiento Descripcion].ALLMEMBERS * [Dim Empresas].[Nombre Empresa].[Nombre Empresa].ALLMEMBERS * [Dim Areasconocimiento].[Subarea Conocimiento Descripcion].[Subarea Conocimiento Descripcion].ALLMEMBERS * [Dim Areasconocimiento].[Subarea Especifica Descripcion].[Subarea Especifica Descripcion].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Sk Tiempofin].[Fecha].[Fecha].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Alumno].[Identificacion].[Identificacion].ALLMEMBERS * [Sk Tiempoinicio].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempoinicio].[Jerarquía].[Nombre Mes].ALLMEMBERS * [Sk Tiempofin].[Jerarquía].[Nombre Mes].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimDocenteNombreCompleto, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas]))) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+      <rd:DesignerState>
+        <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+          <CommandType>MDX</CommandType>
+          <QuerySpecification xsi:type="MDXQuerySpecification">
+            <Select>
+              <Items>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Facultad</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                    <LevelName>Descripcion Facultad</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Facultad</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Carrera</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                    <LevelName>Descripcion Carrera</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Carrera</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Carrera</DimensionName>
+                    <HierarchyName>Descripcion Carrerasenesyt</HierarchyName>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrerasenesyt]</HierarchyUniqueName>
+                    <LevelName>Descripcion Carrerasenesyt</LevelName>
+                    <UniqueName>[Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt]</UniqueName>
+                  </ID>
+                  <ItemCaption>Descripcion Carrerasenesyt</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Areasconocimiento</DimensionName>
+                    <HierarchyName>Area Conocimiento Descripcion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Areasconocimiento].[Area Conocimiento Descripcion]</HierarchyUniqueName>
+                    <LevelName>Area Conocimiento Descripcion</LevelName>
+                    <UniqueName>[Dim Areasconocimiento].[Area Conocimiento Descripcion].[Area Conocimiento Descripcion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Area Conocimiento Descripcion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Empresas</DimensionName>
+                    <HierarchyName>Nombre Empresa</HierarchyName>
+                    <HierarchyUniqueName>[Dim Empresas].[Nombre Empresa]</HierarchyUniqueName>
+                    <LevelName>Nombre Empresa</LevelName>
+                    <UniqueName>[Dim Empresas].[Nombre Empresa].[Nombre Empresa]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Empresa</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Areasconocimiento</DimensionName>
+                    <HierarchyName>Subarea Conocimiento Descripcion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Areasconocimiento].[Subarea Conocimiento Descripcion]</HierarchyUniqueName>
+                    <LevelName>Subarea Conocimiento Descripcion</LevelName>
+                    <UniqueName>[Dim Areasconocimiento].[Subarea Conocimiento Descripcion].[Subarea Conocimiento Descripcion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Subarea Conocimiento Descripcion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Areasconocimiento</DimensionName>
+                    <HierarchyName>Subarea Especifica Descripcion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Areasconocimiento].[Subarea Especifica Descripcion]</HierarchyUniqueName>
+                    <LevelName>Subarea Especifica Descripcion</LevelName>
+                    <UniqueName>[Dim Areasconocimiento].[Subarea Especifica Descripcion].[Subarea Especifica Descripcion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Subarea Especifica Descripcion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Docente</DimensionName>
+                    <HierarchyName>Nombre Completo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Docente].[Nombre Completo]</HierarchyUniqueName>
+                    <LevelName>Nombre Completo</LevelName>
+                    <UniqueName>[Dim Docente].[Nombre Completo].[Nombre Completo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Completo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Docente</DimensionName>
+                    <HierarchyName>Sexo Completo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Docente].[Sexo Completo]</HierarchyUniqueName>
+                    <LevelName>Sexo Completo</LevelName>
+                    <UniqueName>[Dim Docente].[Sexo Completo].[Sexo Completo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Sexo Completo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Estudiante</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Estudiante]</HierarchyUniqueName>
+                    <LevelName>Estudiante</LevelName>
+                    <UniqueName>[Dim Alumno].[Estudiante].[Estudiante]</UniqueName>
+                  </ID>
+                  <ItemCaption>Estudiante</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempofin</DimensionName>
+                    <HierarchyName>Fecha</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempofin].[Fecha]</HierarchyUniqueName>
+                    <LevelName>Fecha</LevelName>
+                    <UniqueName>[Sk Tiempofin].[Fecha].[Fecha]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fecha</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Sexo</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                    <LevelName>Sexo</LevelName>
+                    <UniqueName>[Dim Alumno].[Sexo].[Sexo]</UniqueName>
+                  </ID>
+                  <ItemCaption>Sexo</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Dim Alumno</DimensionName>
+                    <HierarchyName>Identificacion</HierarchyName>
+                    <HierarchyUniqueName>[Dim Alumno].[Identificacion]</HierarchyUniqueName>
+                    <LevelName>Identificacion</LevelName>
+                    <UniqueName>[Dim Alumno].[Identificacion].[Identificacion]</UniqueName>
+                  </ID>
+                  <ItemCaption>Identificacion</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempoinicio</DimensionName>
+                    <HierarchyName>Fecha</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempoinicio].[Fecha]</HierarchyUniqueName>
+                    <LevelName>Fecha</LevelName>
+                    <UniqueName>[Sk Tiempoinicio].[Fecha].[Fecha]</UniqueName>
+                  </ID>
+                  <ItemCaption>Fecha</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempoinicio</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempoinicio</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Semestre</LevelName>
+                    <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Semestre]</UniqueName>
+                  </ID>
+                  <ItemCaption>Semestre</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempoinicio</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Trimestre</LevelName>
+                    <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Trimestre]</UniqueName>
+                  </ID>
+                  <ItemCaption>Trimestre</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempoinicio</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempofin</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Año</LevelName>
+                    <UniqueName>[Sk Tiempofin].[Jerarquía].[Año]</UniqueName>
+                  </ID>
+                  <ItemCaption>Año</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempofin</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Semestre</LevelName>
+                    <UniqueName>[Sk Tiempofin].[Jerarquía].[Semestre]</UniqueName>
+                  </ID>
+                  <ItemCaption>Semestre</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempofin</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Trimestre</LevelName>
+                    <UniqueName>[Sk Tiempofin].[Jerarquía].[Trimestre]</UniqueName>
+                  </ID>
+                  <ItemCaption>Trimestre</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Level">
+                    <DimensionName>Sk Tiempofin</DimensionName>
+                    <HierarchyName>Jerarquía</HierarchyName>
+                    <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
+                    <LevelName>Nombre Mes</LevelName>
+                    <UniqueName>[Sk Tiempofin].[Jerarquía].[Nombre Mes]</UniqueName>
+                  </ID>
+                  <ItemCaption>Nombre Mes</ItemCaption>
+                  <UniqueName>true</UniqueName>
+                </Item>
+                <Item>
+                  <ID xsi:type="Measure">
+                    <MeasureName>Numero Horas</MeasureName>
+                    <UniqueName>[Measures].[Numero Horas]</UniqueName>
+                  </ID>
+                  <ItemCaption>Numero Horas</ItemCaption>
+                  <BackColor>true</BackColor>
+                  <ForeColor>true</ForeColor>
+                  <FontFamily>true</FontFamily>
+                  <FontSize>true</FontSize>
+                  <FontWeight>true</FontWeight>
+                  <FontStyle>true</FontStyle>
+                  <FontDecoration>true</FontDecoration>
+                  <FormattedValue>true</FormattedValue>
+                  <FormatString>true</FormatString>
+                </Item>
+              </Items>
+            </Select>
+            <AutoExecute>false</AutoExecute>
+            <From>cubo_practicas</From>
+            <Filter>
+              <FilterItems>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members>
+                      <Member>
+                        <MemberUniqueName>[Dim Carrera].[Descripcion Facultad].&amp;[ARQUITECTURA]</MemberUniqueName>
+                      </Member>
+                    </Members>
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members>
+                      <Member>
+                        <MemberUniqueName>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA 2017]</MemberUniqueName>
+                      </Member>
+                      <Member>
+                        <MemberUniqueName>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA (Créditos)]</MemberUniqueName>
+                      </Member>
+                    </Members>
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+                <FilterItem>
+                  <HierarchyUniqueName>[Dim Docente].[Nombre Completo]</HierarchyUniqueName>
+                  <Condition xsi:type="EqualTo">
+                    <Members>
+                      <Member>
+                        <MemberUniqueName>[Dim Docente].[Nombre Completo].[All]</MemberUniqueName>
+                      </Member>
+                    </Members>
+                    <Parametrized>true</Parametrized>
+                  </Condition>
+                </FilterItem>
+              </FilterItems>
+            </Filter>
+            <Calculations />
+            <Aggregates />
+            <QueryProperties>
+              <IncludeMemberValue>true</IncludeMemberValue>
+            </QueryProperties>
+          </QuerySpecification>
+          <Query>
+            <Statement> SELECT NON EMPTY { [Measures].[Numero Horas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Areasconocimiento].[Area Conocimiento Descripcion].[Area Conocimiento Descripcion].ALLMEMBERS * [Dim Empresas].[Nombre Empresa].[Nombre Empresa].ALLMEMBERS * [Dim Areasconocimiento].[Subarea Conocimiento Descripcion].[Subarea Conocimiento Descripcion].ALLMEMBERS * [Dim Areasconocimiento].[Subarea Especifica Descripcion].[Subarea Especifica Descripcion].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Alumno].[Estudiante].[Estudiante].ALLMEMBERS * [Sk Tiempofin].[Fecha].[Fecha].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS * [Dim Alumno].[Identificacion].[Identificacion].ALLMEMBERS * [Sk Tiempoinicio].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempoinicio].[Jerarquía].[Nombre Mes].ALLMEMBERS * [Sk Tiempofin].[Jerarquía].[Nombre Mes].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimDocenteNombreCompleto, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas]))) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+            <ParameterDefinitions>
+              <ParameterDefinition>
+                <Name>DimCarreraDescripcionFacultad</Name>
+                <DefaultValues>
+                  <DefaultValue>[Dim Carrera].[Descripcion Facultad].&amp;[ARQUITECTURA]</DefaultValue>
+                </DefaultValues>
+                <Caption>Descripcion Facultad</Caption>
+                <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM [cubo_practicas]</Statement>
+                  <ParameterizedStatement>
+                    <ReferencedParameters />
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimCarreraDescripcionCarrera</Name>
+                <DefaultValues>
+                  <DefaultValue>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA 2017]</DefaultValue>
+                  <DefaultValue>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA (Créditos)]</DefaultValue>
+                </DefaultValues>
+                <Caption>Descripcion Carrera</Caption>
+                <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimCarreraDescripcionFacultad</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+              <ParameterDefinition>
+                <Name>DimDocenteNombreCompleto</Name>
+                <DefaultValues>
+                  <DefaultValue>[Dim Docente].[Nombre Completo].[All]</DefaultValue>
+                </DefaultValues>
+                <Caption>Nombre Completo</Caption>
+                <HierarchyUniqueName>[Dim Docente].[Nombre Completo]</HierarchyUniqueName>
+                <ParameterValuesQuery>
+                  <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Docente].[Nombre Completo].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas]))</Statement>
+                  <ParameterizedStatement>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Docente].[Nombre Completo].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Docente].[Nombre Completo].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas]))</Statement>
+                    <ReferencedParameters>
+                      <ReferencedParameter>
+                        <Name>DimCarreraDescripcionFacultad</Name>
+                      </ReferencedParameter>
+                      <ReferencedParameter>
+                        <Name>DimCarreraDescripcionCarrera</Name>
+                      </ReferencedParameter>
+                    </ReferencedParameters>
+                  </ParameterizedStatement>
+                </ParameterValuesQuery>
+                <MultipleValues>true</MultipleValues>
+              </ParameterDefinition>
+            </ParameterDefinitions>
+          </Query>
+        </QueryDefinition>
+      </rd:DesignerState>
+    </Query>
+    <Fields>
+      <Field Name="Descripcion_Facultad">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Facultad].[Descripcion Facultad]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion_Carrera">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrera].[Descripcion Carrera]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Descripcion_Carrerasenesyt">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Area_Conocimiento_Descripcion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Areasconocimiento].[Area Conocimiento Descripcion].[Area Conocimiento Descripcion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Empresa">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Empresas].[Nombre Empresa].[Nombre Empresa]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Subarea_Conocimiento_Descripcion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Areasconocimiento].[Subarea Conocimiento Descripcion].[Subarea Conocimiento Descripcion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Subarea_Especifica_Descripcion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Areasconocimiento].[Subarea Especifica Descripcion].[Subarea Especifica Descripcion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Completo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Nombre Completo].[Nombre Completo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Sexo_Completo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Sexo Completo].[Sexo Completo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Estudiante">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Estudiante].[Estudiante]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fecha">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Fecha].[Fecha]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Sexo">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Identificacion">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Identificacion].[Identificacion]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fecha2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Fecha].[Fecha]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Semestre">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Semestre]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Trimestre">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Trimestre]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Año2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Año]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Semestre2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Semestre]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Trimestre2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Trimestre]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre_Mes2">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Nombre Mes]" /&gt;</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Numero_Horas">
+        <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Numero Horas]" /&gt;</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
