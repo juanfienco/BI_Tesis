@@ -187,6 +187,15 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_cantidad_estudiantes_practicas_fac_carrera_sexo</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
                 <Top>1.75535cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>

@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="537"
-  DTS:VersionGUID="{A378ACA7-C6C9-49C0-89CB-67CA27308956}">
+  DTS:VersionBuild="538"
+  DTS:VersionGUID="{D3229995-CD2C-4FB9-8A47-6CB126C36012}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24136,7 +24136,7 @@ from xolatnew_2.mod_xolat.dat_contenido_programa_analitico order by 1');</proper
           PanelSize="905.6,65.6"
           Size="905.6,108.8"
           Id="Package\Limpieza BD"
-          TopLeft="802.841263701728,586.595704454119" />
+          TopLeft="802.841263701728,585.830998561041" />
         <NodeLayout
           Size="136.8,41.6"
           Id="Package\Tablas para Materias\Leer alumno"
@@ -24662,18 +24662,18 @@ from xolatnew_2.mod_xolat.dat_contenido_programa_analitico order by 1');</proper
           TopLeft="2131.48881094865,852.592925113155" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="1254.03289422172,695.395704454119">
+          TopLeft="1254.03289422172,694.630998561041">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.3197471269792"
+              EndConnector="0,33.0844530200568"
               Start="0,0"
-              End="0,24.8197471269792">
+              End="0,25.5844530200568">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.8197471269792" />
+                    End="0,25.5844530200568" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -24761,40 +24761,6 @@ from xolatnew_2.mod_xolat.dat_contenido_programa_analitico order by 1');</proper
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="1581.46009411299,1084.93089704113">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="71.1676053717929,-22.5056187991202"
-              Start="0,0"
-              End="63.6676053717929,-22.5056187991202">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="31.5838026858964,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.5838026858964,0"
-                    Point2="35.5838026858964,0"
-                    Point3="35.5838026858964,-4" />
-                  <mssgle:LineSegment
-                    End="35.5838026858964,-18.5056187991202" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35.5838026858964,-18.5056187991202"
-                    Point2="35.5838026858964,-22.5056187991202"
-                    Point3="39.5838026858964,-22.5056187991202" />
-                  <mssgle:LineSegment
-                    End="63.6676053717929,-22.5056187991202" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="2131.48881094865,1163.79292511315">
           <EdgeLayout.Curve>
@@ -24820,6 +24786,40 @@ from xolatnew_2.mod_xolat.dat_contenido_programa_analitico order by 1');</proper
                     Point3="-26.0540593092772,289.963576935198" />
                   <mssgle:LineSegment
                     End="-47.3552744240906,289.963576935198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="1581.46009411299,1084.93089704113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.1676053717929,-22.5056187991202"
+              Start="0,0"
+              End="63.6676053717929,-22.5056187991202">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="31.5838026858964,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5838026858964,0"
+                    Point2="35.5838026858964,0"
+                    Point3="35.5838026858964,-4" />
+                  <mssgle:LineSegment
+                    End="35.5838026858964,-18.5056187991202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5838026858964,-18.5056187991202"
+                    Point2="35.5838026858964,-22.5056187991202"
+                    Point3="39.5838026858964,-22.5056187991202" />
+                  <mssgle:LineSegment
+                    End="63.6676053717929,-22.5056187991202" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
