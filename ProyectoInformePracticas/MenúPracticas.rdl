@@ -47,7 +47,7 @@
                   <Actions>
                     <Action>
                       <Drillthrough>
-                        <ReportName>Reporte_nota_promedio_por_curso</ReportName>
+                        <ReportName>Reporte_Empresa_AreasConocimiento_Carrera</ReportName>
                       </Drillthrough>
                     </Action>
                   </Actions>
@@ -139,6 +139,15 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_cantidad_estudiante_tutores</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
                 <Top>2.70785cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>

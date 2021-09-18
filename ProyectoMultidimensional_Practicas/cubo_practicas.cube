@@ -1,4 +1,4 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4d6eac6e-16ef-44b6-b3fa-d6c5d6819b68" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="eb0dc05f-d3a5-4982-86a3-37ed6d33eb63" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>vista_practicas</ID>
   <Name>cubo_practicas</Name>
   <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
@@ -111,8 +111,8 @@
             </layoutobject>
             <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="7" sourceattachpoint="15" destattachpoint="20" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
               <point x="-2444" y="11852" />
-              <point x="-1636" y="11852" />
-              <point x="-1636" y="11624" />
+              <point x="-1100" y="11852" />
+              <point x="-1100" y="11624" />
               <point x="244" y="11624" />
             </connector>
           </ddscontrol>
@@ -131,8 +131,8 @@
             </layoutobject>
             <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="7" sourceattachpoint="41" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
               <point x="-2579" y="10256" />
-              <point x="-837" y="10256" />
-              <point x="-837" y="9974" />
+              <point x="-1168" y="10256" />
+              <point x="-1168" y="9974" />
               <point x="244" y="9974" />
             </connector>
           </ddscontrol>
@@ -191,8 +191,8 @@
             </layoutobject>
             <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="7" sourceattachpoint="11" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
               <point x="2334" y="8456" />
-              <point x="2334" y="8981" />
-              <point x="2188" y="8981" />
+              <point x="2334" y="8935" />
+              <point x="2188" y="8935" />
               <point x="2188" y="9415" />
             </connector>
           </ddscontrol>
@@ -211,8 +211,8 @@
             </layoutobject>
             <connector lineroutestyle="MSDDS.Rectilinear" sourceid="5" destid="7" sourceattachpoint="8" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
               <point x="2423" y="14853" />
-              <point x="2423" y="14433" />
-              <point x="2188" y="14433" />
+              <point x="2423" y="14344" />
+              <point x="2188" y="14344" />
               <point x="2188" y="13834" />
             </connector>
           </ddscontrol>
@@ -231,8 +231,8 @@
             </layoutobject>
             <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="7" sourceattachpoint="14" destattachpoint="21" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
               <point x="8019" y="11632" />
-              <point x="6249" y="11632" />
-              <point x="6249" y="11624" />
+              <point x="6076" y="11632" />
+              <point x="6076" y="11624" />
               <point x="4133" y="11624" />
             </connector>
           </ddscontrol>
@@ -275,277 +275,277 @@
   <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
   <State>Unprocessed</State>
   <Dimensions>
-    <Dimension dwd:design-time-name="b6b3d041-21fc-414b-b835-44bfb2984a62">
+    <Dimension dwd:design-time-name="403ea695-55cd-4a2a-bc9f-ac39c254cda4">
       <ID>Sk Tiempoinicio</ID>
       <Name>Sk Tiempoinicio</Name>
       <DimensionID>Dim Tiempo</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="ff45f8bb-a593-4850-a9ea-15da9ed67a77">
+        <Attribute dwd:design-time-name="7c6b2bb5-d948-4c23-b5a5-7b9c0d133ff6">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="83179946-cd37-489c-9d22-87c6724e3fd5">
+        <Attribute dwd:design-time-name="5b994255-b9de-44a0-a98f-1fcd3795d3cd">
           <AttributeID>Año</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="faa803e9-a65c-4023-8e6a-e0d26ade41a2">
+        <Attribute dwd:design-time-name="eae154b0-f77c-4056-8af3-a4cc0f98c40b">
           <AttributeID>Trimestre</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d48e1932-5303-4860-ae67-ec6d6790943a">
+        <Attribute dwd:design-time-name="1893dd5e-30d1-4299-bddf-af6e7348f5c2">
           <AttributeID>Semestre</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f7c7d5e7-c125-4a98-8e63-44000efc9097">
+        <Attribute dwd:design-time-name="0999e828-916f-46e1-bd2a-c7e644ff29b0">
           <AttributeID>Nombre Mes</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="c230fbd1-d6e8-4243-b7cf-767833d6ca5d">
+        <Attribute dwd:design-time-name="3fa8dd34-8bba-4d3b-8fbe-4d573b58f07d">
           <AttributeID>Nombre Mes Corto</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="2d6cb179-4c80-4a97-9104-b558b51e6946">
+        <Attribute dwd:design-time-name="d9ef8b80-5319-4edd-83a9-0b51671a97bd">
           <AttributeID>Fecha</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="b330209d-cae3-4003-8c3d-2998bd0082b7">
+        <Hierarchy dwd:design-time-name="611741e0-8662-4c71-8892-1a16a75a50c0">
           <HierarchyID>Jerarquía</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="32f82fae-c469-4ff6-b788-52720f284753">
+        <Hierarchy dwd:design-time-name="84d6a335-8f52-452b-9319-f64c6a27f8c1">
           <HierarchyID>Jerarquía 1</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="79f58809-9ae4-4b18-9115-63becb0cb52d">
+        <Hierarchy dwd:design-time-name="af8a3677-78c9-4fe5-83f3-92e46b60f805">
           <HierarchyID>Jerarquía 2</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="1b921b50-d603-4c71-bc25-88cd85ffc0f9">
+        <Hierarchy dwd:design-time-name="a7fd6c99-6ca6-42db-b5cd-10ccc8b530f9">
           <HierarchyID>Jerarquía 3</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="dcc192d8-89bc-49a8-8cf0-80544f761291">
+    <Dimension dwd:design-time-name="2653a64c-2860-4fba-ab64-b0f1a5db43b8">
       <ID>Sk Tiempofin</ID>
       <Name>Sk Tiempofin</Name>
       <DimensionID>Dim Tiempo</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="e562c1e9-ee13-47a2-bde7-1d3f831caf5c">
+        <Attribute dwd:design-time-name="8a17a08a-fba9-4b46-a2d5-bad5e6d31218">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="883e04c2-1f42-4309-ba27-3f3a6f4e2cf8">
+        <Attribute dwd:design-time-name="68074627-3ccb-4a5a-b0e6-a10ba23cf38f">
           <AttributeID>Año</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="5f375de7-fbbe-4598-8942-b46228357714">
+        <Attribute dwd:design-time-name="010c05ad-4ba0-4cfc-b1ec-9a6c6b92bc46">
           <AttributeID>Trimestre</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="89cf97cf-89fc-4564-b011-19abcb7997b1">
+        <Attribute dwd:design-time-name="55f7625d-cba2-4e7b-8667-32a4dfac3257">
           <AttributeID>Semestre</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="0ca4e30c-fea5-4a6d-92d9-4bef48bf6ad8">
+        <Attribute dwd:design-time-name="e2baf654-1655-44cb-a67c-25ae9831f232">
           <AttributeID>Nombre Mes</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="367a0fcb-0cbb-4826-8403-1b41da104653">
+        <Attribute dwd:design-time-name="feb6c5ea-0911-4bf7-94f2-588b58c8dfb6">
           <AttributeID>Nombre Mes Corto</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="42aa5899-a44d-4f29-98d6-c18f8d9e03b7">
+        <Attribute dwd:design-time-name="a19ad97c-4d6a-4c21-93c0-c313f4cf38ce">
           <AttributeID>Fecha</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="1a95202b-80c5-4267-8785-37d1e6bc3e68">
+        <Hierarchy dwd:design-time-name="895f65e3-1048-46b7-97fa-a229366435d5">
           <HierarchyID>Jerarquía</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="404b9c2d-a047-4686-8ec2-6b58c57173d0">
+        <Hierarchy dwd:design-time-name="93652669-6f36-40d9-8ee5-bb13823898eb">
           <HierarchyID>Jerarquía 1</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="acbd735a-eb8b-423c-8e88-8109a0508274">
+        <Hierarchy dwd:design-time-name="a887c2ec-ccd1-412d-829d-b25893fae66e">
           <HierarchyID>Jerarquía 2</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="26404141-3fb3-4c0d-858c-afc8ceb9de62">
+        <Hierarchy dwd:design-time-name="2ac10a75-d095-428f-a60e-7cd8b312a03a">
           <HierarchyID>Jerarquía 3</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="4a7dac83-402e-469c-b4f9-4ce8fd5634fa">
+    <Dimension dwd:design-time-name="482840e5-d285-476c-8b28-8178f61709d4">
       <ID>Dim Alumno</ID>
       <Name>Dim Alumno</Name>
       <DimensionID>Dim Alumno</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="42b7c72b-8bfe-4235-b97c-4c702699e466">
+        <Attribute dwd:design-time-name="abc182a4-7919-4307-9d9e-5f1c45318b33">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="a56c03ce-db4f-40fc-8003-620103fc11ca">
+        <Attribute dwd:design-time-name="5d4368e3-1703-470d-a734-870eb37e80d6">
           <AttributeID>Idalumno</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="3d12037c-1116-4173-9df7-e39f776c64f0">
+        <Attribute dwd:design-time-name="54bc0868-dff4-495d-ade9-c2d64ad00f9f">
           <AttributeID>Estudiante</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="b7d9cffe-f1c4-4e42-aedd-6039b79c02e9">
+        <Attribute dwd:design-time-name="70c815c6-d6e0-4f7a-a66f-2326e144cd23">
           <AttributeID>Sexo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d280080e-d073-4538-bddc-e16f1fd1ca4f">
+        <Attribute dwd:design-time-name="cda6095c-7df6-4322-b882-1c126c146771">
           <AttributeID>Tipo Alumno</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="044289f2-e064-4493-89e4-3d445b470c5c">
+        <Attribute dwd:design-time-name="e3a9426b-0037-4f57-b8c4-0d97465b0938">
           <AttributeID>Identificacion</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="c3d2f1de-41a2-40b0-a47d-0022b607bcb0">
+        <Hierarchy dwd:design-time-name="3151b74a-833d-45aa-aacd-7fb94267de88">
           <HierarchyID>Jerarquía 1</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="e2b4a3d1-7884-42eb-bd72-f4237581177d">
+        <Hierarchy dwd:design-time-name="4e7b9f33-500c-4805-83af-e893f908159c">
           <HierarchyID>Jerarquía 2</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="59920bf0-c3ae-4ba4-b8c1-ae8fd013b384">
+        <Hierarchy dwd:design-time-name="f5c913a3-333c-4bce-b715-f81bb129cbd3">
           <HierarchyID>Jerarquía 3</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="6551e61e-615c-4fbe-a275-f6400694fe52">
+        <Hierarchy dwd:design-time-name="4532f08b-e5bc-4e6d-a5f4-735b10960db7">
           <HierarchyID>Jerarquía 4</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="dc65ad71-d810-42da-a9ea-18e38426f660">
+    <Dimension dwd:design-time-name="5b5e3e0d-e347-48dd-802a-0d4515827b9c">
       <ID>Dim Carrera</ID>
       <Name>Dim Carrera</Name>
       <DimensionID>Dim Carrera</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="3a66656a-84d1-4c43-93c2-cc3ee0d76de9">
+        <Attribute dwd:design-time-name="ad735e8a-3b46-4ad3-a01c-a2b3705990c4">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="0ca4f29d-3696-46e6-ba8c-a3325ace4bee">
+        <Attribute dwd:design-time-name="551bdd37-9db0-4c05-a44d-ac9225c946fe">
           <AttributeID>Idcarrera</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="bbee7a0f-e01f-4aa4-b6c2-9ef2bedbd494">
+        <Attribute dwd:design-time-name="3e4208ba-e3ba-4b0a-b508-f19ecfbd6dfd">
           <AttributeID>Descripcion Carrera</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="46bfed07-1982-424f-89f4-da65e1c81512">
+        <Attribute dwd:design-time-name="465c15f6-a8a0-4ae9-ac53-4a43d693328c">
           <AttributeID>Descripcion Carrerasenesyt</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="80c8e6f7-e0a3-496b-ab44-913028b9809d">
+        <Attribute dwd:design-time-name="4dd116fa-6f10-4cf3-9ee8-94a80f99c1a0">
           <AttributeID>Descripcion Facultad</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="9cc98e3a-a825-4fc6-90ab-0ec451990f00">
+        <Hierarchy dwd:design-time-name="316b9b04-a749-4dc7-a228-235330700fbf">
           <HierarchyID>Jerarquía</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="947c0633-1ff9-473d-9a9b-571d4f0d2542">
+        <Hierarchy dwd:design-time-name="c1adcc3f-86f5-4166-8661-8193abb09413">
           <HierarchyID>Jerarquía 1</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="8c33bd0d-ff07-4295-bac2-03e4d2ddacd7">
+    <Dimension dwd:design-time-name="bfe05162-0b17-4335-9b24-53c6e8ec2f54">
       <ID>Dim Areasconocimiento</ID>
       <Name>Dim Areasconocimiento</Name>
       <DimensionID>Dim Areasconocimiento</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="49198fa0-7975-44ca-a9da-deeb97a5fa9a">
+        <Attribute dwd:design-time-name="6d6dfdbd-5fc2-4d14-a268-09d0febe37b4">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="54a74ffe-ea2f-430f-befb-3e313c64551f">
+        <Attribute dwd:design-time-name="706cb9ba-0c38-4c94-b13f-4b8289572064">
           <AttributeID>Idareaconocimiento</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="fafd6180-26e5-468d-9a71-0cd74b449939">
+        <Attribute dwd:design-time-name="155fa515-9d70-475e-8306-30f07867d5e9">
           <AttributeID>Area Conocimiento Codigo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="2bc20cf6-b696-4fab-a56d-8f8bf4ca6a89">
+        <Attribute dwd:design-time-name="33342712-a58b-4d8b-935a-00354b295648">
           <AttributeID>Area Conocimiento Descripcion</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d650cedf-8334-4e6f-89d3-6f7a897e6153">
+        <Attribute dwd:design-time-name="3bbd7dd2-550a-4266-9c9c-efb85b86a0f9">
           <AttributeID>Idsubareaconocimiento</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="634327ec-5054-4331-9700-ed26ca4dd5f0">
+        <Attribute dwd:design-time-name="07935789-f82c-4974-ad52-6a5f7224cdb6">
           <AttributeID>Subarea Conocimiento Codigo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="7b157b07-0fa4-4340-b8c1-3f4b6a59dbcd">
+        <Attribute dwd:design-time-name="a0348ccd-7215-4ec5-9000-87acbb4062d2">
           <AttributeID>Subarea Conocimiento Descripcion</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f4e7bac2-acc8-408c-b554-c4075204bcb3">
+        <Attribute dwd:design-time-name="007b4231-c276-43f5-96c7-518482394fb1">
           <AttributeID>Idsubareaespecifica</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="22e9c205-82d9-4212-aa18-319a535e0d49">
+        <Attribute dwd:design-time-name="c1c6a90b-8fc5-43c0-b8ef-621568b67182">
           <AttributeID>Subarea Especifica Codigo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="7e1000e1-904b-4f10-9feb-a571ae9c397d">
+        <Attribute dwd:design-time-name="3187461c-8a39-48d4-96fb-b9e32e4a6247">
           <AttributeID>Subarea Especifica Descripcion</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="d9d7a380-eba9-4e38-86fd-79d7f4d2e7ff">
+        <Hierarchy dwd:design-time-name="d7c449cc-e54d-46e0-9566-163bba3c265f">
           <HierarchyID>Jerarquía</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="e652bb82-fe56-4f74-8a57-fe8e341f5c41">
+    <Dimension dwd:design-time-name="08328612-6577-45c1-a34b-a7ad200329c6">
       <ID>Dim Empresas</ID>
       <Name>Dim Empresas</Name>
       <DimensionID>Dim Empresas</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="69e3a3f7-5c07-4497-9a52-a9eb7e6b4b53">
+        <Attribute dwd:design-time-name="312916c5-d8f2-421c-b8d6-44f701b2dfe6">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="83cb6d73-39fb-4592-9f85-60771dbf983f">
+        <Attribute dwd:design-time-name="68b09ade-07a7-413b-8d15-b97bef9214f2">
           <AttributeID>Idempresa</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="247fb633-767d-46bf-ad75-b5653f4a8bce">
+        <Attribute dwd:design-time-name="93586ba5-ef59-4eb2-b689-fe1cc70e52f3">
           <AttributeID>Nombre Empresa</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="96b3db8f-6859-4038-ad1c-b41bd7c3cb31">
+    <Dimension dwd:design-time-name="d9e7e0b1-c64d-44ff-bc33-3e3e137ed57c">
       <ID>Dim Docente</ID>
       <Name>Dim Docente</Name>
       <DimensionID>Dim Docente</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="ea603a38-91d3-4218-8deb-2c80098cb227">
+        <Attribute dwd:design-time-name="dc05781b-8e6e-44be-8ce4-b5bee9daa89d">
           <AttributeID>Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="1ab3e73c-42ed-4d02-98b6-af40d60800ea">
+        <Attribute dwd:design-time-name="d193644d-9ef6-4456-b084-7897255924e7">
           <AttributeID>Nombre</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="6c139e19-2900-48dc-8c22-ef65f7c21243">
+        <Attribute dwd:design-time-name="6cd9fa3c-4396-4bb2-be2e-a7ecd6b7ea70">
           <AttributeID>Apellidos</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="0feeecad-2138-454f-a0ea-68e476012086">
+        <Attribute dwd:design-time-name="a0240352-a985-4fd6-bfba-5368f0b9bd14">
           <AttributeID>Idprofesor</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="774ed1e6-d4e4-4b1b-a68f-320a9dd23b6c">
+        <Attribute dwd:design-time-name="11e3965d-30cb-4628-8f6d-6c6c62f37c54">
           <AttributeID>Identificacion</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="502a3905-3f2a-4ecd-834f-9eb28ef92435">
+        <Attribute dwd:design-time-name="8fa9fa05-7540-45ce-a68a-2d320a45fcdc">
           <AttributeID>Fecha Nacimiento</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="c4c4c475-93e5-44c2-83a7-355ea4c24ff5">
+        <Attribute dwd:design-time-name="121560f3-c6cc-4d4e-b5bf-a8d217666801">
           <AttributeID>Categoria</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="feaca806-6d4a-4bce-a5a8-62c42c0a815e">
+        <Attribute dwd:design-time-name="c8606134-7c8f-4279-978e-6bfcf9d9ef30">
           <AttributeID>Colectivo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f0cf175a-73ec-4672-bacf-9ba87a849829">
+        <Attribute dwd:design-time-name="370313cf-306d-49d0-8daf-756d06e71c02">
           <AttributeID>Nivel Formacion</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d6c0136d-0abe-41b6-b0e8-ef3b0d83e7ad">
+        <Attribute dwd:design-time-name="743d558b-bba6-4638-872a-177b79da7255">
           <AttributeID>Estado Civil</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="50d2f8af-61c5-4578-b5d5-74cfa975e546">
+        <Attribute dwd:design-time-name="8173d880-e987-4b1c-b43e-c4f9940d20fe">
           <AttributeID>Facultad</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="35c7bea3-f8a1-441d-b72b-25c92e379fde">
+        <Attribute dwd:design-time-name="20d63c23-0134-4f41-aaa5-466e12cfbdaf">
           <AttributeID>Sexo Completo</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="e4cba264-17ee-4098-a4b6-2e024e310bf4">
+        <Attribute dwd:design-time-name="c01d284f-2b4e-4c87-be76-8898cea51784">
           <AttributeID>Nombre Completo</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="2013e1c5-7601-4e9f-95a1-0e2cf7a50374">
+        <Hierarchy dwd:design-time-name="ad184ab8-c3f9-4c2b-8267-6a0d7e333b9d">
           <HierarchyID>Jerarquía</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="f6c1f724-a5f5-4c14-927a-9f26486a9c62">
+        <Hierarchy dwd:design-time-name="bb33aaf7-80d0-4215-989b-e478a38dcd29">
           <HierarchyID>Jerarquía 1</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="a5db88b4-bf40-4883-aa84-eb3aee3fd7d9">
+        <Hierarchy dwd:design-time-name="8966fe4d-4d24-4c9c-8f5f-0ee9552f7c42">
           <HierarchyID>Jerarquía 2</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
   </Dimensions>
   <MeasureGroups>
-    <MeasureGroup dwd:design-time-name="011e72eb-4b23-4461-a0d8-6ab1fcfdcb3c">
+    <MeasureGroup dwd:design-time-name="9b08003a-7e4f-4fad-af84-8e8f87e085f8">
       <ID>Fact Practicas</ID>
       <Name>Fact Practicas</Name>
       <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
@@ -553,26 +553,26 @@
       <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
       <State>Unprocessed</State>
       <Measures>
-        <Measure dwd:design-time-name="320ab655-c250-4267-9b29-3728ebc0c2f9">
+        <Measure dwd:design-time-name="b50392df-eb06-4499-aa57-e214dbbff99a">
           <ID>Numero Horas</ID>
           <Name>Numero Horas</Name>
-          <Source dwd:design-time-name="abf35791-2ff7-4d07-a981-c29deae8eda1">
+          <Source dwd:design-time-name="230c2bb1-5c65-45df-94b1-ef5f3c0df365">
             <DataType>Double</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="cab997de-0e40-47ef-9caa-297588ab40b8">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="a8b2d9ea-139f-4f0e-8dbb-fb22b2f5b6dc">
               <TableID>dbo_Fact_practicas</TableID>
               <ColumnID>numero_horas</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="03756814-2126-4d3b-a73f-1f79b0dc4f07">
+        <Measure dwd:design-time-name="039093d6-d811-4191-a236-0fd0b250283a">
           <ID>Recuento Fact Practicas</ID>
           <Name>Recuento Fact Practicas</Name>
-          <AggregateFunction>Count</AggregateFunction>
-          <Source dwd:design-time-name="53b2b93c-3222-43ba-bb90-ad395049b13b">
-            <DataType>Integer</DataType>
-            <DataSize>4</DataSize>
-            <Source xsi:type="RowBinding" dwd:design-time-name="d74ac704-784d-4382-a9fc-0ab687579727">
+          <AggregateFunction>DistinctCount</AggregateFunction>
+          <Source dwd:design-time-name="e066986b-8c9f-4c85-8a2d-e8bcc9ab6c85">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d9f1df52-3175-4e84-832f-6bf13adf8fd4">
               <TableID>dbo_Fact_practicas</TableID>
+              <ColumnID>sk_alumno</ColumnID>
             </Source>
           </Source>
         </Measure>
@@ -580,16 +580,16 @@
       <StorageMode>Molap</StorageMode>
       <ProcessingMode>Regular</ProcessingMode>
       <Dimensions>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="8c5b1f62-03b3-45aa-933a-07b57bb1269b">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="ce47a60c-2f8a-429f-a82c-1bc966bbf191">
           <CubeDimensionID>Sk Tiempoinicio</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="df849ded-d490-4609-aaa9-8622cb48eff5">
+            <Attribute dwd:design-time-name="c867baee-8fd7-4584-b92f-cb3d3839ee58">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="85d21476-bc74-4a6e-b1cc-66519a694b02">
+                <KeyColumn dwd:design-time-name="808b9eea-cf1d-473b-aea6-4cba2c452ad9">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="cc4a3ea7-531c-4397-8a5c-ec35386502f6">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9b8ec0f5-6ce6-4882-b4ad-73c9c87a3b07">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_tiempoinicio</ColumnID>
                   </Source>
@@ -599,16 +599,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="9ca78458-05b8-4259-86ae-d27ebe60d506">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="bc87de6c-82d3-49d4-bf3d-c70053b0effa">
           <CubeDimensionID>Sk Tiempofin</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="064b40c7-d1b7-4ec7-a129-a9230aee411b">
+            <Attribute dwd:design-time-name="d015af1d-8e4d-4ba4-ad9b-d660b97f2335">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="744b9c0e-a2e2-4fbf-9fb2-a2a9334b087a">
+                <KeyColumn dwd:design-time-name="487fffc3-cb94-45d5-a7fc-8c57bf07091d">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2ebc450b-9abd-4e9a-a526-0929049f28e4">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="581b55db-3461-4b92-9cae-6f59cd881065">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_tiempofin</ColumnID>
                   </Source>
@@ -618,16 +618,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="472e263b-3e0f-48af-a198-805099383b3f">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="be6ecf53-33bf-4c8d-a116-bc62ea5c7233">
           <CubeDimensionID>Dim Alumno</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="7831f7e3-044e-453f-a7c4-8e6074597797">
+            <Attribute dwd:design-time-name="f760e05b-38c4-4ff8-8baf-97b12f106762">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="a50c32c8-6ebf-4ae0-8d1c-7b0fa8e7e1b4">
+                <KeyColumn dwd:design-time-name="44070900-f3e6-46c9-8e6d-1897bd8e5259">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="730df6fa-8697-4629-9786-85f30346e075">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="5e92677a-4028-4108-b891-03491975b15d">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_alumno</ColumnID>
                   </Source>
@@ -637,16 +637,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="881f5e64-fdc9-4ebc-87c5-8d0df6433f2f">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="5dd8aa28-be66-44e0-8992-df3d84120501">
           <CubeDimensionID>Dim Carrera</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="abc36749-3403-4eb4-aed7-e7d2ea417d94">
+            <Attribute dwd:design-time-name="f58d86b2-7d12-480b-843c-1d4d56f2284f">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="5485ab77-621a-40b9-89a1-1a9bef1e73ef">
+                <KeyColumn dwd:design-time-name="24ef6d89-e2e9-467c-9774-79628b6812a7">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="dd03891b-bbfa-4753-a7b9-4e174410f6b0">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0895c85f-0034-4f9d-9555-d60c069a9fb7">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_carrera</ColumnID>
                   </Source>
@@ -656,16 +656,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="88e36055-81f3-4ed8-bdbd-4d0053e6769e">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="0de33a82-16b3-4315-9944-348d1ce16962">
           <CubeDimensionID>Dim Areasconocimiento</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="ab843486-9ed4-4181-8565-903fceefbe73">
+            <Attribute dwd:design-time-name="36094f4f-5a07-4b5a-940b-9be4b36457e8">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="7aa48a82-43f7-4656-add2-4e0d437d1b67">
+                <KeyColumn dwd:design-time-name="28e520c4-f115-4c1f-b295-7d63979babd0">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="2e6ce41e-4b9d-4bb6-a26f-e2fe3108b35a">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0d5e1af2-ff4c-4975-b517-29b407252aef">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_areaconocimiento</ColumnID>
                   </Source>
@@ -675,16 +675,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="43e91365-7bd5-4dc4-8a9f-4effedb5c5ea">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="2ce8746e-5069-4fa3-b84b-bd0b938edd26">
           <CubeDimensionID>Dim Empresas</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="54e8fdcb-b398-4a10-ad62-86bde7b253fe">
+            <Attribute dwd:design-time-name="bb101b50-9996-4b5b-beee-f692b5f59981">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="9b383903-7546-4d79-b677-0cc406a91da2">
+                <KeyColumn dwd:design-time-name="77a1efcc-527b-4d54-b27a-e93581ee9238">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="c36452a2-2dcc-49b1-a07e-bbb3fbde5854">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3c236c9a-03b7-4503-9e9d-bbb6a94e8683">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_empresa</ColumnID>
                   </Source>
@@ -694,16 +694,16 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="526bf3f0-6cc5-4266-8076-f296a5132509">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="27898ee8-9361-4158-9ce2-5d578848e95d">
           <CubeDimensionID>Dim Docente</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="572ddd08-e56c-4f1f-85a9-e45a020a148e">
+            <Attribute dwd:design-time-name="2a0abe60-9d53-4146-ab0d-e85c7acbddc8">
               <AttributeID>Id</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="56eb2121-2cf9-4033-86a7-25fa808d6ea2">
+                <KeyColumn dwd:design-time-name="7bc1caca-38b6-436d-ac1a-cd9d6ed7e38f">
                   <DataType>Double</DataType>
                   <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="435c247d-067f-45db-bc9b-7a55c9863118">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="bf6b78cc-4d1a-4515-ad2f-67364c1ecb49">
                     <TableID>dbo_Fact_practicas</TableID>
                     <ColumnID>sk_docente</ColumnID>
                   </Source>
@@ -717,7 +717,7 @@
       <Partitions />
     </MeasureGroup>
   </MeasureGroups>
-  <Source dwd:design-time-name="8f898547-537d-40d1-a839-17d0db42a981">
+  <Source dwd:design-time-name="26daf227-2fc1-40e1-8a44-f181a960977a">
     <DataSourceViewID>vista_practicas</DataSourceViewID>
   </Source>
 </Cube>

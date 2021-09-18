@@ -1,19 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="Dw_Practicas">
+    <DataSource Name="DataSource1">
       <DataSourceReference>Dw_Practicas</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>5cb015e3-d34d-4792-95fb-52381ffd0793</rd:DataSourceID>
+      <rd:DataSourceID>a0de86ca-65bd-4884-a172-3751b1c207de</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>Dw_Practicas</DataSourceName>
-        <CommandText> SELECT NON EMPTY { [Measures].[Numero Horas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Docente].[Identificacion].[Identificacion].ALLMEMBERS * [Dim Empresas].[Nombre Empresa].[Nombre Empresa].ALLMEMBERS * [Sk Tiempofin].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempoinicio].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Sk Tiempoinicio].[Jerarquía].[Trimestre].ALLMEMBERS * [Sk Tiempoinicio].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempofin].[Jerarquía].[Nombre Mes].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_practicas] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <DataSourceName>DataSource1</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="DimCarreraDescripcionFacultad">
+            <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimCarreraDescripcionCarrera">
+            <Value>=Parameters!DimCarreraDescripcionCarrera.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText> SELECT NON EMPTY { [Measures].[Recuento Fact Practicas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Docente].[Identificacion].[Identificacion].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -56,6 +64,17 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>Dim Docente</DimensionName>
+                      <HierarchyName>Identificacion</HierarchyName>
+                      <HierarchyUniqueName>[Dim Docente].[Identificacion]</HierarchyUniqueName>
+                      <LevelName>Identificacion</LevelName>
+                      <UniqueName>[Dim Docente].[Identificacion].[Identificacion]</UniqueName>
+                    </ID>
+                    <ItemCaption>Identificacion</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Docente</DimensionName>
                       <HierarchyName>Nombre Completo</HierarchyName>
                       <HierarchyUniqueName>[Dim Docente].[Nombre Completo]</HierarchyUniqueName>
                       <LevelName>Nombre Completo</LevelName>
@@ -77,142 +96,21 @@
                   </Item>
                   <Item>
                     <ID xsi:type="Level">
-                      <DimensionName>Dim Docente</DimensionName>
-                      <HierarchyName>Identificacion</HierarchyName>
-                      <HierarchyUniqueName>[Dim Docente].[Identificacion]</HierarchyUniqueName>
-                      <LevelName>Identificacion</LevelName>
-                      <UniqueName>[Dim Docente].[Identificacion].[Identificacion]</UniqueName>
+                      <DimensionName>Dim Alumno</DimensionName>
+                      <HierarchyName>Sexo</HierarchyName>
+                      <HierarchyUniqueName>[Dim Alumno].[Sexo]</HierarchyUniqueName>
+                      <LevelName>Sexo</LevelName>
+                      <UniqueName>[Dim Alumno].[Sexo].[Sexo]</UniqueName>
                     </ID>
-                    <ItemCaption>Identificacion</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Dim Empresas</DimensionName>
-                      <HierarchyName>Nombre Empresa</HierarchyName>
-                      <HierarchyUniqueName>[Dim Empresas].[Nombre Empresa]</HierarchyUniqueName>
-                      <LevelName>Nombre Empresa</LevelName>
-                      <UniqueName>[Dim Empresas].[Nombre Empresa].[Nombre Empresa]</UniqueName>
-                    </ID>
-                    <ItemCaption>Nombre Empresa</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempofin</DimensionName>
-                      <HierarchyName>Fecha</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempofin].[Fecha]</HierarchyUniqueName>
-                      <LevelName>Fecha</LevelName>
-                      <UniqueName>[Sk Tiempofin].[Fecha].[Fecha]</UniqueName>
-                    </ID>
-                    <ItemCaption>Fecha</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempoinicio</DimensionName>
-                      <HierarchyName>Nombre Mes</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempoinicio].[Nombre Mes]</HierarchyUniqueName>
-                      <LevelName>Nombre Mes</LevelName>
-                      <UniqueName>[Sk Tiempoinicio].[Nombre Mes].[Nombre Mes]</UniqueName>
-                    </ID>
-                    <ItemCaption>Nombre Mes</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempoinicio</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Año</LevelName>
-                      <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Año]</UniqueName>
-                    </ID>
-                    <ItemCaption>Año</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempoinicio</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Semestre</LevelName>
-                      <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Semestre]</UniqueName>
-                    </ID>
-                    <ItemCaption>Semestre</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempoinicio</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempoinicio].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Trimestre</LevelName>
-                      <UniqueName>[Sk Tiempoinicio].[Jerarquía].[Trimestre]</UniqueName>
-                    </ID>
-                    <ItemCaption>Trimestre</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempoinicio</DimensionName>
-                      <HierarchyName>Fecha</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempoinicio].[Fecha]</HierarchyUniqueName>
-                      <LevelName>Fecha</LevelName>
-                      <UniqueName>[Sk Tiempoinicio].[Fecha].[Fecha]</UniqueName>
-                    </ID>
-                    <ItemCaption>Fecha</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempofin</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Año</LevelName>
-                      <UniqueName>[Sk Tiempofin].[Jerarquía].[Año]</UniqueName>
-                    </ID>
-                    <ItemCaption>Año</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempofin</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Semestre</LevelName>
-                      <UniqueName>[Sk Tiempofin].[Jerarquía].[Semestre]</UniqueName>
-                    </ID>
-                    <ItemCaption>Semestre</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempofin</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Trimestre</LevelName>
-                      <UniqueName>[Sk Tiempofin].[Jerarquía].[Trimestre]</UniqueName>
-                    </ID>
-                    <ItemCaption>Trimestre</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>Sk Tiempofin</DimensionName>
-                      <HierarchyName>Jerarquía</HierarchyName>
-                      <HierarchyUniqueName>[Sk Tiempofin].[Jerarquía]</HierarchyUniqueName>
-                      <LevelName>Nombre Mes</LevelName>
-                      <UniqueName>[Sk Tiempofin].[Jerarquía].[Nombre Mes]</UniqueName>
-                    </ID>
-                    <ItemCaption>Nombre Mes</ItemCaption>
+                    <ItemCaption>Sexo</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
                     <ID xsi:type="Measure">
-                      <MeasureName>Numero Horas</MeasureName>
-                      <UniqueName>[Measures].[Numero Horas]</UniqueName>
+                      <MeasureName>Recuento Fact Practicas</MeasureName>
+                      <UniqueName>[Measures].[Recuento Fact Practicas]</UniqueName>
                     </ID>
-                    <ItemCaption>Numero Horas</ItemCaption>
+                    <ItemCaption>Recuento Fact Practicas</ItemCaption>
                     <BackColor>true</BackColor>
                     <ForeColor>true</ForeColor>
                     <FontFamily>true</FontFamily>
@@ -228,7 +126,22 @@
               <AutoExecute>false</AutoExecute>
               <From>cubo_practicas</From>
               <Filter>
-                <FilterItems />
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
               </Filter>
               <Calculations />
               <Aggregates />
@@ -237,8 +150,40 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Numero Horas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Docente].[Identificacion].[Identificacion].ALLMEMBERS * [Dim Empresas].[Nombre Empresa].[Nombre Empresa].ALLMEMBERS * [Sk Tiempofin].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempoinicio].[Nombre Mes].[Nombre Mes].ALLMEMBERS * [Sk Tiempoinicio].[Jerarquía].[Trimestre].ALLMEMBERS * [Sk Tiempoinicio].[Fecha].[Fecha].ALLMEMBERS * [Sk Tiempofin].[Jerarquía].[Nombre Mes].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM [cubo_practicas] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
-              <ParameterDefinitions />
+              <Statement> SELECT NON EMPTY { [Measures].[Recuento Fact Practicas] } ON COLUMNS, NON EMPTY { ([Dim Carrera].[Descripcion Facultad].[Descripcion Facultad].ALLMEMBERS * [Dim Carrera].[Descripcion Carrera].[Descripcion Carrera].ALLMEMBERS * [Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt].ALLMEMBERS * [Dim Docente].[Identificacion].[Identificacion].ALLMEMBERS * [Dim Docente].[Nombre Completo].[Nombre Completo].ALLMEMBERS * [Dim Docente].[Sexo Completo].[Sexo Completo].ALLMEMBERS * [Dim Alumno].[Sexo].[Sexo].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>DimCarreraDescripcionFacultad</Name>
+                  <DefaultValues />
+                  <Caption>Descripcion Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM [cubo_practicas]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimCarreraDescripcionCarrera</Name>
+                  <DefaultValues />
+                  <Caption>Descripcion Carrera</Caption>
+                  <HierarchyUniqueName>[Dim Carrera].[Descripcion Carrera]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimCarreraDescripcionFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_practicas])</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimCarreraDescripcionFacultad</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
@@ -256,6 +201,10 @@
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Carrera].[Descripcion Carrerasenesyt].[Descripcion Carrerasenesyt]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Identificacion">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Identificacion].[Identificacion]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Nombre_Completo">
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Nombre Completo].[Nombre Completo]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -264,63 +213,19 @@
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Sexo Completo].[Sexo Completo]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Identificacion">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Docente].[Identificacion].[Identificacion]" /&gt;</DataField>
+        <Field Name="Sexo">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Alumno].[Sexo].[Sexo]" /&gt;</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Nombre_Empresa">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Empresas].[Nombre Empresa].[Nombre Empresa]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Fecha">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Fecha].[Fecha]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Año">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Año]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Nombre_Mes">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Nombre Mes].[Nombre Mes]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Semestre">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Semestre]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Trimestre">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Jerarquía].[Trimestre]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Fecha2">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempoinicio].[Fecha].[Fecha]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Año2">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Año]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Semestre2">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Semestre]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Trimestre2">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Trimestre]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Nombre_Mes2">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Sk Tiempofin].[Jerarquía].[Nombre Mes]" /&gt;</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Numero_Horas">
-          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Numero Horas]" /&gt;</DataField>
+        <Field Name="Recuento_Fact_Practicas">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Recuento Fact Practicas]" /&gt;</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
     <DataSet Name="DimCarreraDescripcionFacultad">
       <Query>
-        <DataSourceName>Dw_Practicas</DataSourceName>
+        <DataSourceName>DataSource1</DataSourceName>
         <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Carrera].[Descripcion Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Carrera].[Descripcion Facultad].ALLMEMBERS ON ROWS FROM [cubo_practicas]</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
@@ -394,7 +299,7 @@
     </DataSet>
     <DataSet Name="DimCarreraDescripcionCarrera">
       <Query>
-        <DataSourceName>Dw_Practicas</DataSourceName>
+        <DataSourceName>DataSource1</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="DimCarreraDescripcionFacultad">
             <Value>=Parameters!DimCarreraDescripcionFacultad.Value</Value>
@@ -448,9 +353,7 @@
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues>
-                    <DefaultValue>[Dim Carrera].[Descripcion Facultad].&amp;[ARQUITECTURA]</DefaultValue>
-                  </DefaultValues>
+                  <DefaultValues />
                   <Caption>Descripcion Facultad</Caption>
                   <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
                   <ParameterValuesQuery>
@@ -498,7 +401,7 @@
                 <TablixCornerRow>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox26">
+                      <Textbox Name="Textbox20">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -507,14 +410,15 @@
                               <TextRun>
                                 <Value>Facultad</Value>
                                 <Style>
-                                  <FontFamily>Arial</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox26</rd:DefaultName>
+                        <rd:DefaultName>Textbox20</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -526,11 +430,12 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <RowSpan>2</RowSpan>
                     </CellContents>
                   </TablixCornerCell>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox22">
+                      <Textbox Name="Textbox9">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -540,13 +445,15 @@
                                 <Value>Carrera</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox22</rd:DefaultName>
+                        <rd:DefaultName>Textbox8</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -558,27 +465,30 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <RowSpan>2</RowSpan>
                     </CellContents>
                   </TablixCornerCell>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox24">
+                      <Textbox Name="Textbox13">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Tutor</Value>
+                                <Value>Identificación</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox24</rd:DefaultName>
+                        <rd:DefaultName>Textbox12</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -590,27 +500,29 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <RowSpan>2</RowSpan>
                     </CellContents>
                   </TablixCornerCell>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox62">
+                      <Textbox Name="Textbox23">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Nombre Empresa</Value>
+                                <Value>Docente Tutor</Value>
                                 <Style>
-                                  <FontFamily>Arial</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox62</rd:DefaultName>
+                        <rd:DefaultName>Textbox23</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -622,104 +534,49 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <RowSpan>2</RowSpan>
                     </CellContents>
                   </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox58">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Fecha Inicio</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox58</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
-                  <TablixCornerCell>
-                    <CellContents>
-                      <Textbox Name="Textbox60">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Fecha FIn</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox60</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixCornerCell>
+                </TablixCornerRow>
+                <TablixCornerRow>
+                  <TablixCornerCell />
+                  <TablixCornerCell />
+                  <TablixCornerCell />
+                  <TablixCornerCell />
                 </TablixCornerRow>
               </TablixCornerRows>
             </TablixCorner>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.40216in</Width>
+                  <Width>3.46067cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.79569cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Numero_Horas">
+                        <Textbox Name="Recuento_Fact_Practicas">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Count(Fields!Numero_Horas.Value)</Value>
+                                  <Value>=Sum(Fields!Recuento_Fact_Practicas.Value)</Value>
                                   <Style>
-                                    <FontFamily>Arial</FontFamily>
+                                    <Format>0;(0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Numero_Horas</rd:DefaultName>
+                          <rd:DefaultName>Recuento_Fact_Practicas</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -741,25 +598,29 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.25in</Size>
+                    <Size>0.6cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox55">
+                      <Textbox Name="Textbox24">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Cantidad estudiantes</Value>
+                                <Value>Estudiantes</Value>
                                 <Style>
                                   <FontFamily>Arial</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox55</rd:DefaultName>
+                        <rd:DefaultName>Textbox24</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -774,7 +635,54 @@
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
-                    <TablixMember />
+                    <TablixMember>
+                      <Group Name="Sexo_estudiante">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Sexo.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Sexo_Completo.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixHeader>
+                        <Size>0.6cm</Size>
+                        <CellContents>
+                          <Textbox Name="Sexo">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!Sexo.Value</Value>
+                                    <Style>
+                                      <FontSize>11pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Sexo</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
@@ -793,7 +701,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.06883in</Size>
+                    <Size>5.7614cm</Size>
                     <CellContents>
                       <Textbox Name="Descripcion_Facultad">
                         <CanGrow>true</CanGrow>
@@ -803,9 +711,7 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>=Fields!Descripcion_Facultad.Value</Value>
-                                <Style>
-                                  <FontFamily>Arial</FontFamily>
-                                </Style>
+                                <Style />
                               </TextRun>
                             </TextRuns>
                             <Style />
@@ -838,7 +744,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.22716in</Size>
+                        <Size>6.06816cm</Size>
                         <CellContents>
                           <Textbox Name="Descripcion_Carrera">
                             <CanGrow>true</CanGrow>
@@ -872,7 +778,7 @@
                       </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="Tutor">
+                          <Group Name="Nombre_Completo">
                             <GroupExpressions>
                               <GroupExpression>=Fields!Nombre_Completo.Value</GroupExpression>
                             </GroupExpressions>
@@ -883,16 +789,16 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>2.36883in</Size>
+                            <Size>2.65637cm</Size>
                             <CellContents>
-                              <Textbox Name="Nombre_Completo">
+                              <Textbox Name="Identificacion">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Nombre_Completo.Value</Value>
+                                        <Value>=Fields!Identificacion.Value</Value>
                                         <Style>
                                           <FontFamily>Arial</FontFamily>
                                         </Style>
@@ -901,7 +807,7 @@
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Nombre_Completo</rd:DefaultName>
+                                <rd:DefaultName>Identificacion</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -918,16 +824,16 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>2.69383in</Size>
+                                <Size>7.75536cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Nombre_Empresa">
+                                  <Textbox Name="Nombre_Completo">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=Fields!Nombre_Empresa.Value</Value>
+                                            <Value>=Fields!Nombre_Completo.Value</Value>
                                             <Style>
                                               <FontFamily>Arial</FontFamily>
                                             </Style>
@@ -936,7 +842,7 @@
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Nombre_Empresa</rd:DefaultName>
+                                    <rd:DefaultName>Nombre_Completo</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
@@ -951,81 +857,7 @@
                                 </CellContents>
                               </TablixHeader>
                               <TablixMembers>
-                                <TablixMember>
-                                  <TablixHeader>
-                                    <Size>1.06883in</Size>
-                                    <CellContents>
-                                      <Textbox Name="Fecha21">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Fields!Fecha2.Value</Value>
-                                                <Style>
-                                                  <FontFamily>Arial</FontFamily>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style />
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Fecha21</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Color>LightGrey</Color>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixHeader>
-                                  <TablixMembers>
-                                    <TablixMember>
-                                      <TablixHeader>
-                                        <Size>0.85216in</Size>
-                                        <CellContents>
-                                          <Textbox Name="Fecha">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=Fields!Fecha.Value</Value>
-                                                    <Style>
-                                                      <FontFamily>Arial</FontFamily>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Fecha</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixHeader>
-                                      <TablixMembers>
-                                        <TablixMember />
-                                      </TablixMembers>
-                                    </TablixMember>
-                                  </TablixMembers>
-                                </TablixMember>
+                                <TablixMember />
                               </TablixMembers>
                             </TablixMember>
                           </TablixMembers>
@@ -1037,21 +869,21 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>4.62167in</Top>
-            <Left>0.3175cm</Left>
-            <Height>0.5in</Height>
-            <Width>11.6818in</Width>
+            <Top>9.8511cm</Top>
+            <Left>0.71143cm</Left>
+            <Height>1.99569cm</Height>
+            <Width>25.70195cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
-          <Chart Name="Chart1">
+          <Chart Name="Chart3">
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup">
+                  <Group Name="Chart3_CategoryGroup">
                     <GroupExpressions>
                       <GroupExpression>=Fields!Descripcion_Facultad.Value</GroupExpression>
                     </GroupExpressions>
@@ -1068,30 +900,32 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_SeriesGroup">
+                  <Group Name="Chart3_SeriesGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Descripcion_Carrerasenesyt.Value</GroupExpression>
+                      <GroupExpression>=Fields!Sexo.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Descripcion_Carrerasenesyt.Value</Value>
+                      <Value>=Fields!Sexo.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!Descripcion_Carrerasenesyt.Value</Label>
+                  <Label>=Fields!Sexo.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Numero_Horas">
+                <ChartSeries Name="Recuento_Fact_Practicas">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=(Count(Fields!Numero_Horas.Value))</Y>
+                        <Y>=Sum(Fields!Recuento_Fact_Practicas.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -1359,7 +1193,7 @@
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>8pt</FontSize>
                 </Style>
-                <Position>RightCenter</Position>
+                <Position>BottomCenter</Position>
                 <DockOutsideChartArea>true</DockOutsideChartArea>
                 <ChartLegendTitle>
                   <Caption />
@@ -1375,7 +1209,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Cantidad de visitas realizadas por Facultad y Carrera</Caption>
+                <Caption>Estudiantes por facultad</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -1405,10 +1239,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.06944in</Top>
-            <Left>0.125in</Left>
-            <Height>4.40833in</Height>
-            <Width>11.80865in</Width>
+            <Top>0.21167cm</Top>
+            <Left>0.5561cm</Left>
+            <Height>9.49832cm</Height>
+            <Width>29.19515cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1420,13 +1254,13 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>5.12167in</Height>
+        <Height>4.66409in</Height>
         <Style />
       </Body>
-      <Width>12.03602in</Width>
+      <Width>11.91102in</Width>
       <Page>
         <PageHeader>
-          <Height>1.22767cm</Height>
+          <Height>1.41872cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1437,7 +1271,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Listado de visitas realizadas por tutor a empresas</Value>
+                      <Value>Cantidad de estudiantes por tutores</Value>
                       <Style>
                         <FontSize>20pt</FontSize>
                       </Style>
@@ -1449,10 +1283,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox79</rd:DefaultName>
-              <Top>0.01762cm</Top>
-              <Left>4.90842cm</Left>
-              <Height>0.98128cm</Height>
-              <Width>21.00174cm</Width>
+              <Left>9.64624cm</Left>
+              <Height>1.12239cm</Height>
+              <Width>11.30741cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1465,8 +1298,9 @@
             </Textbox>
             <Line Name="Line2">
               <Top>1.12239cm</Top>
+              <Left>0.29282cm</Left>
               <Height>0cm</Height>
-              <Width>30.5715cm</Width>
+              <Width>29.45843cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1479,9 +1313,9 @@
               <Value>LOGOULEAMHORIZONTAL</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.03524cm</Top>
-              <Left>1.37111cm</Left>
+              <Left>0.39393cm</Left>
               <Height>0.92839cm</Height>
-              <Width>3.36092cm</Width>
+              <Width>2.81059cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1497,21 +1331,10 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.05833cm</Height>
+          <Height>1.143cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Line Name="Line1">
-              <Top>0.16919cm</Top>
-              <Left>0.3175cm</Left>
-              <Height>0cm</Height>
-              <Width>30.254cm</Width>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-              </Style>
-            </Line>
             <Textbox Name="UserID">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1529,11 +1352,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>UserID</rd:DefaultName>
-              <Top>0.27856cm</Top>
-              <Left>0.3175cm</Left>
+              <Top>0.32443cm</Top>
               <Height>0.6cm</Height>
               <Width>4.68952cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1561,11 +1382,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
-              <Top>0.28208cm</Top>
-              <Left>10.75575cm</Left>
+              <Top>0.32795cm</Top>
+              <Left>10.43825cm</Left>
               <Height>0.6cm</Height>
               <Width>5.44957cm</Width>
-              <ZIndex>2</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1591,11 +1412,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox46</rd:DefaultName>
-              <Top>0.20067cm</Top>
-              <Left>25.49943cm</Left>
+              <Top>0.24654cm</Top>
+              <Left>25.18193cm</Left>
               <Height>0.6cm</Height>
               <Width>1.23145cm</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1623,11 +1444,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.20067cm</Top>
-              <Left>26.76616cm</Left>
+              <Top>0.24654cm</Top>
+              <Left>26.44866cm</Left>
               <Height>0.6cm</Height>
               <Width>1.14164cm</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1653,11 +1474,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
-              <Top>0.20067cm</Top>
-              <Left>28.02069cm</Left>
+              <Top>0.24654cm</Top>
+              <Left>27.70319cm</Left>
               <Height>0.6cm</Height>
               <Width>0.58609cm</Width>
-              <ZIndex>5</ZIndex>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1685,11 +1506,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TotalPages</rd:DefaultName>
-              <Top>0.20067cm</Top>
-              <Left>28.75142cm</Left>
+              <Top>0.24654cm</Top>
+              <Left>28.43392cm</Left>
               <Height>0.6cm</Height>
               <Width>0.94149cm</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>5</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1700,6 +1521,17 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Line Name="Line1">
+              <Top>0.21506cm</Top>
+              <Height>0cm</Height>
+              <Width>30.254cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
           </ReportItems>
           <Style>
             <Border>
@@ -1707,10 +1539,13 @@
             </Border>
           </Style>
         </PageFooter>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -1720,10 +1555,10 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>[Dim Carrera].[Descripcion Facultad].&amp;[ARQUITECTURA]</Value>
+          <Value>[Dim Carrera].[Descripcion Facultad].[All]</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Descripcion Facultad</Prompt>
+      <Prompt>Facultad</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
@@ -1737,11 +1572,10 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA 2017]</Value>
-          <Value>[Dim Carrera].[Descripcion Carrera].&amp;[ARQUITECTURA (Créditos)]</Value>
+          <Value>[Dim Carrera].[Descripcion Carrera].[All]</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Descripcion Carrera</Prompt>
+      <Prompt>Carrera</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionCarrera</DataSetName>
@@ -1754,7 +1588,7 @@
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>3</NumberOfColumns>
+      <NumberOfColumns>2</NumberOfColumns>
       <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
@@ -1913,8 +1747,6 @@ RqPrSM7FF1/s63sHn1MCv0l09dVXmy+++MKtimNu9T777ONWdYLcx3Cu4JwRJ469VB8Vkn+cD3o/RiJ3
 ERERERERERERERGRlFGAR0REREREREREREREJGUU4BEREREREREREREREUkZBXhERERERERERERERERSRgEeERERERERERERERGRVDHm/wE5y2fMB+ccvAAAAABJRU5ErkJggg==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <Language>es-ES</Language>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>266a9595-53c2-4eec-b5ac-6dbc0a425ca8</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>377d61de-8d36-414a-b46f-934145be6521</rd:ReportID>
 </Report>
