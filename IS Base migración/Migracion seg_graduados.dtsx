@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="123"
-  DTS:VersionGUID="{219793DE-9B73-47F0-A138-A51F4A076CE5}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{45278A67-2C9B-4365-B920-A78192A88987}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4177,12 +4177,6 @@ from openquery(POSTGRES_GRADUADOS,'select * from opcion order by id');</property
                           externalMetadataColumnId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[grupo_preguntas_id]"
                           lineageId="Package\Tablas maestras\pregunta\cargar pregunta.Outputs[Salida de origen de OLE DB].Columns[grupo_preguntas_id]" />
                         <inputColumn
-                          refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].Columns[order]"
-                          cachedDataType="i8"
-                          cachedName="order"
-                          externalMetadataColumnId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[order]"
-                          lineageId="Package\Tablas maestras\pregunta\cargar pregunta.Outputs[Salida de origen de OLE DB].Columns[order]" />
-                        <inputColumn
                           refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].Columns[carrera_id]"
                           cachedDataType="i8"
                           cachedName="carrera_id"
@@ -4202,6 +4196,12 @@ from openquery(POSTGRES_GRADUADOS,'select * from opcion order by id');</property
                           cachedName="pregunta"
                           externalMetadataColumnId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[pregunta]"
                           lineageId="Package\Tablas maestras\pregunta\Conversión de datos.Outputs[Salida de conversión de datos].Columns[pregunta]" />
+                        <inputColumn
+                          refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].Columns[order]"
+                          cachedDataType="i8"
+                          cachedName="order"
+                          externalMetadataColumnId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[orden]"
+                          lineageId="Package\Tablas maestras\pregunta\cargar pregunta.Outputs[Salida de origen de OLE DB].Columns[order]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -4228,13 +4228,13 @@ from openquery(POSTGRES_GRADUADOS,'select * from opcion order by id');</property
                           dataType="i4"
                           name="grupo_preguntas_id" />
                         <externalMetadataColumn
-                          refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[order]"
-                          dataType="i4"
-                          name="order" />
-                        <externalMetadataColumn
                           refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[carrera_id]"
                           dataType="i4"
                           name="carrera_id" />
+                        <externalMetadataColumn
+                          refId="Package\Tablas maestras\pregunta\pregunta.Inputs[Entrada de destino de OLE DB].ExternalColumns[orden]"
+                          dataType="i4"
+                          name="orden" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -7252,6 +7252,28 @@ periodo_academico, ciudad_id
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Tablas maestras.PrecedenceConstraints[Restricción 2]"
+          TopLeft="354.428571708349,253.855882776567">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.1428526664263,0"
+              Start="0,0"
+              End="28.6428526664263,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.6428526664263,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Tablas maestras.PrecedenceConstraints[Restricción 3]"
           TopLeft="167,115">
           <EdgeLayout.Curve>
@@ -7339,28 +7361,6 @@ periodo_academico, ciudad_id
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tablas maestras.PrecedenceConstraints[Restricción 2]"
-          TopLeft="354.428571708349,253.855882776567">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="36.1428526664263,0"
-              Start="0,0"
-              End="28.6428526664263,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="28.6428526664263,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -7369,13 +7369,13 @@ periodo_academico, ciudad_id
           Id="Package\Tablas maestras"
           TopLeft="167.285715806241,353.117646597661" />
         <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\Tablas movimiento\usuario"
-          TopLeft="72.6507936278168,45.1176449567801" />
-        <NodeLayout
           Size="124.8,41.6"
           Id="Package\Tablas movimiento\respuesta"
           TopLeft="67.5365107113003,119.91764495678" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Tablas movimiento\usuario"
+          TopLeft="72.6507936278168,45.1176449567801" />
         <EdgeLayout
           Id="Package\Tablas movimiento.PrecedenceConstraints[Restricción 2]"
           TopLeft="129.493652169559,86.7176449567801">
@@ -7410,28 +7410,6 @@ periodo_academico, ciudad_id
           Id="Package\Validación tablas seguimiento a graduados"
           TopLeft="302.000001702991,272.445378059335" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="439.642858754616,314.045378059335">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.0722685383261"
-              Start="0,0"
-              End="0,31.5722685383261">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5722685383261" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="708.085715806241,525.915872840788">
           <EdgeLayout.Curve>
@@ -7445,6 +7423,28 @@ periodo_academico, ciudad_id
                   Capacity="5">
                   <mssgle:LineSegment
                     End="33.0945469112495,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="439.642858754616,314.045378059335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.0722685383261"
+              Start="0,0"
+              End="0,31.5722685383261">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5722685383261" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7964,6 +7964,14 @@ periodo_academico, ciudad_id
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Tablas maestras\opcion\cargar opcion">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Tablas maestras\opcion\opcion">
     <Properties>
       <Property>
@@ -7976,19 +7984,11 @@ periodo_academico, ciudad_id
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tablas maestras\opcion\cargar opcion">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Tablas maestras\pregunta">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\Tablas maestras\pregunta\Conversión de datos"
@@ -8020,9 +8020,7 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8044,59 +8042,6 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tablas maestras\pregunta\pregunta">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Tablas movimiento\respuesta">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="124.8,41.6"
-          Id="Package\Tablas movimiento\respuesta\respuesta"
-          TopLeft="75,150" />
-        <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Tablas movimiento\respuesta\cargar respuesta"
-          TopLeft="56,45" />
-        <EdgeLayout
-          Id="Package\Tablas movimiento\respuesta.Paths[Salida de origen de OLE DB]"
-          TopLeft="136.25,87">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63"
-              Start="0,0"
-              End="0,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8104,7 +8049,7 @@ periodo_academico, ciudad_id
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tablas movimiento\respuesta\respuesta">
+    design-time-name="Package\Tablas maestras\pregunta\pregunta">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8284,6 +8229,57 @@ periodo_academico, ciudad_id
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Tablas movimiento\respuesta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\Tablas movimiento\respuesta\respuesta"
+          TopLeft="75,150" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Tablas movimiento\respuesta\cargar respuesta"
+          TopLeft="56,45" />
+        <EdgeLayout
+          Id="Package\Tablas movimiento\respuesta.Paths[Salida de origen de OLE DB]"
+          TopLeft="136.25,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tablas movimiento\respuesta\respuesta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Tablas movimiento\usuario">
     <LayoutInfo>
       <GraphLayout
@@ -8348,14 +8344,6 @@ periodo_academico, ciudad_id
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tablas movimiento\usuario\cargar usuario">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Tablas movimiento\usuario\usuario">
     <Properties>
       <Property>
@@ -8365,6 +8353,14 @@ periodo_academico, ciudad_id
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tablas movimiento\usuario\cargar usuario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
