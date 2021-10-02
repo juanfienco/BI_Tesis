@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{45278A67-2C9B-4365-B920-A78192A88987}">
+  DTS:VersionBuild="125"
+  DTS:VersionGUID="{3C99EC13-C086-41A7-A966-1C7752136C6B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7103,7 +7103,7 @@ periodo_academico, ciudad_id
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'facultad') and type =(N'U'))&#xA;delete from facultad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'carrera') and type =(N'U'))&#xA;delete from carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'direccion_carrera') and type =(N'U'))&#xA;delete from direccion_carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estado_estudio') and type =(N'U'))&#xA;delete from estado_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'tipo_estudio') and type =(N'U'))&#xA;delete from tipo_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estudio') and type =(N'U'))&#xA;delete from estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'pregunta') and type =(N'U'))delete from grupo_preguntas;&#xA;delete from pregunta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'opcion') and type =(N'U'))&#xA;delete from opcion;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta') and type =(N'U'))&#xA;delete from respuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'encuesta') and type =(N'U'))&#xA;delete from encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta_encuesta') and type =(N'U'))&#xA;delete from respuesta_encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'titulo') and type =(N'U'))&#xA;delete from titulo;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuarios_idiomas') and type =(N'U'))&#xA;delete from usuarios_idiomas;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario_especialidad') and type =(N'U'))&#xA;delete from usuario_especialidad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario') and type =(N'U'))&#xA;delete from usuario;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'facultad') and type =(N'U'))&#xA;delete from facultad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'carrera') and type =(N'U'))&#xA;delete from carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'direccion_carrera') and type =(N'U'))&#xA;delete from direccion_carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estado_estudio') and type =(N'U'))&#xA;delete from estado_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'tipo_estudio') and type =(N'U'))&#xA;delete from tipo_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estudio') and type =(N'U'))&#xA;delete from estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'grupo_preguntas') and type =(N'U'))&#xA;delete from grupo_preguntas;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'pregunta') and type =(N'U'))&#xA;delete from pregunta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'opcion') and type =(N'U'))&#xA;delete from opcion;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta') and type =(N'U'))&#xA;delete from respuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'encuesta') and type =(N'U'))&#xA;delete from encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta_encuesta') and type =(N'U'))&#xA;delete from respuesta_encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'titulo') and type =(N'U'))&#xA;delete from titulo;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuarios_idiomas') and type =(N'U'))&#xA;delete from usuarios_idiomas;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario_especialidad') and type =(N'U'))&#xA;delete from usuario_especialidad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario') and type =(N'U'))&#xA;delete from usuario;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -7408,7 +7408,7 @@ periodo_academico, ciudad_id
         <NodeLayout
           Size="279.2,41.6"
           Id="Package\Validación tablas seguimiento a graduados"
-          TopLeft="302.000001702991,272.445378059335" />
+          TopLeft="302.000001702991,271.680672166257" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="708.085715806241,525.915872840788">
@@ -7433,18 +7433,18 @@ periodo_academico, ciudad_id
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="439.642858754616,314.045378059335">
+          TopLeft="439.642858754616,313.280672166257">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39.0722685383261"
+              EndConnector="0,39.8369744314037"
               Start="0,0"
-              End="0,31.5722685383261">
+              End="0,32.3369744314037">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5722685383261" />
+                    End="0,32.3369744314037" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
