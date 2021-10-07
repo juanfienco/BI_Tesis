@@ -34,7 +34,7 @@
           <SSIS:Package SSIS:Name="Migracion_practicas.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ETL_practicas.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ETL_notas.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Package1.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ETL_seguimientoGraduados.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="localhost.xolatnew_2.linked_server_login.conmgr" />
@@ -1642,10 +1642,10 @@
                 <SSIS:Property SSIS:Name="Name">ETL_practicas</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">47</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E8A4498D-4B54-40CB-A46E-17DB57233C1C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FF4DFD72-BD75-4C19-8839-55B95C8F74B3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1773,16 +1773,16 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Package1.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="ETL_seguimientoGraduados.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D2B831D1-1239-4974-B3CC-0126664D0845}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{CC4C7EBB-5557-49B7-93D9-0889AC2DC745}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ETL_seguimientoGraduados</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E605AB4D-33A4-4623-8220-034BEC286D9B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A4B14CFF-392D-4BC4-9532-EB660D2FEBB9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
