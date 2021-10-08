@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{FF4DFD72-BD75-4C19-8839-55B95C8F74B3}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{4278C4ED-2642-491B-9171-0BAF324D6189}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9895,6 +9895,40 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 11]"
+          TopLeft="680.809526230202,117.070588396165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250.561902146599,69.6352928306817"
+              Start="0,0"
+              End="250.561902146599,62.1352928306817">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.7284466447758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.7284466447758"
+                    Point2="0,17.7284466447758"
+                    Point3="4,17.7284466447758" />
+                  <mssgle:LineSegment
+                    End="246.561902146599,17.7284466447758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="246.561902146599,17.7284466447758"
+                    Point2="250.561902146599,17.7284466447758"
+                    Point3="250.561902146599,21.7284466447758" />
+                  <mssgle:LineSegment
+                    End="250.561902146599,62.1352928306817" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 12]"
           TopLeft="931.371428376801,228.305881226847">
           <EdgeLayout.Curve>
@@ -10164,40 +10198,6 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 11]"
-          TopLeft="680.809526230202,117.070588396165">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="250.561902146599,69.6352928306817"
-              Start="0,0"
-              End="250.561902146599,62.1352928306817">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.7284466447758" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.7284466447758"
-                    Point2="0,17.7284466447758"
-                    Point3="4,17.7284466447758" />
-                  <mssgle:LineSegment
-                    End="246.561902146599,17.7284466447758" />
-                  <mssgle:CubicBezierSegment
-                    Point1="246.561902146599,17.7284466447758"
-                    Point2="250.561902146599,17.7284466447758"
-                    Point3="250.561902146599,21.7284466447758" />
-                  <mssgle:LineSegment
-                    End="250.561902146599,62.1352928306817" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -10249,7 +10249,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10295,7 +10297,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10427,7 +10431,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10473,7 +10479,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10599,7 +10607,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10645,7 +10655,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10843,7 +10855,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10889,7 +10903,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11035,7 +11051,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11053,33 +11071,33 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\cargar Dim_tipoalumno\cargar tipo_alumno"
-          TopLeft="133,82" />
+          TopLeft="132.28571427355,43.7647053461174" />
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\cargar Dim_tipoalumno\División condicional"
-          TopLeft="134,238" />
+          TopLeft="134.71428572645,228.823529283068" />
         <NodeLayout
           Size="204.8,41.6"
           Id="Package\cargar Dim_tipoalumno\Actualizar Dim_tipoalumno"
           TopLeft="257,297" />
         <NodeLayout
-          Size="124.8,93.6"
+          Size="124.8,41.6"
           Id="Package\cargar Dim_tipoalumno\Búsqueda"
-          TopLeft="158,162" />
+          TopLeft="153.7142856413,134.835293013002" />
         <EdgeLayout
           Id="Package\cargar Dim_tipoalumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="219.1,123.6">
+          TopLeft="216.599999957425,85.3647053461174">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.4"
+              EndConnector="0,49.4705876668843"
               Start="0,0"
-              End="0,30.9">
+              End="0,41.9705876668843">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.9" />
+                    End="0,41.9705876668843" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11090,97 +11108,97 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         </EdgeLayout>
         <EdgeLayout
           Id="Package\cargar Dim_tipoalumno.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="158,208.8">
+          TopLeft="218.214285683875,176.435293013002">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.6,29.2"
+              EndConnector="0,52.3882362700664"
               Start="0,0"
-              End="61.6,21.7">
+              End="0,44.8882362700664">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="57.6,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="57.6,0"
-                    Point2="61.6,0"
-                    Point3="61.6,4" />
-                  <mssgle:LineSegment
-                    End="61.6,21.7" />
+                    End="0,44.8882362700664" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-38.2190234375,-18.1953125,199.638046875,12.1953125"
+              BoundingBox="-99.8190234375,16.3464618850332,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\cargar Dim_tipoalumno.Paths[Nuevos]"
-          TopLeft="219.6,279.6">
+          TopLeft="193.11428572645,270.423529283068">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-123.6,26.4"
+              EndConnector="-97.11428572645,35.5764707169319"
               Start="0,0"
-              End="-123.6,18.9">
+              End="-97.11428572645,28.0764707169319">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.19999999999999" />
+                    End="0,10.4282353463113" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.19999999999999"
-                    Point2="0,13.2"
-                    Point3="-4,13.2" />
+                    Point1="0,10.4282353463113"
+                    Point2="0,14.4282353463113"
+                    Point3="-4,14.4282353463113" />
                   <mssgle:LineSegment
-                    End="-119.6,13.2" />
+                    End="-93.11428572645,14.4282353463113" />
                   <mssgle:CubicBezierSegment
-                    Point1="-119.6,13.2"
-                    Point2="-123.6,13.2"
-                    Point3="-123.6,17.2" />
+                    Point1="-93.11428572645,14.4282353463113"
+                    Point2="-97.11428572645,14.4282353463113"
+                    Point3="-97.11428572645,18.4282353463113" />
                   <mssgle:LineSegment
-                    End="-123.6,18.9" />
+                    End="-97.11428572645,28.0764707169319" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-78.527578125,18.2,33.45515625,9.421875"
+              BoundingBox="-65.284720988225,19.4282353463113,33.45515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\cargar Dim_tipoalumno.Paths[Modificar]"
-          TopLeft="305,259">
+          TopLeft="247.51428572645,270.423529283068">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.5,38"
+              EndConnector="111.88571427355,26.5764707169319"
               Start="0,0"
-              End="54.5,30.5">
+              End="111.88571427355,19.0764707169319">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="50.5,0" />
+                    End="0,6.77823534631125" />
                   <mssgle:CubicBezierSegment
-                    Point1="50.5,0"
-                    Point2="54.5,0"
-                    Point3="54.5,4" />
+                    Point1="0,6.77823534631125"
+                    Point2="0,10.7782353463113"
+                    Point3="4,10.7782353463113" />
                   <mssgle:LineSegment
-                    End="54.5,30.5" />
+                    End="107.88571427355,10.7782353463113" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.88571427355,10.7782353463113"
+                    Point2="111.88571427355,10.7782353463113"
+                    Point3="111.88571427355,14.7782353463113" />
+                  <mssgle:LineSegment
+                    End="111.88571427355,19.0764707169319" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="33.94630859375,-15.7978515625,41.1073828125,9.7978515625"
+              BoundingBox="35.389165730525,15.7782353463113,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11285,7 +11303,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
     design-time-name="Package\Dim_empresa">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="145.6,41.6"
           Id="Package\Dim_empresa\Dim empresas"
@@ -11313,7 +11331,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11349,7 +11369,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
     design-time-name="Package\Fact_practica">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="145.6,41.6"
           Id="Package\Fact_practica\Fact_practicas"
@@ -11377,7 +11397,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
