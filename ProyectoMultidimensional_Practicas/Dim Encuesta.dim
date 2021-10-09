@@ -1,0 +1,319 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="cab129b6-ea19-470b-af61-fa5530a971d5" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Encuesta</ID>
+  <Name>Dim Encuesta</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1324" scrolltop="-4648" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7112" y="14182" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_encuesta" left="422" top="-466" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4445" height="7243" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e00005d1100004b1c0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Dim_encuesta" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1324</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-4648</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>422</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-466</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="4a965f71-1186-42c0-b5d3-60f8d0953eab">
+    <DataSourceViewID>vista_seguimiento_graduados</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="afa5c6bb-dfbb-4dbc-9b14-e2560071d992">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="cee9336c-66bd-4a08-9288-d313e9351caa">
+      <ID>Id</ID>
+      <Name>Id</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e3d86b82-d524-46fc-9aed-f1ca892dc971">
+          <DataType>Double</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4ec70715-ad22-43a6-b3ff-637c15b1086f">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="5a289685-ea6a-4ae5-81fb-1c9b44213a48">
+          <AttributeID>Nombre</AttributeID>
+          <Name>Encuesta_Nombre</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b84f2895-3a2e-494d-95f5-1c5164f828ea">
+          <AttributeID>Encuesta Id</AttributeID>
+          <Name>Encuesta_Id</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1e9f17f7-6848-4e1f-b467-e70cf1dc752c">
+          <AttributeID>Grupo Pregunta Nombre</AttributeID>
+          <Name>Grupo Pregunta Nombre</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bee42e95-3096-4987-abcb-6e85aab61cda">
+          <AttributeID>Opcion</AttributeID>
+          <Name>Opcion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="740765c2-5483-4d9d-8ee9-91de24307cdf">
+          <AttributeID>Titulo Respuesta</AttributeID>
+          <Name>Titulo Respuesta</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bff4a875-d0a2-4355-9940-438518003d00">
+          <AttributeID>Periodos</AttributeID>
+          <Name>Periodos</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9b322def-5d6c-484c-adbc-e9c8c5502852">
+      <ID>Nombre</ID>
+      <Name>Encuesta_Nombre</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f6ad435a-c61e-4271-856f-b1113840d3a2">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d2cfbe3b-1e8a-4713-8e44-aacde43a1df2">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>nombre</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="65cb7f36-c3a7-4649-9ac5-542474f685d5">
+      <ID>Encuesta Id</ID>
+      <Name>Encuesta_Id</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1408e8bb-2693-4365-8c7e-188b289bbeb2">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8958ba59-f19c-487e-9340-39a8dfb587b9">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>encuesta_id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9a93da2a-d7ba-4b5e-8b9d-59e09a6e0edb">
+      <ID>Grupo Pregunta Nombre</ID>
+      <Name>Grupo Pregunta Nombre</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="204f60fd-cb48-48bb-84b9-8a5c63530a0c">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6b0e55f1-bc7b-429a-8637-e9962d8ff23c">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>grupo_pregunta_nombre</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1dddd2fd-ca43-4cbd-89b6-75cd72fe41de">
+      <ID>Opcion</ID>
+      <Name>Opcion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a1505d56-b3d3-48b4-bdfe-71890979f8fc">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4cfdffc5-c863-406d-a65b-1c18f44aa0aa">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>opcion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c656f3dd-e38f-4d89-956c-bc35d0f73c4e">
+      <ID>Titulo Respuesta</ID>
+      <Name>Titulo Respuesta</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4137f611-945c-4b14-b674-1470d0233040">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="17819673-8d83-4cfb-8a32-c672042e6c4b">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>titulo_respuesta</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3bb9bdc0-18bc-4e94-932d-9c9b9ea7493b">
+      <ID>Periodos</ID>
+      <Name>Periodos</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="295520f3-83e4-4fae-83fa-4bebcf005f89">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b886df19-fa42-494d-8bf3-b8ef8a9203eb">
+            <TableID>dbo_Dim_encuesta</TableID>
+            <ColumnID>periodos</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="04f25312-ab93-4e6b-ba61-4b07352488ab">
+      <ID>Jerarquía</ID>
+      <Name>Jerarquía</Name>
+      <Levels>
+        <Level dwd:design-time-name="b76af6b8-d8f7-4f95-a0fc-2b3b1e0e2a09">
+          <ID>Encuesta_Nombre</ID>
+          <Name>Encuesta_Nombre</Name>
+          <SourceAttributeID>Nombre</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="ff908ef9-1548-4eb7-9cdd-678c1da79ac6">
+          <ID>Grupo Pregunta Nombre</ID>
+          <Name>Grupo Pregunta Nombre</Name>
+          <SourceAttributeID>Grupo Pregunta Nombre</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="f3c0a1a2-7429-4722-8c8d-9b0c48c82a8a">
+          <ID>Titulo Respuesta</ID>
+          <Name>Titulo Respuesta</Name>
+          <SourceAttributeID>Titulo Respuesta</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="a9970a8f-fb8d-40e1-84a9-5eeba3078a4f">
+          <ID>Opcion</ID>
+          <Name>Opcion</Name>
+          <SourceAttributeID>Opcion</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="4b9d4216-77e6-499f-b583-1af05a2645ee">
+      <ID>Jerarquía 1</ID>
+      <Name>Jerarquía 1</Name>
+      <Levels>
+        <Level dwd:design-time-name="a5190032-0c36-48f3-96cc-0fa16e3cea89">
+          <ID>Periodos</ID>
+          <Name>Periodos</Name>
+          <SourceAttributeID>Periodos</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="06ed068e-bfca-493c-bf96-a12f4c0f09e3">
+          <ID>Encuesta_Nombre</ID>
+          <Name>Encuesta_Nombre</Name>
+          <SourceAttributeID>Nombre</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="b49f5d3d-8ddc-4f6d-8b75-6f55622b4543">
+          <ID>Grupo Pregunta Nombre</ID>
+          <Name>Grupo Pregunta Nombre</Name>
+          <SourceAttributeID>Grupo Pregunta Nombre</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="bcb74088-13c4-46df-a080-8b02d4492b0e">
+          <ID>Titulo Respuesta</ID>
+          <Name>Titulo Respuesta</Name>
+          <SourceAttributeID>Titulo Respuesta</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="258a4cf1-4293-491e-a271-56cc0c4a9d23">
+          <ID>Opcion</ID>
+          <Name>Opcion</Name>
+          <SourceAttributeID>Opcion</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="5ff8b22e-3ee5-440e-a207-017642e8112d">
+      <ID>Jerarquía 2</ID>
+      <Name>Jerarquía 2</Name>
+      <Levels>
+        <Level dwd:design-time-name="a6e0ed6d-4f71-4914-a229-88a692644369">
+          <ID>Grupo Pregunta Nombre</ID>
+          <Name>Grupo Pregunta Nombre</Name>
+          <SourceAttributeID>Grupo Pregunta Nombre</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="003da6fa-fa52-4681-b408-5d784f877bb1">
+          <ID>Titulo Respuesta</ID>
+          <Name>Titulo Respuesta</Name>
+          <SourceAttributeID>Titulo Respuesta</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="486aca5f-83ad-498f-89f7-38d63bce3b25">
+          <ID>Opcion</ID>
+          <Name>Opcion</Name>
+          <SourceAttributeID>Opcion</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="0798d840-b28a-4cef-96e4-d4580fff4bb8">
+      <ID>Jerarquía 3</ID>
+      <Name>Jerarquía 3</Name>
+      <Levels>
+        <Level dwd:design-time-name="d5a26729-e207-4d43-8a64-49efca38dab4">
+          <ID>Periodos</ID>
+          <Name>Periodos</Name>
+          <SourceAttributeID>Periodos</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="ce8d5ad3-6fb4-4bf3-8587-607adaa4f32d">
+          <ID>Encuesta_Nombre</ID>
+          <Name>Encuesta_Nombre</Name>
+          <SourceAttributeID>Nombre</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

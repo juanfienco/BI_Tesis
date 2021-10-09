@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_seguimientoGraduados"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{BE43A432-2AC3-4EAF-ACAC-3B5F2A007C16}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{A1925F58-59BD-4EBE-9F8A-347B90379FD3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1030,7 +1030,7 @@ where [refTable].[carrera_id] = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="delete from DW_sga.dbo.Fact_encuestas_respuestas;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="delete from DW_sga.dbo.Fact_seguimiento_graduados;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>

@@ -17,6 +17,16 @@
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
+    <ProjectItem>
+      <Name>cubo_seguimiento_graduados.cube</Name>
+      <FullPath>cubo_seguimiento_graduados.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>cubo_seguimiento_graduados.partitions</Name>
+          <FullPath>cubo_seguimiento_graduados.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
@@ -43,6 +53,22 @@
       <Name>Dim Docente.dim</Name>
       <FullPath>Dim Docente.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Alumnos Graduados.dim</Name>
+      <FullPath>Dim Alumnos Graduados.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Facultad Carrera.dim</Name>
+      <FullPath>Dim Facultad Carrera.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Opcion Resultado.dim</Name>
+      <FullPath>Dim Opcion Resultado.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Encuesta.dim</Name>
+      <FullPath>Dim Encuesta.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
@@ -54,6 +80,10 @@
     <ProjectItem>
       <Name>vista_practicas.dsv</Name>
       <FullPath>vista_practicas.dsv</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>vista_seguimiento_graduados.dsv</Name>
+      <FullPath>vista_seguimiento_graduados.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
   <Roles>
