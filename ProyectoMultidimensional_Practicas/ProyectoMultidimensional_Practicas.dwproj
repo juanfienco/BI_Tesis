@@ -62,10 +62,6 @@
       <FullPath>Dim Facultad Carrera.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Dim Opcion Resultado.dim</Name>
-      <FullPath>Dim Opcion Resultado.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Dim Encuesta.dim</Name>
       <FullPath>Dim Encuesta.dim</FullPath>
     </ProjectItem>
