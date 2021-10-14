@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="541"
-  DTS:VersionGUID="{AFF29CA4-7D1C-4CAB-BC69-4BCDB501F7E9}">
+  DTS:VersionBuild="542"
+  DTS:VersionGUID="{FFACD20F-0D5C-4292-95E9-D7399F125BCB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -230,6 +230,7 @@
     <DTS:Executable
       DTS:refId="Package\Contenedor Llenado de tablas primarias"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{EA811AA9-E1FA-4B60-8024-5563CEDB806F}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -5285,6 +5286,7 @@ order by 1');</property>
     <DTS:Executable
       DTS:refId="Package\Leer todas las tablas tipos"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{28E312A3-D259-43E0-8C84-4A6E0756EC03}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -9972,6 +9974,7 @@ order by 1');</property>
     <DTS:Executable
       DTS:refId="Package\Leer usuarios"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{5A1583F9-3820-4E5E-BB70-AA79D7665373}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -10393,6 +10396,7 @@ order by 1');</property>
     <DTS:Executable
       DTS:refId="Package\Tablas para Materias"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{67C4A52D-CDB4-4C9B-9149-3B4E70251488}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -15907,6 +15911,7 @@ genero, politica_cuota, estado_office365
     <DTS:Executable
       DTS:refId="Package\Tablas periodos"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{98B83E43-C0AF-46AB-A6D2-ECC215E68389}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -18613,6 +18618,7 @@ genero, politica_cuota, estado_office365
     <DTS:Executable
       DTS:refId="Package\Tablas profesor"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{79DF6989-CED0-4616-AA78-20FA9BF0D51B}"
       DTS:ExecutableType="STOCK:SEQUENCE"
