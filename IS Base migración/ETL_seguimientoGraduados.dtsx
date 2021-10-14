@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_seguimientoGraduados"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{8E3C54D2-58C1-4E19-B9C5-91E7198E6574}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{EA9DCD92-1465-4D69-9589-2BB738FF9C30}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -6541,10 +6541,6 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
-                      dataType="i4"
-                      name="id" />
                     <externalMetadataColumn
                       refId="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados.Inputs[Entrada de destino de OLE DB].ExternalColumns[sk_encuesta]"
                       dataType="numeric"
