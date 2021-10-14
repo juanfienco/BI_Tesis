@@ -12,8 +12,8 @@
   DTS:ObjectName="Migracion_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="359"
-  DTS:VersionGUID="{FCE2930F-C19D-491B-86E3-056EF463A37A}">
+  DTS:VersionBuild="360"
+  DTS:VersionGUID="{B4B1AAF1-6D7F-4BAC-BB0B-52DB10682E36}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -73,7 +73,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="fecha_actual">
       <DTS:VariableValue
-        DTS:DataType="7">9/18/2021 6:49:54 PM</DTS:VariableValue>
+        DTS:DataType="7">10/13/2021 9:50:53 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -10626,7 +10626,7 @@ UPDATE [dbo].[dat_practicas_preprofesionales] SET
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT idalumno, len(cedula) as n, convert(varchar,LEFT(cedula,1)) as conv, case when pasaporte is null then 'nulo' else 'no nulo' end as pasaporte,
-coalesce((case when len(cedula)=10 and convert(varchar,LEFT(cedula,1))='0' and (len(trim(pasaporte))=0 or pasaporte is null) then substring(cedula,2,10) else convert(nvarchar,cedula) end),pasaporte) as ced_pas
+coalesce((case when len(cedula)=10 and convert(varchar,LEFT(cedula,1))='0' and (len(trim(pasaporte))=0 or pasaporte is null) then substring(cedula,2,10) else convert(nvarchar,cedula) end),pasaporte) as ced_pas 
 from dat_alumno</property>
                 <property
                   dataType="System.String"
@@ -10634,7 +10634,7 @@ from dat_alumno</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT idalumno, len(cedula) as n, convert(varchar,LEFT(cedula,1)) as conv, case when pasaporte is null then 'nulo' else 'no nulo' end as pasaporte,
-coalesce((case when len(cedula)=10 and convert(varchar,LEFT(cedula,1))='0' and (len(trim(pasaporte))=0 or pasaporte is null) then substring(cedula,2,10) else convert(nvarchar,cedula) end),pasaporte) as ced_pas
+coalesce((case when len(cedula)=10 and convert(varchar,LEFT(cedula,1))='0' and (len(trim(pasaporte))=0 or pasaporte is null) then substring(cedula,2,10) else convert(nvarchar,cedula) end),pasaporte) as ced_pas 
 from dat_alumno) [refTable]
 where [refTable].[ced_pas] = ?</property>
                 <property
@@ -11245,7 +11245,7 @@ order by 3</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Tablas practicas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -11263,7 +11263,7 @@ order by 3</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="tablas unesco"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -13952,7 +13952,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13962,7 +13962,7 @@ TRIM(replace(replace(tipo_empresa,'INSTITUCION',''),'INSTITUCIÓN','')) AS  tipo
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
