@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="128"
-  DTS:VersionGUID="{E7C9CF11-76E0-4D16-ABFC-78372208F992}">
+  DTS:VersionBuild="130"
+  DTS:VersionGUID="{767902E3-76C8-4E0A-A624-C1B3A2CBD5E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7536,11 +7536,6 @@ periodo_academico, ciudad_id
                           length="255"
                           name="archivo" />
                         <externalMetadataColumn
-                          refId="Package\Tablas movimiento\usuario\usuario.Inputs[Entrada de destino de OLE DB].ExternalColumns[objetivo_laboral]"
-                          dataType="wstr"
-                          length="255"
-                          name="objetivo_laboral" />
-                        <externalMetadataColumn
                           refId="Package\Tablas movimiento\usuario\usuario.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
                           dataType="wstr"
                           length="100"
@@ -7647,7 +7642,7 @@ periodo_academico, ciudad_id
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
-          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'facultad') and type =(N'U'))&#xA;delete from facultad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'carrera') and type =(N'U'))&#xA;delete from carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'direccion_carrera') and type =(N'U'))&#xA;delete from direccion_carrera;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estado_estudio') and type =(N'U'))&#xA;delete from estado_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'tipo_estudio') and type =(N'U'))&#xA;delete from tipo_estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estudio') and type =(N'U'))&#xA;delete from estudio;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'grupo_preguntas') and type =(N'U'))&#xA;delete from grupo_preguntas;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'pregunta') and type =(N'U'))&#xA;delete from pregunta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'opcion') and type =(N'U'))&#xA;delete from opcion;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta') and type =(N'U'))&#xA;delete from respuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'encuesta') and type =(N'U'))&#xA;delete from encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta_encuesta') and type =(N'U'))&#xA;delete from respuesta_encuesta;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'titulo') and type =(N'U'))&#xA;delete from titulo;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuarios_idiomas') and type =(N'U'))&#xA;delete from usuarios_idiomas;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario_especialidad') and type =(N'U'))&#xA;delete from usuario_especialidad;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario') and type =(N'U'))&#xA;delete from usuario;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="USE bd_migracion_sga;&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'facultad') and type =(N'U'))&#xA;&#x9;delete from facultad;&#xA;else&#x9;&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[facultad](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[ciudad_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'carrera') and type =(N'U'))&#xA;&#x9;delete from carrera;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[carrera](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[facultad_id] [int] NULL,&#xA;&#x9;[institucion_id] [int] NULL,&#xA;&#x9;[titulo_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'direccion_carrera') and type =(N'U'))&#xA;&#x9;delete from direccion_carrera;&#xA;else&#xA;&#x9;CREATE TABLE [bd_migracion_sga].[dbo].[direccion_carrera](&#xA;&#x9;&#x9;[id] [int] NULL,&#xA;&#x9;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;&#x9;[usuario_id] [int] NULL&#xA;&#x9;) ON [PRIMARY]&#xA;&#x9;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estado_estudio') and type =(N'U'))&#xA;&#x9;delete from estado_estudio;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[estado_estudio](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[nombre] [nvarchar](100) NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'tipo_estudio') and type =(N'U'))&#xA;&#x9;delete from tipo_estudio;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[tipo_estudio](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[tipo] [nvarchar](100) NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'estudio') and type =(N'U'))&#xA;&#x9;delete from estudio;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[estudio](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[tipo_estudio_id] [int] NULL,&#xA;&#x9;[estado_estudio_id] [int] NULL,&#xA;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;[usuario_id] [int] NULL,&#xA;&#x9;[inicio] [datetime] NULL,&#xA;&#x9;[fin] [datetime] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'grupo_preguntas') and type =(N'U'))&#xA;&#x9;delete from grupo_preguntas;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[grupo_preguntas](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[encuesta_id] [int] NULL,&#xA;&#x9;[order] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'pregunta') and type =(N'U'))&#xA;&#x9;delete from pregunta;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[pregunta](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[pregunta] [nvarchar](255) NULL,&#xA;&#x9;[titulo_respuesta] [nvarchar](255) NULL,&#xA;&#x9;[opciones_respuesta] [int] NULL,&#xA;&#x9;[grupo_preguntas_id] [int] NULL,&#xA;&#x9;[orden] [int] NULL,&#xA;&#x9;[carrera_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'opcion') and type =(N'U'))&#xA;&#x9;delete from opcion;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[opcion](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[opcion] [nvarchar](255) NULL,&#xA;&#x9;[pregunta_id] [int] NULL,&#xA;&#x9;[pregunta_principal_id] [int] NULL,&#xA;&#x9;[orden] [numeric](8, 2) NULL,&#xA;&#x9;[preguntas_alterar] [nvarchar](255) NULL,&#xA;&#x9;[display] [nvarchar](255) NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta') and type =(N'U'))&#xA;&#x9;delete from respuesta;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[respuesta](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[pregunta_id] [int] NULL,&#xA;&#x9;[respuesta_encuesta_id] [int] NULL,&#xA;&#x9;[respuesta] [int] NULL,&#xA;&#x9;[opcion_id] [int] NULL,&#xA;&#x9;[usuario_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'encuesta') and type =(N'U'))&#xA;&#x9;delete from encuesta;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[encuesta](&#xA;&#x9;[id] [bigint] NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[usuario_id] [int] NULL,&#xA;&#x9;[anios] [int] NULL,&#xA;&#x9;[periodos] [nvarchar](255) NULL,&#xA;&#x9;[activo] [smallint] NULL,&#xA;&#x9;[especial] [smallint] NULL,&#xA;&#x9;[orden] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'respuesta_encuesta') and type =(N'U'))&#xA;&#x9;delete from respuesta_encuesta;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[respuesta_encuesta](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[encuesta_id] [int] NULL,&#xA;&#x9;[usuario_id] [int] NULL,&#xA;&#x9;[fecha] [date] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'titulo') and type =(N'U'))&#xA;&#x9;delete from titulo;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[titulo](&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[titulo] [nvarchar](500) NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'usuario_seggraduados') and type =(N'U'))&#xA;delete from usuario_seggraduados;&#xA;else&#xA;CREATE TABLE [bd_migracion_sga].[dbo].[usuario_seggraduados](&#xA;&#x9;[apellidos] [nvarchar](100) NULL,&#xA;&#x9;[nombres] [nvarchar](100) NULL,&#xA;&#x9;[identificacion] [nvarchar](45) NULL,&#xA;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;[rol_id] [int] NULL,&#xA;&#x9;[email] [nvarchar](250) NULL,&#xA;&#x9;[telefono] [nvarchar](255) NULL,&#xA;&#x9;[estado] [nvarchar](255) NULL,&#xA;&#x9;[id] [int] NULL,&#xA;&#x9;[email_institucional] [nvarchar](255) NULL,&#xA;&#x9;[anio_graduacion] [int] NULL,&#xA;&#x9;[fecha_graduacion] [date] NULL,&#xA;&#x9;[estadox] [smallint] NULL,&#xA;&#x9;[linkedin] [nvarchar](255) NULL,&#xA;&#x9;[cargo] [nvarchar](255) NULL,&#xA;&#x9;[profesion] [nvarchar](255) NULL,&#xA;&#x9;[descripcion] [nvarchar](255) NULL,&#xA;&#x9;[archivo] [nvarchar](255) NULL,&#xA;&#x9;[nacionalidad] [nvarchar](100) NULL,&#xA;&#x9;[estado_civil] [nvarchar](100) NULL,&#xA;&#x9;[fecha_nacimiento] [date] NULL,&#xA;&#x9;[liciencia] [nvarchar](100) NULL,&#xA;&#x9;[movilidad_propia] [nvarchar](20) NULL,&#xA;&#x9;[porcentaje_discapacidad] [int] NULL,&#xA;&#x9;[periodo_academico] [nvarchar](255) NULL,&#xA;&#x9;[ciudad_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -8232,7 +8227,7 @@ periodo_academico, ciudad_id
     design-time-name="Package\Tablas maestras\estudio">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Tablas maestras\estudio\estudio"
@@ -8260,9 +8255,7 @@ periodo_academico, ciudad_id
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8950,17 +8943,17 @@ periodo_academico, ciudad_id
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="145.6,41.6"
-          Id="Package\Tablas movimiento\usuario\cargar usuario"
-          TopLeft="498,124" />
+          Size="174.4,41.6"
+          Id="Package\Tablas movimiento\usuario\Conversión de datos"
+          TopLeft="484,198" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Tablas movimiento\usuario\usuario"
           TopLeft="515,279" />
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Tablas movimiento\usuario\Conversión de datos"
-          TopLeft="484,198" />
+          Size="145.6,41.6"
+          Id="Package\Tablas movimiento\usuario\cargar usuario"
+          TopLeft="498,124" />
         <EdgeLayout
           Id="Package\Tablas movimiento\usuario.Paths[Salida de origen de OLE DB]"
           TopLeft="571,165.6">
