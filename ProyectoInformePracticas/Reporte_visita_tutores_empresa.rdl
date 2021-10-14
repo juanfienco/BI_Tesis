@@ -1796,7 +1796,7 @@
   <ReportParameters>
     <ReportParameter Name="DimCarreraDescripcionFacultad">
       <DataType>String</DataType>
-      <Prompt>Descripcion Facultad</Prompt>
+      <Prompt>Facultad</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionFacultad</DataSetName>
@@ -1808,7 +1808,7 @@
     </ReportParameter>
     <ReportParameter Name="DimCarreraDescripcionCarrera">
       <DataType>String</DataType>
-      <Prompt>Descripcion Carrera</Prompt>
+      <Prompt>Carrera</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DimCarreraDescripcionCarrera</DataSetName>
