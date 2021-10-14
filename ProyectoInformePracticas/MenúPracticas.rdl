@@ -27,15 +27,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>4. Horas de prácticas realizadas en empresas por facultad-carrera y áreas de conocimiento</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Matriculados</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -75,15 +66,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>3. Listado de visitas realizadas por tutor a empresas </Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Reprobados_Recuperacion</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -123,15 +105,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>2. Cantidad de estudiantes por tutores</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Notas_Malla_Académica</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -171,15 +144,6 @@
                     <TextRuns>
                       <TextRun>
                         <Value>1. Cantidad de estudiantes por prácticas por facultad-carrera-sexo</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_Listado_TiposAprobados_Notas</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -201,45 +165,6 @@
                 <Height>0.6cm</Height>
                 <Width>14.74047cm</Width>
                 <ZIndex>4</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox6">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>5. Encuestas realizadas de graduados por facultad y carrera y año</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_graduados_faculad_carrera</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
-                        <Style />
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>5.59181cm</Top>
-                <Left>5.50662cm</Left>
-                <Height>0.6cm</Height>
-                <Width>14.74047cm</Width>
-                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -294,7 +219,7 @@
                 <Left>0.25731cm</Left>
                 <Height>1.97584cm</Height>
                 <Width>4.56375cm</Width>
-                <ZIndex>6</ZIndex>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -313,7 +238,7 @@
                 <Left>0.635cm</Left>
                 <Height>0.79939cm</Height>
                 <Width>2.69062cm</Width>
-                <ZIndex>7</ZIndex>
+                <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -346,7 +271,7 @@
                 <Left>3.50201cm</Left>
                 <Height>0.83813cm</Height>
                 <Width>13.98292cm</Width>
-                <ZIndex>8</ZIndex>
+                <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -362,30 +287,36 @@
                 <Left>4.99745cm</Left>
                 <Height>6.577cm</Height>
                 <Width>0cm</Width>
-                <ZIndex>9</ZIndex>
+                <ZIndex>8</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
                   </Border>
                 </Style>
               </Line>
-              <Textbox Name="Textbox8">
+              <Image Name="Image1">
+                <Source>Embedded</Source>
+                <Value>dashboard</Value>
+                <Sizing>FitProportional</Sizing>
+                <Top>1.29674cm</Top>
+                <Left>0.9525cm</Left>
+                <Height>3.29917cm</Height>
+                <Width>3.00812cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Image>
+              <Textbox Name="Textbox9">
                 <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>6. Resultado de encuestas realizadas por facultad, carrera</Value>
-                        <ActionInfo>
-                          <Actions>
-                            <Action>
-                              <Drillthrough>
-                                <ReportName>Reporte_graduados_encuestas</ReportName>
-                              </Drillthrough>
-                            </Action>
-                          </Actions>
-                        </ActionInfo>
+                        <Value>5. Encuestas realizadas de graduados por facultad y carrera y año</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -393,7 +324,16 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Top>6.46384cm</Top>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_graduados_faculad_carrera</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
+                <Top>5.58142cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
                 <Width>14.74047cm</Width>
@@ -408,24 +348,48 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Image Name="Image1">
-                <Source>Embedded</Source>
-                <Value>dashboard</Value>
-                <Sizing>FitProportional</Sizing>
-                <Top>1.29674cm</Top>
-                <Left>0.9525cm</Left>
-                <Height>3.29917cm</Height>
-                <Width>3.00812cm</Width>
+              <Textbox Name="Textbox6">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>6. Resultado de encuestas realizadas por facultad y carrera</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_graduados_encuestas</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
+                <Top>6.53392cm</Top>
+                <Left>5.54731cm</Left>
+                <Height>0.6cm</Height>
+                <Width>14.74047cm</Width>
                 <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
-              </Image>
+              </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Height>8.01485cm</Height>
+            <Height>8.33384cm</Height>
             <Width>20.56459cm</Width>
             <Style>
               <Border>
@@ -434,13 +398,13 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>3.15545in</Height>
+        <Height>3.28104in</Height>
         <Style />
       </Body>
       <Width>8.0963in</Width>
       <Page>
         <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageWidth>34cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
         <RightMargin>2cm</RightMargin>
         <TopMargin>2cm</TopMargin>
