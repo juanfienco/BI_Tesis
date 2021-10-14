@@ -13,7 +13,18 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSource_Encuestas_graduados</DataSourceName>
-        <CommandText> SELECT NON EMPTY { [Measures].[Valor], [Measures].[Recuento Fact Seguimiento Graduados] } ON COLUMNS, NON EMPTY { ([Dim Facultad Carrera].[Jerarquia_FacultadCarrera].[Carrera].ALLMEMBERS * [Dim Encuesta].[Jerarquía 1].[Respuesta Opcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Facultad Carrera].[Carrera].&amp;[ENFERMERIA] } ) ON COLUMNS FROM ( SELECT ( { [Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I] } ) ON COLUMNS FROM [cubo_seguimiento_graduados])) WHERE ( [Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I], [Dim Facultad Carrera].[Carrera].&amp;[ENFERMERIA] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="DimFacultadCarreraFacultad">
+            <Value>=Parameters!DimFacultadCarreraFacultad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimFacultadCarreraCarrera">
+            <Value>=Parameters!DimFacultadCarreraCarrera.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimEncuestaEncuestaNombre">
+            <Value>=Parameters!DimEncuestaEncuestaNombre.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText> SELECT NON EMPTY { [Measures].[Valor], [Measures].[Recuento Fact Seguimiento Graduados] } ON COLUMNS, NON EMPTY { ([Dim Facultad Carrera].[Jerarquia_FacultadCarrera].[Carrera].ALLMEMBERS * [Dim Encuesta].[Jerarquía 1].[Respuesta Opcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))) WHERE ( IIF( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED), [Dim Facultad Carrera].[Facultad].currentmember ), IIF( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED), [Dim Facultad Carrera].[Carrera].currentmember ), IIF( STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED).Count = 1, STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED), [Dim Encuesta].[Encuesta_Nombre].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>MDX</CommandType>
@@ -147,23 +158,31 @@
               <Filter>
                 <FilterItems>
                   <FilterItem>
+                    <HierarchyUniqueName>[Dim Facultad Carrera].[Facultad]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Facultad Carrera].[Carrera]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
                     <HierarchyUniqueName>[Dim Encuesta].[Encuesta_Nombre]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members>
                         <Member>
                           <MemberUniqueName>[Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I]</MemberUniqueName>
                         </Member>
-                      </Members>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[Dim Facultad Carrera].[Carrera]</HierarchyUniqueName>
-                    <Condition xsi:type="EqualTo">
-                      <Members>
                         <Member>
-                          <MemberUniqueName>[Dim Facultad Carrera].[Carrera].&amp;[ENFERMERIA]</MemberUniqueName>
+                          <MemberUniqueName>[Dim Encuesta].[Encuesta_Nombre].&amp;[ENCUESTAS DE SATISFACCION]</MemberUniqueName>
                         </Member>
                       </Members>
+                      <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                 </FilterItems>
@@ -175,8 +194,64 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement> SELECT NON EMPTY { [Measures].[Valor], [Measures].[Recuento Fact Seguimiento Graduados] } ON COLUMNS, NON EMPTY { ([Dim Facultad Carrera].[Jerarquia_FacultadCarrera].[Carrera].ALLMEMBERS * [Dim Encuesta].[Jerarquía 1].[Respuesta Opcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Dim Facultad Carrera].[Carrera].&amp;[ENFERMERIA] } ) ON COLUMNS FROM ( SELECT ( { [Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I] } ) ON COLUMNS FROM [cubo_seguimiento_graduados])) WHERE ( [Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I], [Dim Facultad Carrera].[Carrera].&amp;[ENFERMERIA] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
-              <ParameterDefinitions />
+              <Statement> SELECT NON EMPTY { [Measures].[Valor], [Measures].[Recuento Fact Seguimiento Graduados] } ON COLUMNS, NON EMPTY { ([Dim Facultad Carrera].[Jerarquia_FacultadCarrera].[Carrera].ALLMEMBERS * [Dim Encuesta].[Jerarquía 1].[Respuesta Opcion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))) WHERE ( IIF( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED).Count = 1, STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED), [Dim Facultad Carrera].[Facultad].currentmember ), IIF( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED).Count = 1, STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED), [Dim Facultad Carrera].[Carrera].currentmember ), IIF( STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED).Count = 1, STRTOSET(@DimEncuestaEncuestaNombre, CONSTRAINED), [Dim Encuesta].[Encuesta_Nombre].currentmember ) ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>DimFacultadCarreraFacultad</Name>
+                  <DefaultValues />
+                  <Caption>Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Facultad Carrera].[Facultad]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Facultad].ALLMEMBERS ON ROWS FROM [cubo_seguimiento_graduados]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimFacultadCarreraCarrera</Name>
+                  <DefaultValues />
+                  <Caption>Carrera</Caption>
+                  <HierarchyUniqueName>[Dim Facultad Carrera].[Carrera]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimFacultadCarreraFacultad</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimEncuestaEncuestaNombre</Name>
+                  <DefaultValues>
+                    <DefaultValue>[Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I]</DefaultValue>
+                    <DefaultValue>[Dim Encuesta].[Encuesta_Nombre].&amp;[ENCUESTAS DE SATISFACCION]</DefaultValue>
+                  </DefaultValues>
+                  <Caption>Encuesta_Nombre</Caption>
+                  <HierarchyUniqueName>[Dim Encuesta].[Encuesta_Nombre]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Encuesta].[Encuesta_Nombre].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Encuesta].[Encuesta_Nombre].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimFacultadCarreraFacultad</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>DimFacultadCarreraCarrera</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
@@ -221,6 +296,287 @@
         <Field Name="Recuento_Fact_Seguimiento_Graduados">
           <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Recuento Fact Seguimiento Graduados]" /&gt;</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DimFacultadCarreraFacultad">
+      <Query>
+        <DataSourceName>DataSource_Encuestas_graduados</DataSourceName>
+        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Facultad].ALLMEMBERS ON ROWS FROM [cubo_seguimiento_graduados]</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_seguimiento_graduados</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Facultad].ALLMEMBERS ON ROWS FROM [cubo_seguimiento_graduados]</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterValue">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterLevel">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DimFacultadCarreraCarrera">
+      <Query>
+        <DataSourceName>DataSource_Encuestas_graduados</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="DimFacultadCarreraFacultad">
+            <Value>=Parameters!DimFacultadCarreraFacultad.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_seguimiento_graduados</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>DimFacultadCarreraFacultad</Name>
+                  <DefaultValues />
+                  <Caption>Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Facultad Carrera].[Facultad]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Facultad].ALLMEMBERS ON ROWS FROM [cubo_seguimiento_graduados]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterValue">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterLevel">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DimEncuestaEncuestaNombre">
+      <Query>
+        <DataSourceName>DataSource_Encuestas_graduados</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="DimFacultadCarreraFacultad">
+            <Value>=Parameters!DimFacultadCarreraFacultad.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="DimFacultadCarreraCarrera">
+            <Value>=Parameters!DimFacultadCarreraCarrera.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Encuesta].[Encuesta_Nombre].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>cubo_seguimiento_graduados</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Encuesta].[Encuesta_Nombre].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Encuesta].[Encuesta_Nombre].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraCarrera, CONSTRAINED) ) ON COLUMNS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados]))</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>DimFacultadCarreraFacultad</Name>
+                  <DefaultValues />
+                  <Caption>Facultad</Caption>
+                  <HierarchyUniqueName>[Dim Facultad Carrera].[Facultad]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Facultad].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Facultad].ALLMEMBERS ON ROWS FROM [cubo_seguimiento_graduados]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>DimFacultadCarreraCarrera</Name>
+                  <DefaultValues />
+                  <Caption>Carrera</Caption>
+                  <HierarchyUniqueName>[Dim Facultad Carrera].[Carrera]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</Statement>
+                    <ParameterizedStatement>
+                      <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Dim Facultad Carrera].[Carrera].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Dim Facultad Carrera].[Carrera].ALLMEMBERS ON ROWS FROM ( SELECT ( STRTOSET(@DimFacultadCarreraFacultad, CONSTRAINED) ) ON COLUMNS FROM [cubo_seguimiento_graduados])</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>DimFacultadCarreraFacultad</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterCaption]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterValue">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterValue]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterLevel">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[ParameterLevel]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -434,6 +790,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1008,10 +1365,71 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="DimFacultadCarreraFacultad">
+      <DataType>String</DataType>
+      <Prompt>Facultad</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DimFacultadCarreraFacultad</DataSetName>
+          <ValueField>ParameterValue</ValueField>
+          <LabelField>ParameterCaptionIndented</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="DimFacultadCarreraCarrera">
+      <DataType>String</DataType>
+      <Prompt>Carrera</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DimFacultadCarreraCarrera</DataSetName>
+          <ValueField>ParameterValue</ValueField>
+          <LabelField>ParameterCaptionIndented</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="DimEncuestaEncuestaNombre">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>[Dim Encuesta].[Encuesta_Nombre].&amp;[EMPLEABILIDAD I]</Value>
+          <Value>[Dim Encuesta].[Encuesta_Nombre].&amp;[ENCUESTAS DE SATISFACCION]</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Encuesta</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DimEncuestaEncuestaNombre</DataSetName>
+          <ValueField>ParameterValue</ValueField>
+          <LabelField>ParameterCaptionIndented</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>DimFacultadCarreraFacultad</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>DimFacultadCarreraCarrera</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>DimEncuestaEncuestaNombre</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>
