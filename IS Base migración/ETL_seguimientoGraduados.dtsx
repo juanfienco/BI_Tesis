@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_seguimientoGraduados"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{ADB1E6F5-09D3-4D15-AEE7-4B9C03BD0FCF}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{8E3C54D2-58C1-4E19-B9C5-91E7198E6574}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1009,6 +1009,7 @@ where [refTable].[carrera_id] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Contenedor de secuencias"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{5E1BCE0E-AE6C-4A78-9306-B1672FD9771B}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -1019,6 +1020,7 @@ where [refTable].[carrera_id] = ?</property>
         <DTS:Executable
           DTS:refId="Package\Contenedor de secuencias\Limpiar datos"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Ejecutar SQL"
           DTS:DTSID="{F6726479-6245-48D4-A774-C143F8C07621}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
@@ -1030,7 +1032,7 @@ where [refTable].[carrera_id] = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="delete from DW_sga.dbo.Fact_seguimiento_graduados;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE [DW_sga]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'Dim_alumnos_graduados') and type =(N'U'))&#xA;&#x9;delete from Dim_alumnos_graduados;&#xA;else&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumnos_graduados](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[alumno_id] [int] NULL,&#xA;&#x9;[apellidos] [nvarchar](255) NULL,&#xA;&#x9;[nombres] [nvarchar](255) NULL,&#xA;&#x9;[identificacion] [nvarchar](50) NULL,&#xA;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;[anio_graduacion] [int] NULL,&#xA;&#x9;[fecha_graduacion] [date] NULL,&#xA;&#x9;[periodo_academico] [nvarchar](255) NULL,&#xA;&#x9;[nombre_completo] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_alumnos_graduados] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'Dim_encuesta') and type =(N'U'))&#xA;&#x9;delete from Dim_encuesta;&#xA;else&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_encuesta](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[titulo_respuesta] [nvarchar](255) NULL,&#xA;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;[orden] [int] NULL,&#xA;&#x9;[encuesta_id] [bigint] NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[periodos] [nvarchar](255) NULL,&#xA;&#x9;[pregunta_id] [int] NULL,&#xA;&#x9;[opcion_id] [int] NULL,&#xA;&#x9;[opcion] [nvarchar](255) NULL,&#xA;&#x9;[subopcion_id] [int] NULL,&#xA;&#x9;[respuesta_opcion] [nvarchar](255) NULL,&#xA;&#x9;[pregunta_principal_id] [int] NULL,&#xA;&#x9;[grupo_pregunta_nombre] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_encuesta] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'Dim_facultad_carrera') and type =(N'U'))&#xA;&#x9;delete from Dim_facultad_carrera;&#xA;else&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_facultad_carrera](&#xA;&#x9;[carrera_id] [int] NULL,&#xA;&#x9;[carrera] [nvarchar](255) NULL,&#xA;&#x9;[sede] [nvarchar](255) NULL,&#xA;&#x9;[facultad] [nvarchar](255) NULL,&#xA;&#x9;[id] [int] IDENTITY(1,1) NOT NULL,&#xA; CONSTRAINT [PK_Dim_facultad_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'Dim_tipo_encuestas') and type =(N'U'))&#xA;&#x9;delete from Dim_tipo_encuestas;&#xA;else&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipo_encuestas](&#xA;&#x9;[id] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[id_tipo_encuestas] [bigint] NULL,&#xA;&#x9;[nombre] [nvarchar](255) NULL,&#xA;&#x9;[anios] [int] NULL,&#xA;&#x9;[periodos] [nvarchar](255) NULL,&#xA;&#x9;[activo] [smallint] NULL,&#xA;&#x9;[especial] [smallint] NULL,&#xA;&#x9;[orden] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;IF EXISTS(SELECT  1 FROM sysobjects with (nolock) where ID= OBJECT_ID(N'Fact_seguimiento_graduados') and type =(N'U'))&#xA;&#x9;delete from Fact_seguimiento_graduados;&#xA;else&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_seguimiento_graduados](&#xA;&#x9;[sk_encuesta] [numeric](19, 0) NULL,&#xA;&#x9;[sk_facultad_carrera] [int] NULL,&#xA;&#x9;[sk_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_fecha_graduado] [numeric](19, 0) NULL,&#xA;&#x9;[sk_fecha_encuesta] [numeric](19, 0) NULL,&#xA;&#x9;[valor] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados]  WITH CHECK ADD  CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_alumnos_graduados] FOREIGN KEY([sk_alumno])&#xA;REFERENCES [dbo].[Dim_alumnos_graduados] ([id])&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados] CHECK CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_alumnos_graduados]&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados]  WITH CHECK ADD  CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_encuesta] FOREIGN KEY([sk_encuesta])&#xA;REFERENCES [dbo].[Dim_encuesta] ([id])&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados] CHECK CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_encuesta]&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados]  WITH CHECK ADD  CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_facultad_carrera] FOREIGN KEY([sk_facultad_carrera])&#xA;REFERENCES [dbo].[Dim_facultad_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados] CHECK CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_facultad_carrera]&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados]  WITH CHECK ADD  CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_tiempo_encuesta] FOREIGN KEY([sk_fecha_encuesta])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados] CHECK CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_tiempo_encuesta]&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados]  WITH CHECK ADD  CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_tiempo_graduado] FOREIGN KEY([sk_fecha_graduado])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_seguimiento_graduados] CHECK CONSTRAINT [FK_Fact_seguimiento_graduados_Dim_tiempo_graduado]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -1038,6 +1040,7 @@ where [refTable].[carrera_id] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Dim_alumno_graduado"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{ed9593a3-9406-4f84-b503-4bfcea16d88f}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -2209,6 +2212,7 @@ where [refTable].[alumno_id] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Dim_encuesta"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{fbef9dbb-8690-472d-83eb-65f0e283ef51}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -5162,6 +5166,7 @@ where [refTable].[Fecha] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Dim_tipo_encuesta"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{98e45ec3-cae2-4f47-8733-ae40b613c5fe}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -6191,6 +6196,7 @@ where [refTable].[id_tipo_encuestas] = ?</property>
     <DTS:Executable
       DTS:refId="Package\Fact_seguimiento_graduados"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{80d2789d-adb1-496e-8f5f-f6eba6b7e66b}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -6729,10 +6735,6 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
           Id="Package\Dim_tiempo"
           TopLeft="17.1428574347987,251.48235504322" />
         <NodeLayout
-          Size="168,41.6"
-          Id="Package\Dim_tipo_encuesta"
-          TopLeft="431.428578775757,254.923533020629" />
-        <NodeLayout
           Size="216,41.6"
           Id="Package\Fact_seguimiento_graduados"
           TopLeft="206.071432080804,409.117652796545" />
@@ -6805,40 +6807,6 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 13]"
-          TopLeft="515.428578775757,296.523533020629">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-132.023813361619,112.594119775916"
-              Start="0,0"
-              End="-132.023813361619,105.094119775916">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.9102154713563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78.9102154713563"
-                    Point2="0,82.9102154713563"
-                    Point3="-4,82.9102154713563" />
-                  <mssgle:LineSegment
-                    End="-128.023813361619,82.9102154713563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-128.023813361619,82.9102154713563"
-                    Point2="-132.023813361619,82.9102154713563"
-                    Point3="-132.023813361619,86.9102154713563" />
-                  <mssgle:LineSegment
-                    End="-132.023813361619,105.094119775916" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 14]"
           TopLeft="166.685715891391,358.782356592941">
           <EdgeLayout.Curve>
@@ -6898,40 +6866,6 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
                     Point3="24.3571430335239,62.2852961580243" />
                   <mssgle:LineSegment
                     End="24.3571430335239,109.070592316049" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="507.238096235561,195.34117697465">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.19048254019543,59.5823560459791"
-              Start="0,0"
-              End="8.19048254019543,52.0823560459791">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.2232046055892" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.2232046055892"
-                    Point2="0,15.2232046055892"
-                    Point3="4,15.2232046055892" />
-                  <mssgle:LineSegment
-                    End="4.19048254019543,15.2232046055892" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.19048254019543,15.2232046055892"
-                    Point2="8.19048254019543,15.2232046055892"
-                    Point3="8.19048254019543,19.2232046055892" />
-                  <mssgle:LineSegment
-                    End="8.19048254019543,52.0823560459791" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7068,6 +7002,78 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
                     Point3="-55.5761922582485,35.2438589171522" />
                   <mssgle:LineSegment
                     End="-55.5761922582485,44.9588248485518" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Dim_tipo_encuesta"
+          TopLeft="431.428578775757,254.923533020629" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="507.238096235561,195.34117697465">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.19048254019543,59.5823560459791"
+              Start="0,0"
+              End="8.19048254019543,52.0823560459791">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.2232046055892" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.2232046055892"
+                    Point2="0,15.2232046055892"
+                    Point3="4,15.2232046055892" />
+                  <mssgle:LineSegment
+                    End="4.19048254019543,15.2232046055892" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.19048254019543,15.2232046055892"
+                    Point2="8.19048254019543,15.2232046055892"
+                    Point3="8.19048254019543,19.2232046055892" />
+                  <mssgle:LineSegment
+                    End="8.19048254019543,52.0823560459791" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 13]"
+          TopLeft="515.428578775757,296.523533020629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-132.023813361619,112.594119775916"
+              Start="0,0"
+              End="-132.023813361619,105.094119775916">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.9102154713563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.9102154713563"
+                    Point2="0,82.9102154713563"
+                    Point3="-4,82.9102154713563" />
+                  <mssgle:LineSegment
+                    End="-128.023813361619,82.9102154713563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-128.023813361619,82.9102154713563"
+                    Point2="-132.023813361619,82.9102154713563"
+                    Point3="-132.023813361619,86.9102154713563" />
+                  <mssgle:LineSegment
+                    End="-132.023813361619,105.094119775916" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7824,6 +7830,65 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\Fact_seguimiento_graduados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Fact_seguimiento_graduados\cargar respuestas de encuestas"
+          TopLeft="132.285712485411,46.2352941069223" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados"
+          TopLeft="133.142855220911,168.588232988305" />
+        <EdgeLayout
+          Id="Package\Fact_seguimiento_graduados.Paths[Salida de origen de OLE DB]"
+          TopLeft="243.314283853161,87.8352941069223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80.7529388813827"
+              Start="0,0"
+              End="0,73.2529388813827">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.2529388813827" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_seguimiento_graduados\cargar respuestas de encuestas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Dim_tipo_encuesta">
     <LayoutInfo>
       <GraphLayout
@@ -7837,10 +7902,6 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
           Id="Package\Dim_tipo_encuesta\Dim_tipo_encuestas"
           TopLeft="131.142859733835,359.117648967822" />
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Dim_tipo_encuesta\División condicional"
-          TopLeft="314,243" />
-        <NodeLayout
           Size="179.2,41.6"
           Id="Package\Dim_tipo_encuesta\cargar tipo encuestas"
           TopLeft="312.142859648685,48.6470594777368" />
@@ -7848,6 +7909,10 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
           Size="221.6,41.6"
           Id="Package\Dim_tipo_encuesta\Actualizar Dim_tipo_encuestas"
           TopLeft="409,361" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Dim_tipo_encuesta\División condicional"
+          TopLeft="314,243" />
         <EdgeLayout
           Id="Package\Dim_tipo_encuesta.Paths[Salida de origen de OLE DB]"
           TopLeft="399.871429824342,90.2470594777368">
@@ -7971,113 +8036,5 @@ right join DW_sga.dbo.Dim_facultad_carrera as d_fc on es.carrera_id=d_fc.carrera
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Dim_tipo_encuesta\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_tipo_encuestas]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Dim_tipo_encuesta\Dim_tipo_encuestas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Dim_tipo_encuesta\cargar tipo encuestas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Fact_seguimiento_graduados">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="226.4,41.6"
-          Id="Package\Fact_seguimiento_graduados\cargar respuestas de encuestas"
-          TopLeft="132.285712485411,46.2352941069223" />
-        <NodeLayout
-          Size="216,41.6"
-          Id="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados"
-          TopLeft="133.142855220911,168.588232988305" />
-        <EdgeLayout
-          Id="Package\Fact_seguimiento_graduados.Paths[Salida de origen de OLE DB]"
-          TopLeft="243.314283853161,87.8352941069223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80.7529388813827"
-              Start="0,0"
-              End="0,73.2529388813827">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.2529388813827" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Fact_seguimiento_graduados\cargar respuestas de encuestas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Fact_seguimiento_graduados\Fact_seguimiento_graduados">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
