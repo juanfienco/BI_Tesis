@@ -60,6 +60,7 @@
     <Report Include="Reporte_cantidad_estudiantes_practicas_fac_carrera_sexo.rdl" />
     <Report Include="Reporte_cantidad_estudiante_tutores.rdl" />
     <Report Include="Reporte_Empresa_AreasConocimiento_Carrera.rdl" />
+    <Report Include="Reporte_graduados_encuestas.rdl" />
     <Report Include="Reporte_graduados_faculad_carrera.rdl" />
     <Report Include="Reporte_visita_tutores_empresa.rdl" />
   </ItemGroup>
