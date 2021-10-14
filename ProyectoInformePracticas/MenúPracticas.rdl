@@ -219,6 +219,15 @@
                     <TextRuns>
                       <TextRun>
                         <Value>5. Encuestas realizadas de graduados por facultad y carrera y año</Value>
+                        <ActionInfo>
+                          <Actions>
+                            <Action>
+                              <Drillthrough>
+                                <ReportName>Reporte_graduados_faculad_carrera</ReportName>
+                              </Drillthrough>
+                            </Action>
+                          </Actions>
+                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -226,15 +235,6 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
-                <ActionInfo>
-                  <Actions>
-                    <Action>
-                      <Drillthrough>
-                        <ReportName>Reporte_graduados_faculad_carrera</ReportName>
-                      </Drillthrough>
-                    </Action>
-                  </Actions>
-                </ActionInfo>
                 <Top>5.59181cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
@@ -377,6 +377,15 @@
                     <TextRuns>
                       <TextRun>
                         <Value>6. Resultado de encuestas realizadas por facultad, carrera</Value>
+                        <ActionInfo>
+                          <Actions>
+                            <Action>
+                              <Drillthrough>
+                                <ReportName>Reporte_graduados_encuestas</ReportName>
+                              </Drillthrough>
+                            </Action>
+                          </Actions>
+                        </ActionInfo>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -384,15 +393,6 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
-                <ActionInfo>
-                  <Actions>
-                    <Action>
-                      <Drillthrough>
-                        <ReportName>Reporte_graduados_encuestas</ReportName>
-                      </Drillthrough>
-                    </Action>
-                  </Actions>
-                </ActionInfo>
                 <Top>6.46384cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
@@ -426,7 +426,7 @@
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Height>8.01485cm</Height>
-            <Width>20.53634cm</Width>
+            <Width>20.56459cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -437,10 +437,10 @@
         <Height>3.15545in</Height>
         <Style />
       </Body>
-      <Width>8.08517in</Width>
+      <Width>8.0963in</Width>
       <Page>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
         <RightMargin>2cm</RightMargin>
         <TopMargin>2cm</TopMargin>
