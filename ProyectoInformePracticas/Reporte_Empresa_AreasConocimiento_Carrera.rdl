@@ -223,22 +223,14 @@
                   <FilterItem>
                     <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
-                      <Members>
-                        <Member>
-                          <MemberUniqueName>[Dim Carrera].[Descripcion Facultad].[All]</MemberUniqueName>
-                        </Member>
-                      </Members>
+                      <Members />
                       <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                   <FilterItem>
                     <HierarchyUniqueName>[Dim Areasconocimiento].[Area Conocimiento Descripcion]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
-                      <Members>
-                        <Member>
-                          <MemberUniqueName>[Dim Areasconocimiento].[Area Conocimiento Descripcion].[All]</MemberUniqueName>
-                        </Member>
-                      </Members>
+                      <Members />
                       <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
@@ -255,9 +247,7 @@
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues>
-                    <DefaultValue>[Dim Carrera].[Descripcion Facultad].[All]</DefaultValue>
-                  </DefaultValues>
+                  <DefaultValues />
                   <Caption>Descripcion Facultad</Caption>
                   <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
                   <ParameterValuesQuery>
@@ -270,9 +260,7 @@
                 </ParameterDefinition>
                 <ParameterDefinition>
                   <Name>DimAreasconocimientoAreaConocimientoDescripcion</Name>
-                  <DefaultValues>
-                    <DefaultValue>[Dim Areasconocimiento].[Area Conocimiento Descripcion].[All]</DefaultValue>
-                  </DefaultValues>
+                  <DefaultValues />
                   <Caption>Area Conocimiento Descripcion</Caption>
                   <HierarchyUniqueName>[Dim Areasconocimiento].[Area Conocimiento Descripcion]</HierarchyUniqueName>
                   <ParameterValuesQuery>
@@ -490,9 +478,7 @@
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>DimCarreraDescripcionFacultad</Name>
-                  <DefaultValues>
-                    <DefaultValue>[Dim Carrera].[Descripcion Facultad].[All]</DefaultValue>
-                  </DefaultValues>
+                  <DefaultValues />
                   <Caption>Descripcion Facultad</Caption>
                   <HierarchyUniqueName>[Dim Carrera].[Descripcion Facultad]</HierarchyUniqueName>
                   <ParameterValuesQuery>
@@ -2826,11 +2812,6 @@
   <ReportParameters>
     <ReportParameter Name="DimCarreraDescripcionFacultad">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Carrera].[Descripcion Facultad].[All]</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Facultad</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -2843,11 +2824,6 @@
     </ReportParameter>
     <ReportParameter Name="DimAreasconocimientoAreaConocimientoDescripcion">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>[Dim Areasconocimiento].[Area Conocimiento Descripcion].[All]</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Area Conocimiento</Prompt>
       <ValidValues>
         <DataSetReference>
