@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{68E10C03-EA27-4AD6-97AE-78FC001AF5FC}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{F142E1E1-E14F-45D4-A6AD-304780698CE3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
