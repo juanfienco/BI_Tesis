@@ -398,9 +398,6 @@
                 <Height>0.6cm</Height>
                 <Width>14.74047cm</Width>
                 <ZIndex>10</ZIndex>
-                <Visibility>
-                  <Hidden>true</Hidden>
-                </Visibility>
                 <Style>
                   <Border>
                     <Style>None</Style>
