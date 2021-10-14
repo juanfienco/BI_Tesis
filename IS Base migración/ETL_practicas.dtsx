@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{4278C4ED-2642-491B-9171-0BAF324D6189}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{84738B75-8669-4D69-A86D-DF080A160E88}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9496,6 +9496,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
     <DTS:Executable
       DTS:refId="Package\Validación y creación de tablas"
       DTS:CreationName="STOCK:SEQUENCE"
+      DTS:DelayValidation="True"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{7e33175f-f5c1-42ae-8f5d-20546b2381f1}"
       DTS:ExecutableType="STOCK:SEQUENCE"
@@ -9506,6 +9507,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <DTS:Executable
           DTS:refId="Package\Validación y creación de tablas\creacion tablas dimension"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Ejecutar SQL"
           DTS:DTSID="{9ad4a296-b11f-4670-863f-3345e99fe546}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
@@ -9523,6 +9525,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <DTS:Executable
           DTS:refId="Package\Validación y creación de tablas\crear DW_sga"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Ejecutar SQL"
           DTS:DTSID="{b902deab-c287-438d-b4c6-ba2418c767cf}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
@@ -9540,6 +9543,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <DTS:Executable
           DTS:refId="Package\Validación y creación de tablas\función secuencia_tiempo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DelayValidation="True"
           DTS:Description="Tarea Ejecutar SQL"
           DTS:DTSID="{843895c7-7adb-47f9-8ef4-86d05c893838}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
