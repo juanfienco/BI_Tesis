@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{800A2F99-F641-4B63-9474-56A3BE155821}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{68E10C03-EA27-4AD6-97AE-78FC001AF5FC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -10307,9 +10307,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.87123046875,5.89444444444449,69.7424609375,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10332,7 +10330,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-130.72740234375,7.65234375,261.4548046875,12.1953125"
+              BoundingBox="-99.8190234375,7.65234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10355,9 +10353,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-26.20765625,6.5234375,52.4153125,11.453125"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10386,7 +10382,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-124.020071614583,-17.658203125,89.3734765625,11.658203125"
+              BoundingBox="-96.060911458333,-15.421875,33.45515625,9.421875"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10416,7 +10412,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="44.05826171875,-17.658203125,96.8834765625,11.658203125"
+              BoundingBox="71.94630859375,-15.7978515625,41.1073828125,9.7978515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
