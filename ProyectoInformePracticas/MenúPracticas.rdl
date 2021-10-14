@@ -218,7 +218,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>5. Listado de graduados por facultad y carrera y año</Value>
+                        <Value>5. Encuestas realizadas de graduados por facultad y carrera y año</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -230,7 +230,7 @@
                   <Actions>
                     <Action>
                       <Drillthrough>
-                        <ReportName>Reporte_actas_notas_curso</ReportName>
+                        <ReportName>Reporte_graduados_faculad_carrera</ReportName>
                       </Drillthrough>
                     </Action>
                   </Actions>
@@ -376,7 +376,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>6. Reporte de encuestas realizadas por facultad, carrera, encargado</Value>
+                        <Value>6. Resultado de encuestas realizadas por facultad, carrera</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -384,6 +384,15 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Drillthrough>
+                        <ReportName>Reporte_graduados_encuestas</ReportName>
+                      </Drillthrough>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
                 <Top>6.46384cm</Top>
                 <Left>5.50662cm</Left>
                 <Height>0.6cm</Height>
