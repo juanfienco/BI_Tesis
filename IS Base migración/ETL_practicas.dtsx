@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{84738B75-8669-4D69-A86D-DF080A160E88}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{CB0CE429-14E7-47E4-9C21-49807EF8A6E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9536,7 +9536,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
+              SQLTask:Connection="{5970592B-754C-4570-95AA-09ACD1C6A9E4}"
               SQLTask:SqlStatementSource="USE [master]&#xA;GO&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysdatabases WHERE (name = 'DW_sga'))&#xA;BEGIN&#xA; CREATE DATABASE [DW_sga]&#xA;END&#xA;GO&#xA;&#xA;USE [DW_sga]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
