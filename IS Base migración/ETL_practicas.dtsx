@@ -12,8 +12,8 @@
   DTS:ObjectName="ETL_practicas"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{7FC97D79-69DE-4686-BD5C-06D514457D92}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{800A2F99-F641-4B63-9474-56A3BE155821}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -697,6 +697,18 @@ where [refTable].[idalumno] = ?</property>
                       cachedLength="255"
                       cachedName="identificacion"
                       lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[identificacion]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[estudiante]"
+                      cachedDataType="wstr"
+                      cachedLength="151"
+                      cachedName="estudiante"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[estudiante]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="tipo_alumno"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -849,6 +861,48 @@ where [refTable].[idalumno] = ?</property>
                           dataType="System.Int32"
                           description="Especifica la columna de entrada usada como origen de datos para la conversión."
                           name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[identificacion]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de estudiante]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="300"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de estudiante]"
+                      name="Copia de estudiante"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[estudiante]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]"
+                      name="Copia de tipo_alumno"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
@@ -1335,82 +1389,82 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[estudiante]"
-                      cachedDataType="wstr"
-                      cachedLength="300"
-                      cachedName="estudiante"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[estudiante]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[tipo_alumno]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="tipo_alumno"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]" />
-                    <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[idalumno]"
                       cachedDataType="numeric"
                       cachedName="idalumno"
                       cachedPrecision="19"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[idalumno]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[idalumno]" />
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[idalumno]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[lugar_nacimiento]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="lugar_nacimiento"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[lugar_nacimiento]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[lugar_nacimiento]" />
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[lugar_nacimiento]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[sexo]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="1"
                       cachedName="sexo"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[sexo]" />
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[sexo]" />
                     <inputColumn
                       refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[nacionalidad]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="nacionalidad"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[nacionalidad]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nacionalidad]" />
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[nacionalidad]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[provincia_nacimiento]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[estudiante]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="provincia_nacimiento"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]" />
+                      cachedLength="151"
+                      cachedName="estudiante"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[estudiante]"
+                      lineageId="Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[estudiante]" />
                     <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[canton_nacimiento]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="canton_nacimiento"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_nacimiento]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[provincia_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="provincia_domicilio"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[canton_domicilio]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="canton_domicilio"
-                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]" />
-                    <inputColumn
-                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[identificacion]"
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de identificacion]"
                       cachedDataType="wstr"
                       cachedLength="15"
-                      cachedName="identificacion"
+                      cachedName="Copia de identificacion"
                       externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[identificacion]"
-                      lineageId="Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]" />
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de identificacion]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de tipo_alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de tipo_alumno"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_alumno]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de tipo_alumno]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de provincia_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de provincia_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de canton_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de canton_nacimiento"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_nacimiento]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_nacimiento]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de provincia_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de provincia_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[provincia_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de provincia_domicilio]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].Columns[Copia de canton_domicilio]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copia de canton_domicilio"
+                      externalMetadataColumnId="Package\Cargar Dim_alumno\Dim_alumno.Inputs[Entrada de destino de OLE DB].ExternalColumns[canton_domicilio]"
+                      lineageId="Package\Cargar Dim_alumno\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de canton_domicilio]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1640,13 +1694,13 @@ left join dat_provincia as p1 on a.idprovincia_resid = p1.idprovincia</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">(#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[estudiante]} != #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]}) || (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}) || (#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[identificacion]} != #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]})</property>
+                      name="Expression">(#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[estudiante]} != #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[estudiante]}) &amp;&amp; (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[tipo_alumno]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[tipo_alumno]}) &amp;&amp; (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_domicilio]}) &amp;&amp; (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[canton_domicilio]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[canton_domicilio]}) &amp;&amp; (#{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[provincia_nacimiento]} != #{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[provincia_nacimiento]}) &amp;&amp; (#{Package\Cargar Dim_alumno\dat_alumno.Outputs[Salida de origen de OLE DB].Columns[identificacion]} != #{Package\Cargar Dim_alumno\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[identificacion]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">(dat_alumno.estudiante != [Búsqueda].estudiante) || ([Búsqueda].tipo_alumno != dat_alumno.tipo_alumno) || ([Búsqueda].provincia_domicilio != dat_alumno.provincia_domicilio) || ([Búsqueda].canton_domicilio != dat_alumno.canton_domicilio) || ([Búsqueda].provincia_nacimiento != dat_alumno.provincia_nacimiento) || (dat_alumno.identificacion != [Búsqueda].identificacion)</property>
+                      name="FriendlyExpression">(dat_alumno.estudiante != [Búsqueda].estudiante) &amp;&amp; ([Búsqueda].tipo_alumno != dat_alumno.tipo_alumno) &amp;&amp; ([Búsqueda].provincia_domicilio != dat_alumno.provincia_domicilio) &amp;&amp; ([Búsqueda].canton_domicilio != dat_alumno.canton_domicilio) &amp;&amp; ([Búsqueda].provincia_nacimiento != dat_alumno.provincia_nacimiento) &amp;&amp; (dat_alumno.identificacion != [Búsqueda].identificacion)</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -9519,7 +9573,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{D53FDAAE-533C-4DFE-A294-91576845DF7E}"
-              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_alumno](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idalumno] [numeric](19, 0) NOT NULL,&#xA; [estudiante] [nvarchar](300) NOT NULL,&#xA; [sexo] [nvarchar](20) NOT NULL,&#xA; [nacionalidad] [nvarchar](50) NOT NULL,&#xA; [lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA; [canton_nacimiento] [nvarchar](50) NOT NULL,&#xA; [provincia_domicilio] [nvarchar](50) NOT NULL,&#xA; [canton_domicilio] [nvarchar](50) NOT NULL,&#xA; [tipo_alumno] [nvarchar](50) NOT NULL,&#xA; [identificacion] [nvarchar](15) NOT NULL,&#xA; CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [Fecha] [date] NOT NULL,&#xA; [Año] [smallint] NOT NULL,&#xA; [Mes] [tinyint] NOT NULL,&#xA; [Dia] [tinyint] NOT NULL,&#xA; [DiaDelAño] [smallint] NOT NULL,&#xA; [SemanaDelAño] [tinyint] NOT NULL,&#xA; [Trimestre] [tinyint] NOT NULL,&#xA; [Semestre] [tinyint] NOT NULL,&#xA; [NombreMes] [varchar](10) NOT NULL,&#xA; [NombreMesCorto] [varchar](3) NOT NULL,&#xA; [NombreDia] [varchar](10) NOT NULL,&#xA; [NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA; [periodo_descripcion] [nvarchar](50) NOT NULL,&#xA; [periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcarrera] [numeric](19, 0) NOT NULL,&#xA; [descripcion_carrera] [nvarchar](250) NOT NULL,&#xA; [descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA; [descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_docente')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_docente](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [nombre] [nvarchar](255) NULL,&#xA; [apellidos] [nvarchar](255) NULL,&#xA; [idprofesor] [numeric](19, 0) NULL,&#xA; [identificacion] [nvarchar](50) NULL,&#xA; [especializacion] [nvarchar](255) NULL,&#xA; [fecha_nacimiento] [date] NULL,&#xA; [instruccion] [nvarchar](255) NULL,&#xA; [categoria] [nvarchar](255) NULL,&#xA; [colectivo] [nvarchar](255) NULL,&#xA; [comision] [nvarchar](255) NULL,&#xA; [nivel_formacion] [nvarchar](255) NULL,&#xA; [dedicacion] [varchar](255) NULL,&#xA; [estado_civil] [nvarchar](20) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [cargo] [varchar](255) NULL,&#xA; [sexo_completo] [nvarchar](20) NULL,&#xA; [nombre_completo] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_docente] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [eje] [nvarchar](255) NULL,&#xA; [creditos] [real] NULL,&#xA; [creditos_real] [real] NULL,&#xA; [nivel] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [codmateria] [nvarchar](255) NULL,&#xA; [materia] [nvarchar](255) NULL,&#xA; [prerequisito_ids] [nvarchar](255) NULL,&#xA; [prerequisito_desc] [nvarchar](255) NULL,&#xA; [prerequisito_codmateria] [nvarchar](255) NULL,&#xA; [corequisito_ids] [nvarchar](255) NULL,&#xA; [corequisito_desc] [nvarchar](255) NULL,&#xA; [corequisito_codmateria] [nvarchar](255) NULL,&#xA; [idenfasis] [numeric](19, 0) NULL,&#xA; [enfasis] [nvarchar](255) NULL,&#xA; [id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcurso] [numeric](19, 0) NULL,&#xA; [idperiodo] [numeric](19, 0) NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [iddocentes] [nvarchar](4000) NULL,&#xA; [periodo_academico] [nvarchar](4000) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [asignatura] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [nivel_itinerario] [nvarchar](255) NULL,&#xA; [docente] [nvarchar](4000) NULL,&#xA; [horario] [nvarchar](4000) NULL,&#xA; [horas] [int] NULL,&#xA; [paralelo] [nvarchar](10) NULL,&#xA; [cupo] [int] NULL,&#xA; [plan_contingencia] [nvarchar](5) NULL,&#xA; [total_estudiantes_registrados] [int] NULL,&#xA; [estado_curso] [varchar](100) NULL,&#xA; [acta_estado] [nvarchar](100) NULL,&#xA; [acta_version] [numeric](5, 0) NULL,&#xA; [usuario] [nvarchar](150) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoaprobado')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoaprobado](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idtipoaprobado] [numeric](19, 0) NOT NULL,&#xA; [descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAprobado] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoalumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoalumno](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idtipoalumno] [numeric](19, 0) NOT NULL,&#xA; [descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAlumno] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_empresas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_empresas](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[actividad] [nvarchar](255) NULL,&#xA;&#x9;[direccion] [nvarchar](255) NULL,&#xA;&#x9;[estado] [varchar](5) NULL,&#xA;&#x9;[fecha] [date] NULL,&#xA;&#x9;[idusuario] [numeric](19, 0) NULL,&#xA;&#x9;[ruc] [nvarchar](15) NULL,&#xA;&#x9;[tipo] [nvarchar](50) NULL,&#xA;&#x9;[correo] [nvarchar](255) NULL,&#xA;&#x9;[paginaweb] [nvarchar](255) NULL,&#xA;&#x9;[ciudad] [nvarchar](255) NULL,&#xA;&#x9;[tel_fax] [nvarchar](255) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[telefono] [nvarchar](100) NULL,&#xA;&#x9;[usuario] [nvarchar](255) NULL,&#xA;&#x9;CONSTRAINT [PK_Dim_empresas] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_areasconocimiento')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_areasconocimiento](&#xA;                [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idareaconocimiento] int,&#xA;    [area_conocimiento_codigo] nvarchar(10),&#xA;    [area_conocimiento_descripcion] nvarchar(255),&#xA;    [idsubareaconocimiento] int,&#xA;    [subarea_conocimiento_codigo] nvarchar(10),&#xA;    [subarea_conocimiento_descripcion] nvarchar(255),&#xA;    [idsubareaespecifica] int,&#xA;    [subarea_especifica_codigo] nvarchar(10),&#xA;    [subarea_especifica_descripcion] nvarchar(255)&#xA;&#x9;CONSTRAINT [PK_Dim_Dim_areasconocimiento] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_practicas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_practicas](&#xA;&#x9;[sk_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_docente] [numeric](19, 0) NULL,&#xA;&#x9;[sk_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tiempoinicio] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tiempofin] [numeric](19, 0) NULL,&#xA;&#x9;[sk_areaconocimiento] [numeric](19, 0) NULL,&#xA;&#x9;[sk_empresa] [numeric](19, 0) NULL,&#xA;&#x9;[numero_horas] [float] NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_alumno] FOREIGN KEY([sk_alumno])&#xA;REFERENCES [dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_areasconocimiento] FOREIGN KEY([sk_areaconocimiento])&#xA;REFERENCES [dbo].[Dim_areasconocimiento] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_areasconocimiento]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_carrera] FOREIGN KEY([sk_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_docente] FOREIGN KEY([sk_docente])&#xA;REFERENCES [dbo].[Dim_docente] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_docente]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_empresas] FOREIGN KEY([sk_empresa])&#xA;REFERENCES [dbo].[Dim_empresas] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_empresas]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_tiempo_fin] FOREIGN KEY([sk_tiempofin])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_tiempo_fin]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_tiempo_inicio] FOREIGN KEY([sk_tiempoinicio])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_tiempo_inicio]&#xA;END&#xA;ELSE&#xA;  delete from DW_sga.dbo.Fact_practicas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE DW_sga&#xA;GO &#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_alumno')) &#xA;BEGIN&#xA;CREATE TABLE [dbo].[Dim_alumno](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idalumno] [numeric](19, 0) NOT NULL,&#xA;&#x9;[estudiante] [nvarchar](300) NOT NULL,&#xA;&#x9;[sexo] [nvarchar](20) NOT NULL,&#xA;&#x9;[nacionalidad] [nvarchar](50) NOT NULL,&#xA;&#x9;[lugar_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_nacimiento] [nvarchar](50) NOT NULL,&#xA;&#x9;[provincia_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[canton_domicilio] [nvarchar](50) NOT NULL,&#xA;&#x9;[tipo_alumno] [nvarchar](50) NOT NULL,&#xA;&#x9;[identificacion] [nvarchar](15) NULL,&#xA; CONSTRAINT [PK_Dim_alumno] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tiempo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tiempo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [Fecha] [date] NOT NULL,&#xA; [Año] [smallint] NOT NULL,&#xA; [Mes] [tinyint] NOT NULL,&#xA; [Dia] [tinyint] NOT NULL,&#xA; [DiaDelAño] [smallint] NOT NULL,&#xA; [SemanaDelAño] [tinyint] NOT NULL,&#xA; [Trimestre] [tinyint] NOT NULL,&#xA; [Semestre] [tinyint] NOT NULL,&#xA; [NombreMes] [varchar](10) NOT NULL,&#xA; [NombreMesCorto] [varchar](3) NOT NULL,&#xA; [NombreDia] [varchar](10) NOT NULL,&#xA; [NombreDiaCorto] [varchar](3) NOT NULL,&#xA; CONSTRAINT [PK_Dim_tiempo] PRIMARY KEY CLUSTERED &#xA;(&#xA;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_periodo')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_periodo](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idperiodogeneral] [numeric](19, 0) NOT NULL,&#xA; [periodo_descripcion] [nvarchar](50) NOT NULL,&#xA; [periodos_individuales] [nvarchar](200) NOT NULL,&#xA; CONSTRAINT [PK_Dim_periodo] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_carrera')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_carrera](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcarrera] [numeric](19, 0) NOT NULL,&#xA; [descripcion_carrera] [nvarchar](250) NOT NULL,&#xA; [descripcion_carrerasenesyt] [nvarchar](250) NOT NULL,&#xA; [descripcion_facultad] [nvarchar](250) NOT NULL,&#xA; CONSTRAINT [PK_Dim_carrera] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_docente')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_docente](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [nombre] [nvarchar](255) NULL,&#xA; [apellidos] [nvarchar](255) NULL,&#xA; [idprofesor] [numeric](19, 0) NULL,&#xA; [identificacion] [nvarchar](50) NULL,&#xA; [especializacion] [nvarchar](255) NULL,&#xA; [fecha_nacimiento] [date] NULL,&#xA; [instruccion] [nvarchar](255) NULL,&#xA; [categoria] [nvarchar](255) NULL,&#xA; [colectivo] [nvarchar](255) NULL,&#xA; [comision] [nvarchar](255) NULL,&#xA; [nivel_formacion] [nvarchar](255) NULL,&#xA; [dedicacion] [varchar](255) NULL,&#xA; [estado_civil] [nvarchar](20) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [cargo] [varchar](255) NULL,&#xA; [sexo_completo] [nvarchar](20) NULL,&#xA; [nombre_completo] [nvarchar](255) NULL,&#xA; CONSTRAINT [PK_Dim_docente] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_pensum')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_pensum](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [eje] [nvarchar](255) NULL,&#xA; [creditos] [real] NULL,&#xA; [creditos_real] [real] NULL,&#xA; [nivel] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [codmateria] [nvarchar](255) NULL,&#xA; [materia] [nvarchar](255) NULL,&#xA; [prerequisito_ids] [nvarchar](255) NULL,&#xA; [prerequisito_desc] [nvarchar](255) NULL,&#xA; [prerequisito_codmateria] [nvarchar](255) NULL,&#xA; [corequisito_ids] [nvarchar](255) NULL,&#xA; [corequisito_desc] [nvarchar](255) NULL,&#xA; [corequisito_codmateria] [nvarchar](255) NULL,&#xA; [idenfasis] [numeric](19, 0) NULL,&#xA; [enfasis] [nvarchar](255) NULL,&#xA; [id_materias_pensum] [numeric](19, 0) NULL,&#xA; CONSTRAINT [PK_Dim_pensum] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_cursos')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_cursos](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idcurso] [numeric](19, 0) NULL,&#xA; [idperiodo] [numeric](19, 0) NULL,&#xA; [idfacultad] [numeric](19, 0) NULL,&#xA; [idcarrera] [numeric](19, 0) NULL,&#xA; [idmateria] [numeric](19, 0) NULL,&#xA; [idpensum] [numeric](19, 0) NULL,&#xA; [iddocentes] [nvarchar](4000) NULL,&#xA; [periodo_academico] [nvarchar](4000) NULL,&#xA; [facultad] [nvarchar](255) NULL,&#xA; [carrera] [nvarchar](255) NULL,&#xA; [asignatura] [nvarchar](255) NULL,&#xA; [pensum] [nvarchar](255) NULL,&#xA; [nivel_itinerario] [nvarchar](255) NULL,&#xA; [docente] [nvarchar](4000) NULL,&#xA; [horario] [nvarchar](4000) NULL,&#xA; [horas] [int] NULL,&#xA; [paralelo] [nvarchar](10) NULL,&#xA; [cupo] [int] NULL,&#xA; [plan_contingencia] [nvarchar](5) NULL,&#xA; [total_estudiantes_registrados] [int] NULL,&#xA; [estado_curso] [varchar](100) NULL,&#xA; [acta_estado] [nvarchar](100) NULL,&#xA; [acta_version] [numeric](5, 0) NULL,&#xA; [usuario] [nvarchar](150) NULL,&#xA; CONSTRAINT [PK_Dim_cursos] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoaprobado')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoaprobado](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idtipoaprobado] [numeric](19, 0) NOT NULL,&#xA; [descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAprobado] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_tipoalumno')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_tipoalumno](&#xA; [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA; [idtipoalumno] [numeric](19, 0) NOT NULL,&#xA; [descripcion] [nvarchar](255) NOT NULL,&#xA; CONSTRAINT [PK_Dim_TipoAlumno] PRIMARY KEY CLUSTERED &#xA;(&#xA; [id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_empresas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_empresas](&#xA;&#x9;[id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;[idempresa] [numeric](19, 0) NULL,&#xA;&#x9;[actividad] [nvarchar](255) NULL,&#xA;&#x9;[direccion] [nvarchar](255) NULL,&#xA;&#x9;[estado] [varchar](5) NULL,&#xA;&#x9;[fecha] [date] NULL,&#xA;&#x9;[idusuario] [numeric](19, 0) NULL,&#xA;&#x9;[ruc] [nvarchar](15) NULL,&#xA;&#x9;[tipo] [nvarchar](50) NULL,&#xA;&#x9;[correo] [nvarchar](255) NULL,&#xA;&#x9;[paginaweb] [nvarchar](255) NULL,&#xA;&#x9;[ciudad] [nvarchar](255) NULL,&#xA;&#x9;[tel_fax] [nvarchar](255) NULL,&#xA;&#x9;[nombre_empresa] [nvarchar](255) NULL,&#xA;&#x9;[telefono] [nvarchar](100) NULL,&#xA;&#x9;[usuario] [nvarchar](255) NULL,&#xA;&#x9;CONSTRAINT [PK_Dim_empresas] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Dim_areasconocimiento')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Dim_areasconocimiento](&#xA;                [id] [numeric](19, 0) IDENTITY(1,1) NOT NULL,&#xA;&#x9;&#x9;[idareaconocimiento] int,&#xA;    [area_conocimiento_codigo] nvarchar(10),&#xA;    [area_conocimiento_descripcion] nvarchar(255),&#xA;    [idsubareaconocimiento] int,&#xA;    [subarea_conocimiento_codigo] nvarchar(10),&#xA;    [subarea_conocimiento_descripcion] nvarchar(255),&#xA;    [idsubareaespecifica] int,&#xA;    [subarea_especifica_codigo] nvarchar(10),&#xA;    [subarea_especifica_descripcion] nvarchar(255)&#xA;&#x9;CONSTRAINT [PK_Dim_Dim_areasconocimiento] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;END&#xA;&#xA;IF NOT EXISTS (SELECT * FROM sysobjects WHERE (name = 'Fact_practicas')) &#xA;BEGIN&#xA;CREATE TABLE [DW_sga].[dbo].[Fact_practicas](&#xA;&#x9;[sk_alumno] [numeric](19, 0) NULL,&#xA;&#x9;[sk_docente] [numeric](19, 0) NULL,&#xA;&#x9;[sk_carrera] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tiempoinicio] [numeric](19, 0) NULL,&#xA;&#x9;[sk_tiempofin] [numeric](19, 0) NULL,&#xA;&#x9;[sk_areaconocimiento] [numeric](19, 0) NULL,&#xA;&#x9;[sk_empresa] [numeric](19, 0) NULL,&#xA;&#x9;[numero_horas] [float] NULL&#xA;) ON [PRIMARY]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_alumno] FOREIGN KEY([sk_alumno])&#xA;REFERENCES [dbo].[Dim_alumno] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_alumno]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_areasconocimiento] FOREIGN KEY([sk_areaconocimiento])&#xA;REFERENCES [dbo].[Dim_areasconocimiento] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_areasconocimiento]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_carrera] FOREIGN KEY([sk_carrera])&#xA;REFERENCES [dbo].[Dim_carrera] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_carrera]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_docente] FOREIGN KEY([sk_docente])&#xA;REFERENCES [dbo].[Dim_docente] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_docente]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_empresas] FOREIGN KEY([sk_empresa])&#xA;REFERENCES [dbo].[Dim_empresas] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_empresas]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_tiempo_fin] FOREIGN KEY([sk_tiempofin])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_tiempo_fin]&#xA;ALTER TABLE [dbo].[Fact_practicas]  WITH CHECK ADD  CONSTRAINT [FK_Fact_practicas_Dim_tiempo_inicio] FOREIGN KEY([sk_tiempoinicio])&#xA;REFERENCES [dbo].[Dim_tiempo] ([id])&#xA;ALTER TABLE [dbo].[Fact_practicas] CHECK CONSTRAINT [FK_Fact_practicas_Dim_tiempo_inicio]&#xA;END&#xA;ELSE&#xA;  delete from DW_sga.dbo.Fact_practicas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -9698,7 +9752,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172.8,41.6"
+          Size="172,41.6"
           Id="Package\Cargar Dim_alumno"
           TopLeft="248.714286237347,262.717646050701" />
         <NodeLayout
@@ -9866,30 +9920,30 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 10]"
-          TopLeft="335.114286237347,304.317646050701">
+          TopLeft="334.714286237347,304.317646050701">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="138.009531254022,97.7411829912117"
+              EndConnector="138.409531254022,97.741182991212"
               Start="0,0"
-              End="138.009531254022,90.2411829912117">
+              End="138.409531254022,90.241182991212">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.9857804711908" />
+                    End="0,53.9857804711909" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53.9857804711908"
-                    Point2="0,57.9857804711908"
-                    Point3="4,57.9857804711908" />
+                    Point1="0,53.9857804711909"
+                    Point2="0,57.9857804711909"
+                    Point3="4,57.9857804711909" />
                   <mssgle:LineSegment
-                    End="134.009531254022,57.9857804711908" />
+                    End="134.409531254022,57.9857804711909" />
                   <mssgle:CubicBezierSegment
-                    Point1="134.009531254022,57.9857804711908"
-                    Point2="138.009531254022,57.9857804711908"
-                    Point3="138.009531254022,61.9857804711908" />
+                    Point1="134.409531254022,57.9857804711909"
+                    Point2="138.409531254022,57.9857804711909"
+                    Point3="138.409531254022,61.9857804711909" />
                   <mssgle:LineSegment
-                    End="138.009531254022,90.2411829912117" />
+                    End="138.409531254022,90.241182991212" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9968,7 +10022,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="335.560716604518,237.317648056222">
+          TopLeft="335.360716604518,237.317648056222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10225,7 +10279,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <NodeLayout
           Size="135.2,41.6"
           Id="Package\Cargar Dim_alumno\dat_alumno"
-          TopLeft="252.222222222222,63.111111111111" />
+          TopLeft="251.507936495772,63.111111111111" />
         <NodeLayout
           Size="187.2,41.6"
           Id="Package\Cargar Dim_alumno\Actualizar Dim_alumno"
@@ -10236,25 +10290,25 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           TopLeft="240,291" />
         <EdgeLayout
           Id="Package\Cargar Dim_alumno.Paths[Salida de origen de OLE DB]"
-          TopLeft="322.111111111111,105.111111111111">
+          TopLeft="321.853968247886,104.711111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.888888888889"
+              EndConnector="0,35.288888888889"
               Start="0,0"
-              End="0,27.388888888889">
+              End="0,27.788888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.388888888889" />
+                    End="0,27.788888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-34.87123046875,5.89444444444449,69.7424609375,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10278,7 +10332,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,7.65234375,199.638046875,12.1953125"
+              BoundingBox="-130.72740234375,7.65234375,261.4548046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10302,7 +10356,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-26.20765625,6.5234375,52.4153125,11.453125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10332,7 +10386,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-96.060911458333,-15.421875,33.45515625,9.421875"
+              BoundingBox="-124.020071614583,-17.658203125,89.3734765625,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10362,7 +10416,7 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="71.94630859375,-15.7978515625,41.1073828125,9.7978515625"
+              BoundingBox="44.05826171875,-17.658203125,96.8834765625,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10376,6 +10430,19 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
         <Name>OverwriteParamsSQLProp</Name>
         <Value
           type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim_alumno\Dim_alumno">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -11107,7 +11174,9 @@ inner join DW_sga.dbo.Dim_empresas as demp on pp.idempresa= demp.idempresa</prop
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
